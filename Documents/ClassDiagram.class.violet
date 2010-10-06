@@ -204,7 +204,7 @@ FileParser</string>
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
      <double>15.0</double> 
-     <double>608.0</double> 
+     <double>609.0</double> 
     </void> 
    </object> 
   </void> 
@@ -267,8 +267,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>226.0</double> 
-     <double>542.0</double> 
+     <double>228.0</double> 
+     <double>548.0</double> 
     </void> 
    </object> 
   </void> 

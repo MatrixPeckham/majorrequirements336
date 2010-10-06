@@ -101,8 +101,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>658.8207417115074</double> 
-     <double>488.7641242661184</double> 
+     <double>633.8207417115074</double> 
+     <double>483.7641242661184</double> 
     </void> 
    </object> 
   </void> 
@@ -116,8 +116,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>895.4729575970489</double> 
-     <double>132.00198976530206</double> 
+     <double>924.4729575970489</double> 
+     <double>142.00198976530206</double> 
     </void> 
    </object> 
   </void> 
@@ -161,8 +161,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>928.7707568171251</double> 
-     <double>393.62755506590065</double> 
+     <double>952.7707568171251</double> 
+     <double>436.62755506590065</double> 
     </void> 
    </object> 
   </void> 
@@ -177,7 +177,7 @@
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
      <double>948.9872777721714</double> 
-     <double>470.92601754107756</double> 
+     <double>503.92601754107756</double> 
     </void> 
    </object> 
   </void> 
@@ -191,8 +191,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>963.257763152204</double> 
-     <double>556.5489298212734</double> 
+     <double>952.257763152204</double> 
+     <double>573.5489298212734</double> 
     </void> 
    </object> 
   </void> 
@@ -208,6 +208,21 @@
     <void method="setLocation"> 
      <double>931.0</double> 
      <double>40.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode14" class="com.horstmann.violet.ClassNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>AddMajor/Upload File</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>944.0</double> 
+     <double>369.0</double> 
     </void> 
    </object> 
   </void> 
@@ -402,6 +417,18 @@
    </object> 
    <object idref="ClassNode13"/> 
    <object idref="ClassNode13"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode5"/> 
+   <object idref="ClassNode14"/> 
   </void> 
  </object> 
 </java> 
