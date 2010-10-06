@@ -7,12 +7,18 @@
      <void property="text"> 
       <string>-name : String
 -major : Major
+-grades : TreeMap&lt;String,Vector&lt;Grade&gt;&gt;
 -courses : Vector&lt;Course&gt;</string> 
      </void> 
     </void> 
     <void property="methods"> 
      <void property="text"> 
-      <string>+calculateGPA() : double</string> 
+      <string>+addCourse(Course) : void
++removeCourse(String) : void
+-findCourse(String) : Course 
++calculateGPA() : double
++passedCourse(String) : boolean
++requirementsLeft() : Vector&lt;Requirements&gt;</string> 
      </void> 
     </void> 
     <void property="name"> 
@@ -23,8 +29,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>454.0</double> 
-     <double>122.0</double> 
+     <double>1339.8712831743644</double> 
+     <double>594.0041840821061</double> 
     </void> 
    </object> 
   </void> 
@@ -35,6 +41,11 @@
       <string>-dept : Department</string> 
      </void> 
     </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+parseFile(File f) : void</string> 
+     </void> 
+    </void> 
     <void property="name"> 
      <void property="text"> 
       <string>Admin</string> 
@@ -43,13 +54,19 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>348.0</double> 
-     <double>18.0</double> 
+     <double>926.4133470105958</double> 
+     <double>470.5483399593904</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
    <object id="ClassNode2" class="com.horstmann.violet.ClassNode"> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+parseFile(File f) : void
++addCourseToMajor(Major,Course) : void</string> 
+     </void> 
+    </void> 
     <void property="name"> 
      <void property="text"> 
       <string>Super Admin</string> 
@@ -58,8 +75,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>565.0</double> 
-     <double>29.0</double> 
+     <double>878.58787847868</double> 
+     <double>326.9554108468271</double> 
     </void> 
    </object> 
   </void> 
@@ -69,9 +86,8 @@
      <void property="text"> 
       <string>-deptId : String
 -number : int
--grade : String
 -prereqs : Vector&lt;Course&gt;
--minGrade : String
+-minGrade : Grade
 -credits :int
 -offered : Vector&lt;String&gt;
 
@@ -82,7 +98,8 @@
     <void property="methods"> 
      <void property="text"> 
       <string>+isUpperDivision() :boolean
-+prereqsSatisfied(User) : boolean</string> 
++prereqsSatisfied(User) : boolean
++getAllRequirements() : Vector&lt;Requirement&gt;</string> 
      </void> 
     </void> 
     <void property="name"> 
@@ -94,8 +111,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>117.0</double> 
-     <double>187.0</double> 
+     <double>1884.080661465353</double> 
+     <double>388.9360748630709</double> 
     </void> 
    </object> 
   </void> 
@@ -106,6 +123,17 @@
       <string>-name: String
 -reqs : TreeMap&lt;int, Vector&lt;Requirement&gt;&gt;
 -minCredits : int
+-minGPA : double
+</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+requirementsSatisfied(TreeMap&lt;String, Vector&lt;Grade&gt;&gt;) : Vector&lt;Requirement&gt;
++addCourse(Course) : void
++removeCourse(String) : void
+-findCourse(String) : Course
++editCourse(Course) : void
 </string> 
      </void> 
     </void> 
@@ -117,8 +145,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>120.0</double> 
-     <double>78.0</double> 
+     <double>426.37676708413676</double> 
+     <double>647.4347750354049</double> 
     </void> 
    </object> 
   </void> 
@@ -126,7 +154,15 @@
    <object id="ClassNode5" class="com.horstmann.violet.ClassNode"> 
     <void property="attributes"> 
      <void property="text"> 
-      <string>-majors : Vector&lt;Major&gt;</string> 
+      <string>-majors : Vector&lt;Major&gt;
+-name : String</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+findMajor(String) : Major
++addMajor(Major) : void
++removeMajor(String) : void</string> 
      </void> 
     </void> 
     <void property="name"> 
@@ -137,8 +173,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>7.0</double> 
-     <double>3.0</double> 
+     <double>647.638743755012</double> 
+     <double>455.5483399593903</double> 
     </void> 
    </object> 
   </void> 
@@ -158,8 +194,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>583.0</double> 
-     <double>243.0</double> 
+     <double>908.2691193458116</double> 
+     <double>588.0681092190351</double> 
     </void> 
    </object> 
   </void> 
@@ -173,7 +209,8 @@ FileParser</string>
     </void> 
     <void property="methods"> 
      <void property="text"> 
-      <string>+$getSystemManager() : SystemManager
+      <string>-SystemManager()
++$getSystemManager() : SystemManager
 +addUser() : long
 +removeUser(long) : void
 
@@ -188,13 +225,20 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>722.0</double> 
-     <double>139.0</double> 
+     <double>1307.8275605729689</double> 
+     <double>897.0184694319788</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
    <object id="ClassNode7" class="com.horstmann.violet.ClassNode"> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+generateSchedule() : Schedule
++uploadFile(File, String) : boolean
+</string> 
+     </void> 
+    </void> 
     <void property="name"> 
      <void property="text"> 
       <string>Client</string> 
@@ -203,8 +247,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>15.0</double> 
-     <double>609.0</double> 
+     <double>1400.9292911256327</double> 
+     <double>1381.1606050557098</double> 
     </void> 
    </object> 
   </void> 
@@ -232,8 +276,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>331.0</double> 
-     <double>349.0</double> 
+     <double>1151.243866176395</double> 
+     <double>1234.2976900455574</double> 
     </void> 
    </object> 
   </void> 
@@ -241,7 +285,8 @@ FileParser</string>
    <object id="ClassNode9" class="com.horstmann.violet.ClassNode"> 
     <void property="methods"> 
      <void property="text"> 
-      <string>+run() : void</string> 
+      <string>+run() : void
+-addUser() : void</string> 
      </void> 
     </void> 
     <void property="name"> 
@@ -252,8 +297,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>532.0</double> 
-     <double>448.0</double> 
+     <double>1384.3860018001258</double> 
+     <double>1106.9940828143392</double> 
     </void> 
    </object> 
   </void> 
@@ -267,8 +312,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>228.0</double> 
-     <double>548.0</double> 
+     <double>1241.4103884177653</double> 
+     <double>1398.1849916733493</double> 
     </void> 
    </object> 
   </void> 
@@ -282,8 +327,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>29.0</double> 
-     <double>506.0</double> 
+     <double>1443.0470401317243</double> 
+     <double>1260.3616151824865</double> 
     </void> 
    </object> 
   </void> 
@@ -297,8 +342,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>450.0</double> 
-     <double>543.0</double> 
+     <double>2545.2126958213175</double> 
+     <double>1292.2194795587552</double> 
     </void> 
    </object> 
   </void> 
@@ -312,8 +357,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>897.0</double> 
-     <double>596.0</double> 
+     <double>2337.615582626648</double> 
+     <double>1133.401153701776</double> 
     </void> 
    </object> 
   </void> 
@@ -327,8 +372,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>916.0</double> 
-     <double>730.0</double> 
+     <double>2420.723230364973</double> 
+     <double>1408.8225099390856</double> 
     </void> 
    </object> 
   </void> 
@@ -347,13 +392,18 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>741.0</double> 
-     <double>490.0</double> 
+     <double>2729.384268696571</double> 
+     <double>1129.2245301926387</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
    <object id="ClassNode16" class="com.horstmann.violet.ClassNode"> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+login(String, String) : void</string> 
+     </void> 
+    </void> 
     <void property="name"> 
      <void property="text"> 
       <string>Login</string> 
@@ -362,13 +412,18 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>910.0</double> 
-     <double>491.0</double> 
+     <double>2488.2623356083736</double> 
+     <double>1133.052957317385</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
    <object id="ClassNode17" class="com.horstmann.violet.ClassNode"> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+ScheduleScreen(Schedule)</string> 
+     </void> 
+    </void> 
     <void property="name"> 
      <void property="text"> 
       <string>ScheduleScreen</string> 
@@ -377,8 +432,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>348.0</double> 
-     <double>728.0</double> 
+     <double>2094.766952966368</double> 
+     <double>1255.6316010800758</double> 
     </void> 
    </object> 
   </void> 
@@ -391,7 +446,9 @@ FileParser</string>
     </void> 
     <void property="methods"> 
      <void property="text"> 
-      <string>+Screen(ClientGui)</string> 
+      <string>+Screen(ClientGui)
++getClientGui() : ClientGui
++&lt;&lt;abstract&gt;&gt;getScreen()</string> 
      </void> 
     </void> 
     <void property="name"> 
@@ -403,13 +460,38 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>715.0</double> 
-     <double>613.0</double> 
+     <double>2222.0075016124347</double> 
+     <double>1370.4743135546946</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
    <object id="ClassNode19" class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>-permissions: int
+</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+generateSchedule() : Schedule
++uploadFile(File, String) :void
++addCourse(Course, String) : void
++loadCourse(String) : course
++removeCourse(Course) : void
++editCourse(Course) : void
++loadMajor(String) : void
++addMajor(Major) : void
++editMajor(Major) : void
++removeMajor(String) : void
++login(String,String) : void
++logout() : void
++changeScreen(String) : void
++changeManageScreen(String) : void
++getPermissions() : int</string> 
+     </void> 
+    </void> 
     <void property="name"> 
      <void property="text"> 
       <string>ClientGui</string> 
@@ -418,8 +500,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>1.0</double> 
-     <double>694.0</double> 
+     <double>1842.3354954612923</double> 
+     <double>1279.004184082106</double> 
     </void> 
    </object> 
   </void> 
@@ -441,8 +523,8 @@ ManagerScreens</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>830.0</double> 
-     <double>872.0</double> 
+     <double>2521.399420598221</double> 
+     <double>1480.1118318204306</double> 
     </void> 
    </object> 
   </void> 
@@ -462,8 +544,8 @@ Scheduler</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>374.0</double> 
-     <double>247.0</double> 
+     <double>1103.734198184517</double> 
+     <double>889.0529573173848</double> 
     </void> 
    </object> 
   </void> 
@@ -492,8 +574,8 @@ Scheduler</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>801.0</double> 
-     <double>285.0</double> 
+     <double>772.7157287525382</double> 
+     <double>870.4844148224612</double> 
     </void> 
    </object> 
   </void> 
@@ -507,8 +589,8 @@ Scheduler</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>761.0</double> 
-     <double>730.0</double> 
+     <double>2339.262335608374</double> 
+     <double>1287.2001435749992</double> 
     </void> 
    </object> 
   </void> 
@@ -522,8 +604,8 @@ Scheduler</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>597.0</double> 
-     <double>885.0</double> 
+     <double>2223.3455967290593</double> 
+     <double>1569.4793641885778</double> 
     </void> 
    </object> 
   </void> 
@@ -537,8 +619,8 @@ Scheduler</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>492.0</double> 
-     <double>729.0</double> 
+     <double>2085.3212101114195</double> 
+     <double>1498.3321779309633</double> 
     </void> 
    </object> 
   </void> 
@@ -565,8 +647,46 @@ Scheduler</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>-2.0</double> 
-     <double>384.0</double> 
+     <double>1263.851080638831</double> 
+     <double>425.94112549695427</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode25" class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>+gradepts:double
++letter
++$A:Grade
++$A-:Grade
++$B+:Grade
++$B:Grade
++$B-:Grade
++$C+:Grade
++$C:Grade
++$C-:Grade
++$D+:Grade
++$D:Grade
++$D-:Grade
++$F:Grade</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+Grade(String, double) </string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Grade</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>1798.7880220536795</double> 
+     <double>608.2834046956843</double> 
     </void> 
    </object> 
   </void> 
@@ -1046,6 +1166,30 @@ Scheduler</string>
    </object> 
    <object idref="ClassNode4"/> 
    <object idref="ClassNode24"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="startArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="DIAMOND"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode0"/> 
+   <object idref="ClassNode25"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="startArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="DIAMOND"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode3"/> 
+   <object idref="ClassNode25"/> 
   </void> 
  </object> 
 </java> 
