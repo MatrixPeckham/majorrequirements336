@@ -10,13 +10,12 @@
 +SUPER_ADMIN : int
 -name : String
 -major : Major
--grades : TreeMap&lt;String,Vector&lt;Grade&gt;&gt;
--courses : Vector&lt;Course&gt;</string> 
+courses : TreeMap&lt;String,CourseRecord&gt;</string> 
      </void> 
     </void> 
     <void property="methods"> 
      <void property="text"> 
-      <string>+addCourse(Course) : void
+      <string>+addCourse(CourseRecord) : void
 +removeCourse(String) : void
 -findCourse(String) : Course 
 +calculateGPA() : double
@@ -134,7 +133,7 @@
     </void> 
     <void property="methods"> 
      <void property="text"> 
-      <string>+requirementsSatisfied(TreeMap&lt;String, Vector&lt;Grade&gt;&gt;) : Vector&lt;Requirement&gt;
+      <string>+requirementsSatisfied(TreeMap&lt;String, CourseRecord&gt;) : Vector&lt;Requirement&gt;
 +addCourse(Course) : void
 +removeCourse(String) : void
 -findCourse(String) : Course
@@ -214,7 +213,7 @@ FileParser</string>
      <void property="text"> 
       <string>-users :TreeMap&lt;long, User&gt;
 -system : SystemManager
--userId : long</string> 
+-nextAvailibile : long</string> 
      </void> 
     </void> 
     <void property="methods"> 
@@ -250,9 +249,17 @@ FileParser</string>
     <void property="methods"> 
      <void property="text"> 
       <string>+generateSchedule() : Schedule
-+uploadFile(File, String) : boolean
++uploadFile(File, String) :int
++addCourse(Course, String) : boolean
++loadCourse(String) : Course
++removeCourse(Course) : boolean
++editCourse(Course) : boolean
++loadMajor(String) : Major
++addMajor(Major) : boolean
++editMajor(Major) : boolean
++removeMajor(String) : boolean
 +login(String,String) : int
-</string> 
++logout() : boolean</string> 
      </void> 
     </void> 
     <void property="name"> 
@@ -487,6 +494,7 @@ FileParser</string>
     <void property="attributes"> 
      <void property="text"> 
       <string>-permissions: int
+-networking : Client
 </string> 
      </void> 
     </void> 
@@ -648,14 +656,17 @@ Scheduler</string>
      <void property="text"> 
       <string>-id : String
 -numberOfCourses : int
--possibleCourses : Vector&lt;Course&gt; 
+-possibleCourses : Vector&lt;Course&gt;
+-requirement :RequirementMeet
 </string> 
      </void> 
     </void> 
     <void property="methods"> 
      <void property="text"> 
-      <string>+satisfies(Course) : boolean
-+requirementSatisfied(Vector&lt;Course&gt;) : boolean</string> 
+      <string>+Requirement()
++Requirement(RequirementMeet)
++satisfies(Course) : boolean
++requirementSatisfied(CourseRecord[]) : boolean</string> 
      </void> 
     </void> 
     <void property="name"> 
@@ -667,7 +678,7 @@ Scheduler</string>
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
      <double>1263.851080638831</double> 
-     <double>421.69848480983495</double> 
+     <double>420.28427124746185</double> 
     </void> 
    </object> 
   </void> 
@@ -688,7 +699,8 @@ Scheduler</string>
 +$D+:Grade
 +$D:Grade
 +$D-:Grade
-+$F:Grade</string> 
++$F:Grade
++$I : Grade</string> 
      </void> 
     </void> 
     <void property="methods"> 
@@ -705,8 +717,8 @@ Scheduler</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>1798.7880220536795</double> 
-     <double>608.2834046956843</double> 
+     <double>1696.2905473706212</double> 
+     <double>657.9230150024736</double> 
     </void> 
    </object> 
   </void> 
@@ -740,6 +752,48 @@ Scheduler</string>
     </void> 
    </object> 
   </void> 
+  <void method="addNode"> 
+   <object id="InterfaceNode3" class="com.horstmann.violet.InterfaceNode"> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>+requirementMet() : boolean</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>«interface»
+RequirementMeet</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>1295.4196231337548</double> 
+     <double>251.73001410241096</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode28" class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>+course : Course
++grades : Vector&lt;Grade&gt;</string> 
+     </void> 
+    </void> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>CourseRecords</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>1646.1445866022825</double> 
+     <double>349.31074990615446</double> 
+    </void> 
+   </object> 
+  </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
     <void property="bentStyle"> 
@@ -763,24 +817,6 @@ Scheduler</string>
    </object> 
    <object idref="ClassNode2"/> 
    <object idref="ClassNode1"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="bentStyle"> 
-     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
-    </void> 
-    <void property="endLabel"> 
-     <string>*</string> 
-    </void> 
-    <void property="startArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="DIAMOND"/> 
-    </void> 
-    <void property="startLabel"> 
-     <string>1</string> 
-    </void> 
-   </object> 
-   <object idref="ClassNode0"/> 
-   <object idref="ClassNode3"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
@@ -1166,38 +1202,8 @@ Scheduler</string>
      <object class="com.horstmann.violet.ArrowHead" field="BLACK_DIAMOND"/> 
     </void> 
    </object> 
-   <object idref="ClassNode24"/> 
-   <object idref="ClassNode3"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="bentStyle"> 
-     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
-    </void> 
-    <void property="startArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="BLACK_DIAMOND"/> 
-    </void> 
-   </object> 
    <object idref="ClassNode4"/> 
    <object idref="ClassNode24"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="bentStyle"> 
-     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
-    </void> 
-    <void property="endLabel"> 
-     <string>*</string> 
-    </void> 
-    <void property="startArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="DIAMOND"/> 
-    </void> 
-    <void property="startLabel"> 
-     <string>1</string> 
-    </void> 
-   </object> 
-   <object idref="ClassNode0"/> 
-   <object idref="ClassNode25"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
@@ -1312,6 +1318,90 @@ Scheduler</string>
    </object> 
    <object idref="ClassNode9"/> 
    <object idref="ClassNode27"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>1</string> 
+    </void> 
+    <void property="startArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="DIAMOND"/> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode24"/> 
+   <object idref="InterfaceNode3"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="startArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="BLACK_DIAMOND"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode24"/> 
+   <object idref="ClassNode3"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>*</string> 
+    </void> 
+    <void property="startArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="DIAMOND"/> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode0"/> 
+   <object idref="ClassNode28"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>1</string> 
+    </void> 
+    <void property="startArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="DIAMOND"/> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode28"/> 
+   <object idref="ClassNode3"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="endLabel"> 
+     <string>*</string> 
+    </void> 
+    <void property="startArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="DIAMOND"/> 
+    </void> 
+    <void property="startLabel"> 
+     <string>1</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode28"/> 
+   <object idref="ClassNode25"/> 
   </void> 
  </object> 
 </java> 
