@@ -105,6 +105,8 @@
      <void property="text"> 
       <string>-deptId : String
 -number : int
+-name : String
+-description : String
 -prereqs : Vector&lt;Course&gt;
 -minGrade : Grade
 -credits :int
@@ -180,6 +182,7 @@
     <void property="attributes"> 
      <void property="text"> 
       <string>-majors : TreeMap&lt;String, Major&gt;
+-courses : TreeMap&lt;String, Course&gt;
 -name : String</string> 
      </void> 
     </void> 
@@ -187,7 +190,8 @@
      <void property="text"> 
       <string>+findMajor(String) : Major
 +addMajor(Major) : void
-+removeMajor(String) : void</string> 
++removeMajor(String) : void
++getAllCourses() : Vector&lt;Course&gt;</string> 
      </void> 
     </void> 
     <void property="name"> 
@@ -198,8 +202,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>647.638743755012</double> 
-     <double>440.41220448482346</double> 
+     <double>500.5605332682102</double> 
+     <double>420.61321461160014</double> 
     </void> 
    </object> 
   </void> 
@@ -282,7 +286,16 @@ FileParser</string>
 +addRequirement(Requirement, String)
 +removeRequirement(String, String)
 +login(String,String) : int
-+logout() : boolean</string> 
++logout() : boolean
++getRequirements() : Vector&lt;Requirements&gt;
++getCreditsRemaining() : int
++uploadFile(File, String) :void
++addDepartment(String, Department) : void
++removeDepartment (String) :  void
++editDepartment(String, Department) : void
++getDepartments() : Vector&lt;Department&gt;
++getDepartment(String) : Department
++getDepartmentCourses(String) : Vector&lt;Course&gt;</string> 
      </void> 
     </void> 
     <void property="name"> 
@@ -293,8 +306,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>1399.5150775632596</double> 
-     <double>1381.1606050557098</double> 
+     <double>1398.1008640008865</double> 
+     <double>1382.5748186180829</double> 
     </void> 
    </object> 
   </void> 
@@ -556,8 +569,10 @@ FileParser</string>
 +addDepartment(String, Department) : void
 +removeDepartment (String) :  void
 +editDepartment(String, Department) : void
-+
-+getPermissions() : int</string> 
++getDepartments() : Vector&lt;Department&gt;
++getDepartment(String) : Department
++getPermissions() : int
++getDepartmentCourse(String) : Vector&lt;Course&gt;</string> 
      </void> 
     </void> 
     <void property="name"> 
@@ -568,7 +583,7 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>1733.441051158564</double> 
+     <double>1732.026837596191</double> 
      <double>1264.276262020748</double> 
     </void> 
    </object> 
@@ -869,8 +884,8 @@ RequirementMeet</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>2009.5974721321681</double> 
-     <double>1520.2795795510772</double> 
+     <double>2510.2290732122437</double> 
+     <double>1692.8136341605946</double> 
     </void> 
    </object> 
   </void> 
@@ -886,6 +901,21 @@ RequirementMeet</string>
     <void method="setLocation"> 
      <double>2483.5608922057086</double> 
      <double>1544.023520065862</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object class="com.horstmann.violet.NoteNode"> 
+    <void property="text"> 
+     <void property="text"> 
+      <string>All mutator methods for all objects are implicit</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>2101.521353686419</double> 
+     <double>855.5992052357225</double> 
     </void> 
    </object> 
   </void> 
