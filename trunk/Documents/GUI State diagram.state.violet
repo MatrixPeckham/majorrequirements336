@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.6.0_17" class="java.beans.XMLDecoder"> 
+ <object class="com.horstmann.violet.StateDiagramGraph"> 
+  <void method="addNode"> 
+   <object id="CircularInitialStateNode0" class="com.horstmann.violet.CircularStateNode"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>36.0</double> 
+     <double>242.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="StateNode0" class="com.horstmann.violet.StateNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Welcome Screen</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>116.0</double> 
+     <double>232.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="NoteNode0" class="com.horstmann.violet.NoteNode"> 
+    <void property="text"> 
+     <void property="text"> 
+      <string>Client Program start</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>-2.0</double> 
+     <double>365.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="StateNode1" class="com.horstmann.violet.StateNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Login Screen</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>500.7249191040452</double> 
+     <double>1421.0679996598901</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="StateNode2" class="com.horstmann.violet.StateNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Student Screen</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>748.6325102371292</double> 
+     <double>237.27059776262402</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="StateNode3" class="com.horstmann.violet.StateNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Admin Screen</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>1467.8108512972583</double> 
+     <double>1741.121285343648</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="StateNode4" class="com.horstmann.violet.StateNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Registrar Admin Screen</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>0.18881681795690497</double> 
+     <double>1948.738772781704</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="StateNode5" class="com.horstmann.violet.StateNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Add Course Screen</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>1094.4161321286747</double> 
+     <double>-0.34462592652573676</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="StateNode6" class="com.horstmann.violet.StateNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Edit Course Screen</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>1376.9954862647726</double> 
+     <double>204.87158046638325</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="StateNode7" class="com.horstmann.violet.StateNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>JFileChooser Dialog</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>1424.085685518981</double> 
+     <double>504.8412420703169</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="StateNode8" class="com.horstmann.violet.StateNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Course Overview Screen</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>1239.6236326994322</double> 
+     <double>760.549131544789</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object class="com.horstmann.violet.NoteNode"> 
+    <void property="text"> 
+     <void property="text"> 
+      <string>The Violet UML Editor does not 
+allow the use of multiple transitions
+in the same direction.
+If there is more than one possibility
+I will use the word &quot;or&quot; to seperate the
+full transactions.</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>4.930537940625172</double> 
+     <double>-3.659940178001122</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="StateNode9" class="com.horstmann.violet.StateNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Schedule Screen</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>741.6706382537761</double> 
+     <double>665.1490644656884</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.NoteEdge"/> 
+   <object idref="CircularInitialStateNode0"/> 
+   <object idref="NoteNode0"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"/> 
+   <object idref="CircularInitialStateNode0"/> 
+   <object idref="StateNode0"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Student Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode0"/> 
+   <object idref="StateNode2"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Department Button [logged in with admin permissions]</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode0"/> 
+   <object idref="StateNode3"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Registrar Button [logged in with registrar permissions]</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode0"/> 
+   <object idref="StateNode4"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Department or registrar button [not logged in]</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode0"/> 
+   <object idref="StateNode1"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Logged in with admin permissions</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode1"/> 
+   <object idref="StateNode3"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>logged in with registrar admin permissions</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode1"/> 
+   <object idref="StateNode4"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Back Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode4"/> 
+   <object idref="StateNode0"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Back Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode2"/> 
+   <object idref="StateNode0"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Back Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode3"/> 
+   <object idref="StateNode0"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Cancel Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode1"/> 
+   <object idref="StateNode0"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Add Course Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode2"/> 
+   <object idref="StateNode5"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Edit Course Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode2"/> 
+   <object idref="StateNode6"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Upload Courses Button or Download Courses Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode2"/> 
+   <object idref="StateNode7"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Check Requirements Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode2"/> 
+   <object idref="StateNode8"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Back Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode8"/> 
+   <object idref="StateNode2"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Any Button/Do Choice</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode7"/> 
+   <object idref="StateNode2"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Ok Button/Add Course or Cancel Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode5"/> 
+   <object idref="StateNode2"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Ok Button/Change Course or Cancel Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode6"/> 
+   <object idref="StateNode2"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Schedule Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode2"/> 
+   <object idref="StateNode9"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Back Button</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode9"/> 
+   <object idref="StateNode2"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.StateTransitionEdge"> 
+    <void property="label"> 
+     <string>Login Invalid</string> 
+    </void> 
+   </object> 
+   <object idref="StateNode1"/> 
+   <object idref="StateNode1"/> 
+  </void> 
+ </object> 
+</java> 
