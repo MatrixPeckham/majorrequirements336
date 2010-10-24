@@ -1,0 +1,4 @@
+what,kind,bundleId,bundleVersion,description,time
+stopped,bundle,org.eclipse.gmf.bridge.ui.dashboard,2.0.0.v20090114-0940,"org.eclipse.gmf.bridge.ui.dashboard",1287963617105
+stopped,bundle,org.eclipse.gmf.bridge.ui,1.2.1.v20090812-1620,"org.eclipse.gmf.bridge.ui",1287963617131
+stopped,bundle,org.eclipse.gmf.bridge.trace,1.0.200.v20090520-1343,"org.eclipse.gmf.bridge.trace",1287963617181
