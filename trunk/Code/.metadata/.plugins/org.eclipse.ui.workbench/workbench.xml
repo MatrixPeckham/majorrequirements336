@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="25" version="2.0">
+<workbench progressCount="19" version="2.0">
 <workbenchAdvisor/>
-<window height="760" width="640" x="640" y="0">
+<window height="760" width="640" x="0" y="0">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -31,6 +31,8 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
+<part id="3"/>
 </presentation>
 </folder>
 </info>
@@ -39,9 +41,17 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/308Client/src/client/Client.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1806" selectionTopPixel="323"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ClientGUI.java" partName="ClientGUI.java" path="C:/Users/Bill/Documents/308Project/Code/308Client/src/client/ClientGUI.java" title="ClientGUI.java" tooltip="308Client/src/client/ClientGUI.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ClientGUI.java" partName="ClientGUI.java" path="C:/Users/Bill/Documents/308Project/Code/308Client/src/client/ClientGUI.java" title="ClientGUI.java" tooltip="308Client/src/client/ClientGUI.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/308Client/src/client/ClientGUI.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="475" selectionTopPixel="17"/>
+<editorState selectionHorizontalPixel="32" selectionLength="0" selectionOffset="779" selectionTopPixel="323"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Screen.java" partName="Screen.java" path="C:/Users/Bill/Documents/308Project/Code/308Client/src/client/Screen.java" title="Screen.java" tooltip="308Client/src/client/Screen.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/308Client/src/client/Screen.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="453" selectionTopPixel="51"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ManagerScreen.java" partName="ManagerScreen.java" path="C:/Users/Bill/Documents/308Project/Code/308Client/src/client/ManagerScreen.java" title="ManagerScreen.java" tooltip="308Client/src/client/ManagerScreen.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/308Client/src/client/ManagerScreen.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="674" selectionTopPixel="68"/>
 </editor>
 </editors>
 <views>
@@ -49,7 +59,7 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (1 item)"/>
+<category IMemento.internal.id="Warnings (4 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="64" org.eclipse.ui.ide.markerType="94" org.eclipse.ui.ide.pathField="124" org.eclipse.ui.ide.resourceField="94" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -216,6 +226,8 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/308Client/src/client/Client.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/308Client/src/client/ClientGUI.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/308Client/src/client/Screen.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/308Client/src/client/ManagerScreen.java"/>
 </editors>
 <item historyLabel="Client.java" index="0">
 <position info="not_deleted" x="1806" y="0"/>
@@ -238,8 +250,38 @@
 <item historyLabel="ClientGUI.java" index="1">
 <position info="not_deleted" x="413" y="0"/>
 </item>
-<item active="true" historyLabel="ClientGUI.java" index="1">
+<item historyLabel="ClientGUI.java" index="1">
 <position info="not_deleted" x="469" y="0"/>
+</item>
+<item historyLabel="ClientGUI.java" index="1">
+<position info="not_deleted" x="719" y="0"/>
+</item>
+<item historyLabel="ClientGUI.java" index="1">
+<position info="not_deleted" x="779" y="0"/>
+</item>
+<item historyLabel="Screen.java" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Screen.java" index="2">
+<position info="not_deleted" x="453" y="0"/>
+</item>
+<item historyLabel="Screen.java" index="2">
+<position info="not_deleted" x="453" y="0"/>
+</item>
+<item historyLabel="ManagerScreen.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ManagerScreen.java" index="3">
+<position info="not_deleted" x="344" y="0"/>
+</item>
+<item historyLabel="ManagerScreen.java" index="3">
+<position info="not_deleted" x="504" y="0"/>
+</item>
+<item historyLabel="ManagerScreen.java" index="3">
+<position info="not_deleted" x="674" y="0"/>
+</item>
+<item active="true" historyLabel="Screen.java" index="2">
+<position info="not_deleted" x="453" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -258,6 +300,12 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ManagerScreen.java" tooltip="308Client/src/client/ManagerScreen.java">
+<persistable path="/308Client/src/client/ManagerScreen.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Screen.java" tooltip="308Client/src/client/Screen.java">
+<persistable path="/308Client/src/client/Screen.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ClientGUI.java" tooltip="308Client/src/client/ClientGUI.java">
 <persistable path="/308Client/src/client/ClientGUI.java"/>
 </file>
