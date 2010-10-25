@@ -39,5 +39,9 @@ public class Client implements Runnable{
 
 	@Override
 	//TODO finish
-	public void run() {}
+	public void run() {
+		if(s==null){
+			return;
+		}
+	}
 }

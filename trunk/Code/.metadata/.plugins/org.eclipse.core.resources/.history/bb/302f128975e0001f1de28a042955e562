@@ -1,0 +1,11 @@
+package client;
+
+public class OptionsScreen extends Screen {
+
+	@Override
+	public void getScreen() {
+		// TODO Auto-generated method stub
+
+	}
+
+}
