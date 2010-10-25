@@ -1,0 +1,35 @@
+package client;
+
+import javax.swing.JPanel;
+
+public class DepartmentManagerScreen extends Screen implements ManagerScreen {
+
+	public DepartmentManagerScreen(ClientGUI gui) {
+		super(gui);
+	}
+
+	@Override
+	public void getScreen() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public JPanel getAddScreen() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JPanel getEditScreen() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JPanel getRemoveScreen() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
