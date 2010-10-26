@@ -8,7 +8,24 @@ import javax.swing.JFrame;
  *
  */
 public class ClientGUI extends JFrame {
-
+	/*
+	 * String ID's of states
+	 */
+	public static final String WELCOME = "WELCOME";
+	public static final String LOGIN = "LOGIN";
+	public static final String CLASSES = "CLASSES";
+	public static final String COURSES = "COURSES";
+	public static final String DEPARTMENS = "DEPARTMENTS";
+	public static final String MAJORS = "MAFORS";
+	public static final String OPTIONS = "OPTIONS";
+	public static final String CHECK = "CHECK";
+	public static final String SCHEDULE = "SCHEDULE";
+	public static final String CURR_EDIT = "CURR_EDIT";
+	public static final String CURR_ADD = "CURR_ADD";
+	public static final String CURR_REM = "CURR_REM";
+	
+	
+	
 	/**
 	 * just a serial version ID that eclipse always wants in swing classes
 	 */
