@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
+<<<<<<< .mine
+<typeInfo handle="=308Client/src&lt;client{ManagerScreen.java[ManagerScreen" modifiers="513" timestamp="1288103007234"/>
+<typeInfo handle="=308Client/src&lt;client{Screen.java[Screen" modifiers="1025" timestamp="1288103007193"/>
+=======
 <typeInfo handle="=308Client/src&lt;client{ManagerScreen.java[ManagerScreen" modifiers="513" timestamp="1288020687296"/>
 <typeInfo handle="=308Client/src&lt;client{Screen.java[Screen" modifiers="1025" timestamp="1288139059519"/>
+>>>>>>> .r112
 </typeInfoHistroy>

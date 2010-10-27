@@ -1,0 +1,54 @@
+package client;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class TestGUI extends JFrame
+{
+	private JPanel northPanel;
+	private JPanel southPanel;
+	private JLabel userName;
+	private JLabel passWord;
+	private JLabel logIn;
+	private JTextField nameField;
+	private JTextField passWordField;
+	
+	TestGUI()
+	{
+		super("Log In");
+		this.setExtendedState(MAXIMIZED_BOTH);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		layoutGUI();
+	}
+	
+	public void layoutGUI()
+	{
+		northPanel = new JPanel();
+		southPanel = new JPanel();
+		userName = new JLabel("User Name: ");
+		passWord = new JLabel("Password: ");
+		logIn = new JLabel("Log In");
+		logIn.setPreferredSize(new Dimension(24,24));
+		nameField = new JTextField(15);
+		passWordField = new JTextField(15);
+		
+		add(northPanel);
+		
+		northPanel.setLayout(new BorderLayout());
+		northPanel.add(logIn, BorderLayout.NORTH);
+		
+		//southPanel.add(comp)
+	}
+	
+	public static void main(String[]args)
+	{
+		TestGUI frame = new TestGUI();
+		frame.setVisible(true);
+	}
+}
