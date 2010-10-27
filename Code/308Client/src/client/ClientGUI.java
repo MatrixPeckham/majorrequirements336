@@ -51,6 +51,7 @@ public class ClientGUI extends JFrame {
 			return;
 		}
 	}
+	
 	/**
 	 * Main Method, doesn't handle arguments (yet?)
 	 * @param args
