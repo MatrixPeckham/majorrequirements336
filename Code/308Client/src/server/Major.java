@@ -48,7 +48,7 @@ public class Major implements Serializable {
      public void setRequirements(Collection<Requirement> r) {
          reqs=r;
      }
-     Major() {
+     public Major() {
          reqs=new ArrayList<Requirement>();
      }
 @Id
