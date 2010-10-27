@@ -1,5 +1,9 @@
 package client;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JPanel;
 /**
  * Classes manager screen
@@ -14,14 +18,30 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 	private AddClasScreen addScreen = new AddClasScreen();
 	private EditClasScreen editScreen = new EditClasScreen();
 	private RemoveClasScreen remScreen = new RemoveClasScreen();
+	
+	private JButton backButton;
 	/**
 	 * constructor
 	 * @param gui passed to super class Screen
 	 */
 	public ClassesManagerScreen(ClientGUI gui) {
 		super(gui);
+		initGUI();
 	}
 
+	private void initGUI(){
+		backButton = new JButton("Back");
+		backButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.changeScreen(ClientGUI.WELCOME);
+				
+			}
+		});
+		this.add(backButton);
+	}
+	
 	@Override
 	public void getScreen() {
 		// TODO Auto-generated method stub

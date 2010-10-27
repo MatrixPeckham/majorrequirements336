@@ -1,5 +1,8 @@
 package client;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 /**
@@ -28,9 +31,32 @@ public class WelcomeScreen extends Screen implements ManagerScreen {
 	
 	private void initGUI(){
 		studentButton = new JButton("Student");
+		studentButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.changeScreen(ClientGUI.CLASSES);
+			}
+		});
 		adminButton = new JButton("Department Administrator");
+		adminButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.changeScreen(ClientGUI.DEPARTMENTS);
+			}
+		});
 		superAdminButton = new JButton("Registrar Administrator");
-		addJComponentToContainerUsingGBL(studentButton, this, 2, 2, 1, 1);
+		superAdminButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.changeScreen(ClientGUI.COURSES);
+			}
+		});
+		addJComponentToContainerUsingGBL(studentButton, this, 1, 2, 1, 1);
+		addJComponentToContainerUsingGBL(adminButton, this, 2, 2, 1, 1);
+		addJComponentToContainerUsingGBL(superAdminButton, this, 3, 2, 1, 1);
 	}
 
 	@Override

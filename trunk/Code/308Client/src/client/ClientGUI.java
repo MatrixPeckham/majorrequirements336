@@ -34,7 +34,6 @@ public class ClientGUI extends JFrame {
 	private String curScreen;
 	private String curMan;
 	private TreeMap<String, Screen> screens = new TreeMap<String, Screen>();
-	//TODO add screens when implemented
 	/**
 	 * Constructor, initialized and show
 	 */
@@ -56,8 +55,8 @@ public class ClientGUI extends JFrame {
 		screens.put(OPTIONS, new OptionsScreen(this,0));
 		screens.put(CHECK, new RequirementsScreen(this));
 		screens.put(SCHEDULE, new ScheduleScreen(this));
-		this.add(screens.get(WELCOME));
 		curScreen = WELCOME;
+		this.add(screens.get(curScreen));
 		curMan="";
 	}
 	public void changeScreen(String str){
@@ -65,9 +64,11 @@ public class ClientGUI extends JFrame {
 		if(s==null){
 			throw new UnsupportedOperationException("Cannot go to Screen " + str + ", it doesn't exist");
 		}
-		this.remove(screens.get(curScreen));
+		Screen r = screens.get(curScreen);
+		this.remove(r);
 		this.add(s);
 		this.validate();
+		this.repaint();
 		curScreen=str;
 		curMan="";
 	}
