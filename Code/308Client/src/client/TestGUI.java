@@ -33,7 +33,7 @@ public class TestGUI extends JFrame
 	
 	TestGUI()
 	{
-		super("Log In");
+		super("RUM");
 		this.setExtendedState(MAXIMIZED_BOTH);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
