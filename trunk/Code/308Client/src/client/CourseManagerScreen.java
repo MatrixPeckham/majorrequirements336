@@ -240,7 +240,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 		    addJComponentToContainerUsingGBL(deptL, this, 1, 4, 1, 1);
 		    addJComponentToContainerUsingGBL(deptF, this, 2, 4, 1, 1);
 		    addJComponentToContainerUsingGBL(descL, this, 1, 5, 1, 1);
-		    addJComponentToContainerUsingGBL(new JScrollPane(descF), this, 2, 5, 1, 1);
+		    addJComponentToContainerUsingGBL(new JScrollPane(descF), this, 2, 5, 2, 1);
 		    addJComponentToContainerUsingGBL(ok, this, 2, 6, 1, 1);
 		    addJComponentToContainerUsingGBL(back, this, 3, 6, 1, 1);
 		    addJComponentToContainerUsingGBL(scrollPane, this, 4, 2, 2, 5);
