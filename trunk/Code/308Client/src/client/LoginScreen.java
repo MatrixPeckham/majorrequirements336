@@ -20,6 +20,7 @@ public class LoginScreen extends Screen {
 	private JTextField nameField;
 	private JTextField passWordField;
 	private JButton	logInButton;
+	private JButton back;
 
 	/**
 	 * serial version ID that eclipse wants in all swing classes
@@ -43,6 +44,8 @@ public class LoginScreen extends Screen {
 		passWordField = new JTextField(15);
 		logInButton = new JButton("Log In");
 		logInButton.setFont(new Font("Times New Roman",1,24));
+		back = new JButton("Back");
+		back.setFont(new Font("Times New Roman",1,24));
 		
 		// LAYOUT ALL THE COMPONENTS USING GridBagLayout
 		GridBagLayout gbl = new GridBagLayout();
@@ -53,13 +56,13 @@ public class LoginScreen extends Screen {
 		addJComponentToContainerUsingGBL(passWord, this, 1,20,1,1);
 		addJComponentToContainerUsingGBL(nameField, this, 2, 10, 1, 1);
 		addJComponentToContainerUsingGBL(passWordField, this, 2, 20, 1, 1);
-		addJComponentToContainerUsingGBL(logInButton, this, 2, 30, 1, 1);
+		addJComponentToContainerUsingGBL(logInButton, this, 1, 30, 1, 1);
+		addJComponentToContainerUsingGBL(back, this, 2, 30, 1, 1);
 	}
 
 	@Override
 	public void getScreen() {
 		// TODO Auto-generated method stub
-
 	}
 
 }

@@ -1,6 +1,14 @@
 package client;
 
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagLayout;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  * Manager for the courses
@@ -8,7 +16,7 @@ import javax.swing.JPanel;
  *
  */
 public class CourseManagerScreen extends Screen implements ManagerScreen {
-
+	
 	/**
 	 * serial version ID that eclipse wants in all swing classes
 	 */
@@ -23,7 +31,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 	public CourseManagerScreen(ClientGUI gui) {
 		super(gui);
 	}
-
+	
 	@Override
 	public void getScreen() {
 		// TODO Auto-generated method stub
