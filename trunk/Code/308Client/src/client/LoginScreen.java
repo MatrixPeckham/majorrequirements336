@@ -2,6 +2,8 @@ package client;
 
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -43,8 +45,26 @@ public class LoginScreen extends Screen {
 		nameField = new JTextField(15);
 		passWordField = new JTextField(15);
 		logInButton = new JButton("Log In");
+		logInButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(frame.reg){
+					frame.changeScreen(ClientGUI.DEPARTMENTS);
+				} else {
+					frame.changeScreen(ClientGUI.MAJORS);
+				}
+			}
+		});
 		logInButton.setFont(new Font("Times New Roman",1,24));
 		back = new JButton("Back");
+		back.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				frame.changeScreen(ClientGUI.WELCOME);
+			}
+		});
 		back.setFont(new Font("Times New Roman",1,24));
 		
 		// LAYOUT ALL THE COMPONENTS USING GridBagLayout
