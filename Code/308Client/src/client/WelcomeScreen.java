@@ -43,7 +43,8 @@ public class WelcomeScreen extends Screen implements ManagerScreen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeScreen(ClientGUI.DEPARTMENTS);
+				frame.reg = false;
+				frame.changeScreen(ClientGUI.LOGIN);
 			}
 		});
 		superAdminButton = new JButton("Registrar Administrator");
@@ -51,7 +52,8 @@ public class WelcomeScreen extends Screen implements ManagerScreen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeScreen(ClientGUI.COURSES);
+				frame.reg = true;
+				frame.changeScreen(ClientGUI.LOGIN);
 			}
 		});
 		addJComponentToContainerUsingGBL(studentButton, this, 1, 2, 1, 1);

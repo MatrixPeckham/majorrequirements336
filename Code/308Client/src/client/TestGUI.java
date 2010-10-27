@@ -37,7 +37,7 @@ public class TestGUI extends JFrame
 	{
 		registrarAdminPage = new JLabel("Registrar Admin Page");
 		registrarAdminPage.setFont(new Font("Times New Roman",1,72));
-		viewCourses = new JButton();
+		viewCourses = new JButton("SGTHLD");
 		viewCourses.setFont(new Font("Times New Roman",1,24));
 		addDepart = new JButton();
 		addDepart.setFont(new Font("Times New Roman",1,24));
@@ -61,9 +61,9 @@ public class TestGUI extends JFrame
 		GridBagLayout gbl = new GridBagLayout();
 		this.setLayout(gbl);
 		
-		addJComponentToContainerUsingGBL(registrarAdminPage, this, 1, 1, 3, 2);
-		addJComponentToContainerUsingGBL(scrollPane, this, 1, 3, 4, 3);
-		addJComponentToContainerUsingGBL(viewCourses, this, 1, 10, 1, 1);
+		addJComponentToContainerUsingGBL(registrarAdminPage, this, 1, 1, 3, 1);
+		addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 4, 1);
+		addJComponentToContainerUsingGBL(viewCourses, this, 1, 3, 1, 1);
 		//addJComponentToContainerUsingGBL(addDepart, this, 2, 20, 11, 11);
 		//addJComponentToContainerUsingGBL(removeDepart, this, 3, 20, 11, 11);
 	}

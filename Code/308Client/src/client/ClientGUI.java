@@ -3,6 +3,7 @@ package client;
 import java.util.TreeMap;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 /**
  * Main Frame, and starting point of the 
  * client program
@@ -34,6 +35,7 @@ public class ClientGUI extends JFrame {
 	private String curScreen;
 	private String curMan;
 	private TreeMap<String, Screen> screens = new TreeMap<String, Screen>();
+	boolean reg = false;
 	/**
 	 * Constructor, initialized and show
 	 */
@@ -74,7 +76,59 @@ public class ClientGUI extends JFrame {
 	}
 	//TODO most of the methods are not easily implemented due to lack of server types
 	public void changeManageScreen(String str){
-		
+		if(str.equals(CURR_ADD)){
+			JPanel p = ((ManagerScreen)screens.get(curScreen)).getAddScreen();
+			if(p==null){
+				throw new UnsupportedOperationException("Cannot go to Screen " + str + ", it doesn't exist");
+			}
+			JPanel r = screens.get(curScreen);
+			if(curMan.equals(CURR_EDIT)){
+				r=((ManagerScreen)screens.get(curScreen)).getEditScreen();
+			} else if(curMan.equals(CURR_REM)){
+				r=((ManagerScreen)screens.get(curScreen)).getRemoveScreen();
+			}
+			this.remove(r);
+			this.add(p);
+			this.validate();
+			this.repaint();
+			curScreen=str;
+			curMan=CURR_ADD;
+		} else if(str.equals(CURR_EDIT)){
+			JPanel p = ((ManagerScreen)screens.get(curScreen)).getEditScreen();
+			if(p==null){
+				throw new UnsupportedOperationException("Cannot go to Screen " + str + ", it doesn't exist");
+			}
+			JPanel r = screens.get(curScreen);
+			if(curMan.equals(CURR_ADD)){
+				r=((ManagerScreen)screens.get(curScreen)).getAddScreen();
+			} else if(curMan.equals(CURR_REM)){
+				r=((ManagerScreen)screens.get(curScreen)).getRemoveScreen();
+			}
+			this.remove(r);
+			this.add(p);
+			this.validate();
+			this.repaint();
+			curScreen=str;
+			curMan=CURR_EDIT;
+			
+		} else if(str.equals(CURR_REM)){
+			JPanel p = ((ManagerScreen)screens.get(curScreen)).getRemoveScreen();
+			if(p==null){
+				throw new UnsupportedOperationException("Cannot go to Screen " + str + ", it doesn't exist");
+			}
+			JPanel r = screens.get(curScreen);
+			if(curMan.equals(CURR_ADD)){
+				r=((ManagerScreen)screens.get(curScreen)).getAddScreen();
+			} else if(curMan.equals(CURR_EDIT)){
+				r=((ManagerScreen)screens.get(curScreen)).getEditScreen();
+			}
+			this.remove(r);
+			this.add(p);
+			this.validate();
+			this.repaint();
+			curScreen=str;
+			curMan=CURR_REM;
+		}
 	}
 	/**
 	 * Main Method, doesn't handle arguments (yet?)
