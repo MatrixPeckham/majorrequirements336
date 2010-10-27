@@ -8,21 +8,21 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class TestGUI extends JFrame
 {
-	private JPanel northPanel;
-	private JPanel southPanel;
-	private JLabel userName;
-	private JLabel passWord;
-	private JLabel logIn;
-	private JTextField nameField;
-	private JTextField passWordField;
+	private JLabel registrarAdminPage;
+	private JButton viewCourses;
+	private JButton addDepart;
+	private JButton removeDepart;
 	
 	TestGUI()
 	{
@@ -35,23 +35,37 @@ public class TestGUI extends JFrame
 	
 	public void layoutGUI()
 	{
-		userName = new JLabel("User Name: ");
-		userName.setFont(new Font("Times New Roman",1,24));
-		passWord = new JLabel("Password: ");
-		passWord.setFont(new Font("Times New Roman",1,24));
-		logIn = new JLabel("Please Log In");
-		logIn.setFont(new Font("Times New Roman",1,72));
-		nameField = new JTextField(15);
-		passWordField = new JTextField(15);
+		registrarAdminPage = new JLabel("Registrar Admin Page");
+		registrarAdminPage.setFont(new Font("Times New Roman",1,72));
+		viewCourses = new JButton();
+		viewCourses.setFont(new Font("Times New Roman",1,24));
+		addDepart = new JButton();
+		addDepart.setFont(new Font("Times New Roman",1,24));
+		removeDepart = new JButton();
+		addDepart.setFont(new Font("Times New Roman",1,24));
 		
-		// LAYOUT ALL THE COMPONENTS USING GridBagLayout
+		String[] columnNames = {"Department"};
+
+		Object[][] data = {
+				{"Math"},{"Computer Science"},{"Journalism"},{"Information And Technology"},
+				{"History"},{"Women Studies"},{"Biology"},{"Chemistry"},{"Physcis"}	
+		};
+		
+		  final JTable table = new JTable(data, columnNames);
+	      table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
+	      table.setFillsViewportHeight(true);
+	      
+	      JScrollPane scrollPane = new JScrollPane(table);
+	      add(scrollPane);
+		
 		GridBagLayout gbl = new GridBagLayout();
 		this.setLayout(gbl);
 		
-		addJComponentToContainerUsingGBL(logIn, this, 1,1,1,1);
-		addJComponentToContainerUsingGBL(userName, this, 1,10,1,1);
-		addJComponentToContainerUsingGBL(passWord, this, 1,20,1,1);
-		addJComponentToContainerUsingGBL(nameField, this, 2, 10, 1, 1);
+		addJComponentToContainerUsingGBL(registrarAdminPage, this, 1, 1, 3, 2);
+		addJComponentToContainerUsingGBL(scrollPane, this, 1, 3, 4, 3);
+		addJComponentToContainerUsingGBL(viewCourses, this, 1, 10, 1, 1);
+		//addJComponentToContainerUsingGBL(addDepart, this, 2, 20, 11, 11);
+		//addJComponentToContainerUsingGBL(removeDepart, this, 3, 20, 11, 11);
 	}
 	
 	public void addJComponentToContainerUsingGBL(JComponent jc, Container c,
