@@ -11,6 +11,8 @@ public class RequirementsScreen extends Screen {
 	 */
 	private static final long serialVersionUID = -4598402945518018282L;
 
+	
+	
 	/**
 	 * Constructor
 	 * @param gui GUI for the parent screen

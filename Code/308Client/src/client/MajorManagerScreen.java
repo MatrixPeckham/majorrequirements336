@@ -1,6 +1,16 @@
 package client;
 
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 /**
  * Manager screen for the majors
  * @author Bill
@@ -15,12 +25,68 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 	private AddMajScreen addScreen = new AddMajScreen();
 	private EditMajScreen editScreen = new EditMajScreen();
 	private RemoveMajScreen remScreen = new RemoveMajScreen();
+	
+	private JLabel adminLabel;
+	private JTable table;
+	private JButton addButton;
+	private JButton editButton;
+	private JButton removeButton;
+	private JButton editMajor;
+	private JButton back;
+	
 	/**
 	 * constructor
 	 * @param gui passed to super class Screen
 	 */
 	public MajorManagerScreen(ClientGUI gui) {
 		super(gui);
+		initGUI();
+	}
+	
+	private void initGUI(){
+		adminLabel = new JLabel("Department Administrator");
+		adminLabel.setFont(new Font("Times New Roman",1,72));
+		String[] columnNames = {"Major"};
+
+		Object[][] data = {{"CSE"},{"ISE"}};
+		
+		table = new JTable(data, columnNames);
+	    table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
+	    table.setFillsViewportHeight(true);
+	    JScrollPane scrollPane = new JScrollPane(table);
+	    
+	    addButton = new JButton("Add Major");
+	    addButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showInputDialog("Input Major Name");
+			}
+		});
+	    editButton = new JButton("Edit Major");
+	    editButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showInputDialog("Change Major Name");
+			}
+		});
+	    removeButton = new JButton("Remove Major");
+	    removeButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
+	    editMajor = new JButton("Edit Major Requiremnts");
+	    editMajor.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 	}
 
 	@Override

@@ -66,7 +66,17 @@ public class ClientGUI extends JFrame {
 		if(s==null){
 			throw new UnsupportedOperationException("Cannot go to Screen " + str + ", it doesn't exist");
 		}
-		Screen r = screens.get(curScreen);
+		JPanel r = screens.get(curScreen);
+		if(!curMan.equals("")){
+			ManagerScreen man = (ManagerScreen)(r);
+			if(curMan.equals(CURR_ADD)){
+				r=man.getAddScreen();
+			} else if(curMan.equals(CURR_EDIT)){
+				r=man.getEditScreen();
+			} else if(curMan.equals(CURR_REM)){
+				r=man.getRemoveScreen();
+			}
+		}
 		this.remove(r);
 		this.add(s);
 		this.validate();
@@ -91,7 +101,6 @@ public class ClientGUI extends JFrame {
 			this.add(p);
 			this.validate();
 			this.repaint();
-			curScreen=str;
 			curMan=CURR_ADD;
 		} else if(str.equals(CURR_EDIT)){
 			JPanel p = ((ManagerScreen)screens.get(curScreen)).getEditScreen();
@@ -108,7 +117,6 @@ public class ClientGUI extends JFrame {
 			this.add(p);
 			this.validate();
 			this.repaint();
-			curScreen=str;
 			curMan=CURR_EDIT;
 			
 		} else if(str.equals(CURR_REM)){
@@ -126,7 +134,6 @@ public class ClientGUI extends JFrame {
 			this.add(p);
 			this.validate();
 			this.repaint();
-			curScreen=str;
 			curMan=CURR_REM;
 		}
 	}
