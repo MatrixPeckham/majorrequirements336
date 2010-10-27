@@ -24,8 +24,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
-import javax.persistence.criteria.Fetch;
-import org.eclipse.persistence.internal.oxm.schema.model.All;
+//import javax.persistence.criteria.Fetch;
+//import org.eclipse.persistence.internal.oxm.schema.model.All;
 
 /**
  *
@@ -45,8 +45,7 @@ public class Course implements Serializable {
     private int semestersOffered;
 
 
-    Course() {
-    }
+    public Course() {}
     Course(String dept, int level) {
         id=dept+""+level;
         name=dept;

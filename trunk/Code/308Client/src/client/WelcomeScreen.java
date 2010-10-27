@@ -1,9 +1,13 @@
 package client;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 /**
  * Welcome screen
@@ -56,9 +60,18 @@ public class WelcomeScreen extends Screen implements ManagerScreen {
 				frame.changeScreen(ClientGUI.LOGIN);
 			}
 		});
-		addJComponentToContainerUsingGBL(studentButton, this, 1, 2, 1, 1);
-		addJComponentToContainerUsingGBL(adminButton, this, 2, 2, 1, 1);
-		addJComponentToContainerUsingGBL(superAdminButton, this, 3, 2, 1, 1);
+                this.setLayout(new BorderLayout());
+                JPanel pane = new JPanel();
+                JLabel lab = new JLabel("Welcome");
+                pane.add(lab);
+                lab.setFont(new Font("Times New Roman",1,72));
+                this.add(pane,BorderLayout.NORTH);
+                pane=new JPanel();
+                pane.setLayout(new GridBagLayout());
+		addJComponentToContainerUsingGBL(studentButton, pane, 1, 2, 1, 1);
+		addJComponentToContainerUsingGBL(adminButton, pane, 2, 2, 1, 1);
+		addJComponentToContainerUsingGBL(superAdminButton, pane, 3, 2, 1, 1);
+                this.add(pane);
 	}
 
 	@Override
