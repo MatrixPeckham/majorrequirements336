@@ -20,7 +20,7 @@ public abstract class Screen extends JPanel {
 	 */
 	private static final long serialVersionUID = -3109942549502954841L;
 	// holds the GUI
-	private ClientGUI frame;
+	protected ClientGUI frame;
 
 	/**
 	 * Constructor
