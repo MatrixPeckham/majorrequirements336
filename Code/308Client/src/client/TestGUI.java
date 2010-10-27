@@ -19,10 +19,17 @@ import javax.swing.JTextField;
 
 public class TestGUI extends JFrame
 {
-	private JLabel registrarAdminPage;
-	private JButton viewCourses;
-	private JButton addDepart;
-	private JButton removeDepart;
+	private JLabel editDepartmentPage;
+	private JLabel coursesForDepartment;
+	private JTable table;
+	private JButton edit;
+	private JButton remove;
+	private JButton add;
+	private JButton uploadCourses;
+	private JButton browse;
+	private JButton back;
+	private JButton registrarAdminPage;
+	private JTextField textField;
 	
 	TestGUI()
 	{
@@ -35,37 +42,48 @@ public class TestGUI extends JFrame
 	
 	public void layoutGUI()
 	{
-		registrarAdminPage = new JLabel("Registrar Admin Page");
-		registrarAdminPage.setFont(new Font("Times New Roman",1,72));
-		viewCourses = new JButton("SGTHLD");
-		viewCourses.setFont(new Font("Times New Roman",1,24));
-		addDepart = new JButton();
-		addDepart.setFont(new Font("Times New Roman",1,24));
-		removeDepart = new JButton();
-		addDepart.setFont(new Font("Times New Roman",1,24));
+
+		editDepartmentPage = new JLabel("Edit Department Page");
+		editDepartmentPage.setFont(new Font("Times New Roman",1,72));
+		coursesForDepartment = new JLabel("Courses For Department");
+		edit = new JButton("Edit Course");
+		remove = new JButton("Remove Course");
+		add = new JButton("Add Course");
+		uploadCourses = new JButton("Upload Courses");
+		browse = new JButton("Browse");
+		back = new JButton("Back");
+		registrarAdminPage = new JButton("Registrar Admin Page");
+		textField = new JTextField(20);
+
 		
-		String[] columnNames = {"Department"};
+		String[] columnNames = {"Courses"};
 
 		Object[][] data = {
-				{"Math"},{"Computer Science"},{"Journalism"},{"Information And Technology"},
-				{"History"},{"Women Studies"},{"Biology"},{"Chemistry"},{"Physcis"}	
-		};
+				{"CSE 308"},{"CSE 381"},{"CSE 380"},{"CSE 220"},
+				{"CSE 114"},{"CSE 215"},{"CSE 219"},{"CSE 110"},
+				{"MAT 127"}};
 		
-		  final JTable table = new JTable(data, columnNames);
-	      table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
-	      table.setFillsViewportHeight(true);
+		final JTable table = new JTable(data, columnNames);
+		table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
+	    table.setFillsViewportHeight(true);
 	      
-	      JScrollPane scrollPane = new JScrollPane(table);
-	      add(scrollPane);
-		
+	    JScrollPane scrollPane = new JScrollPane(table);
+	    add(scrollPane);
 		GridBagLayout gbl = new GridBagLayout();
 		this.setLayout(gbl);
 		
-		addJComponentToContainerUsingGBL(registrarAdminPage, this, 1, 1, 3, 1);
-		addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 4, 1);
-		addJComponentToContainerUsingGBL(viewCourses, this, 1, 3, 1, 1);
-		//addJComponentToContainerUsingGBL(addDepart, this, 2, 20, 11, 11);
-		//addJComponentToContainerUsingGBL(removeDepart, this, 3, 20, 11, 11);
+
+		addJComponentToContainerUsingGBL(editDepartmentPage, this, 1, 1, 4, 1);
+		addJComponentToContainerUsingGBL(coursesForDepartment, this, 1, 2, 1, 1);
+		addJComponentToContainerUsingGBL(scrollPane, this, 1, 3, 4, 5);
+		addJComponentToContainerUsingGBL(add, this, 1, 10, 1, 1);
+		addJComponentToContainerUsingGBL(remove, this, 2,10,1,1);
+		addJComponentToContainerUsingGBL(edit, this, 3, 10, 1, 1);
+		addJComponentToContainerUsingGBL(uploadCourses, this, 1, 20, 1, 1);
+		addJComponentToContainerUsingGBL(textField, this, 2, 20, 1, 1);
+		addJComponentToContainerUsingGBL(browse, this, 3, 20, 1, 1);
+		addJComponentToContainerUsingGBL(back, this, 5, 30, 1, 1);
+		addJComponentToContainerUsingGBL(registrarAdminPage, this, 6, 30, 1, 1);
 	}
 	
 	public void addJComponentToContainerUsingGBL(JComponent jc, Container c,
