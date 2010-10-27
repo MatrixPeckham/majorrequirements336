@@ -1,5 +1,6 @@
 package client;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 /**
  * Welcome screen
@@ -11,14 +12,25 @@ public class WelcomeScreen extends Screen implements ManagerScreen {
 	 * serial version ID that eclispe wants in all swing classes
 	 */
 	private static final long serialVersionUID = 4768193727341498557L;
-
+	
+	private JButton studentButton;
+	private JButton adminButton;
+	private JButton superAdminButton;
+	
 	/**
 	 * Constructor
 	 * @param gui GUI for parent Screen
 	 */
 	public WelcomeScreen(ClientGUI gui) {
 		super(gui);
-		// TODO Auto-generated constructor stub
+		initGUI();
+	}
+	
+	private void initGUI(){
+		studentButton = new JButton("Student");
+		adminButton = new JButton("Department Administrator");
+		superAdminButton = new JButton("Registrar Administrator");
+		addJComponentToContainerUsingGBL(studentButton, this, 2, 2, 1, 1);
 	}
 
 	@Override
