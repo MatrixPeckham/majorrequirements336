@@ -95,10 +95,10 @@ public class RequirementsScreen extends Screen {
 
 	    });
               DefaultTableModel model2 = (DefaultTableModel)table2.getModel();
-	    for(String s : columnNames){
+	    for(String s : columnNames2){
 	    	model2.addColumn(s);
 	    }
-	    for(Object[] o : data){
+	    for(Object[] o : data2){
 	    	model2.addRow(o);
 	    }
 
