@@ -19,7 +19,7 @@ public class ClientGUI extends JFrame {
 	public static final String CLASSES = "CLASSES";
 	public static final String COURSES = "COURSES";
 	public static final String DEPARTMENTS = "DEPARTMENTS";
-	public static final String MAJORS = "MAFORS";
+	public static final String MAJORS = "MAJORS";
 	public static final String OPTIONS = "OPTIONS";
 	public static final String CHECK = "CHECK";
 	public static final String SCHEDULE = "SCHEDULE";
