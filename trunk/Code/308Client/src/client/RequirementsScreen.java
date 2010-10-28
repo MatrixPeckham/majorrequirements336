@@ -1,4 +1,11 @@
 package client;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  * Screen for requirements check requiremnts
  * @author Bill
@@ -19,8 +26,25 @@ public class RequirementsScreen extends Screen {
 	 */
 	public RequirementsScreen(ClientGUI gui) {
 		super(gui);
-		// TODO Auto-generated constructor stub
-	}
+                initGUI();
+        }
+        
+        private void initGUI(){
+            JLabel lab = new JLabel("This page needs a redesign");
+            JButton back = new JButton("Back");
+            back.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.changeScreen(ClientGUI.CLASSES);
+            }
+        });
+        JPanel pane = new JPanel();
+        pane.add(lab);
+        pane.add(back);
+        this.add(pane);
+        }
+
 
 	@Override
 	public void getScreen() {
