@@ -120,6 +120,15 @@ public class RequirementsScreen extends Screen {
             suggestSched = new JButton("Suggest Schedule");
             suggestSched.setFont(new Font("Times New Roman",1,24));
 
+             suggestSched.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.changeScreen(ClientGUI.SCHEDULE);
+
+			}
+		});
+
 
             this.setLayout(new GridBagLayout());
             addJComponentToContainerUsingGBL(checkRequirementsLabel, this, 1, 1, 4, 1);

@@ -144,5 +144,4 @@ public class ClientGUI extends JFrame {
 	public static void main(String[] args) {
 		new ClientGUI();
 	}
-
 }
