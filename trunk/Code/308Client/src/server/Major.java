@@ -24,19 +24,24 @@ import javax.persistence.Persistence;
  */
 @Entity
 public class Major implements Serializable {
-    
+
     private String id;
     private Collection<Requirement> reqs;
     private static EntityManagerFactory emf;
     private static EntityManager em;
+
+    public Major() {
+        reqs=new ArrayList<Requirement>();
+    }
      public static void main(String[] args) {
         emf=Persistence.createEntityManagerFactory("ClientPU");
         em=emf.createEntityManager();
         Major c=new Major();
+        c.setId("ISE");
         em.getTransaction().begin();
         em.persist(c);
 
-        c.setId("CSE");
+        
 
         em.getTransaction().commit();
     }
@@ -48,9 +53,7 @@ public class Major implements Serializable {
      public void setRequirements(Collection<Requirement> r) {
          reqs=r;
      }
-     public Major() {
-         reqs=new ArrayList<Requirement>();
-     }
+
 @Id
     public String getId() {
         return id;
@@ -59,6 +62,6 @@ public class Major implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
-     
-  
+
+
 }
