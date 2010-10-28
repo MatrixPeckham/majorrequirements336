@@ -1,5 +1,4 @@
 package client;
-<<<<<<< .mine
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -11,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-=======
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +17,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
->>>>>>> .r138
 /**
  * Screen for requirements check requiremnts
  * @author Bill
@@ -45,7 +42,6 @@ public class RequirementsScreen extends Screen {
 	 */
 	public RequirementsScreen(ClientGUI gui) {
 		super(gui);
-<<<<<<< .mine
 		checkRequirementsLabel = new JLabel("Check Requirements Page");
                 checkRequirementsLabel.setFont(new Font("Times New Roman",1,72));
                 String[] columnNames = {"Requirement Name", "Minimum GPA", "Upper Division Credits", "Minimum Resident Credits",  "Completed"};
@@ -132,27 +128,10 @@ public class RequirementsScreen extends Screen {
             addJComponentToContainerUsingGBL(scrollPane2, this, 1, 20, 1, 2);
             addJComponentToContainerUsingGBL(back, this, 3, 30, 1, 1);
             addJComponentToContainerUsingGBL(suggestSched, this, 4, 30, 1, 1);
-
-	}
-=======
                 initGUI();
         }
         
         private void initGUI(){
-            JLabel lab = new JLabel("This page needs a redesign");
-            JButton back = new JButton("Back");
-            back.addActionListener(new ActionListener() {
->>>>>>> .r138
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.changeScreen(ClientGUI.CLASSES);
-            }
-        });
-        JPanel pane = new JPanel();
-        pane.add(lab);
-        pane.add(back);
-        this.add(pane);
         }
 
 
