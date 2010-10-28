@@ -111,6 +111,16 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 	    downloadButton = new JButton("Dowload Courses");
 	    
 	    checkButton = new JButton("Check Requirements");
+<<<<<<< .mine
+               checkButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.changeScreen(ClientGUI.CHECK);
+			}
+		});
+	    
+=======
 	    checkButton.addActionListener(new ActionListener() {
 
             @Override
@@ -118,6 +128,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                 frame.changeScreen(ClientGUI.CHECK);
             }
         });
+>>>>>>> .r138
 	    generateButton = new JButton("Generate Schedule");
             generateButton.addActionListener(new ActionListener() {
 
