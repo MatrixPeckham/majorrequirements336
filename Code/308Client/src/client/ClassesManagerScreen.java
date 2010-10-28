@@ -111,8 +111,21 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 	    downloadButton = new JButton("Dowload Courses");
 	    
 	    checkButton = new JButton("Check Requirements");
-	    
+	    checkButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.changeScreen(ClientGUI.CHECK);
+            }
+        });
 	    generateButton = new JButton("Generate Schedule");
+            generateButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.changeScreen(ClientGUI.SCHEDULE);
+            }
+        });
 		backButton = new JButton("Back");
 		backButton.addActionListener(new ActionListener() {
 			
