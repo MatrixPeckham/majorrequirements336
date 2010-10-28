@@ -187,6 +187,8 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 			deptF = new JTextField(10);
 			descL = new JLabel("Description");
 			descF = new JTextArea(10, 5);
+                        descF.setLineWrap(true);
+                        descF.setWrapStyleWord(true);
 			ok = new JButton("Add");
 			ok.addActionListener(new ActionListener() {
 				
