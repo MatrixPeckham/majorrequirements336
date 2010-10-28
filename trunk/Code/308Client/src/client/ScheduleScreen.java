@@ -43,8 +43,8 @@ public class ScheduleScreen extends Screen {
         this.setLayout(new BorderLayout());
         sched = new JLabel("Remaining Schedule");
         sched.setFont(new Font("Times New Roman",1,72));
-        String[] columnNames = {"Major"};
-        Object[][] data = {{"CSE"}, {"ISE"}};
+        String[] columnNames = {"Class","Semester","Requirement","Credits"};
+        Object[][] data = {};
         table = new JTable(data, columnNames);
         table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
         table.setFillsViewportHeight(true);
