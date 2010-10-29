@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?> 
-<java version="1.6.0_16" class="java.beans.XMLDecoder"> 
+<java version="1.6.0_21" class="java.beans.XMLDecoder"> 
  <object class="com.horstmann.violet.UseCaseDiagramGraph"> 
   <void method="addNode"> 
    <object id="ActorNode0" class="com.horstmann.violet.ActorNode"> 
@@ -233,21 +233,6 @@
    <object id="UseCaseNode12" class="com.horstmann.violet.UseCaseNode"> 
     <void property="name"> 
      <void property="text"> 
-      <string>Generate Schedule</string> 
-     </void> 
-    </void> 
-   </object> 
-   <object class="java.awt.geom.Point2D$Double"> 
-    <void method="setLocation"> 
-     <double>438.0</double> 
-     <double>617.0</double> 
-    </void> 
-   </object> 
-  </void> 
-  <void method="addNode"> 
-   <object id="UseCaseNode13" class="com.horstmann.violet.UseCaseNode"> 
-    <void property="name"> 
-     <void property="text"> 
       <string>add major requirements
 </string> 
      </void> 
@@ -261,7 +246,7 @@
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="UseCaseNode14" class="com.horstmann.violet.UseCaseNode"> 
+   <object id="UseCaseNode13" class="com.horstmann.violet.UseCaseNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>download major requirements</string> 
@@ -276,7 +261,7 @@
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="UseCaseNode15" class="com.horstmann.violet.UseCaseNode"> 
+   <object id="UseCaseNode14" class="com.horstmann.violet.UseCaseNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>remove major requirements</string> 
@@ -291,7 +276,7 @@
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="UseCaseNode16" class="com.horstmann.violet.UseCaseNode"> 
+   <object id="UseCaseNode15" class="com.horstmann.violet.UseCaseNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>upload requirements file</string> 
@@ -306,7 +291,7 @@
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="UseCaseNode17" class="com.horstmann.violet.UseCaseNode"> 
+   <object id="UseCaseNode16" class="com.horstmann.violet.UseCaseNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>edit major</string> 
@@ -315,28 +300,13 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>663.0</double> 
-     <double>387.0</double> 
+     <double>691.0</double> 
+     <double>401.0</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="UseCaseNode18" class="com.horstmann.violet.UseCaseNode"> 
-    <void property="name"> 
-     <void property="text"> 
-      <string>add course</string> 
-     </void> 
-    </void> 
-   </object> 
-   <object class="java.awt.geom.Point2D$Double"> 
-    <void method="setLocation"> 
-     <double>255.0</double> 
-     <double>615.0</double> 
-    </void> 
-   </object> 
-  </void> 
-  <void method="addNode"> 
-   <object id="UseCaseNode19" class="com.horstmann.violet.UseCaseNode"> 
+   <object id="UseCaseNode17" class="com.horstmann.violet.UseCaseNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>edit course</string> 
@@ -345,13 +315,13 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>426.0</double> 
-     <double>787.0</double> 
+     <double>546.0</double> 
+     <double>782.0</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="UseCaseNode20" class="com.horstmann.violet.UseCaseNode"> 
+   <object id="UseCaseNode18" class="com.horstmann.violet.UseCaseNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>remove course</string> 
@@ -360,22 +330,13 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>301.0</double> 
-     <double>776.0</double> 
+     <double>268.0</double> 
+     <double>772.0</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
-   <object class="com.horstmann.violet.UseCaseNode"/> 
-   <object class="java.awt.geom.Point2D$Double"> 
-    <void method="setLocation"> 
-     <double>1020.0</double> 
-     <double>356.0</double> 
-    </void> 
-   </object> 
-  </void> 
-  <void method="addNode"> 
-   <object id="UseCaseNode21" class="com.horstmann.violet.UseCaseNode"> 
+   <object id="UseCaseNode19" class="com.horstmann.violet.UseCaseNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>upload courses file</string> 
@@ -384,13 +345,13 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>163.0</double> 
-     <double>777.0</double> 
+     <double>120.0</double> 
+     <double>776.0</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="UseCaseNode22" class="com.horstmann.violet.UseCaseNode"> 
+   <object id="UseCaseNode20" class="com.horstmann.violet.UseCaseNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>download courses</string> 
@@ -399,13 +360,13 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>570.0</double> 
-     <double>761.0</double> 
+     <double>636.0</double> 
+     <double>729.0</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="UseCaseNode23" class="com.horstmann.violet.UseCaseNode"> 
+   <object id="UseCaseNode21" class="com.horstmann.violet.UseCaseNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>check requirements</string> 
@@ -414,13 +375,13 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>606.0</double> 
-     <double>688.0</double> 
+     <double>628.0</double> 
+     <double>660.0</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="UseCaseNode24" class="com.horstmann.violet.UseCaseNode"> 
+   <object id="UseCaseNode22" class="com.horstmann.violet.UseCaseNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>generate schedule</string> 
@@ -429,8 +390,38 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>612.0</double> 
-     <double>623.0</double> 
+     <double>553.0</double> 
+     <double>597.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="UseCaseNode23" class="com.horstmann.violet.UseCaseNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>edit major requirements</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>814.0</double> 
+     <double>315.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="UseCaseNode24" class="com.horstmann.violet.UseCaseNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>add course</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>424.0</double> 
+     <double>794.0</double> 
     </void> 
    </object> 
   </void> 
@@ -580,62 +571,27 @@
   <void method="connect"> 
    <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
    <object idref="UseCaseNode8"/> 
-   <object idref="UseCaseNode14"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
-   <object idref="UseCaseNode8"/> 
    <object idref="UseCaseNode13"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
    <object idref="UseCaseNode8"/> 
-   <object idref="UseCaseNode15"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
-   <object idref="UseCaseNode13"/> 
-   <object idref="UseCaseNode16"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
-   <object idref="UseCaseNode8"/> 
-   <object idref="UseCaseNode17"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
-   <object idref="UseCaseNode11"/> 
-   <object idref="UseCaseNode18"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
-   <object idref="UseCaseNode11"/> 
    <object idref="UseCaseNode12"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
-   <object idref="UseCaseNode11"/> 
-   <object idref="UseCaseNode24"/> 
+   <object idref="UseCaseNode8"/> 
+   <object idref="UseCaseNode14"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
-   <object idref="UseCaseNode11"/> 
-   <object idref="UseCaseNode23"/> 
+   <object idref="UseCaseNode12"/> 
+   <object idref="UseCaseNode15"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
-   <object idref="UseCaseNode11"/> 
-   <object idref="UseCaseNode21"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
-   <object idref="UseCaseNode11"/> 
-   <object idref="UseCaseNode20"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
-   <object idref="UseCaseNode11"/> 
-   <object idref="UseCaseNode19"/> 
+   <object idref="UseCaseNode8"/> 
+   <object idref="UseCaseNode16"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
@@ -645,7 +601,42 @@
   <void method="connect"> 
    <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
    <object idref="UseCaseNode11"/> 
+   <object idref="UseCaseNode21"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
+   <object idref="UseCaseNode11"/> 
+   <object idref="UseCaseNode19"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
+   <object idref="UseCaseNode11"/> 
+   <object idref="UseCaseNode18"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
+   <object idref="UseCaseNode11"/> 
+   <object idref="UseCaseNode17"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
+   <object idref="UseCaseNode11"/> 
+   <object idref="UseCaseNode20"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
+   <object idref="UseCaseNode11"/> 
    <object idref="ActorNode2"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
+   <object idref="UseCaseNode23"/> 
+   <object idref="UseCaseNode8"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
+   <object idref="UseCaseNode24"/> 
+   <object idref="UseCaseNode11"/> 
   </void> 
  </object> 
 </java> 
