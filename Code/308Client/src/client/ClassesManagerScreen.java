@@ -24,20 +24,31 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 	 * serial version ID that eclipse wants in all swing classes
 	 */
 	private static final long serialVersionUID = -747564907385911673L;
-	private AddClasScreen addScreen = new AddClasScreen();
+	
+        //these three are for returning from the manager screen
+        private AddClasScreen addScreen = new AddClasScreen();
 	private EditClasScreen editScreen = new EditClasScreen();
 	private RemoveClasScreen remScreen = new RemoveClasScreen();
 	
-	
+        //title screen
 	private JLabel studentPage;
+        //coruses table
 	private JTable courses;
+        //add button
 	private JButton addButton;
+        //edit button
 	private JButton editButton;
+        //remove button
 	private JButton removeButton;
+        //upload button
 	private JButton uploadButton;
+        //download button
 	private JButton downloadButton;
+        //check button
 	private JButton checkButton;
+        //generate schedule button
 	private JButton generateButton;
+        //back button
 	private JButton backButton;
 	
 	
@@ -49,7 +60,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 		super(gui);
 		initGUI();
 	}
-
+        //sets up GUI includding actio listeners
 	private void initGUI(){
 		studentPage=new JLabel("Student Page");
 		studentPage.setFont(new Font("Times New Roman",1,72));
@@ -181,20 +192,27 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 	 * @author Bill
 	 *
 	 */
-	//TODO make this into the add screen GUI
 	private class AddClasScreen extends JPanel{
-
+                //title label
 		JLabel addPage;
+                //courses table
 		JTable courses;
+                //grade lable
 		JLabel gradeL;
+                //grade combo box
 		JComboBox gradeBox;
+                //transfer box
 		JCheckBox transBox;
+                //ok button
 		JButton ok;
+                //cancel button
 		JButton cancel;
-		
+
+		//constructor
 		public AddClasScreen(){
 			initGUI();
 		}
+                //sets up GUI including action listeners
 		private void initGUI(){
 			addPage = new JLabel("Add Courses Page");
 			addPage.setFont(new Font("Times New Roman",1,72));
@@ -266,9 +284,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 	 * @author Bill
 	 *
 	 */
-	//TODO make this into the edit screen GUI
 	private class EditClasScreen extends AddClasScreen{
-
+                //sets up the GUI
 		public EditClasScreen(){
 			super();
 			addPage.setText("Edit Course Page");
@@ -286,7 +303,6 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 	 * @author Bill
 	 *
 	 */
-	//TODO make this into the remove screen GUI
 	private class RemoveClasScreen extends JPanel{
 
 		/**

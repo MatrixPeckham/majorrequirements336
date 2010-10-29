@@ -3,10 +3,6 @@ package client;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -15,11 +11,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
  * Screen for requirements check requiremnts
- * @author Bill
+ * @author JP
  *
  */
 //TODO not sure where the admin changes major requriments
@@ -28,16 +23,21 @@ public class RequirementsScreen extends Screen {
 	 * serial version ID that eclipse wants in all swing classes
 	 */
 	private static final long serialVersionUID = -4598402945518018282L;
-
+        //title label
 	private JLabel checkRequirementsLabel;
+        //table that holds the requirements
         private JTable table1;
+        //table for the specifics of the requirements
         private JTable table2;
+        //back button
         private JButton back;
+        //label for the requirements information
         private JLabel requirementInfo;
+        //button to go to the suggest schedule page
         private JButton suggestSched;
 
 	/**
-	 * Constructor
+	 * Constructor, lays out GUI including action listeners
 	 * @param gui GUI for the parent screen
 	 */
 	public RequirementsScreen(ClientGUI gui) {
@@ -137,10 +137,6 @@ public class RequirementsScreen extends Screen {
             addJComponentToContainerUsingGBL(scrollPane2, this, 1, 20, 1, 2);
             addJComponentToContainerUsingGBL(back, this, 3, 30, 1, 1);
             addJComponentToContainerUsingGBL(suggestSched, this, 4, 30, 1, 1);
-                initGUI();
-        }
-        
-        private void initGUI(){
         }
 
 

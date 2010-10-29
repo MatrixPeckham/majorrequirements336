@@ -16,7 +16,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-
+/**
+ * Test class that was used to test screen layouts
+ * before screen changing was implemented
+ *
+ * WILL LIKELY BE DELETED BEFORE DEPLOYMENT
+ * @author Johm paul
+ */
 public class TestGUI extends JFrame
 {
 	private JLabel editDepartmentPage;

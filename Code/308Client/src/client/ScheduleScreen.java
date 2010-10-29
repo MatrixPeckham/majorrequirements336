@@ -18,8 +18,11 @@ import javax.swing.JTable;
  */
 public class ScheduleScreen extends Screen {
 
+    //table for schedule
     private JTable table;
+    //back button
     private JButton back;
+    //title label
     private JLabel sched;
     /**
      * serial version ID that eclipse wants in swing classes
@@ -28,17 +31,15 @@ public class ScheduleScreen extends Screen {
 
     /**
      * Takes a ClientGUI for the super class
-     * should take a schedule object, but that doesn't
-     * exist at the time of writing this.
      * @param gui GUI for Screen
-     * TODO add schedule parameter because Diagram says to
-     * not sure it needs it though
      */
     public ScheduleScreen(ClientGUI gui) {
         super(gui);
         initGUI();
     }
-
+    /*
+     * lays out GUI including action listeners
+     */
     private void initGUI() {
         this.setLayout(new BorderLayout());
         sched = new JLabel("Remaining Schedule");

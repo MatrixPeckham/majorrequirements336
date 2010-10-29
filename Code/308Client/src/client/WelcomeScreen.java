@@ -14,25 +14,35 @@ import javax.swing.JPanel;
  * @author Bill
  *
  */
-public class WelcomeScreen extends Screen implements ManagerScreen {
+public class WelcomeScreen extends Screen {
 	/**
 	 * serial version ID that eclispe wants in all swing classes
 	 */
 	private static final long serialVersionUID = 4768193727341498557L;
-	
+
+        /*
+         * Button that brings user to student page
+         */
 	private JButton studentButton;
+        /*
+         * the following two buttons bring the suer
+         * to the login screen followed by the
+         * respecive admin screen
+         */
 	private JButton adminButton;
 	private JButton superAdminButton;
 	
 	/**
-	 * Constructor
+	 * Constructor sets up the GUI
 	 * @param gui GUI for parent Screen
 	 */
 	public WelcomeScreen(ClientGUI gui) {
 		super(gui);
 		initGUI();
 	}
-	
+	/*
+         * Sets up the GUI including all action listeners
+         */
 	private void initGUI(){
 		studentButton = new JButton("Student");
 		studentButton.addActionListener(new ActionListener() {
@@ -79,23 +89,4 @@ public class WelcomeScreen extends Screen implements ManagerScreen {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public JPanel getAddScreen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public JPanel getEditScreen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public JPanel getRemoveScreen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

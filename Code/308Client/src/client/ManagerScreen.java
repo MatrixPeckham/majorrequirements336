@@ -21,6 +21,7 @@ public interface ManagerScreen {
 	public JPanel getAddScreen();
 	/**
 	 * Gets the GUI for removing elements
+         * not used often
 	 * @return JPanel containing all the needed components to remove elements
 	 */
 	public JPanel getRemoveScreen();
