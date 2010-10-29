@@ -24,6 +24,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
+import logging.UseLogger;
 //import javax.persistence.criteria.Fetch;
 //import org.eclipse.persistence.internal.oxm.schema.model.All;
 
@@ -47,6 +48,7 @@ public class Course implements Serializable {
 
     public Course() {}
     Course(String dept, int level) {
+        UseLogger logger = new UseLogger();
         id=dept+""+level;
         name=dept;
 
