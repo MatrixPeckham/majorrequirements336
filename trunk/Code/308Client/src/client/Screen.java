@@ -9,7 +9,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 /**
- * Abstract Screen class
+ * Abstract Screen class all GUI screens extend it
  * 
  * @author Bill
  * 
@@ -23,7 +23,8 @@ public abstract class Screen extends JPanel {
 	protected ClientGUI frame;
 
 	/**
-	 * Constructor
+	 * Constructor that makes sure all subclasses will
+         * pass a client GUI to this one
 	 * 
 	 * @param gui
 	 *            the frame
@@ -31,17 +32,24 @@ public abstract class Screen extends JPanel {
 	public Screen(ClientGUI gui) {
 		frame = gui;
 		this.setLayout(new GridBagLayout());
-		// TODO just here to make a warning go away
-		if (frame == null)
-			return;
 	}
 
 	/**
 	 * at the time of fleshing out the classes i'm not sure what this method is
-	 * supposed to do
+	 * supposed to do it's just a placeholder
 	 */
 	public abstract void getScreen();
 
+        /**
+         * Helper method that is used to add a component
+         * to a container using grid bag layout
+         * @param jc component to add
+         * @param c container to add to
+         * @param x gridx of the component
+         * @param y gridy of the component
+         * @param w width in grid cells of the component
+         * @param h height in grid cells of the component
+         */
 	public void addJComponentToContainerUsingGBL(JComponent jc, Container c,
 			int x, int y, int w, int h) {
 		GridBagConstraints gbc = new GridBagConstraints();

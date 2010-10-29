@@ -7,20 +7,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  * Manager for the courses
- * @author Bill
+ * @author JP & Bill
  *
  */
 public class CourseManagerScreen extends Screen implements ManagerScreen {
@@ -29,19 +26,32 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 	 * serial version ID that eclipse wants in all swing classes
 	 */
 	private static final long serialVersionUID = -747564902385911678L;
+        //these three are for returning from the manager screen methods
 	private AddCouScreen addScreen = new AddCouScreen();
 	private EditCouScreen editScreen = new EditCouScreen();
 	private RemoveCouScreen remScreen = new RemoveCouScreen();
-	private JLabel editDepartmentPage;
+
+        //title label
+        private JLabel editDepartmentPage;
+        //courses lable
 	private JLabel coursesForDepartment;
+        //table for courses
 	private JTable table;
+        //edit button
 	private JButton edit;
+        //remove button
 	private JButton remove;
+        //add button
 	private JButton add;
+        //ubload button
 	private JButton uploadCourses;
+        //browse button
 	private JButton browse;
+        //back button
 	private JButton back;
+        //to registar admin button
 	private JButton registrarAdminPage;
+        //file URL text field
 	private JTextField textField;
 	
 	/**
@@ -52,8 +62,11 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 		super(gui);
 		layoutGUI();
 	}
-	
-	public void layoutGUI()
+
+        /**
+         * sets up GUI, including most action listeners
+         */
+	private void layoutGUI()
 	{
 
 		editDepartmentPage = new JLabel("Edit Department Page");
@@ -152,30 +165,43 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 	 * @author Bill
 	 *
 	 */
-	//TODO make this into the add screen GUI
 	private class AddCouScreen extends JPanel{
 		
 		/**
 		 * serial version ID that eclipse wants in all swing classes
 		 */
 		private static final long serialVersionUID = 4099112134368019743L;
+
+                //add label
 		protected JLabel addL;
+                //name label
 		private JLabel nameL;
+                //name text field
 		private JTextField nameF;
+                //number lable
 		private JLabel numL;
+                //number text field
 		private JTextField numF;
+                //department label
 		private JLabel deptL;
+                //department text field
 		private JTextField deptF;
+                //description label
 		private JLabel descL;
+                //description text area
 		private JTextArea descF;
+                //table for prereqs
 		private JTable prereq;
+                //ok button
 		protected JButton ok;
+                //cancel button
 		private JButton back;
-		
+
+                //constructor
 		public AddCouScreen(){
 			initGUI();
 		}
-		
+		//sets up GUI including action lsiteners
 		private void initGUI(){
 			addL = new JLabel("Add Course Page");
 			addL.setFont(new Font("Times New Roman", 1, 72));
@@ -257,13 +283,14 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 	 * @author Bill
 	 *
 	 */
-	//TODO make this into the edit screen GUI
 	private class EditCouScreen extends AddCouScreen{
 
 		/**
 		 * serial version ID that eclipse wants in all swing classes
 		 */
 		private static final long serialVersionUID = -3153844264861602293L;
+
+                //sets up GUI
 		public EditCouScreen(){
 			super();
 			addL.setText("Edit Course Screen");
@@ -276,7 +303,6 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 	 * @author Bill
 	 *
 	 */
-	//TODO make this into the remove screen GUI
 	private class RemoveCouScreen extends JPanel{
 
 		/**

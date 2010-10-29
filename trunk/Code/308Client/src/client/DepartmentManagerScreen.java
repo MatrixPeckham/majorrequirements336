@@ -1,38 +1,45 @@
 package client;
 
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-
+/**
+ *
+ * @author JP & Bill
+ */
 public class DepartmentManagerScreen extends Screen implements ManagerScreen {
-	
+        //title label
 	private JLabel registrarAdminPage;
+        //view courses button
 	private JButton viewCourses;
+        //add department button
 	private JButton addDepart;
+        //remove department button
 	private JButton removeDepart;
+        // back button
 	private JButton back;
+        //table for departments
 	private JTable table;
 	/**
 	 * serial version ID that eclipse wants in all swing classes
 	 */
 	private static final long serialVersionUID = 2263628448346062920L;
-	private AddDeptScreen addScreen = new AddDeptScreen();
+
+	//these three are screens to return from manager screen methods
+        private AddDeptScreen addScreen = new AddDeptScreen();
 	private EditDeptScreen editScreen = new EditDeptScreen();
 	private RemoveDeptScreen remScreen = new RemoveDeptScreen();
-	/**
+
+        /**
 	 * constructor
 	 * @param gui passed to super class Screen
 	 */
@@ -40,8 +47,10 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 		super(gui);
 		layoutGUI();
 	}
-	
-	public void layoutGUI()
+        /**
+         * lays out GUI including action listeners
+         */
+	private void layoutGUI()
 	{
 		registrarAdminPage = new JLabel("Registrar Admin Page");
 		registrarAdminPage.setFont(new Font("Times New Roman",1,72));
@@ -125,24 +134,31 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 	 * @author Bill
 	 *
 	 */
-	//TODO make this into the add screen GUI
 	private class AddDeptScreen extends JPanel{
 
 		/**
 		 * serial version ID that eclipse wants in all swing classes
 		 */
 		private static final long serialVersionUID = 4099112144368019745L;
-		
+
+                //title label
 		private JLabel addDepartmentPage;
+                //name label
 		private JLabel name;
+                //name field
 		private JTextField nameField;
+                //add button
 		private JButton add;
-		
+
+                /**
+                 * constructor
+                 */
 		AddDeptScreen()
 		{
 			layoutGUI();
 		}
-		
+
+                //lays out GUI including action listeners
 		public void layoutGUI()
 		{
 			addDepartmentPage = new JLabel("Add Department Page");
@@ -174,7 +190,6 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 	 * @author Bill
 	 *
 	 */
-	//TODO make this into the edit screen GUI
 	private class EditDeptScreen extends JPanel{
 
 		/**
@@ -189,7 +204,6 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 	 * @author Bill
 	 *
 	 */
-	//TODO make this into the remove screen GUI
 	private class RemoveDeptScreen extends JPanel{
 
 		/**

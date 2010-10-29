@@ -11,17 +11,23 @@ import javax.swing.JTextField;
 
 /**
  * Screen for login
- * @author Bill
+ * @author JP
  *
  */
 public class LoginScreen extends Screen {
-	
-	private JLabel userName;
+        //name label
+    	private JLabel userName;
+        //password label
 	private JLabel passWord;
-	private JLabel logIn;
+	//title label
+        private JLabel logIn;
+        //name text field
 	private JTextField nameField;
+        //password text field
 	private JTextField passWordField;
+        //log in button
 	private JButton	logInButton;
+        //back button
 	private JButton back;
 
 	/**
@@ -29,7 +35,7 @@ public class LoginScreen extends Screen {
 	 */
 	private static final long serialVersionUID = -6230641324251613660L;
 	/**
-	 * Constructor
+	 * Constructor lays out GUI including action listener
 	 * @param gui GUI for parent Screen
 	 */
 	public LoginScreen(ClientGUI gui) 

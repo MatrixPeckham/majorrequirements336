@@ -30,11 +30,18 @@ public class ClientGUI extends JFrame {
 	 * just a serial version ID that eclipse always wants in swing classes
 	 */
 	private static final long serialVersionUID = -5678564321234343567L;
-	private Client networking;
+
+        //client for handeling networking
+        private Client networking;
+        //permisions of user
 	private int permissions;
+        //current screen string
 	private String curScreen;
+        //current manager screen
 	private String curMan;
+        //map of strings to screens
 	private TreeMap<String, Screen> screens = new TreeMap<String, Screen>();
+        //toggle for login page to use to decide what to switch to
 	boolean reg = false;
 	/**
 	 * Constructor, initialized and show
@@ -46,8 +53,9 @@ public class ClientGUI extends JFrame {
 		setExtendedState(getExtendedState()|MAXIMIZED_BOTH);
 		this.setVisible(true);
 	}
-//TODO the two if's are only there because eclispe gave warnings	
-	private void init(){
+        
+        //initializes all the screens
+        private void init(){
 		screens.put(WELCOME, new WelcomeScreen(this));
 		screens.put(LOGIN, new LoginScreen(this));
 		screens.put(CLASSES, new ClassesManagerScreen(this));
@@ -61,6 +69,10 @@ public class ClientGUI extends JFrame {
 		this.add(screens.get(curScreen));
 		curMan="";
 	}
+        /**
+         * changes the screen
+         * @param str string that is the code for the GUI to switch to
+         */
 	public void changeScreen(String str){
 		Screen s = screens.get(str);
 		if(s==null){
@@ -84,8 +96,12 @@ public class ClientGUI extends JFrame {
 		curScreen=str;
 		curMan="";
 	}
-	//TODO most of the methods are not easily implemented due to lack of server types
-	public void changeManageScreen(String str){
+        
+        /**
+         * changes which manager screen is shown from the current screen
+         * @param str string that is code for the screen to show
+         */
+        public void changeManageScreen(String str){
 		if(str.equals(CURR_ADD)){
 			JPanel p = ((ManagerScreen)screens.get(curScreen)).getAddScreen();
 			if(p==null){
@@ -139,7 +155,7 @@ public class ClientGUI extends JFrame {
 	}
 	/**
 	 * Main Method, doesn't handle arguments (yet?)
-	 * @param args
+	 * @param args doesn't get handled
 	 */
 	public static void main(String[] args) {
 		new ClientGUI();

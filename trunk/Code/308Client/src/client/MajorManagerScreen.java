@@ -18,10 +18,9 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import org.postgresql.jdbc3.Jdbc3SimpleDataSource;
 
 /**
- * Manager screen for the majors
+ * Manager screen for the department Admin page
  * @author Bill
  *
  */
@@ -31,15 +30,24 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
      * serial version ID that eclipse wants in all swing classes
      */
     private static final long serialVersionUID = -747564907385911678L;
+    //these three are for the manager screen get methods
     private AddMajScreen addScreen = new AddMajScreen();
     private EditMajScreen editScreen = new EditMajScreen();
     private RemoveMajScreen remScreen = new RemoveMajScreen();
+    
+    //title label
     private JLabel adminLabel;
+    //table of majors
     private JTable table;
+    //button to add a major
     private JButton addButton;
+    //button to edit the major name
     private JButton editButton;
+    //button to remove a major
     private JButton removeButton;
+    //button to edit major requirments
     private JButton editMajor;
+    //back button
     private JButton back;
 
     /**
@@ -50,7 +58,9 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         super(gui);
         initGUI();
     }
-
+    /*
+     * lays out the GUI including action listneners
+     */
     private void initGUI() {
         adminLabel = new JLabel("Department Administrator");
         adminLabel.setFont(new Font("Times New Roman", 1, 72));
@@ -134,40 +144,66 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
     /**
      * Inner class the the outside need know nothing about
-     * it will be the screen for adding Majors
+     * it will be the screen for adding Major requirements
      * @author Bill
      *
      */
     //TODO make this into the add screen GUI
     private class AddMajScreen extends JPanel {
-
+        //title label
         JLabel addPage;
+        //label for course table
         JLabel courseL;
+        //course table
         JTable courses;
+        //button to add a course to working sequence
         JButton addButton;
+        //button to remove a course from working sequence
         JButton remButton;
+        //label for the current sequence list
         JLabel currL;
+        //current sequence list
         JList currList;
+        //checkbox to make the current sequence excluded
         JCheckBox exclude;
+        //button adds current sequence the requirement
         JButton finishButton;
+        //label for the sequences list
         JLabel seqL;
+        //list for the sequences
         JList seqList;
+        //min number of sequences for this requirement
         JLabel minSeqL;
+        //spinner for the number of sequences for this requirement
         JSpinner seqS;
+        //info title label
         JLabel infoL;
+        //label for name field
         JLabel nameL;
+        //name field
         JTextField nameF;
+        //label for min gpa field
         JLabel minGPAL;
+        //min gpa field
         JTextField minGPAF;
+        //label min upper courses for requirement
         JLabel minUpperL;
+        //min upper courses for requirement spinner
         JSpinner minUpperS;
+        //ok button
         JButton ok;
+        //cancel button
         JButton cancel;
-
+        /*
+         * default constructor
+         * makes GUI
+         */
         public AddMajScreen() {
             initGUI();
         }
-
+        /*
+         * sets up the GUI including at this time most action listneners
+         */
         private void initGUI() {
             addPage = new JLabel("Add Requirement Page");
             addPage.setFont(new Font("Times New Roman", 1, 72));
@@ -286,24 +322,31 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
     /**
      * Inner class the the outside need know nothing about
-     * it will be the screen for Editing Majors
+     * it will be the screen for Editing Major requirements
      * @author Bill
      *
      */
-    //TODO make this into the edit screen GUI
     private class EditMajScreen extends JPanel {
-
+        //title screen
         JLabel title;
+        //table of requirements
         JTable table;
+        //add requirement button
         JButton addReq;
+        //edit requirement button
         JButton editReq;
+        //remove requirement button
         JButton remReq;
         JButton back;
-
+        /*
+         * constructor sets up GUI
+         */
         public EditMajScreen() {
             initGUI();
         }
-
+        /*
+         * sets up GUI indluding action listeners
+         */
         private void initGUI() {
             title = new JLabel("Requirments");
             title.setFont(new Font("Times New Roman", 1, 72));
@@ -360,7 +403,6 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
      * @author Bill
      *
      */
-    //TODO make this into the remove screen GUI
     private class RemoveMajScreen extends JPanel {
 
         /**
