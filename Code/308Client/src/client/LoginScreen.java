@@ -56,9 +56,9 @@ public class LoginScreen extends Screen {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(frame.reg){
-					frame.changeScreen(ClientGUI.DEPARTMENTS);
+					frame.changeScreen(ClientGUI.DEPARTMENTS, null);
 				} else {
-					frame.changeScreen(ClientGUI.MAJORS);
+					frame.changeScreen(ClientGUI.MAJORS, null);
 				}
 			}
 		});
@@ -68,7 +68,7 @@ public class LoginScreen extends Screen {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				frame.changeScreen(ClientGUI.WELCOME);
+				frame.changeScreen(ClientGUI.WELCOME, null);
 			}
 		});
 		back.setFont(new Font("Times New Roman",1,24));
@@ -87,8 +87,13 @@ public class LoginScreen extends Screen {
 	}
 
 	@Override
-	public void getScreen() {
+	public void getScreen(Object fillWith) {
 		// TODO Auto-generated method stub
 	}
+
+    @Override
+    public boolean validateForm() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 }

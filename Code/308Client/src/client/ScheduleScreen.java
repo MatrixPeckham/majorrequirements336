@@ -55,7 +55,7 @@ public class ScheduleScreen extends Screen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-               frame.changeScreen(ClientGUI.CLASSES);
+               frame.changeScreen(ClientGUI.CLASSES, null);
             }
         });
         add(sched,BorderLayout.NORTH);
@@ -66,7 +66,12 @@ public class ScheduleScreen extends Screen {
     }
 
     @Override
-    public void getScreen() {
+    public void getScreen(Object fillWith) {
         // TODO Auto-generated method stub
+    }
+
+    @Override
+    public boolean validateForm() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -110,7 +110,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                frame.changeScreen(ClientGUI.WELCOME);
+                frame.changeScreen(ClientGUI.WELCOME, null);
             }
         });
         addJComponentToContainerUsingGBL(adminLabel, this, 1, 1, 4, 1);
@@ -123,7 +123,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
     }
 
     @Override
-    public void getScreen() {
+    public void getScreen(Object fillWith) {
         // TODO Auto-generated method stub
     }
 
@@ -140,6 +140,11 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
     @Override
     public JPanel getRemoveScreen() {
         return remScreen;
+    }
+
+    @Override
+    public boolean validateForm() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -380,7 +385,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    frame.changeScreen(ClientGUI.MAJORS);
+                    frame.changeScreen(ClientGUI.MAJORS, null);
                 }
             });
             this.setLayout(new GridBagLayout());

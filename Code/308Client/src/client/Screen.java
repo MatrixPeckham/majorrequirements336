@@ -38,7 +38,7 @@ public abstract class Screen extends JPanel {
 	 * at the time of fleshing out the classes i'm not sure what this method is
 	 * supposed to do it's just a placeholder
 	 */
-	public abstract void getScreen();
+	public abstract void getScreen(Object fillWith);
 
         /**
          * Helper method that is used to add a component
@@ -61,4 +61,10 @@ public abstract class Screen extends JPanel {
 		gbc.insets = new Insets(5, 5, 5, 5);
 		c.add(jc, gbc);
 	}
+        /**
+         * validates the form fields
+         * @return true if form is correctly filled out false otherwise
+         */
+        public abstract boolean validateForm();
+
 }
