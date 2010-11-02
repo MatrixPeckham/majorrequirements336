@@ -31,9 +31,9 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
      */
     private static final long serialVersionUID = -747564907385911678L;
     //these three are for the manager screen get methods
-    private AddMajScreen addScreen = new AddMajScreen();
-    private EditMajScreen editScreen = new EditMajScreen();
-    private RemoveMajScreen remScreen = new RemoveMajScreen();
+    private AddMajScreen addScreen;
+    private EditMajScreen editScreen;
+    private RemoveMajScreen remScreen;
     
     //title label
     private JLabel adminLabel;
@@ -56,6 +56,9 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
      */
     public MajorManagerScreen(ClientGUI gui) {
         super(gui);
+        addScreen = new AddMajScreen(gui);
+        editScreen = new EditMajScreen(gui);
+        remScreen = new RemoveMajScreen(gui);
         initGUI();
     }
     /*
@@ -102,7 +105,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.changeManageScreen(ClientGUI.CURR_EDIT);
+                frame.changeManageScreen(ClientGUI.CURR_EDIT, null);
             }
         });
         back = new JButton("Back");
@@ -128,17 +131,17 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
     }
 
     @Override
-    public JPanel getAddScreen() {
+    public Screen getAddScreen() {
         return addScreen;
     }
 
     @Override
-    public JPanel getEditScreen() {
+    public Screen getEditScreen() {
         return editScreen;
     }
 
     @Override
-    public JPanel getRemoveScreen() {
+    public Screen getRemoveScreen() {
         return remScreen;
     }
 
@@ -154,7 +157,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
      *
      */
     //TODO make this into the add screen GUI
-    private class AddMajScreen extends JPanel {
+    private class AddMajScreen extends Screen {
         //title label
         JLabel addPage;
         //label for course table
@@ -203,7 +206,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
          * default constructor
          * makes GUI
          */
-        public AddMajScreen() {
+        public AddMajScreen(ClientGUI gui) {
+            super(gui);
             initGUI();
         }
         /*
@@ -281,7 +285,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    frame.changeManageScreen(ClientGUI.CURR_EDIT);
+                    frame.changeManageScreen(ClientGUI.CURR_EDIT, null);
                 }
             });
             cancel = new JButton("Cancel");
@@ -289,7 +293,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    frame.changeManageScreen(ClientGUI.CURR_EDIT);
+                    frame.changeManageScreen(ClientGUI.CURR_EDIT, null);
                 }
             });
             setLayout(new GridBagLayout());
@@ -323,6 +327,16 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
          * serial version ID that eclipse wants in all swing classes
          */
         private static final long serialVersionUID = 4099112134368019745L;
+
+        @Override
+        public void getScreen(Object fillWith) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public boolean validateForm() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
     }
 
     /**
@@ -331,7 +345,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
      * @author Bill
      *
      */
-    private class EditMajScreen extends JPanel {
+    private class EditMajScreen extends Screen {
         //title screen
         JLabel title;
         //table of requirements
@@ -346,7 +360,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         /*
          * constructor sets up GUI
          */
-        public EditMajScreen() {
+        public EditMajScreen(ClientGUI gui) {
+            super(gui);
             initGUI();
         }
         /*
@@ -368,7 +383,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    frame.changeManageScreen(ClientGUI.CURR_ADD);
+                    frame.changeManageScreen(ClientGUI.CURR_ADD, null);
                 }
             });
             editReq = new JButton("Edit");
@@ -376,7 +391,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    frame.changeManageScreen(ClientGUI.CURR_ADD);
+                    frame.changeManageScreen(ClientGUI.CURR_ADD, null);
                 }
             });
             remReq = new JButton("Remove");
@@ -400,6 +415,16 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
          * serial version ID that eclipse wants in all swing classes
          */
         private static final long serialVersionUID = -3153844264861607293L;
+
+        @Override
+        public void getScreen(Object fillWith) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public boolean validateForm() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
     }
 
     /**
@@ -408,11 +433,25 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
      * @author Bill
      *
      */
-    private class RemoveMajScreen extends JPanel {
+    private class RemoveMajScreen extends Screen {
 
         /**
          * serial version ID that eclipse wants in all swing classes
          */
         private static final long serialVersionUID = -3920339673618333723L;
+
+        RemoveMajScreen(ClientGUI gui){
+            super(gui);
+        }
+
+        @Override
+        public void getScreen(Object fillWith) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public boolean validateForm() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
     }
 }

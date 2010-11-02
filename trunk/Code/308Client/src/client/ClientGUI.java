@@ -107,7 +107,7 @@ public class ClientGUI extends JFrame {
          * changes which manager screen is shown from the current screen
          * @param str string that is code for the screen to show
          */
-        public void changeManageScreen(String str){
+        public void changeManageScreen(String str, Object fillWith){
 		if(str.equals(CURR_ADD)){
 			JPanel p = ((ManagerScreen)screens.get(curScreen)).getAddScreen();
 			if(p==null){
