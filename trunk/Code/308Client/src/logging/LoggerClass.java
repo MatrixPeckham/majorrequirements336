@@ -7,6 +7,7 @@ import java.util.logging.Formatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import java.util.Date;
 
 public class LoggerClass {
 	static private FileHandler fileTxt;
@@ -16,7 +17,8 @@ public class LoggerClass {
 		// Create Logger
 		Logger logger = Logger.getLogger("");
 		logger.setLevel(Level.INFO);
-		fileTxt = new FileHandler("Logger.txt");
+                Date d=new Date();
+		fileTxt = new FileHandler("Logger"+d.getMonth()+"-"+d.getDay()+"-"+(d.getYear()+1900)+"-"+d.getTime()+".txt");
 
 		// Create txt Formatter
 		formatterTxt = new SimpleFormatter();

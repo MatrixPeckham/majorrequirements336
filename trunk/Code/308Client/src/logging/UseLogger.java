@@ -6,8 +6,24 @@ import java.util.logging.Logger;
 
 public class UseLogger {
 	// Always use the classname, this way you can refactor
-	public final static Logger LOGGER = Logger.getLogger(UseLogger.class
+       
+	private final static Logger LOGGER = Logger.getLogger(UseLogger.class
 			.getName());
+       public static void severe(String msg) {
+           setup();
+           LOGGER.setLevel(Level.SEVERE);
+           LOGGER.severe(msg);
+       }
+       public static void warning(String msg) {
+           setup();
+           LOGGER.setLevel(Level.WARNING);
+           LOGGER.warning(msg);
+       }
+       public static void info(String msg) {
+          setup();
+           LOGGER.setLevel(Level.INFO);
+           LOGGER.info(msg);
+       }
 
 	public void writeLog() {
 		// Set the LogLevel to Severe, only severe Messages will be written
@@ -26,15 +42,15 @@ public class UseLogger {
 		LOGGER.finest("Really not important");
 	}
 
-	public static void main(String[] args) {
-		UseLogger logger = new UseLogger();
+	public static void setup() {
 		try {
 			LoggerClass.setup();
+                        
 		} catch (IOException e) {
 			e.printStackTrace();
+                        
 			throw new RuntimeException("Problems with creating the log files");
 		}
-		logger.writeLog();
 	}
 }
 

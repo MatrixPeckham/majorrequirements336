@@ -16,19 +16,23 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Persistence;
 import logging.UseLogger;
 
-/**
+/** Contains info and actions for majors
  *
  * @author tj
  */
 @Entity
 public class Major implements Serializable {
-
+    @Id
     private String id;
+    
     private Collection<Requirement> reqs;
+    private double minGPA;
+    private int minCreditsHere;
     private static EntityManagerFactory emf;
     private static EntityManager em;
     private static UseLogger logger;
@@ -37,20 +41,28 @@ public class Major implements Serializable {
         logger = new UseLogger();
         reqs=new ArrayList<Requirement>();
     }
+    /**
+     * test main method
+     * @param args
+     */
      public static void main(String[] args) {
         emf=Persistence.createEntityManagerFactory("ClientPU");
         em=emf.createEntityManager();
-        Major c=new Major();
-        c.setId("ISE");
         em.getTransaction().begin();
-        em.persist(c);
+        Major c=new Major();
+        c.setId("CSE2");
+        Course co=new Course();
+        co.setId("CSE39");
+        Departments d=new Departments();
+        d.setName("CSE2");
+        em.persist(d);
+        d.addMajor(c);
+        d.addCourse(co);
         em.getTransaction().commit();
+
         // Set the LogLevel to Info, severe, warning and info will be written
 	// Finest is still not written
-	UseLogger.LOGGER.setLevel(Level.INFO);
-	UseLogger.LOGGER.severe("Info Log");
-	UseLogger.LOGGER.warning("Info Log");
-	UseLogger.LOGGER.info("Info Log");
+	
     }
 
      @OneToMany()
@@ -60,8 +72,7 @@ public class Major implements Serializable {
      public void setRequirements(Collection<Requirement> r) {
          reqs=r;
      }
-
-@Id
+     
     public String getId() {
         return id;
     }
@@ -69,6 +80,21 @@ public class Major implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+    /**
+     * Adds requirement to major and saves major
+     * @param r
+     */
+    public void addRequirement(Requirement r) {
+        try {
+        em.merge(r);
+        reqs.add(r);
+        em.merge(this);
+        }catch(Exception e) {
 
+        }
+    }
+    public void removeRequirement(Requirement r) {
+
+    }
 
 }

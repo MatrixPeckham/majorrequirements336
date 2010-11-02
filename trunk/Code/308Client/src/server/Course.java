@@ -20,6 +20,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
@@ -34,16 +35,24 @@ import logging.UseLogger;
  */
 @Entity
 public class Course implements Serializable {
-
+    @OneToMany
     private Collection<Course> prereqs;
-    
+    /*
+     * prereqs- List of prequequisite courses maps from Courses table to itself
+     */
+    @Id
     private String id;
-    private String minGrade;
-    private String description;
-    private String name;
-    private int num;
-    private int credits;
-    private int semestersOffered;
+    /*
+     * id- the combined name/number to uniquely identify the course (primary key)
+     */
+    private String minGrade;//min passing grade for the course
+    private String description;//course description
+    private String name;//course name, department identifier
+    private int num; //course number, used for upper division identification
+    private int credits;//credits satisfied by the course
+    private int semestersOffered;//integer representing combination of semesesters when the course is offered
+    private static EntityManager em;//JPA interaction
+    private static EntityManagerFactory emf;
 
 
     public Course() {}
@@ -56,10 +65,10 @@ public class Course implements Serializable {
     }
    
   
-    public void addCourse(Course c) {
-        //em.persist(c);
+    public void addPrereq(Course c) {
+        em.merge(c);
     }
-    @Id
+   
     public String getId() {
         return id;
     }
@@ -68,20 +77,24 @@ public class Course implements Serializable {
         this.id = id;
     }
     public void setName(String name) {
-
+        this.name=name;
+        em.merge(this);
     }
     public String getName() {return name;}
-    public void setNum(int num) {this.num=num;}
+    public void setNum(int num) {this.num=num; em.merge(this);}
     public int getNum(){return num;}
-    @OneToMany()
+    
     public Collection<Course> getPrereqs() {
         return prereqs;
     }
     public void setPrereqs(Collection<Course> p) {
         prereqs=p;
     }
+    /* adds prereq and saves course in DB*/
     public void addPreReq(Course c) {
-
+        em.merge(c);
+        prereqs.add(c);
+        em.merge(this);
     }
     public boolean passedCourse(User u){return false;}
 }
