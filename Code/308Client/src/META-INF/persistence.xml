@@ -3,10 +3,11 @@
   <persistence-unit name="ClientPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>server.Course</class>
-    <class>server.Sequence</class>
-    <class>server.Requirement</class>
-    <class>server.Major</class>
     <class>server.CourseGroup</class>
+    <class>server.Department</class>
+    <class>server.Major</class>
+    <class>server.Requirement</class>
+    <class>server.Departments</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
       <property name="javax.persistence.jdbc.password" value="app"/>
