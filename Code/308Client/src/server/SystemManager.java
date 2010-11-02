@@ -9,6 +9,6 @@ package server;
  *
  * @author TJ
  */
-public class ServerManager {
+public class SystemManager {
 
 }
