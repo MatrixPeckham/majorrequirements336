@@ -35,9 +35,9 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 	private static final long serialVersionUID = 2263628448346062920L;
 
 	//these three are screens to return from manager screen methods
-        private AddDeptScreen addScreen = new AddDeptScreen();
-	private EditDeptScreen editScreen = new EditDeptScreen();
-	private RemoveDeptScreen remScreen = new RemoveDeptScreen();
+        private AddDeptScreen addScreen;
+	private EditDeptScreen editScreen;
+	private RemoveDeptScreen remScreen;
 
         /**
 	 * constructor
@@ -45,6 +45,9 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 	 */
 	public DepartmentManagerScreen(ClientGUI gui) {
 		super(gui);
+                addScreen = new AddDeptScreen(gui);
+                editScreen = new EditDeptScreen(gui);
+                remScreen = new RemoveDeptScreen(gui);
 		layoutGUI();
 	}
         /**
@@ -68,7 +71,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeManageScreen(ClientGUI.CURR_ADD);
+				frame.changeManageScreen(ClientGUI.CURR_ADD, null);
 			}
 		});
 		addDepart.setFont(new Font("Times New Roman",1,24));
@@ -115,17 +118,17 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 	}
 
 	@Override
-	public JPanel getAddScreen() {
+	public Screen getAddScreen() {
 		return addScreen;
 	}
 
 	@Override
-	public JPanel getEditScreen() {
+	public Screen getEditScreen() {
 		return editScreen;
 	}
 
 	@Override
-	public JPanel getRemoveScreen() {
+	public Screen getRemoveScreen() {
 		return remScreen;
 	}
 
@@ -139,7 +142,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 	 * @author Bill
 	 *
 	 */
-	private class AddDeptScreen extends JPanel{
+	private class AddDeptScreen extends Screen{
 
 		/**
 		 * serial version ID that eclipse wants in all swing classes
@@ -158,8 +161,9 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                 /**
                  * constructor
                  */
-		AddDeptScreen()
+		AddDeptScreen(ClientGUI gui)
 		{
+                    super(gui);
 			layoutGUI();
 		}
 
@@ -188,6 +192,16 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 			addJComponentToContainerUsingGBL(nameField, this, 2, 10, 1, 1);
 			addJComponentToContainerUsingGBL(add, this, 1, 20, 1, 1);
 		}
+
+        @Override
+        public void getScreen(Object fillWith) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public boolean validateForm() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
 	}
 	/**
 	 * Inner class the the outside need know nothing about
@@ -195,12 +209,26 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 	 * @author Bill
 	 *
 	 */
-	private class EditDeptScreen extends JPanel{
+	private class EditDeptScreen extends Screen{
 
 		/**
 		 * serial version ID that eclipse wants in all swing classes
 		 */
 		private static final long serialVersionUID = -3153844264861607293L;
+
+                EditDeptScreen(ClientGUI gui){
+                    super(gui);
+                }
+
+        @Override
+        public void getScreen(Object fillWith) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public boolean validateForm() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
 
 	}
 	/**
@@ -209,12 +237,26 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 	 * @author Bill
 	 *
 	 */
-	private class RemoveDeptScreen extends JPanel{
+	private class RemoveDeptScreen extends Screen{
 
 		/**
 		 * serial version ID that eclipse wants in all swing classes
 		 */
 		private static final long serialVersionUID = -3920339673618343723L;
+
+                RemoveDeptScreen(ClientGUI gui){
+                    super(gui);
+                }
+
+        @Override
+        public void getScreen(Object fillWith) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public boolean validateForm() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
 		
 	}
 }

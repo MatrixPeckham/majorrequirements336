@@ -13,16 +13,16 @@ public interface ManagerScreen {
 	 * Gets the GUI for editing an element
 	 * @return JPanel containing all the needed components to edit an element
 	 */
-	public JPanel getEditScreen();
+	public Screen getEditScreen();
 	/**
 	 * Gets the GUI for adding an element
 	 * @return JPanel containing all the needed components to add add element
 	 */
-	public JPanel getAddScreen();
+	public Screen getAddScreen();
 	/**
 	 * Gets the GUI for removing elements
          * not used often
 	 * @return JPanel containing all the needed components to remove elements
 	 */
-	public JPanel getRemoveScreen();
+	public Screen getRemoveScreen();
 }
