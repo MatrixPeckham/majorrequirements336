@@ -112,7 +112,7 @@ public class RequirementsScreen extends Screen {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeScreen(ClientGUI.CLASSES);
+				frame.changeScreen(ClientGUI.CLASSES, null);
 
 			}
 		});
@@ -124,7 +124,7 @@ public class RequirementsScreen extends Screen {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeScreen(ClientGUI.SCHEDULE);
+				frame.changeScreen(ClientGUI.SCHEDULE, null);
 
 			}
 		});
@@ -141,9 +141,14 @@ public class RequirementsScreen extends Screen {
 
 
 	@Override
-	public void getScreen() {
+	public void getScreen(Object fillWith) {
 		// TODO Auto-generated method stub
 
 	}
+
+    @Override
+    public boolean validateForm() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 }

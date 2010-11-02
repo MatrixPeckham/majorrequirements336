@@ -96,7 +96,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeScreen(ClientGUI.WELCOME);
+				frame.changeScreen(ClientGUI.WELCOME, null);
 			}
 		});
 		registrarAdminPage = new JButton("Registrar Admin Page");
@@ -104,7 +104,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeScreen(ClientGUI.DEPARTMENTS);
+				frame.changeScreen(ClientGUI.DEPARTMENTS, null);
 			}
 		});
 		textField = new JTextField(20);
@@ -141,7 +141,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 	}
 	
 	@Override
-	public void getScreen() {
+	public void getScreen(Object fillWith) {
 		// TODO Auto-generated method stub
 	}
 
@@ -159,6 +159,11 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 	public JPanel getRemoveScreen() {
 		return remScreen;
 	}
+
+    @Override
+    public boolean validateForm() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 	/**
 	 * Inner class the the outside need know nothing about
 	 * it will be the screen for adding Courses
@@ -220,7 +225,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					frame.changeScreen(ClientGUI.COURSES);
+					frame.changeScreen(ClientGUI.COURSES, null);
 				}
 			});
 			back = new JButton("Cancel");
@@ -228,7 +233,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					frame.changeScreen(ClientGUI.COURSES);
+					frame.changeScreen(ClientGUI.COURSES, null);
 				}
 			});
 			String[] columnNames = {"Course","Select"};

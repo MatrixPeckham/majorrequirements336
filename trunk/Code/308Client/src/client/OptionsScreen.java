@@ -21,9 +21,14 @@ public class OptionsScreen extends Screen {
 	}
 
 	@Override
-	public void getScreen() {
+	public void getScreen(Object fillWith) {
 		// TODO Auto-generated method stub
 
 	}
+
+    @Override
+    public boolean validateForm() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 }

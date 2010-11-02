@@ -126,7 +126,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeScreen(ClientGUI.CHECK);
+				frame.changeScreen(ClientGUI.CHECK, null);
 			}
 		});
 	    
@@ -134,7 +134,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.changeScreen(ClientGUI.CHECK);
+                frame.changeScreen(ClientGUI.CHECK, null);
             }
         });
 	    generateButton = new JButton("Generate Schedule");
@@ -142,7 +142,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.changeScreen(ClientGUI.SCHEDULE);
+                frame.changeScreen(ClientGUI.SCHEDULE, null);
             }
         });
 		backButton = new JButton("Back");
@@ -150,7 +150,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeScreen(ClientGUI.WELCOME);
+				frame.changeScreen(ClientGUI.WELCOME, null);
 				
 			}
 		});
@@ -168,7 +168,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 	}
 	
 	@Override
-	public void getScreen() {
+	public void getScreen(Object fillWith) {
 		// TODO Auto-generated method stub
 	}
 
@@ -186,6 +186,11 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 	public JPanel getRemoveScreen() {
 		return remScreen;
 	}
+
+    @Override
+    public boolean validateForm() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 	/**
 	 * Inner class the the outside need know nothing about
 	 * it will be the screen for adding Classess
@@ -252,7 +257,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					frame.changeScreen(ClientGUI.CLASSES);
+					frame.changeScreen(ClientGUI.CLASSES, null);
 				}
 			});
 			cancel = new JButton("Cancel");
@@ -260,7 +265,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					frame.changeScreen(ClientGUI.CLASSES);
+					frame.changeScreen(ClientGUI.CLASSES, null);
 				}
 			});
 			setLayout(new GridBagLayout());
