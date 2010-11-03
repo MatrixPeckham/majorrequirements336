@@ -4,11 +4,47 @@
  */
 
 package server;
-
+import java.util.*;
+import javax.persistence.*;
 /**
  *
  * @author TJ
  */
 public class SystemManager {
+       private static SystemManager s;
+       private long nextAvailible;
+       private TreeMap<Long, User> users;
+       private EntityManagerFactory emf;
+       private EntityManager em;
+       private SystemManager() {
+           emf=Persistence.createEntityManagerFactory("ClientPU");
+           em=emf.createEntityManager();
 
+            nextAvailible=0;
+            users=new TreeMap<Long,User>();
+       }
+
+       public static SystemManager getSystemManager() {
+           if(s==null) {
+               s=new SystemManager();
+           }
+           return s;
+       }
+       public int checkLogin(String user, String pass) {
+           Query q=em.createQuery("Select permissions from USERS where USERNAME=:user AND _PASSWORD=:pass");
+           q.setParameter(":user", user);
+           q.setParameter(":pass", pass);
+           Integer i=(Integer)q.getSingleResult();
+           if(i!=null) {
+               return i;
+           } else {
+               return User.STUDENT;
+           }
+       }
+       public User addUser() {
+           User u=new User(nextAvailible);
+           users.put(nextAvailible, u);
+           nextAvailible++;
+           return u;
+       }
 }
