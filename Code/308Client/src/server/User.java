@@ -25,5 +25,5 @@ public class User {
         permissions=STUDENT;
         majorYear=(new Date()).getYear();
     }
-
+    public long getID() {return userId;}
  }

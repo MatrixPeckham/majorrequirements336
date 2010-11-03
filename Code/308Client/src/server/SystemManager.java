@@ -4,8 +4,11 @@
  */
 
 package server;
+
 import java.util.*;
 import javax.persistence.*;
+import server.User;
+import server.User;
 /**
  *
  * @author TJ
@@ -14,8 +17,8 @@ public class SystemManager {
        private static SystemManager s;
        private long nextAvailible;
        private TreeMap<Long, User> users;
-       private EntityManagerFactory emf;
-       private EntityManager em;
+       private static EntityManagerFactory emf;
+       private static EntityManager em;
        private SystemManager() {
            emf=Persistence.createEntityManagerFactory("ClientPU");
            em=emf.createEntityManager();
@@ -31,9 +34,9 @@ public class SystemManager {
            return s;
        }
        public int checkLogin(String user, String pass) {
-           Query q=em.createQuery("Select permissions from USERS where USERNAME=:user AND _PASSWORD=:pass");
-           q.setParameter(":user", user);
-           q.setParameter(":pass", pass);
+           Query q=em.createNativeQuery("Select permissions from USERS where USERNAME= ?user AND PASSWORD= ?pass");
+           q.setParameter("user", user);
+           q.setParameter("pass", pass);
            Integer i=(Integer)q.getSingleResult();
            if(i!=null) {
                return i;
