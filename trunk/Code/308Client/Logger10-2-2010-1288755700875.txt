@@ -1,0 +1,2 @@
+Nov 2, 2010 11:41:40 PM logging.UseLogger info
+INFO: Course CSE39 added to department.
