@@ -53,7 +53,7 @@ public class Major implements Serializable {
         c.setId("CSE2");
         Course co=new Course();
         co.setId("CSE39");
-        Departments d=new Departments();
+        Department d=new Department();
         d.setName("CSE2");
         em.persist(d);
         d.addMajor(c);
