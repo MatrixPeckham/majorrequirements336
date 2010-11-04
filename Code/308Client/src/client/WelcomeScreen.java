@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import server.Commands;
 /**
  * Welcome screen
  * @author Bill
@@ -50,7 +51,7 @@ public class WelcomeScreen extends Screen {
 			@Override
 			public void actionPerformed(ActionEvent e) {
                             Object o = frame.getStudentInfo();
-				frame.changeScreen(ClientGUI.CLASSES, null);
+				frame.changeScreen(ClientGUI.CLASSES, o);
 			}
 		});
 		adminButton = new JButton("Department Administrator");
@@ -62,7 +63,8 @@ public class WelcomeScreen extends Screen {
 				frame.reg = false;
       				frame.changeScreen(ClientGUI.LOGIN, null);
                             } else {
-                                frame.changeScreen(ClientGUI.MAJORS, null);
+                                Object o = frame.getDepartment(frame.getCurrentDepartment());
+                                frame.changeScreen(ClientGUI.MAJORS, o);
                             }
 			}
 		});
@@ -75,7 +77,8 @@ public class WelcomeScreen extends Screen {
 				frame.reg = true;
 				frame.changeScreen(ClientGUI.LOGIN, null);
                             } else {
-                                frame.changeScreen(ClientGUI.DEPARTMENTS, this);
+                                Object o =frame.getDepartments();
+                                frame.changeScreen(ClientGUI.DEPARTMENTS, 0);
                             }
 			}
 		});
@@ -101,6 +104,6 @@ public class WelcomeScreen extends Screen {
 
     @Override
     public boolean validateForm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return true;
     }
 }

@@ -191,7 +191,12 @@ public class ClientGUI extends JFrame {
 	public ArrayList<Course> getDepartmentCourses(String str) {return networking.getDepartmentCourses(str);}
         public int getPermissions(){return permissions;}
 
+
     public User getStudentInfo() {
         return networking.getStudentInfo();
+    }
+
+    String getCurrentDepartment() {
+        return networking.getCurrentDepartment();
     }
 }
