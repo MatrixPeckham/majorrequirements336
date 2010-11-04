@@ -49,6 +49,7 @@ public class WelcomeScreen extends Screen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+                            Object o = frame.getStudentInfo();
 				frame.changeScreen(ClientGUI.CLASSES, null);
 			}
 		});
@@ -57,8 +58,12 @@ public class WelcomeScreen extends Screen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+                            if(frame.getPermissions()<2){
 				frame.reg = false;
-				frame.changeScreen(ClientGUI.LOGIN, null);
+      				frame.changeScreen(ClientGUI.LOGIN, null);
+                            } else {
+                                frame.changeScreen(ClientGUI.MAJORS, null);
+                            }
 			}
 		});
 		superAdminButton = new JButton("Registrar Administrator");
@@ -66,8 +71,12 @@ public class WelcomeScreen extends Screen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+                            if(frame.getPermissions()>=3){
 				frame.reg = true;
 				frame.changeScreen(ClientGUI.LOGIN, null);
+                            } else {
+                                frame.changeScreen(ClientGUI.DEPARTMENTS, this);
+                            }
 			}
 		});
                 this.setLayout(new BorderLayout());

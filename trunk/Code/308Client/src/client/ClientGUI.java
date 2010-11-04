@@ -51,12 +51,11 @@ public class ClientGUI extends JFrame {
 	 */
 	public ClientGUI(){
 		networking = new Client();
-                Thread thread = new Thread(networking);
-                thread.start();
+            //    Thread thread = new Thread(networking);
+              //  thread.start();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		init();
 		setExtendedState(getExtendedState()|MAXIMIZED_BOTH);
-		this.setVisible(true);
 	}
         
         //initializes all the screens
@@ -164,31 +163,35 @@ public class ClientGUI extends JFrame {
 	 * @param args doesn't get handled
 	 */
 	public static void main(String[] args) {
-		new ClientGUI();
+		ClientGUI gui = new ClientGUI();
+                gui.setVisible(true);
 	}
-                public Schedule generateSchedule() {return null;}
-	public File getFile(String str) {return null;}
-	public int uploadFile(File file, String str) {return 0;}
-	public boolean addCourse(Course c, String str) {return false;}
-	public Course loadCourse(String str) {return null;}
-	public boolean removeCourse(String str) {return false;}
-	public boolean editCourse(Course c) {return false;}
-	public Major loadMajor(String str) {return null;}
-	public void addMajor(Major m) {}
-	public boolean editMajor(Major m) {return false;}
-	public boolean removeMajor(String str) {return false;}
-	public boolean addRequirement(Requirement r, String str) {return false;}
-	public boolean removeRequirement(String str1, String str2){return false;}
-	public int login(String usr,String pass) {return 3;}
-	public boolean logout() {return false;}
-	public ArrayList<Requirements> getRequirements() {return null;}
-	public int getCreditsRemaining() {return 0;}
-	public void addDepartment(String str, Department dep) {}
-	public void removeDepartment (String str) {}
-	public void editDepartment(String str, Department d) {}
-	public ArrayList<Department> getDepartments() {return null;}
-	public Department getDepartment(String str) {return null;}
-	public ArrayList<Course> getDepartmentCourses(String str) {return null;}
-        public void getFile(){}
-        public int getPermissions(){return 3;}
+        public Schedule generateSchedule() {return networking.generateSchedule();}
+	public File getFile(String str) {return networking.getFile(str);}
+	public int uploadFile(File file, String str) {return networking.uploadFile(file, str);}
+	public boolean addCourse(Course c, String str) {return networking.addCourse(c, str);}
+	public Course loadCourse(String str) {return networking.loadCourse(str);}
+	public boolean removeCourse(String str) {return networking.removeCourse(str);}
+	public boolean editCourse(Course c) {return networking.editCourse(c);}
+	public Major loadMajor(String str) {return networking.loadMajor(str);}
+	public void addMajor(Major m) {networking.addMajor(m);}
+	public boolean editMajor(Major m) {return networking.editMajor(m);}
+	public boolean removeMajor(String str) {return networking.removeMajor(str);}
+	public boolean addRequirement(Requirement r, String str) {return networking.addRequirement(r,str);}
+	public boolean removeRequirement(String str1, String str2){return networking.removeRequirement(str1, str2);}
+	public int login(String usr,String pass) {permissions = networking.login(usr, pass);return permissions;}
+	public boolean logout() {return networking.logout();}
+	public ArrayList<Requirements> getRequirements() {return networking.getRequirements();}
+	public int getCreditsRemaining() {return networking.getCreditsRemaining();}
+	public void addDepartment(String str, Department dep) {networking.addDepartment(str,dep);}
+	public void removeDepartment (String str) {networking.removeDepartment(str);}
+	public void editDepartment(String str, Department d) {networking.editDepartment(str,d);}
+	public ArrayList<Department> getDepartments() {return networking.getDepartments();}
+	public Department getDepartment(String str) {return networking.getDepartment(str);}
+	public ArrayList<Course> getDepartmentCourses(String str) {return networking.getDepartmentCourses(str);}
+        public int getPermissions(){return permissions;}
+
+    public User getStudentInfo() {
+        return networking.getStudentInfo();
+    }
 }
