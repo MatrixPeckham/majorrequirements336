@@ -198,7 +198,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
     @Override
     public boolean validateForm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return true;
     }
 
     /**

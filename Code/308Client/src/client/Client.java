@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import server.*;
@@ -104,4 +105,61 @@ public class Client{
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
+    //TODO TOM FILL THIS
+    User getStudentInfo() {
+        return null;
+    }
+
+    Schedule generateSchedule() {
+        return null;
+    }
+
+    boolean editCourse(Course c) {
+        return false;
+    }
+
+    Major loadMajor(String str) {
+        return null;
+    }
+
+    void addMajor(Major m) {
+        //auto stub
+    }
+
+    boolean editMajor(Major m) {
+        return false;
+    }
+
+    boolean addRequirement(Requirement r, String str) {
+        return false;
+    }
+
+    ArrayList<Requirements> getRequirements() {
+        return null;
+    }
+
+    void addDepartment(String str, Department dep) {
+        //does nothing
+    }
+
+    void editDepartment(String str, Department d) {
+        //does nothing
+    }
+
+    ArrayList<Department> getDepartments() {
+        return null;
+    }
+
+    Department getDepartment(String str) {
+        return null;
+    }
+
+    ArrayList<Course> getDepartmentCourses(String str) {
+        return null;
+    }
+
+    ////////////////////////////////////////////////////
+    //////////////STILL MAY NEED MORE///////////////////
+    ////////////////////////////////////////////////////
 }

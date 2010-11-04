@@ -4,14 +4,11 @@
  */
 
 package server;
-import java.util.*;
+
 /**
  *
- * @author TJ
+ * @author Bill
  */
 public class Schedule {
-    private TreeMap<String, Vector<Course>> schedule;
-
-
 
 }
