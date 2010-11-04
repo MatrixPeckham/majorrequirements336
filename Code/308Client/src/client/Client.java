@@ -16,7 +16,6 @@ import java.io.*;
  */
 //TODO finish this class all methods marked with TODO need
 //TODO server classes the rest are stubs that need socket interaction
-public class Client implements Runnable{
 public class Client{
 
 	/**Socket for communication with server*/
@@ -43,7 +42,6 @@ public class Client{
 	public int uploadFile(File file, String str) {return 0;}
 //TODO	public boolean addCourse(Course c, String str) {return false;}
 //TODO	public Course loadCourse(String str) {return null;}
-	public boolean removeCourse(String str) {return false;}
 	public boolean addCourse(Course c, String str) {
             try{
                 pw.println(Commands.ADD_CLASS);
@@ -95,9 +93,6 @@ public class Client{
 //TODO	public Department getDepartment(String str) {return null;}
 //TODO	public Vector<Course> getDepartmentCourses(String) {return null;}
 
-	@Override
-	//TODO finish
-	public void run() {
         Client() {
             try {
                 //first thing initiate connection
