@@ -22,8 +22,10 @@ public class ServerThread implements Runnable{
     private PrintWriter pw;
     private InputStream in;
     private OutputStream out;
+    private int permissions;
     ServerThread(Socket s) {
         client=s;
+        permissions=User.STUDENT;
         connected=true;
         try{
             system=SystemManager.getSystemManager();
@@ -56,15 +58,15 @@ public class ServerThread implements Runnable{
                 if(cmd.equals(Commands.LOGIN)) {
                     String username=rdr.readLine();
                     String password=rdr.readLine();
-                    
-                } else if(cmd.equals(Commands.LOGIN)) {
-
+                    permissions=system.checkLogin(username,password);
                 } else if(cmd.equals(Commands.LOGOUT)) {
+                    connected=false;
+                    system.removeUser(user.getID());
 
                 } else if(cmd.equals(Commands.ADD_CLASS)) {
 
                 } else if(cmd.equals(Commands.ADD_DEPT)) {
-
+                    
                 } else if(cmd.equals(Commands.ADD_MAJOR)) {
 
                 } else if(cmd.equals(Commands.DOWNLOAD_COURSE_DATA)) {
@@ -98,7 +100,7 @@ public class ServerThread implements Runnable{
                 } else if(cmd.equals(Commands.UPLOAD_REQ)) {
 
                 } else if(cmd.equals(Commands.UPLOAD_SCHED)) {
-
+                    File f=(File) objectIn.readObject();
                 }
 
 

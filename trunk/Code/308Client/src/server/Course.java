@@ -35,6 +35,10 @@ import logging.UseLogger;
  */
 @Entity
 public class Course implements Serializable {
+    public static final int SPRING=2;
+    public static final int FALL=1;
+    public static final int NONE=0;
+    public static final int BOTH=3;
     @OneToMany
     private Collection<Course> prereqs;
     /*
@@ -63,38 +67,18 @@ public class Course implements Serializable {
 
         num=level;
     }
+   public void addPreReq(Course c) {prereqs.add(c);}
    
-  
-    public void addPrereq(Course c) {
-        em.merge(c);
-    }
-   
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-    public void setName(String name) {
-        this.name=name;
-        em.merge(this);
-    }
-    public String getName() {return name;}
+    public void setPrereqs(Collection<Course> p) {prereqs=p;}
+    public void setId(String id) {this.id = id;}
+    public void setName(String name) {this.name=name;}
     public void setNum(int num) {this.num=num; em.merge(this);}
+
+    public String getName() {return name;}
     public int getNum(){return num;}
-    
-    public Collection<Course> getPrereqs() {
-        return prereqs;
-    }
-    public void setPrereqs(Collection<Course> p) {
-        prereqs=p;
-    }
-    /* adds prereq and saves course in DB*/
-    public void addPreReq(Course c) {
-        em.merge(c);
-        prereqs.add(c);
-        em.merge(this);
-    }
+    public String getId() {return id;}
+    public Collection<Course> getPrereqs() {return prereqs;}
+
+
     public boolean passedCourse(User u){return false;}
 }

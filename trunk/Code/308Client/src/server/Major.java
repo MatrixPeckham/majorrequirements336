@@ -27,7 +27,7 @@ import logging.UseLogger;
  */
 @Entity
 public class Major implements Serializable {
-    @Id
+    
     private String id;
     
     private Collection<Requirement> reqs;
@@ -73,6 +73,7 @@ public class Major implements Serializable {
          reqs=r;
      }
      
+    @Id
     public String getId() {
         return id;
     }
@@ -92,6 +93,9 @@ public class Major implements Serializable {
         }catch(Exception e) {
 
         }
+    }
+    public Vector<Course> getRemainingCourse(Vector<CourseRecord> records) {
+        return null;
     }
     public void removeRequirement(Requirement r) {
 
