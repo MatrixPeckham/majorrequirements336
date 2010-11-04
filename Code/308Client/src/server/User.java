@@ -10,7 +10,7 @@ import java.util.*;
  *
  * @author tj
  */
-public class User {
+public class User implements Scheduler{
     public static final int STUDENT=0;
     public static final int DEPT_ADMIN=1;
     public static final int SUPER_ADMIN=2;
@@ -26,4 +26,9 @@ public class User {
         majorYear=(new Date()).getYear();
     }
     public long getID() {return userId;}
+
+    @Override
+    public Schedule generateSchedule() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
  }

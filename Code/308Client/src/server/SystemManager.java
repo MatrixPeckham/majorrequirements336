@@ -44,6 +44,9 @@ public class SystemManager {
                return User.STUDENT;
            }
        }
+       public void removeUser(long id) {
+            users.remove(id);
+       }
        public User addUser() {
            User u=new User(nextAvailible);
            users.put(nextAvailible, u);

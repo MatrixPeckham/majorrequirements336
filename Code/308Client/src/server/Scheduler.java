@@ -11,4 +11,5 @@ package server;
  */
 public interface Scheduler {
 
+    public Schedule generateSchedule();
 }
