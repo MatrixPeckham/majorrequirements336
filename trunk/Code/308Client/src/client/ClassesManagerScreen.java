@@ -1,5 +1,6 @@
 package client;
 
+import com.sun.org.apache.bcel.internal.generic.TABLESWITCH;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -14,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import server.Commands;
+import server.CourseRecord;
 
 /**
  * Classes manager screen
@@ -115,7 +118,11 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.changeManageScreen(ClientGUI.CURR_EDIT, null);
+                if(validateForm()){
+                    String str = (String) courses.getModel().getValueAt(courses.getSelectedRow(),0);
+                    CourseRecord cr = frame.getCourseRecord(str);
+                    frame.changeManageScreen(ClientGUI.CURR_EDIT, cr);
+                }
             }
         });
         removeButton = new JButton("Remove Course");
@@ -123,18 +130,38 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                //frame.changeScreen(ClientGUI.CLASSES);
+                if(validateForm()){
+                    String str = (String) courses.getModel().getValueAt(courses.getSelectedRow(),0);
+                    boolean b = frame.removeCourseRecord(str);
+                    if(b){
+                        Object o = frame.getStudentInfo();
+                        frame.changeScreen(ClientGUI.CLASSES, o);
+                    }
+                }
             }
         });
         uploadButton = new JButton("Upload Courses");
+        uploadButton.addActionListener(new ActionListener() {
 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.uploadFile(getFile(true), Commands.UPLOAD_SCHED);
+            }
+        });
         downloadButton = new JButton("Dowload Courses");
+        downloadButton.addActionListener(new ActionListener() {
 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dowloadFile(getFile(false),Commands.DOWNLOAD_SCHED);
+            }
+        });
         checkButton = new JButton("Check Requirements");
         checkButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+//                Object o = frame.checkSchedule();
                 frame.changeScreen(ClientGUI.CHECK, null);
             }
         });

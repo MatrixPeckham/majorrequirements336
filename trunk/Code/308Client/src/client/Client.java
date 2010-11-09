@@ -163,6 +163,18 @@ public class Client{
         return "";
     }
 
+    CourseRecord getCourseRecord(String str) {
+        return null;
+    }
+
+    boolean removeCourseRecord(String str) {
+        return true;
+    }
+
+    void downloadFile(File file, String str) {
+        //do nothing
+    }
+
     ////////////////////////////////////////////////////
     //////////////STILL MAY NEED MORE///////////////////
     ////////////////////////////////////////////////////

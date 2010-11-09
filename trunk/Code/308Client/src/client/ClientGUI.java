@@ -199,4 +199,17 @@ public class ClientGUI extends JFrame {
     String getCurrentDepartment() {
         return networking.getCurrentDepartment();
     }
-}
+
+    CourseRecord getCourseRecord(String str) {
+        return networking.getCourseRecord(str);
+    }
+
+    boolean removeCourseRecord(String str) {
+        return networking.removeCourseRecord(str);
+    }
+
+    void dowloadFile(File file, String str) {
+        networking.downloadFile(file, str);
+    }
+
+ }

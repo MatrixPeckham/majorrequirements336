@@ -4,8 +4,10 @@ import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.io.File;
 
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
 /**
@@ -61,6 +63,14 @@ public abstract class Screen extends JPanel {
 		gbc.insets = new Insets(5, 5, 5, 5);
 		c.add(jc, gbc);
 	}
+        JFileChooser fc = new JFileChooser();
+        public File getFile(boolean open){
+            int i = open ? fc.showOpenDialog(frame) : fc.showSaveDialog(frame);
+            if(i==JFileChooser.APPROVE_OPTION){
+                return fc.getSelectedFile();
+            }
+            return null;
+        }
         /**
          * validates the form fields
          * @return true if form is correctly filled out false otherwise
