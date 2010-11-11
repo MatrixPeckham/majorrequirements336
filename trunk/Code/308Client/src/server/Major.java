@@ -8,6 +8,7 @@ package server;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Level;
 import javax.persistence.Entity;
@@ -41,6 +42,12 @@ public class Major implements Serializable {
         logger = new UseLogger();
         reqs=new ArrayList<Requirement>();
     }
+    public Major(String major, double minGPA, int minLocalCreds) {
+        reqs=new ArrayList<Requirement>();
+        id=major;
+        this.minGPA=minGPA;
+        minCreditsHere=minLocalCreds;
+    }
     /**
      * test main method
      * @param args
@@ -58,7 +65,7 @@ public class Major implements Serializable {
         em.persist(d);
         d.addMajor(c);
         d.addCourse(co);
-        em.getTransaction().commit();
+       // em.getTransaction().commit();
 
         // Set the LogLevel to Info, severe, warning and info will be written
 	// Finest is still not written
@@ -94,7 +101,19 @@ public class Major implements Serializable {
 
         }
     }
-    public Vector<Course> getRemainingCourse(Vector<CourseRecord> records) {
+    public Vector<Course> getRemainingCourse(Collection<CourseRecord> records) {
+        Vector<Course> remaining=new Vector<Course>();
+        for(Requirement r : reqs) {
+                //remaining.addAll(r.getRemainingCourses(records));
+        }
+        return remaining;
+    }
+    public Vector<Requirement> requirementsRemaining(Collection<CourseRecord> r, int year) {
+        for(Requirement a : reqs) {
+            if(a.getVersion()==year) {
+                if(!a.)
+            }
+        }
         return null;
     }
     public void removeRequirement(Requirement r) {

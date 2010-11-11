@@ -8,6 +8,8 @@ package server;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
+import java.util.Vector;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,6 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import structures.*;
 
 /**Course Group
  * TRhis class represents a sequence of courses
@@ -34,7 +37,7 @@ public class CourseGroup implements Serializable {
      private static EntityManager em;
     private static EntityManagerFactory emf;
 
-    CourseGroup() {
+    public CourseGroup() {
         courses=new ArrayList();
     }
     public Long getId() {
@@ -61,10 +64,10 @@ public class CourseGroup implements Serializable {
      * @param c
      */
     public void addCourse(Course c) {
-        em.merge(c);
+        //em.merge(c);
         courses.add(c);
-        em.merge(this);
-        em.getTransaction().commit();
+        //em.merge(this);
+        //em.getTransaction().commit();
     }
     /**
      * Removes Course and persists sequence in database
@@ -76,14 +79,49 @@ public class CourseGroup implements Serializable {
         em.merge(this);
         em.getTransaction().commit();
     }
+    public RootlessTree<Course> getRemainingCourses(Collection<CourseRecord> records) {
+        Vector<Course> remaining=new Vector<Course>();
+        RootlessTree<Course> rem=new RootlessTree<Course>();
+        //go through required courses
+        for(Course c : courses) {
+            if(!courseComplete(c, records)) {
+                getRemainingCourses(null,c,records, rem);
+            }
+
+            //remaining.addAll(getRemainingCourses(c,records));
+
+        }
+        return rem;
+    }
     /**
-     *
-     * @return whether the sequence has been completed
+     * 
+     * @param c
+     * @param records
+     * @return
      */
-    public boolean sequenceSatisfied(){//Collection<CourseRecord> c) {
+    private void getRemainingCourses(Course parent, Course c, Collection<CourseRecord> records, RootlessTree<Course> remaining){
+       
+        if(!courseComplete(c, records)) {
+            if(parent==null) {
+                remaining.addRoot(c);
+            } else {
+                remaining.addChild(parent, c);
+            }
+                Collection<Course> prereqs=c.getPrereqs();
+                for(Course c2 : prereqs) {
+
+                    getRemainingCourses(c, c2, records, remaining);
+                }
+        }
+        
+    }
+    private boolean courseComplete(Course c, Collection<CourseRecord> records) {
+        for(CourseRecord r :records) {
+            if(c.equals(r.getCourse()) && r.coursePassed()) {
+                return true;
+            }
+        }
         return false;
     }
-
-    
 
 }

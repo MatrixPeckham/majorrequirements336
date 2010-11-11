@@ -35,7 +35,7 @@ public final class Commands {
     public static final String EDIT_COURSE="EDIT_COURSE";
     public static final String EDIT_MAJOR="EDIT_MAJOR";
     public static final String EDIT_REQUIREMENT="EDIT_REQ";
-    public static final String GETREQS="GET_REQS";
+    public static final String GET_MAJOR="GET_MAJOR";
     public static final String GETSCHED="SCHEDULE";
     public static final String GETCOURSE="GET_COURSE";
 

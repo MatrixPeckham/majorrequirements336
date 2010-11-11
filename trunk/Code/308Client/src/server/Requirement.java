@@ -17,6 +17,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Persistence;
 import logging.UseLogger;
+import java.util.*;
+import structures.RootlessTree;
 
 /** Requirements that need to be fullfiledd for a major for graduation
  *
@@ -34,7 +36,7 @@ public class Requirement implements Serializable {
     private int version;//year of requirement
     private static EntityManager em;
     private static EntityManagerFactory emf;
-    Requirement() {
+    public Requirement() {
         emf=Persistence.createEntityManagerFactory("ClientPU");
         em=emf.createEntityManager();
     }
@@ -47,6 +49,7 @@ public class Requirement implements Serializable {
     public void setPossibleCourses(ArrayList<CourseGroup> c) {
         possibleCourses=c;
     }
+    public int getVersion(){return version;}
     public int getNumberOfCourses() {
         return numberOfCourses;
     }
@@ -62,8 +65,11 @@ public class Requirement implements Serializable {
     public void setNumberOfCourses(int c) {
         numberOfCourses=c;
     }
-    public void setMinGPA(int c) {
+    public void setMinGPA(double c) {
         minGPA=c;
+    }
+    public void setMinGPA(Grade c) {
+        setMinGPA(c.getGradePoints());
     }
     public void setMinUpperDivCredits(int c) {
         this.minUpperDivCredits=c;
@@ -93,6 +99,18 @@ public class Requirement implements Serializable {
         } catch(Exception e) {
             UseLogger.severe("line 80 Exception! :" +e.getMessage());
         }
+    }
+
+    public RootlessTree<Course> getRemainingCourses(Collection<CourseRecord> records) {
+        RootlessTree<Course> remaining=new RootlessTree<Course>();
+        for(CourseGroup g : possibleCourses) {
+            remaining.addTree(g.getRemainingCourses(records));
+        }
+        return remaining;
+    }
+    public boolean requirementSatisfied(){
+
+         return false;
     }
 
 }

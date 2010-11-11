@@ -83,7 +83,7 @@ public class ServerThread implements Runnable{
 
                 } else if(cmd.equals(Commands.EDIT_REQUIREMENT)) {
 
-                } else if(cmd.equals(Commands.GETREQS)) {
+                } else if(cmd.equals(Commands.GET_MAJOR)) {
 
                 } else if(cmd.equals(Commands.GETSCHED)) {
 
