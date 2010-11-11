@@ -105,13 +105,13 @@ public class Client{
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+/*
     //TODO TOM FILL THIS
-    User getStudentInfo() {
+    public User getStudentInfo() {
         return null;
     }
 
-    Schedule generateSchedule() {
+    public Schedule generateSchedule() {
         return null;
     }
 
@@ -135,7 +135,7 @@ public class Client{
         return false;
     }
 
-    ArrayList<Requirements> getRequirements() {
+    ArrayList<Requirement> getRequirements() {
         return null;
     }
 
@@ -178,4 +178,6 @@ public class Client{
     ////////////////////////////////////////////////////
     //////////////STILL MAY NEED MORE///////////////////
     ////////////////////////////////////////////////////
+ * 
+ */
 }
