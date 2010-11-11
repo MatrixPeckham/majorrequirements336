@@ -31,6 +31,16 @@ public class User implements Scheduler, FileParser{
 
     public Major getMajor() {return major;}
     public long getID() {return userId;}
+    public String getName() {return name;}
+    public int getMajorYear() {return majorYear;}
+    public int getPermissions() {return permissions;}
+    public TreeMap<String, CourseRecord> getCourses() {return courses;}
+
+    public void setMajor(Major m) {major = m;}
+    public void setUserId(Long id) {userId = id;}
+    public void setName(String s) {name = s;}
+    public void setPermissions(int i) {permissions = i;}
+    public void setMajorYear(int i) {majorYear = i;}
 
     @Override
     public Schedule generateSchedule() {
