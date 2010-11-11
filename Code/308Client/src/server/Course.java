@@ -22,6 +22,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
@@ -49,7 +50,8 @@ public class Course implements Serializable {
     /*
      * id- the combined name/number to uniquely identify the course (primary key)
      */
-    private String minGrade;//min passing grade for the course
+    @OneToOne
+    private Grade minGrade;//min passing grade for the course
     private String description;//course description
     private String name;//course name, department identifier
     private int num; //course number, used for upper division identification
@@ -60,11 +62,13 @@ public class Course implements Serializable {
 
 
     public Course() {}
-    Course(String dept, int level) {
+    Course(String dept, int level, Grade minGrade, int creds, int offered) {
         UseLogger logger = new UseLogger();
-        id=dept+""+level;
+        id=dept+" "+level;
         name=dept;
-
+        this.minGrade=minGrade;
+        credits=creds;
+        semestersOffered=offered;
         num=level;
     }
    public void addPreReq(Course c) {prereqs.add(c);}
@@ -73,12 +77,21 @@ public class Course implements Serializable {
     public void setId(String id) {this.id = id;}
     public void setName(String name) {this.name=name;}
     public void setNum(int num) {this.num=num; em.merge(this);}
+    public void setDescription(String d){description=d;}
+    public void setCredits(int c) {credits=c;}
+    public void setSemestersOfferd(int o) {semestersOffered=0;}
 
     public String getName() {return name;}
     public int getNum(){return num;}
     public String getId() {return id;}
     public Collection<Course> getPrereqs() {return prereqs;}
-
+    public Grade getMinGrade() {return minGrade;}
+    public String getDescription() {return description;}
+    public int getCredits() {return credits;}
+    public int getSemestersOffered(){return semestersOffered;}
 
     public boolean passedCourse(User u){return false;}
+    public boolean equals(Course c) {
+        return c.getId().equals(id);
+    }
 }
