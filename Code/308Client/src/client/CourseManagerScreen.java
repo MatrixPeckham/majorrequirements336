@@ -5,15 +5,17 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import server.Commands;
+import server.Course;
 
 /**
  * Manager for the courses
@@ -78,10 +80,20 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.changeManageScreen(ClientGUI.CURR_EDIT, null);
+                Course c = frame.getCourse((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
+                frame.changeManageScreen(ClientGUI.CURR_EDIT, c);
             }
         });
         remove = new JButton("Remove Course");
+        remove.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.removeCourse((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
+                Object o = frame.getDepartment(frame.getCurrentDepartment());
+                getScreen(o);
+            }
+        });
         add = new JButton("Add Course");
         add.addActionListener(new ActionListener() {
 
@@ -91,7 +103,22 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             }
         });
         uploadCourses = new JButton("Upload Courses");
+        uploadCourses.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.uploadFile(new File(textField.getText()), Commands.UPLOAD_COURSE_DATA);
+            }
+        });
         browse = new JButton("Browse");
+        browse.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                File f = getFile(true);
+                textField.setText(f.getAbsolutePath());
+            }
+        });
         back = new JButton("Back");
         back.addActionListener(new ActionListener() {
 
@@ -105,7 +132,8 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.changeScreen(ClientGUI.DEPARTMENTS, null);
+                Object o = frame.getDepartments();
+                frame.changeScreen(ClientGUI.DEPARTMENTS, o);
             }
         });
         textField = new JTextField(20);
@@ -228,7 +256,8 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    frame.changeScreen(ClientGUI.COURSES, null);
+                    frame.addCourse(makeCourse(), "");
+                    frame.changeScreen(ClientGUI.COURSES, frame.getDepartment(frame.getCurrentDepartment()));
                 }
             });
             back = new JButton("Cancel");
@@ -236,7 +265,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    frame.changeScreen(ClientGUI.COURSES, null);
+                    frame.changeScreen(ClientGUI.COURSES, frame.getDepartment(frame.getCurrentDepartment()));
                 }
             });
             String[] columnNames = {"Course", "Select"};
@@ -284,6 +313,9 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
         }
 
+        private Course makeCourse() {
+            return null;
+        }
         @Override
         public void getScreen(Object fillWith) {
             throw new UnsupportedOperationException("Not supported yet.");

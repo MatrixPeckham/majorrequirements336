@@ -55,7 +55,7 @@ public class ScheduleScreen extends Screen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-               frame.changeScreen(ClientGUI.CLASSES, null);
+                frame.changeScreen(ClientGUI.CLASSES, frame.getStudentInfo());
             }
         });
         add(sched,BorderLayout.NORTH);

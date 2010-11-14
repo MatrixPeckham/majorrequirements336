@@ -62,7 +62,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeScreen(ClientGUI.COURSES, null);
+                            frame.changeScreen(ClientGUI.COURSES, frame.getDepartment((String)table.getModel().getValueAt(table.getSelectedRow(), 0)));
 			}
 		});
 		viewCourses.setFont(new Font("Times New Roman",1,24));
@@ -77,6 +77,14 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 		addDepart.setFont(new Font("Times New Roman",1,24));
 		removeDepart = new JButton("Remove Department");
 		removeDepart.setFont(new Font("Times New Roman",1,24));
+                removeDepart.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        frame.removeDepartment((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
+                        getScreen(frame.getDepartments());
+                    }
+                });
 		back=new JButton("Back");
 		back.addActionListener(new ActionListener() {
 			
@@ -181,7 +189,8 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					DepartmentManagerScreen.this.frame.changeScreen(ClientGUI.DEPARTMENTS, null);
+                                    frame.addDepartment(nameField.getName(), new server.Department());
+					frame.changeScreen(ClientGUI.DEPARTMENTS, frame.getDepartments());
 				}
 			});
 			GridBagLayout gbl = new GridBagLayout();

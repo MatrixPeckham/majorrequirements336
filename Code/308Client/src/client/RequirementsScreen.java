@@ -112,8 +112,7 @@ public class RequirementsScreen extends Screen {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeScreen(ClientGUI.CLASSES, null);
-
+				frame.changeScreen(ClientGUI.CLASSES, frame.getStudentInfo());
 			}
 		});
 
@@ -124,7 +123,8 @@ public class RequirementsScreen extends Screen {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeScreen(ClientGUI.SCHEDULE, null);
+                            Object o = frame.generateSchedule();
+				frame.changeScreen(ClientGUI.SCHEDULE, o);
 
 			}
 		});
