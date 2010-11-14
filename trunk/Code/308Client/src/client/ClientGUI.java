@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import server.*;
 /**
- * Main Frame, and starting point of the 
+ * Main Frame, and starting point of the
  * client program
  * @author Bill
  *
@@ -28,7 +28,7 @@ public class ClientGUI extends JFrame {
 	public static final String SCHEDULE = "SCHEDULE";
 	public static final String CURR_EDIT = "CURR_EDIT";
 	public static final String CURR_ADD = "CURR_ADD";
-	public static final String CURR_REM = "CURR_REM";	
+	public static final String CURR_REM = "CURR_REM";
 	/**
 	 * just a serial version ID that eclipse always wants in swing classes
 	 */
@@ -57,7 +57,7 @@ public class ClientGUI extends JFrame {
 		init();
 		setExtendedState(getExtendedState()|MAXIMIZED_BOTH);
 	}
-        
+
         //initializes all the screens
         private void init(){
 		screens.put(WELCOME, new WelcomeScreen(this));
@@ -101,7 +101,7 @@ public class ClientGUI extends JFrame {
 		curScreen=str;
 		curMan="";
 	}
-        
+
         /**
          * changes which manager screen is shown from the current screen
          * @param str string that is code for the screen to show
@@ -139,7 +139,7 @@ public class ClientGUI extends JFrame {
 			this.validate();
 			this.repaint();
 			curMan=CURR_EDIT;
-			
+
 		} else if(str.equals(CURR_REM)){
 			JPanel p = ((ManagerScreen)screens.get(curScreen)).getRemoveScreen();
 			if(p==null){
@@ -181,7 +181,7 @@ public class ClientGUI extends JFrame {
 	public boolean removeRequirement(String str1, String str2){return networking.removeRequirement(str1, str2);}
 	public int login(String usr,String pass) {permissions = networking.login(usr, pass);return permissions;}
 	public boolean logout() {return networking.logout();}
-	public ArrayList<Requirements> getRequirements() {return networking.getRequirements();}
+	public ArrayList<Requirement> getRequirements() {return networking.getRequirements();}
 	public int getCreditsRemaining() {return networking.getCreditsRemaining();}
 	public void addDepartment(String str, Department dep) {networking.addDepartment(str,dep);}
 	public void removeDepartment (String str) {networking.removeDepartment(str);}
@@ -210,6 +210,30 @@ public class ClientGUI extends JFrame {
 
     void dowloadFile(File file, String str) {
         networking.downloadFile(file, str);
+    }
+
+    ArrayList<Requirement> checkSchedule() {
+        return networking.checkSchedule();
+    }
+
+    void addCourseRecord(CourseRecord r) {
+        networking.addCourseRecord(r);
+    }
+
+    void editCourseRecord(CourseRecord r) {
+        networking.editCourseRecord(r);
+    }
+
+    Major getMajor(String string) {
+        return networking.getMajor(string);
+    }
+
+    String getCurrentMajor() {
+        return networking.getCurrentMajor();
+    }
+
+    Course getCourse(String string) {
+        return networking.getCourse(string);
     }
 
  }

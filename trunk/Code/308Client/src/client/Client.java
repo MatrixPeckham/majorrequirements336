@@ -105,13 +105,8 @@ public class Client{
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-/*
-    //TODO TOM FILL THIS
-    public User getStudentInfo() {
-        return null;
-    }
 
-    public Schedule generateSchedule() {
+    Schedule generateSchedule() {
         return null;
     }
 
@@ -124,7 +119,7 @@ public class Client{
     }
 
     void addMajor(Major m) {
-        //auto stub
+
     }
 
     boolean editMajor(Major m) {
@@ -140,11 +135,11 @@ public class Client{
     }
 
     void addDepartment(String str, Department dep) {
-        //does nothing
+
     }
 
     void editDepartment(String str, Department d) {
-        //does nothing
+
     }
 
     ArrayList<Department> getDepartments() {
@@ -158,9 +153,12 @@ public class Client{
     ArrayList<Course> getDepartmentCourses(String str) {
         return null;
     }
+public User getStudentInfo() {
+    return null;
+}
 
     String getCurrentDepartment() {
-        return "";
+        return null;
     }
 
     CourseRecord getCourseRecord(String str) {
@@ -168,11 +166,11 @@ public class Client{
     }
 
     boolean removeCourseRecord(String str) {
-        return true;
+        return false;
     }
 
-    void downloadFile(File file, String str) {
-        //do nothing
+    void dowloadFile(File file, String str) {
+
     }
 
     ArrayList<Requirement> checkSchedule() {
@@ -180,11 +178,9 @@ public class Client{
     }
 
     void addCourseRecord(CourseRecord r) {
-        //do nothing
     }
 
     void editCourseRecord(CourseRecord r) {
-        //do nothing
     }
 
     Major getMajor(String string) {
@@ -199,9 +195,7 @@ public class Client{
         return null;
     }
 
-    ////////////////////////////////////////////////////
-    //////////////STILL MAY NEED MORE///////////////////
-    ////////////////////////////////////////////////////
- * 
- */
+    void downloadFile(File file, String str) {
+        
+    }
 }
