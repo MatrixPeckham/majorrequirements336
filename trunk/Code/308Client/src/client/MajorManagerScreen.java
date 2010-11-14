@@ -18,6 +18,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import server.Major;
+import server.Requirement;
 
 /**
  * Manager screen for the department Admin page
@@ -81,7 +83,11 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                JOptionPane.showInputDialog("Input Major Name");
+                String s = JOptionPane.showInputDialog("Input Major Name");
+                Major m = new Major();
+                frame.addMajor(m);
+                Object o = frame.getDepartment(frame.getCurrentDepartment());
+                getScreen(o);
             }
         });
         editButton = new JButton("Edit Major");
@@ -90,6 +96,10 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showInputDialog("Change Major Name");
+                Major m = new Major();
+                frame.addMajor(m);
+                Object o = frame.getDepartment(frame.getCurrentDepartment());
+                getScreen(o);
             }
         });
         removeButton = new JButton("Remove Major");
@@ -97,7 +107,9 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
+                frame.removeMajor((String)table.getModel().getValueAt(table.getSelectedRow(), 1));
+                Object o = frame.getDepartment(frame.getCurrentDepartment());
+                getScreen(o);
             }
         });
         editMajor = new JButton("Edit Major Requiremnts");
@@ -105,7 +117,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.changeManageScreen(ClientGUI.CURR_EDIT, null);
+                Major m = frame.getMajor((String)table.getModel().getValueAt(table.getSelectedRow(), 1));
+                frame.changeManageScreen(ClientGUI.CURR_EDIT, m);
             }
         });
         back = new JButton("Back");
@@ -147,7 +160,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
     @Override
     public boolean validateForm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return true;
     }
 
     /**
@@ -251,7 +264,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
+                    //NO COMMUNICATION
+                    //DO LATER
                 }
             });
             remButton = new JButton("<- Remove");
@@ -259,7 +273,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
+                    //NO COMMUNICATION
+                    //DO LATER
                 }
             });
             currL = new JLabel("Current Sequence");
@@ -285,14 +300,18 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    frame.changeManageScreen(ClientGUI.CURR_EDIT, null);
+                    frame.addRequirement(makeReq(), nameF.getText());
+                    Object o = frame.getMajor(frame.getCurrentMajor());
+                    frame.changeManageScreen(ClientGUI.CURR_EDIT, o);
                 }
+
             });
             cancel = new JButton("Cancel");
             cancel.addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
+                    Object o = frame.getMajor(frame.getCurrentMajor());
                     frame.changeManageScreen(ClientGUI.CURR_EDIT, null);
                 }
             });
@@ -323,6 +342,9 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
 
         }
+        private Requirement makeReq() {
+                return null;
+        }
         /**
          * serial version ID that eclipse wants in all swing classes
          */
@@ -330,12 +352,11 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
         @Override
         public void getScreen(Object fillWith) {
-            throw new UnsupportedOperationException("Not supported yet.");
         }
 
         @Override
         public boolean validateForm() {
-            throw new UnsupportedOperationException("Not supported yet.");
+            return true;
         }
     }
 
@@ -391,7 +412,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    frame.changeManageScreen(ClientGUI.CURR_ADD, null);
+                    frame.changeManageScreen(ClientGUI.CURR_ADD, table.getModel().getValueAt(table.getSelectedRow(), 0));
                 }
             });
             remReq = new JButton("Remove");
@@ -400,7 +421,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    frame.changeScreen(ClientGUI.MAJORS, null);
+                    frame.changeScreen(ClientGUI.MAJORS, frame.getDepartment(frame.getCurrentDepartment()));
                 }
             });
             this.setLayout(new GridBagLayout());

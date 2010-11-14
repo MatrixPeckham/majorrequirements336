@@ -175,6 +175,30 @@ public class Client{
         //do nothing
     }
 
+    ArrayList<Requirement> checkSchedule() {
+        return null;
+    }
+
+    void addCourseRecord(CourseRecord r) {
+        //do nothing
+    }
+
+    void editCourseRecord(CourseRecord r) {
+        //do nothing
+    }
+
+    Major getMajor(String string) {
+        return null;
+    }
+
+    String getCurrentMajor() {
+        return null;
+    }
+
+    Course getCourse(String string) {
+        return null;
+    }
+
     ////////////////////////////////////////////////////
     //////////////STILL MAY NEED MORE///////////////////
     ////////////////////////////////////////////////////

@@ -1,22 +1,23 @@
 package client;
 
-import com.sun.org.apache.bcel.internal.generic.TABLESWITCH;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import server.Commands;
 import server.CourseRecord;
+import server.Requirement;
+import server.Schedule;
 
 /**
  * Classes manager screen
@@ -161,16 +162,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-//                Object o = frame.checkSchedule();
-                frame.changeScreen(ClientGUI.CHECK, null);
-            }
-        });
-
-        checkButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.changeScreen(ClientGUI.CHECK, null);
+                ArrayList<Requirement> o = frame.checkSchedule();
+                frame.changeScreen(ClientGUI.CHECK, o);
             }
         });
         generateButton = new JButton("Generate Schedule");
@@ -178,7 +171,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.changeScreen(ClientGUI.SCHEDULE, null);
+                Schedule o = frame.generateSchedule();
+                frame.changeScreen(ClientGUI.SCHEDULE, o);
             }
         });
         backButton = new JButton("Back");
@@ -299,15 +293,25 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    frame.changeScreen(ClientGUI.CLASSES, null);
+                    if(addPage.getText().startsWith("Add")){
+                        CourseRecord r = makeRecord();
+                        frame.addCourseRecord(r);
+                    } else {
+                        CourseRecord r = makeRecord();
+                        frame.editCourseRecord(r);
+                    }
+                    Object o = frame.getStudentInfo();
+                    frame.changeScreen(ClientGUI.CLASSES, o);
                 }
+
             });
             cancel = new JButton("Cancel");
             cancel.addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    frame.changeScreen(ClientGUI.CLASSES, null);
+                    Object o = frame.getStudentInfo();
+                    frame.changeScreen(ClientGUI.CLASSES, o);
                 }
             });
             setLayout(new GridBagLayout());
@@ -320,6 +324,9 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(cancel, this, 3, 5, 1, 1);
         }
 
+        private CourseRecord makeRecord() {
+            return null;
+        }
         @Override
         public void getScreen(Object fillWith) {
 
