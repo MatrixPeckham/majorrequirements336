@@ -1,5 +1,6 @@
 package client;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -29,6 +30,8 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 	private JButton back;
         //table for departments
 	private JTable table;
+        //error label for remove
+        private JLabel error;
 	/**
 	 * serial version ID that eclipse wants in all swing classes
 	 */
@@ -102,14 +105,20 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 				{"History"},{"Women Studies"},{"Biology"},{"Chemistry"},{"Physcis"}	
 		};
 		
-		  table = new JTable(data, columnNames);
-	      table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
-	      table.setFillsViewportHeight(true);
+		table = new JTable(data, columnNames);
+                table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
+                table.setFillsViewportHeight(true);
 	      
-	      JScrollPane scrollPane = new JScrollPane(table);
-	      add(scrollPane);
+                JScrollPane scrollPane = new JScrollPane(table);
+                add(scrollPane);
+
+                error = new JLabel("Error: Select Department To Remove From The"
+                        + "Above Table");
+                error.setFont(new Font("Times New Roman",1,12));
+                error.setForeground(Color.red);
+                error.setVisible(false);
 		
-		GridBagLayout gbl = new GridBagLayout();
+                GridBagLayout gbl = new GridBagLayout();
 		this.setLayout(gbl);
 		
 		addJComponentToContainerUsingGBL(registrarAdminPage, this, 1, 1, 3, 2);
@@ -118,6 +127,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 		addJComponentToContainerUsingGBL(addDepart, this, 2, 10, 1, 1);
 		addJComponentToContainerUsingGBL(removeDepart, this, 3, 10, 1, 1);
 		addJComponentToContainerUsingGBL(back, this, 4, 10, 1, 1);
+                addJComponentToContainerUsingGBL(error, this, 1, 15, 1, 1);
 	}
 
 	@Override
@@ -142,7 +152,14 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 
     @Override
     public boolean validateForm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(table.getSelectedRow()==-1)
+        {
+            error.setVisible(true);
+            return false;
+        }
+        error.setVisible(false);
+        return true;
+        //throw new UnsupportedOperationException("Not supported yet.");
     }
 	/**
 	 * Inner class the the outside need know nothing about
@@ -165,6 +182,8 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 		private JTextField nameField;
                 //add button
 		private JButton add;
+                //error label
+                private JLabel error;
 
                 /**
                  * constructor
@@ -193,6 +212,10 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 					frame.changeScreen(ClientGUI.DEPARTMENTS, frame.getDepartments());
 				}
 			});
+                        error = new JLabel("Error: Please Enter Only Letters For The Department Name");
+                        error.setFont(new Font("Times New Roman",1,12));
+                        error.setForeground(Color.red);
+                        error.setVisible(false);
 			GridBagLayout gbl = new GridBagLayout();
 			this.setLayout(gbl);
 			
@@ -200,6 +223,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 			addJComponentToContainerUsingGBL(name, this, 1, 10, 1, 1);
 			addJComponentToContainerUsingGBL(nameField, this, 2, 10, 1, 1);
 			addJComponentToContainerUsingGBL(add, this, 1, 20, 1, 1);
+                        addJComponentToContainerUsingGBL(error, this, 1, 30, 1, 1);
 		}
 
         @Override
@@ -209,7 +233,31 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 
         @Override
         public boolean validateForm() {
-            throw new UnsupportedOperationException("Not supported yet.");
+            String s = nameField.getText();
+            for(int i = 0; i<=s.length(); i++)
+            {
+                if(s.charAt(i)!=' ')
+                {
+                    if(s.charAt(i)<'A')
+                    {
+                        error.setVisible(true);
+                        return false;
+                    }
+                    else if(s.charAt(i) > 'Z' && s.charAt(i) < 'a')
+                    {
+                        error.setVisible(true);
+                        return false;
+                    }
+                    else if(s.charAt(i)>'z')
+                    {
+                        error.setVisible(true);
+                        return false;
+                    }
+                }
+            }
+            error.setVisible(false);
+            return true;
+            //throw new UnsupportedOperationException("Not supported yet.");
         }
 	}
 	/**
