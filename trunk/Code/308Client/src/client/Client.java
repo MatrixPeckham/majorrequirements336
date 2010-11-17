@@ -27,8 +27,8 @@ public class Client{
         private BufferedReader rdr;
         private PrintWriter pw;
 //TODO public Schedule generateSchedule() {return null;}
-	public File getFile(String str) {return null;}
-	public File getFile(String str, File location) {
+	
+	public File getFile(File location, String str) {
             try {
                 pw.println(str);
                 int fileSize=Integer.parseInt(rdr.readLine());
@@ -77,8 +77,16 @@ public class Client{
 //TODO	public boolean addRequirement(Requirement r, String str) {return false;}
 
 	public boolean removeRequirement(String str1, String str2){return false;}
-	public int login(String usr,String pass) {return 3;}
-	public boolean logout() {return false;}
+	public int login(String usr,String pass) {
+            
+            return 3;
+        }
+	public boolean logout() {
+            pw.println(Commands.LOGOUT);
+            try{
+            return rdr.readLine().equals("OK");
+            }catch(Exception e) {return false;}
+        }
 //TODO	public Vector<Requirements> getRequirements() {return null;}
 
 	public int getCreditsRemaining() {return 0;}
@@ -177,25 +185,48 @@ public User getStudentInfo() {
         return null;
     }
 
-    void addCourseRecord(CourseRecord r) {
+    int addCourseRecord(CourseRecord r) {
+        pw.println(Commands.ADD_COURSE_RECORD);
+        return sendCourseRecord(r);
     }
 
-    void editCourseRecord(CourseRecord r) {
+    int editCourseRecord(CourseRecord r) {
+        pw.println(Commands.EDIT_COURSE_RECORD);
+        return sendCourseRecord(r);
     }
-
+    private int sendCourseRecord(CourseRecord r) {
+        try{
+            oos.writeObject(r);
+            return Integer.parseInt(rdr.readLine());
+        } catch(Exception e) {
+            return -1;
+        }
+    }
     Major getMajor(String string) {
-        return null;
+        pw.println(Commands.GET_MAJOR);
+        pw.println(string);
+        try{
+        return (Major) ois.readObject();
+        } catch(Exception e) {
+            return null;
+        }
     }
 
     String getCurrentMajor() {
         return null;
     }
 
-    Course getCourse(String string) {
-        return null;
+    public Course getCourse(String string) {
+        pw.println(Commands.GETCOURSE);
+        pw.println(string);
+        try{
+        return (Course) ois.readObject();
+        } catch(Exception e) {
+            return null;
+        }
     }
 
-    void downloadFile(File file, String str) {
-        
+    public void downloadFile(File file, String str) {
+        getFile(file,str);
     }
 }
