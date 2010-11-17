@@ -57,7 +57,9 @@
             <description>Computer Science II</description>
             <minGrade>2.0</minGrade>
             <credits>3</credits>
-            <prerequisite>CSE114</prerequisite>
+            <prerequisite>
+                <or>CSE 114</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -78,7 +80,9 @@
             <description>Computer Science III</description>
             <minGrade>2.0</minGrade>
             <credits>3</credits>
-            <prerequisite>CSE110</prerequisite>
+            <prerequisite>
+                <or>CSE 214</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -89,7 +93,9 @@
             <description>Computer Organization</description>
             <minGrade>2.0</minGrade>
             <credits>3</credits>
-            <prerequisite>CSE114</prerequisite>
+            <prerequisite>
+                <or>CSE 214</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -142,7 +148,9 @@
             <description>Introduction to Theory of Computation</description>
             <minGrade>2.0</minGrade>
             <credits>3</credits>
-            <prerequisite>CSE110</prerequisite>
+            <prerequisite>
+                <or>CSE 219</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : CoursesTaken.xml
+    Created on : November 12, 2010, 4:53 PM
+    Author     : TJ
+    Description:
+        Purpose of the document follows.
+-->
+
+<file type="record">
+    <course>
+        <dept>CSE</dept>
+        <num>114</num>
+        <grade>A</grade>
+        <transfer>true</transfer>
+    </course>
+    <course>
+        <dept>CSE</dept>
+        <num>214</num>
+        <grade>A</grade>
+        <transfer>false</transfer>
+    </course>
+    <course>
+        <dept>CSE</dept>
+        <num>219</num>
+        <grade>A</grade>
+        <transfer>false</transfer>
+    </course>
+    <course>
+        <dept>CSE</dept>
+        <num>215</num>
+        <grade>A</grade>
+        <transfer>false</transfer>
+    </course>
+
+</file>
