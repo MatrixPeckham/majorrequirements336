@@ -6,6 +6,10 @@
 package server;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Iterator;
 import java.util.*;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
@@ -224,6 +228,83 @@ public class User implements Scheduler, FileParser{
     }
     @Override
     public File writeFile(String cmd) {
+        FileWriter fw;
+        PrintWriter pw;
+        String fileName;
+
+        try {
+            if (cmd.equals("DOWNLOAD_COURSE_DATA"))
+                fileName = "CoursesTaken.xml";
+            else if(cmd.equals("DOWNLOAD_REQ"))
+                fileName = "Major.xml";
+            else
+                fileName = null;
+
+            fw = new FileWriter(fileName);
+            pw = new PrintWriter(fw);
+
+            if (fileName.equals("CoursesTaken.xml"))    {
+                Collection<CourseRecord> courserecords = courses.values();
+                int i = 0;
+                pw.println("<file type=\"record\">");
+                for(CourseRecord r : courserecords) {
+                    pw.println("<course>");
+                    pw.println("<dept>" + r.getCourse().getName() + "</dept>");
+                    pw.println("<num>" + r.getCourse().getNum() + "</num>");
+                    pw.println("<grade>" + r.getGrades().get(i) + "</grade>");
+                    pw.println("<transfer" + r.getTransfer() + "</transfer>");
+                    pw.println("</course>");
+                    i++;
+                }
+                pw.println("</file>");
+                pw.flush();
+                fw.flush();
+            }
+            else if (fileName.equals("Major.xml"))   {
+                School s = School.getSchool();
+                Collection<Department> departments = s.getDepartments();
+                pw.println("<file type=\"majorRequirement\">");
+                
+                for(Department d : departments) {
+                    Collection<Major> majors = d.getMajors();
+
+                    for(Major m : majors)   {
+                        Collection<Requirement> requirements = m.getRequirements();
+                        pw.println("<major>");
+                        pw.println("<majorname>" + m.getId() + "</majorname>");
+
+                        for(Requirement r : requirements)   {
+                            pw.println("<minGPA>" + r.getMinGPA() + "</minGPA>");
+                            pw.println("<minLocalCreds>" + r.getMinResidentCredits() + "</minLocalCreds>");
+                            pw.println("<department>" + d.getName() + "</departments>");
+                            pw.println("<requirement required=\"" + r.getNumberOfCourses() + "\">");
+                            pw.println("<name>" + r.getId() + "</name>");
+                            pw.println("<year>" + r.getYear() + "</year>");
+                            Collection<CourseGroup> coursegroups = r.getPossibleCourses();
+
+                            for(CourseGroup cg : coursegroups)  {
+                                Collection<Course> courses = cg.getCourses();
+                                pw.println("<sequence>");
+
+                                for(Course c : courses) {
+                                    pw.println("<course>" + c.getName() + "</course>");
+                                }
+                                pw.println("</sequence>");
+                            }
+                            pw.println("</requirement>");
+                        }
+                    }
+                    pw.println("</major>");
+                }
+                pw.println("/file>");
+                pw.flush();
+                fw.flush();
+            }
+
+        }
+        catch (IOException ioe)   {
+
+        }
         return null;//throw new UnsupportedOperationException("Not supported yet.");
     }
 
