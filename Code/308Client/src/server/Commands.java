@@ -15,11 +15,15 @@ public final class Commands {
     public static final String ADD_CLASS="ADD_CLASS";
     public static final String LOGIN="LOGIN";
     public static final String LOGOUT="LOGOUT";
+    public static final String REMOVE_COURSE="RMV_COURSE";
     public static final String REMOVE_MAJOR="RMV_MAJOR";
     public static final String REMOVE_REQ="RMV_REQ";
     public static final String DOWNLOAD_REQ="DOWNLOAD_REQ";
      public static final String UPLOAD_REQ="UPLOAD_REQ";
-     
+     public static final String EDIT_DEPT="EDIT_DEPT";
+     public static final String GET_DEPT="GET_DEPT";
+     public static final String GETDEPTCOURSES="GETDEPTCOURSES";
+     public static final String GET_REQS="GET_REQS";
     public static final String ADD_DEPT="ADD_DEPT";
     
     public static final String REMOVE_DEPT="RMV_DEPT";
@@ -38,7 +42,8 @@ public final class Commands {
     public static final String GET_MAJOR="GET_MAJOR";
     public static final String GETSCHED="SCHEDULE";
     public static final String GETCOURSE="GET_COURSE";
-
+    public static final String ADD_COURSE_RECORD="ADD_CR";
+    public static final String EDIT_COURSE_RECORD="EDIT_CR";
     public static final String USER="STUDENT";
     public static final String SUPER_ADMIN="SUPER";
     public static final String ADMIN="ADMIN";

@@ -47,6 +47,32 @@ public class Grade implements Serializable{
             grade="A";
         }
     }
+    Grade(String grade) {
+        this.grade=grade;
+        if(grade.equals("A")) {
+            gradePoints=4;
+        } else if(grade.equals("A-")) {
+            gradePoints=3.67;
+        } else if(grade.equals("B+")) {
+            gradePoints=3.33;
+        } else if(grade.equals("B")) {
+            gradePoints=3;
+        } else if(grade.equals("B-")) {
+            gradePoints=2.67;
+        } else if(grade.equals("C+")) {
+            gradePoints=2.33;
+        } else if(grade.equals("C")) {
+            gradePoints=2;
+        } else if(grade.equals("C-")) {
+            gradePoints=1.67;
+        } else if(grade.equals("D+")) {
+            gradePoints=1.33;
+        } else if(grade.equals("D")) {
+            gradePoints=1;
+        } else if(grade.equals("F")) {
+            gradePoints=0;
+        }
+    }
     public Grade(String s, double gp) {
         grade=s;
         gradePoints=gp;
@@ -58,6 +84,6 @@ public class Grade implements Serializable{
       public void setGrade(String g) {grade=g;}
         public boolean greaterThan(Grade g) {
 
-            return gradePoints>g.getGradePoints();
+            return gradePoints>=g.getGradePoints();
         }
 }

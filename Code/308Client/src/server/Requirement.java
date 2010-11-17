@@ -37,9 +37,11 @@ public class Requirement implements Serializable {
     private static EntityManager em;
     private static EntityManagerFactory emf;
     public Requirement() {
+        possibleCourses=new ArrayList<CourseGroup>();
         emf=Persistence.createEntityManagerFactory("ClientPU");
         em=emf.createEntityManager();
     }
+
     @OneToMany
     private Collection<CourseGroup> possibleCourses;
     
@@ -92,25 +94,43 @@ public class Requirement implements Serializable {
      */
     public void addCourseGroup(CourseGroup c) {
         try {
-            em.merge(c);
+            //em.merge(c);
             possibleCourses.add(c);
-            em.merge(this);
-            UseLogger.info("Course Goup added to Requirement "+id);
+            //em.merge(this);
+            //UseLogger.info("Course Goup added to Requirement "+id);
         } catch(Exception e) {
             UseLogger.severe("line 80 Exception! :" +e.getMessage());
         }
     }
 
-    public RootlessTree<Course> getRemainingCourses(Collection<CourseRecord> records) {
+    public RootlessTree<Course>  getRemainingCourses(TreeMap<String, CourseRecord> records) {
         RootlessTree<Course> remaining=new RootlessTree<Course>();
         for(CourseGroup g : possibleCourses) {
-            remaining.addTree(g.getRemainingCourses(records));
+            RootlessTree.mergeTrees(remaining, g.getRemainingCourses(records), null, 0);
         }
-        return remaining;
+       return remaining;
     }
-    public boolean requirementSatisfied(){
-
-         return false;
+    public void getRemainingCourses(TreeMap<String, CourseRecord> records, RootlessTree<Course> remaining) {
+        if(remaining==null){ remaining=new RootlessTree<Course>();}
+        for(CourseGroup g : possibleCourses) {
+            RootlessTree.mergeTrees(remaining, g.getRemainingCourses(records), null, 0);
+        }
+    }
+    public boolean requirementSatisfied(TreeMap<String, CourseRecord> courses){
+        double gpa=0;
+        int upper=0;
+        int credits=0;
+        int num=0;
+        for(CourseGroup cb : possibleCourses) {
+            if(cb.getRemainingCourses(courses).size()==0) {
+                num++;
+                upper+=cb.upperCredits(courses);
+                credits+=cb.credits(courses);
+                gpa+=cb.calculateGPA(courses);
+            }
+        }
+        gpa=gpa/num;
+         return num>=numberOfCourses && gpa>=minGPA && upper>=minUpperDivCredits;
     }
 
 }
