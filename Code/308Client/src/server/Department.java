@@ -46,8 +46,9 @@ public class Department implements Serializable{
     public void setName(String n) {name=n;}
     public ArrayList<Course> getCourses() {
         return (ArrayList<Course>)courses;
-    }public ArrayList<Course> getMajors() {
-        return (ArrayList<Course>)courses;
+    }
+    public ArrayList<Major> getMajors() {
+        return (ArrayList<Major>)majors;
     }
 
     public Major findMajor(String name) {
