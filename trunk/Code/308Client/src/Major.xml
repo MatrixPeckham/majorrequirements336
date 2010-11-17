@@ -9,9 +9,10 @@
 -->
 <file type="majorRequirement">
     <major>
-            <name>CSE</name>
+            <majorName>CSE</majorName>
             <minGPA>2.0</minGPA>
             <minLocalCreds>0</minLocalCreds>
+            <department>CSE</department>
             <requirement required="3">
                 <name>Intro Courses</name>
                 <year>2008</year>
