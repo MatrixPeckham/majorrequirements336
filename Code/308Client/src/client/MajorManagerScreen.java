@@ -1,5 +1,6 @@
 package client;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -51,6 +52,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
     private JButton editMajor;
     //back button
     private JButton back;
+    //error button
+    private JLabel error;
 
     /**
      * constructor
@@ -84,6 +87,23 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 String s = JOptionPane.showInputDialog("Input Major Name");
+                if(s.length()!=3)
+                {
+                    JOptionPane.showMessageDialog(frame, "Please Enter Three "
+                            + "Letters To Represent The Major", "Invalid Entry",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                for(int i=0; i<=3; i++)
+                {
+                    if(s.charAt(i)<'A'||s.charAt(i)>'Z')
+                    {
+                        JOptionPane.showMessageDialog(frame, "Please Enter Three Capital"
+                            + "Letters To Represent The Major", "Invalid Entry",
+                            JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                }
                 Major m = new Major();
                 frame.addMajor(m);
                 Object o = frame.getDepartment(frame.getCurrentDepartment());
@@ -95,7 +115,24 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showInputDialog("Change Major Name");
+                String s = JOptionPane.showInputDialog("Change Major Name");
+                if(s.length()!=3)
+                {
+                    JOptionPane.showMessageDialog(frame, "Please Enter Three "
+                            + "Letters To Represent The Major", "Invalid Entry",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                for(int i=0; i<=3; i++)
+                {
+                    if(s.charAt(i)<'A'||s.charAt(i)>'Z')
+                    {
+                        JOptionPane.showMessageDialog(frame, "Please Enter Three Capital "
+                            + "Letters To Represent The Major", "Invalid Entry",
+                            JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                }
                 Major m = new Major();
                 frame.addMajor(m);
                 Object o = frame.getDepartment(frame.getCurrentDepartment());
@@ -129,6 +166,10 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 frame.changeScreen(ClientGUI.WELCOME, null);
             }
         });
+        error = new JLabel("Error: Please select a major from the above table");
+        error.setFont(new Font("Times New Roman",1,12));
+        error.setForeground(Color.red);
+        error.setVisible(false);
         addJComponentToContainerUsingGBL(adminLabel, this, 1, 1, 4, 1);
         addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 4, 2);
         addJComponentToContainerUsingGBL(addButton, this, 1, 4, 1, 1);
@@ -136,6 +177,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         addJComponentToContainerUsingGBL(removeButton, this, 3, 4, 1, 1);
         addJComponentToContainerUsingGBL(editMajor, this, 1, 5, 1, 1);
         addJComponentToContainerUsingGBL(back, this, 3, 5, 1, 1);
+        addJComponentToContainerUsingGBL(error, this, 1, 6, 1, 1);
     }
 
     @Override
@@ -160,6 +202,12 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
     @Override
     public boolean validateForm() {
+        if(table.getSelectedRow()==-1)
+        {
+            error.setVisible(true);
+            return false;
+        }
+        error.setVisible(true);
         return true;
     }
 

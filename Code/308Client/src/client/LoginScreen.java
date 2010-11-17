@@ -1,5 +1,6 @@
 package client;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,8 @@ public class LoginScreen extends Screen {
 	private JButton	logInButton;
         //back button
 	private JButton back;
+        //error button
+        private JLabel error;
 
 	/**
 	 * serial version ID that eclipse wants in all swing classes
@@ -75,6 +78,10 @@ public class LoginScreen extends Screen {
 			}
 		});
 		back.setFont(new Font("Times New Roman",1,24));
+                error = new JLabel("Error: Not a valid user and password combination");
+                error.setFont(new Font("Times New Roman",1,12));
+                error.setForeground(Color.RED);
+                error.setVisible(false);
 		
 		// LAYOUT ALL THE COMPONENTS USING GridBagLayout
 		GridBagLayout gbl = new GridBagLayout();
@@ -87,6 +94,7 @@ public class LoginScreen extends Screen {
 		addJComponentToContainerUsingGBL(passWordField, this, 2, 20, 1, 1);
 		addJComponentToContainerUsingGBL(logInButton, this, 1, 30, 1, 1);
 		addJComponentToContainerUsingGBL(back, this, 2, 30, 1, 1);
+                addJComponentToContainerUsingGBL(error, this, 1, 40, 1, 1);
 	}
 
 	@Override
@@ -96,7 +104,19 @@ public class LoginScreen extends Screen {
 
     @Override
     public boolean validateForm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(nameField.getText().isEmpty()==true)
+        {
+            error.setVisible(true);
+            return false;
+        }
+        if(passWordField.getText().isEmpty()==true)
+        {
+            error.setVisible(true);
+            return false;
+        }
+        error.setVisible(false);
+        return true;
+        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

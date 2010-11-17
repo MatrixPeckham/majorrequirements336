@@ -1,5 +1,6 @@
 package client;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -54,6 +55,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
     private JButton generateButton;
     //back button
     private JButton backButton;
+    //error label
+    private JLabel error;
 
     /**
      * constructor
@@ -184,9 +187,14 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             }
         });
+
+        error = new JLabel("Error: Please select a course from the above table");
+        error.setFont(new Font("Times New Roman", 1, 12));
+        error.setVisible(false);
+        error.setForeground(Color.red);
         this.setLayout(new GridBagLayout());
-        addJComponentToContainerUsingGBL(studentPage, this, 1, 1, 4, 1);
-        addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 4, 2);
+        addJComponentToContainerUsingGBL(studentPage, this, 1, 1, 5, 1);
+        addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 5, 2);
         addJComponentToContainerUsingGBL(addButton, this, 1, 4, 1, 1);
         addJComponentToContainerUsingGBL(editButton, this, 2, 4, 1, 1);
         addJComponentToContainerUsingGBL(removeButton, this, 3, 4, 1, 1);
@@ -194,7 +202,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         addJComponentToContainerUsingGBL(downloadButton, this, 3, 5, 1, 1);
         addJComponentToContainerUsingGBL(checkButton, this, 1, 6, 1, 1);
         addJComponentToContainerUsingGBL(generateButton, this, 3, 6, 1, 1);
-        addJComponentToContainerUsingGBL(backButton, this, 5, 7, 1, 1);
+        addJComponentToContainerUsingGBL(backButton, this, 6, 7, 1, 1);
+        addJComponentToContainerUsingGBL(error, this, 5, 6, 1, 1);
     }
 
     @Override
@@ -219,6 +228,12 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
     @Override
     public boolean validateForm() {
+        if(courses.getSelectedRow() == -1)
+        {
+            error.setVisible(true);
+            return false;
+        }
+        error.setVisible(false);
         return true;
     }
 

@@ -111,7 +111,7 @@ public class Major implements Serializable {
     public Vector<Requirement> requirementsRemaining(Collection<CourseRecord> r, int year) {
         for(Requirement a : reqs) {
             if(a.getVersion()==year) {
-                if(!a.)
+                //if(!a.)
             }
         }
         return null;
