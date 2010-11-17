@@ -5,6 +5,7 @@
 
 package server;
 
+import java.util.Iterator;
 import java.util.Vector;
 
 /**
@@ -21,6 +22,8 @@ public class CourseRecord {
         this.course=course;
         this.transfer=transfer;
     }
+
+    public boolean getTransfer() {return transfer;}
     public Course getCourse() {return course;}
     public boolean coursePassed() {
         for(Grade g : grades) {
@@ -30,4 +33,12 @@ public class CourseRecord {
     }
     public void addGrade(Grade g) {grades.add(g);}
     public Vector<Grade> getGrades() {return grades;}
+    public double getGPA() {
+        double d=0;
+        Iterator<Grade> g=grades.iterator();
+        while(g.hasNext()) {
+            d+=g.next().getGradePoints();
+        }
+        return d/grades.size();
+    }
 }

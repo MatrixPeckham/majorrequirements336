@@ -44,6 +44,12 @@ public class Department implements Serializable{
     
     public String getName() {return name;}
     public void setName(String n) {name=n;}
+    public ArrayList<Course> getCourses() {
+        return (ArrayList<Course>)courses;
+    }public ArrayList<Course> getMajors() {
+        return (ArrayList<Course>)courses;
+    }
+
     public Major findMajor(String name) {
         for(Major m: majors) {
             if(m.getId().equals(name)) {

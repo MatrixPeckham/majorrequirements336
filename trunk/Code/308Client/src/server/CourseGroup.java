@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.Vector;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -16,6 +17,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import structures.*;
 
@@ -59,6 +61,38 @@ public class CourseGroup implements Serializable {
     public void setCourses(ArrayList<Course> a) {
         courses=a;
     }
+    public double calculateGPA(TreeMap<String, CourseRecord> cr) {
+         double gpa=0;
+         int count=0;
+         for(Course c : courses) {
+            CourseRecord r=cr.get(c.getId());
+            if(r!=null) {
+                gpa+=r.getGPA();
+                count++;
+            }
+        }
+        return gpa/count;
+    }
+    public int credits(TreeMap<String, CourseRecord> cr) {
+        int creds=0;
+        for(Course c : courses) {
+            CourseRecord r=cr.get(c.getId());
+            if(r!=null && r.coursePassed()) {
+                creds+=c.getCredits();
+            }
+        }
+        return creds;
+    }
+    public int upperCredits(TreeMap<String, CourseRecord> cr) {
+        int creds=0;
+        for(Course c : courses) {
+            CourseRecord r=cr.get(c.getId());
+            if(r!=null && r.coursePassed() && c.isUpperDivision()) {
+                creds+=c.getCredits();
+            }
+        }
+        return creds;
+    }
     /**
      * Adds Course and persists sequence in database
      * @param c
@@ -79,49 +113,74 @@ public class CourseGroup implements Serializable {
         em.merge(this);
         em.getTransaction().commit();
     }
-    public RootlessTree<Course> getRemainingCourses(Collection<CourseRecord> records) {
-        Vector<Course> remaining=new Vector<Course>();
-        RootlessTree<Course> rem=new RootlessTree<Course>();
-        //go through required courses
+    public void getRemainingCourses(TreeMap<String,CourseRecord> records, RootlessTree<Course> have) {
+        if(have==null){
+            have=new RootlessTree<Course>();
+        }
+        getRemainingCourses(records, have, 0, null);
+    }
+    public RootlessTree<Course> getRemainingCourses(TreeMap<String,CourseRecord> records) {
+        RootlessTree<Course> tree=new RootlessTree<Course>();
+        getRemainingCourses(records, tree, 0, null);
+        return tree;
+    }
+    private void getRemainingCourses(TreeMap<String, CourseRecord> records, RootlessTree<Course> course, int level, Course parent) {
+        int numrequired=courses.size();
+
+        /* IDEA
+         * 1.) Go Through courses
+         * For Each Course...
+         * i.) if course is completed, all prereqs must be completed, neglect course
+         * and its prereqs
+         * ii.) it may also be a prereq for  a course that already exists in the tree.
+         * In that case dont add it
+         * we want to make sure that the student dosnt have to wait to take it, so make tree as deep
+         * as possible. So, if the courses level in the tree is greater than the course it would be added under
+         * move the entire branch
+         * iii.) if it dosnt exist, all we have to do is add the course and do the repeat the process
+         * for all prereqs
+         */
+
         for(Course c : courses) {
-            if(!courseComplete(c, records)) {
-                getRemainingCourses(null,c,records, rem);
-            }
-
-            //remaining.addAll(getRemainingCourses(c,records));
-
-        }
-        return rem;
-    }
-    /**
-     * 
-     * @param c
-     * @param records
-     * @return
-     */
-    private void getRemainingCourses(Course parent, Course c, Collection<CourseRecord> records, RootlessTree<Course> remaining){
-       
-        if(!courseComplete(c, records)) {
-            if(parent==null) {
-                remaining.addRoot(c);
-            } else {
-                remaining.addChild(parent, c);
-            }
-                Collection<Course> prereqs=c.getPrereqs();
-                for(Course c2 : prereqs) {
-
-                    getRemainingCourses(c, c2, records, remaining);
+            int i;
+            CourseRecord r=records.get(c.getId());
+            if(r!=null && r.coursePassed()) {
+                numrequired-=1;
+            } else if((i=course.dataExists(c))!=-1) {
+                if(level>=i) {
+                    course.changeParent(c, parent);
                 }
-        }
-        
-    }
-    private boolean courseComplete(Course c, Collection<CourseRecord> records) {
-        for(CourseRecord r :records) {
-            if(c.equals(r.getCourse()) && r.coursePassed()) {
-                return true;
+            } else {
+                course.addChild(parent, c);
+                //getRemainingCourses(records, c.getShortestPrereqPath().getSubtree(0), level+1, c);
+                RootlessTree.mergeTrees(course, c.getShortestPrereqPath().getSubtree(0), c, level+1);
             }
         }
-        return false;
+    }
+    
+    public RootlessTree<Course> getTopPrereqPaths() {
+        RootlessTree<Course> c=new RootlessTree<Course>();
+        /* IDEA
+         * 1.) Get all prereq paths
+         * 2.) Get the top x shortest paths (where x represents number of required courses
+         * to complete course sequence
+         */
+        float maxPath=Float.POSITIVE_INFINITY;
+        for(Course c2 : courses) {
+            RootlessTree<Course> tmp=c2.getShortestPrereqPath();
+            if(tmp.getMaxLevel()<maxPath) {c=tmp;}
+        }
+        return c;
+    }
+    public boolean sequenceDone(TreeMap<String, CourseRecord> rec) {
+        int num=0;
+        for(Course r :courses) {
+            CourseRecord cr=rec.get(r.getId());
+            if(cr==null || !cr.coursePassed()) {
+                num++;
+            }
+        }
+        return num==0;
     }
 
 }

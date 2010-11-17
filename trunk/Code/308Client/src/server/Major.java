@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.Vector;
 import java.util.logging.Level;
 import javax.persistence.Entity;
@@ -21,6 +22,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Persistence;
 import logging.UseLogger;
+import structures.RootlessTree;
 
 /** Contains info and actions for majors
  *
@@ -94,24 +96,29 @@ public class Major implements Serializable {
      */
     public void addRequirement(Requirement r) {
         try {
-        em.merge(r);
+        //em.merge(r);
         reqs.add(r);
-        em.merge(this);
+        //em.merge(this);
         }catch(Exception e) {
 
         }
     }
-    public Vector<Course> getRemainingCourse(Collection<CourseRecord> records) {
-        Vector<Course> remaining=new Vector<Course>();
+    public RootlessTree<Course> getRemainingCourse(TreeMap<String, CourseRecord> records, int year) {
+        RootlessTree<Course> remaining=new RootlessTree<Course>();
         for(Requirement r : reqs) {
-                //remaining.addAll(r.getRemainingCourses(records));
+            if(year==r.getYear()) {
+                r.getRemainingCourses(records, remaining);
+            }
         }
         return remaining;
     }
-    public Vector<Requirement> requirementsRemaining(Collection<CourseRecord> r, int year) {
+    public Vector<Requirement> requirementsRemaining(TreeMap<String, CourseRecord> r, int year) {
+        Vector<Requirement> req=new Vector<Requirement>();
         for(Requirement a : reqs) {
             if(a.getVersion()==year) {
-                //if(!a.)
+                if(!a.requirementSatisfied(r)){
+                    req.add(a);
+                }
             }
         }
         return null;

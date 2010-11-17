@@ -25,6 +25,9 @@ public class School {
     public void addDepartment(Department d) {
         departments.put(d.getName(), d);
     }
+    public ArrayList<Department> getDepartments() {
+        return new ArrayList<Department>(departments.values());
+    }
     public static School getSchool() {
         if(school==null) {
             school=new School();

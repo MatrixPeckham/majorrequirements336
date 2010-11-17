@@ -29,6 +29,7 @@ import javax.persistence.PersistenceUnit;
 import logging.UseLogger;
 //import javax.persistence.criteria.Fetch;
 //import org.eclipse.persistence.internal.oxm.schema.model.All;
+import structures.*;
 
 /**
  *
@@ -41,7 +42,8 @@ public class Course implements Serializable {
     public static final int NONE=0;
     public static final int BOTH=3;
     @OneToMany
-    private Collection<Course> prereqs;
+    private Collection<CourseGroup> prereqs;
+    private int prereqsReqd;
     /*
      * prereqs- List of prequequisite courses maps from Courses table to itself
      */
@@ -63,6 +65,7 @@ public class Course implements Serializable {
 
     public Course() {}
     Course(String dept, int level, Grade minGrade, int creds, int offered) {
+        prereqs=new ArrayList<CourseGroup>();
         UseLogger logger = new UseLogger();
         id=dept+" "+level;
         name=dept;
@@ -71,9 +74,9 @@ public class Course implements Serializable {
         semestersOffered=offered;
         num=level;
     }
-   public void addPreReq(Course c) {prereqs.add(c);}
+   public void addPreReq(CourseGroup c) {prereqs.add(c);}
    
-    public void setPrereqs(Collection<Course> p) {prereqs=p;}
+    public void setPrereqs(Collection<CourseGroup> p) {prereqs=p;}
     public void setId(String id) {this.id = id;}
     public void setName(String name) {this.name=name;}
     public void setNum(int num) {this.num=num; em.merge(this);}
@@ -84,13 +87,25 @@ public class Course implements Serializable {
     public String getName() {return name;}
     public int getNum(){return num;}
     public String getId() {return id;}
-    public Collection<Course> getPrereqs() {return prereqs;}
+    public Collection<CourseGroup> getPrereqs() {return prereqs;}
     public Grade getMinGrade() {return minGrade;}
     public String getDescription() {return description;}
     public int getCredits() {return credits;}
     public int getSemestersOffered(){return semestersOffered;}
+    public boolean isUpperDivision() {return num>=300;}
+    public boolean passedCourse(User u){return u.getRecords().get(id).coursePassed();}
 
-    public boolean passedCourse(User u){return false;}
+    public RootlessTree<Course> getShortestPrereqPath() {
+        
+        RootlessTree<Course> tree=new RootlessTree<Course>();
+        tree.addRoot(this);
+        for(CourseGroup g : prereqs) {
+            tree.addTree(g.getTopPrereqPaths(), this);
+        }
+        
+        return tree;
+    }
+
     public boolean equals(Course c) {
         return c.getId().equals(id);
     }
