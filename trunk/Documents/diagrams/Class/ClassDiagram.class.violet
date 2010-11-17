@@ -267,35 +267,52 @@ FileParser</string>
    <object id="ClassNode7" class="com.horstmann.violet.ClassNode"> 
     <void property="attributes"> 
      <void property="text"> 
-      <string>-s :Socket</string> 
+      <string>-s :Socket
+-ois : ObjectInputStream 
+-oos : ObjectOutputStream 
+-rdr : BufferedReader 
+-pw : PrintWriter 
+</string> 
      </void> 
     </void> 
     <void property="methods"> 
      <void property="text"> 
-      <string>+generateSchedule() : Schedule
-+getFile(String) :File
-+uploadFile(File, String) :int
-+addCourse(Course, String) : boolean
+      <string>+getFile(String) : File 
++getFile(String,File) : File 
++uploadFile(File,String) : int
++addCourse(Course, String) : boolean 
 +loadCourse(String) : Course
-+removeCourse(String) : boolean
-+editCourse(Course) : boolean
-+loadMajor(String) : Major
-+addMajor(Major) : boolean
-+editMajor(Major) : boolean
-+removeMajor(String) : boolean
-+addRequirement(Requirement, String)
-+removeRequirement(String, String)
++removeCourse(String) : boolean 
++removeMajor(String) : boolean 
++removeRequirement(String, String) : boolean 
 +login(String,String) : int
 +logout() : boolean
-+getRequirements() : Vector&lt;Requirements&gt;
 +getCreditsRemaining() : int
-+uploadFile(File, String) :void
-+addDepartment(String, Department) : void
-+removeDepartment (String) :  void
-+editDepartment(String, Department) : void
-+getDepartments() : Vector&lt;Department&gt;
-+getDepartment(String) : Department
-+getDepartmentCourses(String) : Vector&lt;Course&gt;</string> 
++removeDepartment (String) : void
++generateSchedule() : Schedule
++editCourse(Course) : boolean 
++loadMajor(String) : Major 
++addMajor(Major) : void 
++editMajor(Major) : boolean 
++addRequirement(Requirement, String) : boolean 
++getRequirements() : ArrayList&lt;Requirement&gt; 
++addDepartment(String, Department) : void 
++editDepartment(String, Department) : void 
++getDepartments() : ArrayList&lt;Department&gt; 
++getDepartment(String) : Department 
++getDepartmentCourses(String) : ArrayList&lt;Course&gt; 
++getStudentInfo() : User
++getCurrentDepartment() : String
++getCourseRecord(String) : CourseRecord 
++removeCourseRecord(String) : boolean
++dowloadFile(File, String) : void
++checkSchedule() : ArrayList&lt;Requirement&gt; 
++addCourseRecord(CourseRecord) : void 
++editCourseRecord(CourseRecord) : void 
++getMajor(String) : Major 
++getCurrentMajor() : String
++getCourse(String) : Course 
++downloadFile(File, String) : void</string> 
      </void> 
     </void> 
     <void property="name"> 
@@ -306,8 +323,8 @@ FileParser</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>1438.1008640008865</double> 
-     <double>1317.5748186180829</double> 
+     <double>1404.1008640008865</double> 
+     <double>1321.5748186180829</double> 
     </void> 
    </object> 
   </void> 
@@ -501,7 +518,8 @@ FileParser</string>
    <object id="ClassNode18" class="com.horstmann.violet.ClassNode"> 
     <void property="attributes"> 
      <void property="text"> 
-      <string>-frame :ClientGui</string> 
+      <string>-frame :ClientGui
+-fc : JFileChooser</string> 
      </void> 
     </void> 
     <void property="methods"> 
@@ -510,7 +528,8 @@ FileParser</string>
 +&lt;&lt;abstract&gt;&gt;getScreen(fillWith : Object) : void
 +addJComponentToContainerUsingGBL(jc : JComponent, 
     c : Container, x : int, y : int, w : int, h :int) : void
-+validateForm() : boolean</string> 
++validateForm() : boolean
++getFile(open : boolean) : File</string> 
      </void> 
     </void> 
     <void property="name"> 
@@ -531,41 +550,69 @@ FileParser</string>
    <object id="ClassNode19" class="com.horstmann.violet.ClassNode"> 
     <void property="attributes"> 
      <void property="text"> 
-      <string>-permissions: int
+      <string>readonly +$WELCOME : String
+readonly +$LOGIN : String
+readonly +$CLASSES : String
+readonly +$COURSES : String
+readonly +$DEPARTMENTS : String
+readonly +$MAJORS : String
+readonly +$OPTIONS : String
+readonly +$CHECK : String
+readonly +$SCHEDULE : String
+readonly +$CURR_EDIT : String
+readonly +$CURR_ADD : String
+readonly +$CURR_REM : String
 -networking : Client
+-permissions : int
+-curScreen : String
+-curMan : String
+-screens : TreeMap&lt;String, Screen&gt;
+-reg : boolean
 </string> 
      </void> 
     </void> 
     <void property="methods"> 
      <void property="text"> 
-      <string>+$main(String[] ) : void
--init() : void
-+getFile() : void
-+generateSchedule() : Schedule
-+getRequirements() : Vector&lt;Requirements&gt;
-+getCreditsRemaining() : int
-+uploadFile(File, String) :void
-+addCourse(Course, String) : void
-+loadCourse(String) : course
-+removeCourse(Course) : void
-+editCourse(Course) : void
-+loadMajor(String) : void
+      <string>-init() : void
++changeScreen(String, Object) : void
++changeManageScreen(String, Object) : void
++$main(String[]) : void
 +addMajor(Major) : void
-+addRequirement(Requirement, String)
-+removeRequirement(String, String)
-+editMajor(Major) : void
-+removeMajor(String) : void
-+login(String,String) : void
-+logout() : void
-+changeScreen(String) : void
-+changeManageScreen(String) : void
-+addDepartment(String, Department) : void
-+removeDepartment (String) :  void
++addDepartment(String, Department dep) : void
++removeDepartment (String) : void
 +editDepartment(String, Department) : void
-+getDepartments() : Vector&lt;Department&gt;
++dowloadFile(File, String) : void
++addCourseRecord(CourseRecord) : void
++editCourseRecord(CourseRecord) : void
++addCourse(Course, String) : boolean
++removeCourse(String) : boolean
++editCourse(Course) : boolean
++editMajor(Major) : boolean
++removeMajor(String) : boolean
++addRequirement(Requirement, String) : boolean
++removeRequirement(String, String) : boolean
++logout() : boolean
++removeCourseRecord(String) : boolean
++checkSchedule() : ArrayList&lt;Requirement&gt;
++getMajor(String) : Major
++getCurrentMajor() : String
++getCourse(String) : Course
++Schedule generateSchedule() : 
++getFile(String) : File
++uploadFile(File, String) : int
++loadCourse(String) : Course
++loadMajor(String) : Major
++login(String,String) : int
++getRequirements() : ArrayList&lt;Requirement&gt;
++getCreditsRemaining() : int
++getDepartments() : ArrayList&lt;Department&gt;
 +getDepartment(String) : Department
++getDepartmentCourses(String) : ArrayList&lt;Course&gt; 
 +getPermissions() : int
-+getDepartmentCourse(String) : Vector&lt;Course&gt;</string> 
++getStudentInfo() : User
++getCurrentDepartment() : String
++getCourseRecord(String) : CourseRecord
+</string> 
      </void> 
     </void> 
     <void property="name"> 

@@ -1,6 +1,5 @@
 package client;
 
-import javax.swing.JPanel;
 
 /**
  * Interface for all stuff that needs
