@@ -93,7 +93,7 @@ public class Course implements Serializable {
     public int getCredits() {return credits;}
     public int getSemestersOffered(){return semestersOffered;}
     public boolean isUpperDivision() {return num>=300;}
-    public boolean passedCourse(User u){return u.getRecords().get(id).coursePassed();}
+    //public boolean passedCourse(User u){return u.getRecords().get(id).coursePassed();}
 
     public RootlessTree<Course> getShortestPrereqPath() {
         
