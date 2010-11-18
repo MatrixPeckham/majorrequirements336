@@ -308,17 +308,18 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    if(addPage.getText().startsWith("Add")){
-                        CourseRecord r = makeRecord();
-                        frame.addCourseRecord(r);
-                    } else {
-                        CourseRecord r = makeRecord();
-                        frame.editCourseRecord(r);
+                    if(validateForm()){
+                        if(addPage.getText().startsWith("Add")){
+                            CourseRecord r = makeRecord();
+                            frame.addCourseRecord(r);
+                        } else {
+                            CourseRecord r = makeRecord();
+                            frame.editCourseRecord(r);
+                        }
+                        Object o = frame.getStudentInfo();
+                        frame.changeScreen(ClientGUI.CLASSES, o);
                     }
-                    Object o = frame.getStudentInfo();
-                    frame.changeScreen(ClientGUI.CLASSES, o);
                 }
-
             });
             cancel = new JButton("Cancel");
             cancel.addActionListener(new ActionListener() {
@@ -349,7 +350,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
         @Override
         public boolean validateForm() {
-            return false;
+            return true;
         }
 
         /**
@@ -379,7 +380,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
         @Override
         public boolean validateForm() {
-            return false;
+            //JP leave this one alone
+            return super.validateForm();
         }
         /**
          * serial version ID that eclipse wants in all swing classes

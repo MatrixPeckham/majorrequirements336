@@ -167,23 +167,22 @@ public class ClientGUI extends JFrame {
                 gui.setVisible(true);
 	}
         public Schedule generateSchedule() {return networking.generateSchedule();}
-	public File getFile(String str) {return networking.getFile(str);}
 	public int uploadFile(File file, String str) {return networking.uploadFile(file, str);}
 	public boolean addCourse(Course c, String str) {return networking.addCourse(c, str);}
 	public Course loadCourse(String str) {return networking.loadCourse(str);}
 	public boolean removeCourse(String str) {return networking.removeCourse(str);}
 	public boolean editCourse(Course c) {return networking.editCourse(c);}
 	public Major loadMajor(String str) {return networking.loadMajor(str);}
-	public void addMajor(Major m) {networking.addMajor(m);}
-	public boolean editMajor(Major m) {return networking.editMajor(m);}
+	public void addMajor(Major m) {networking.addMajor(m,networking.getCurrentDepartment());}
+	public boolean editMajor(Major m) {return networking.editMajor(m,networking.getCurrentDepartment());}
 	public boolean removeMajor(String str) {return networking.removeMajor(str);}
-	public boolean addRequirement(Requirement r, String str) {return networking.addRequirement(r,str);}
+	public boolean addRequirement(Requirement r, String str) {return networking.addRequirement(r,networking.getCurrentDepartment(),networking.getCurrentMajor());}
 	public boolean removeRequirement(String str1, String str2){return networking.removeRequirement(str1, str2);}
 	public int login(String usr,String pass) {permissions = networking.login(usr, pass);return permissions;}
 	public boolean logout() {return networking.logout();}
-	public ArrayList<Requirement> getRequirements() {return networking.getRequirements();}
+	public ArrayList<Requirement> getRequirements() {return networking.getRequirements(networking.getCurrentDepartment(),networking.getCurrentMajor());}
 	public int getCreditsRemaining() {return networking.getCreditsRemaining();}
-	public void addDepartment(String str, Department dep) {networking.addDepartment(str,dep);}
+	public void addDepartment(String str, Department dep) {networking.addDepartment(dep);}
 	public void removeDepartment (String str) {networking.removeDepartment(str);}
 	public void editDepartment(String str, Department d) {networking.editDepartment(str,d);}
 	public ArrayList<Department> getDepartments() {return networking.getDepartments();}
@@ -225,7 +224,7 @@ public class ClientGUI extends JFrame {
     }
 
     Major getMajor(String string) {
-        return networking.getMajor(string);
+        return networking.getMajor(networking.getCurrentDepartment(),string);
     }
 
     String getCurrentMajor() {

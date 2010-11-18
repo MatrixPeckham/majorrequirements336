@@ -80,8 +80,10 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Course c = frame.getCourse((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
-                frame.changeManageScreen(ClientGUI.CURR_EDIT, c);
+                if(validateForm()){
+                    Course c = frame.getCourse((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
+                    frame.changeManageScreen(ClientGUI.CURR_EDIT, c);
+                }
             }
         });
         remove = new JButton("Remove Course");
@@ -256,8 +258,10 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    frame.addCourse(makeCourse(), "");
-                    frame.changeScreen(ClientGUI.COURSES, frame.getDepartment(frame.getCurrentDepartment()));
+                    if(validateForm()){
+                        frame.addCourse(makeCourse(), "");
+                        frame.changeScreen(ClientGUI.COURSES, frame.getDepartment(frame.getCurrentDepartment()));
+                    }
                 }
             });
             back = new JButton("Cancel");
