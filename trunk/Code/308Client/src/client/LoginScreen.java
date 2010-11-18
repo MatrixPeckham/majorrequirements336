@@ -61,7 +61,10 @@ public class LoginScreen extends Screen {
                             frame.login(nameField.getText(), passWordField.getText());
                             if(frame.reg){
                                 if(frame.getPermissions()==3)
-					frame.changeScreen(ClientGUI.DEPARTMENTS, null);
+                                {
+                                    Object o=frame.getDepartments();
+					frame.changeScreen(ClientGUI.DEPARTMENTS, o);
+                                }
                             } else {
                                 if(frame.getPermissions()>1)
         				frame.changeScreen(ClientGUI.MAJORS, null);
