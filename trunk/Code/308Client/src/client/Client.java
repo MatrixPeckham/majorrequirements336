@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import server.*;
 import java.io.*;
+import java.util.Scanner;
 /**
  * Main networking class for the client.
  * @author Bill
@@ -29,18 +30,35 @@ public class Client{
 //TODO public Schedule generateSchedule() {return null;}
 	
 	public File getFile(File location, String str) {
-            try {
-                pw.println(str);
-                int fileSize=Integer.parseInt(rdr.readLine());
-                FileOutputStream fs=new FileOutputStream(location);
-                byte[] b=new byte[fileSize];
-                s.getInputStream().read(b);
-                fs.write(b);
+            try{
+            FileWriter fw=new FileWriter(location);
+            PrintWriter pw2=new PrintWriter(fw);
+            pw.println(str);
+            String s;
+            while(!(s=rdr.readLine()).equals("ENDXML")) {
+                pw.println(s);
+            }
+            pw.flush();
                 return location;
-            } catch(Exception e) {return null;}
+            }catch(Exception e) {
+                return null;
+            }
 
         }
-	public int uploadFile(File file, String str) {return 0;}
+	public int uploadFile(File file, String str) {
+            pw.println(str);
+            try{
+            Scanner sc=new Scanner(file);
+            while(sc.hasNext()) {
+                pw.println(sc.nextLine());
+            }
+            pw.println("ENDXML");
+            String s=rdr.readLine();
+            return s.equals("OK")?0:Integer.parseInt(s);
+            }catch(Exception e) {
+            return -1;
+            }
+        }
 //TODO	public boolean addCourse(Course c, String str) {return false;}
 //TODO	public Course loadCourse(String str) {return null;}
 	public boolean addCourse(Course c, String str) {
@@ -59,8 +77,9 @@ public class Client{
         }
 	public boolean removeCourse(String str) {
             try{
-                //pw.println(Commands.REMOVE_COURSE);
-                return false;
+                pw.println(Commands.REMOVE_COURSE);
+                pw.println(str);
+                return rdr.readLine().equals("OK");
             } catch(Exception e){
                 return false;
             }
@@ -78,8 +97,15 @@ public class Client{
 
 	public boolean removeRequirement(String str1, String str2){return false;}
 	public int login(String usr,String pass) {
-            
-            return 3;
+            pw.println(Commands.LOGIN);
+            pw.println(usr);
+            pw.println(pass);
+            pw.flush();
+            try{
+            return Integer.parseInt(rdr.readLine());
+            } catch(Exception e) {
+                return -1;
+            }
         }
 	public boolean logout() {
             pw.println(Commands.LOGOUT);
@@ -106,7 +132,10 @@ public class Client{
             try {
                 //first thing initiate connection
                 s = new Socket("localhost", 8989);
-
+                ois=new ObjectInputStream(s.getInputStream());
+                oos=new ObjectOutputStream(s.getOutputStream());;
+                rdr=new BufferedReader(new InputStreamReader(s.getInputStream()));
+                pw=new PrintWriter(s.getOutputStream(), true);
             } catch (UnknownHostException ex) {
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
@@ -115,57 +144,131 @@ public class Client{
         }
 
     Schedule generateSchedule() {
-        return null;
+        pw.println(Commands.GETSCHED);
+        try{
+        return (Schedule) ois.readObject();
+        }catch(Exception e){
+            return null;
+        }
     }
 
     boolean editCourse(Course c) {
-        return false;
+        pw.println(Commands.EDIT_COURSE);
+        try{
+        oos.writeObject(c);
+        return rdr.readLine().equals("OK");
+        }catch(Exception e) {
+            return false;
+        }
     }
 
     Major loadMajor(String str) {
-        return null;
+        pw.println(Commands.GET_MAJOR);
+        pw.println(str);
+        try{
+        return (Major)ois.readObject();
+        }catch(Exception e) {
+            return null;
+        }
     }
 
-    void addMajor(Major m) {
-
+    boolean addMajor(Major m, String dept) {
+        pw.println(Commands.ADD_MAJOR);
+        pw.println(dept);
+        try{
+            oos.writeObject(m);
+            return rdr.readLine().equals("OK");
+        } catch(Exception e) {
+            return false;
+        }
     }
 
-    boolean editMajor(Major m) {
+    boolean editMajor(Major m, String dept) {
+        pw.println(Commands.EDIT_MAJOR);
+        pw.println(dept);
+
+        try{
+            oos.writeObject(m);
+
+            return rdr.readLine().equals("OK");
+        } catch(Exception e) {
+            return false;
+        }
+    }
+
+    boolean addRequirement(Requirement r, String dept, String major) {
+
         return false;
     }
-
-    boolean addRequirement(Requirement r, String str) {
-        return false;
+    ArrayList<Requirement> getRequirements(String dept, String major) {
+       try{
+           return new ArrayList<Requirement>(this.getMajor(dept, major).getRequirements());
+       } catch(Exception e) {
+           return null;
+       }
     }
 
-    ArrayList<Requirement> getRequirements() {
-        return null;
+    boolean addDepartment(Department dep) {
+        pw.println(Commands.ADD_DEPT);
+        try{
+            oos.writeObject(dep);
+            return rdr.readLine().equals("OK");
+        }catch(Exception e) {
+            return false;
+        }
     }
 
-    void addDepartment(String str, Department dep) {
-
-    }
-
-    void editDepartment(String str, Department d) {
-
+    boolean editDepartment(String str, Department d) {
+        pw.println(Commands.EDIT_DEPT);
+        pw.println(str);
+        try{
+            oos.writeObject(d);
+            return rdr.readLine().equals("OK");
+        }catch(Exception e) {
+            return false;
+        }
     }
 
     ArrayList<Department> getDepartments() {
-        return null;
+        pw.println(Commands.GET_DEPT);
+        try{
+            return (ArrayList<Department>) ois.readObject();
+        }catch(Exception e) {
+            return null;
+        }
     }
 
     Department getDepartment(String str) {
+        ArrayList<Department> a=getDepartments();
+        if(a==null) {return null;}
+        for(Department d : a) {
+            if(d.getName().equals(str)) {
+                return d;
+            }
+        }
         return null;
     }
 
     ArrayList<Course> getDepartmentCourses(String str) {
-        return null;
+       pw.println(Commands.GETDEPTCOURSES);
+       pw.println(str);
+       pw.flush();
+       try{
+        return (ArrayList<Course>)ois.readObject();
+        }catch(Exception e) {
+            return null;
+        }
     }
 public User getStudentInfo() {
+    try{
+        return null;
+    } catch(Exception e) {
     return null;
+    }
 }
 
     String getCurrentDepartment() {
+        
         return null;
     }
 
@@ -177,11 +280,9 @@ public User getStudentInfo() {
         return false;
     }
 
-    void dowloadFile(File file, String str) {
-
-    }
-
     ArrayList<Requirement> checkSchedule() {
+        pw.println(Commands.GET_REQS);
+
         return null;
     }
 
@@ -202,9 +303,10 @@ public User getStudentInfo() {
             return -1;
         }
     }
-    Major getMajor(String string) {
+    Major getMajor(String dept, String major) {
         pw.println(Commands.GET_MAJOR);
-        pw.println(string);
+        pw.println(dept);
+        pw.println(major);
         try{
         return (Major) ois.readObject();
         } catch(Exception e) {
@@ -213,6 +315,7 @@ public User getStudentInfo() {
     }
 
     String getCurrentMajor() {
+
         return null;
     }
 
