@@ -106,16 +106,22 @@ public class Requirement implements Serializable {
     public RootlessTree<Course>  getRemainingCourses(TreeMap<String, CourseRecord> records) {
         RootlessTree<Course> remaining=new RootlessTree<Course>();
         for(CourseGroup g : possibleCourses) {
-            RootlessTree.mergeTrees(remaining, g.getRemainingCourses(records), null, 0);
+            RootlessTree<Course> c=g.getRemainingCourses(records);
+            
+            remaining.addTree(c, null);
+            //remaining.removeDuplicates(c);
+
         }
        return remaining;
     }
     public void getRemainingCourses(TreeMap<String, CourseRecord> records, RootlessTree<Course> remaining) {
         if(remaining==null){ remaining=new RootlessTree<Course>();}
         for(CourseGroup g : possibleCourses) {
-            RootlessTree.mergeTrees(remaining, g.getRemainingCourses(records), null, 0);
+           RootlessTree<Course> c= g.getRemainingCourses(records);
+            RootlessTree.mergeTrees(remaining, c, null, 0);
         }
     }
+
     public boolean requirementSatisfied(TreeMap<String, CourseRecord> courses){
         double gpa=0;
         int upper=0;

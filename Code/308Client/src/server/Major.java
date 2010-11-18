@@ -107,7 +107,9 @@ public class Major implements Serializable {
         RootlessTree<Course> remaining=new RootlessTree<Course>();
         for(Requirement r : reqs) {
             if(year==r.getYear()) {
-                r.getRemainingCourses(records, remaining);
+                RootlessTree<Course> c=r.getRemainingCourses(records);
+               //c.removeDuplicates(remaining,);
+                remaining.addTree(c,null);
             }
         }
         return remaining;
