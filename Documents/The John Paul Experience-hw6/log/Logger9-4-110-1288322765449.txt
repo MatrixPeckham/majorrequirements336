@@ -1,0 +1,4 @@
+Oct 28, 2010 11:26:05 PM logging.UseLogger info
+INFO: Major CSE2 added to database.
+Oct 28, 2010 11:26:05 PM logging.UseLogger info
+INFO: Course CSE39 added to department.
