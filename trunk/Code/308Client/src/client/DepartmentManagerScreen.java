@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,6 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import server.Department;
 /**
  *
  * @author JP & Bill
@@ -132,8 +137,21 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 
 	@Override
 	public void getScreen(Object fillWith) {
-		// TODO Auto-generated method stub
-	}
+            if(fillWith instanceof ArrayList){
+                ArrayList<Department> depos = (ArrayList<Department>) fillWith;
+                DefaultTableModel model = (DefaultTableModel)table.getModel();
+                for(int i = 0; i < model.getRowCount(); i++){
+                    model.removeRow(0);
+                }
+                for (Department d : depos) {
+                    String[] s = {d.getName()};
+                    model.addRow(s);
+                }
+
+
+                
+            }
+        }
 
 	@Override
 	public Screen getAddScreen() {
@@ -208,8 +226,10 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-                                    frame.addDepartment(nameField.getName(), new server.Department());
-					frame.changeScreen(ClientGUI.DEPARTMENTS, frame.getDepartments());
+                                    if(validateForm()){
+                                        frame.addDepartment(nameField.getName(), new server.Department());
+                                        frame.changeScreen(ClientGUI.DEPARTMENTS, frame.getDepartments());
+                                    }
 				}
 			});
                         error = new JLabel("Error: Please Enter Only Letters For The Department Name");

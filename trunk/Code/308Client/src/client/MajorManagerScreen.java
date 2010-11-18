@@ -154,8 +154,10 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Major m = frame.getMajor((String)table.getModel().getValueAt(table.getSelectedRow(), 1));
-                frame.changeManageScreen(ClientGUI.CURR_EDIT, m);
+                if(validateForm()){
+                    Major m = frame.getMajor((String)table.getModel().getValueAt(table.getSelectedRow(), 1));
+                    frame.changeManageScreen(ClientGUI.CURR_EDIT, m);
+                }
             }
         });
         back = new JButton("Back");
@@ -348,9 +350,11 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    frame.addRequirement(makeReq(), nameF.getText());
-                    Object o = frame.getMajor(frame.getCurrentMajor());
-                    frame.changeManageScreen(ClientGUI.CURR_EDIT, o);
+                    if(validateForm()){
+                        frame.addRequirement(makeReq(), nameF.getText());
+                        Object o = frame.getMajor(frame.getCurrentMajor());
+                        frame.changeManageScreen(ClientGUI.CURR_EDIT, o);
+                    }
                 }
 
             });
@@ -460,7 +464,9 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    frame.changeManageScreen(ClientGUI.CURR_ADD, table.getModel().getValueAt(table.getSelectedRow(), 0));
+                    if(validateForm()){
+                        frame.changeManageScreen(ClientGUI.CURR_ADD, table.getModel().getValueAt(table.getSelectedRow(), 0));
+                    }
                 }
             });
             remReq = new JButton("Remove");
