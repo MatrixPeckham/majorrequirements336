@@ -6,6 +6,7 @@
 package server;
 import java.net.*;
 import java.io.*;
+import java.util.Collection;
 /**
  *
  * @author TJ
@@ -61,10 +62,8 @@ public class ServerThread implements Runnable{
                     String password=rdr.readLine();
                     permissions=system.checkLogin(username,password);
                     pw.println(permissions);
-                    pw.flush();
                     } catch(Exception e) {
                         pw.println("0");
-                        pw.flush();
                     }
                 } else if(cmd.equals(Commands.LOGOUT)) {
                     connected=false;
@@ -92,33 +91,67 @@ public class ServerThread implements Runnable{
                         pw.println("ERR");
                     }
                 } else if (cmd.equals(Commands.REMOVE_MAJOR)) {
-
+                    try {
+                        School.getSchool().getDepartment(rdr.readLine()).removeMajor(rdr.readLine());
+                        pw.println("OK");
+                    }
+                    catch(Exception e)  {
+                        pw.println("ERR");
+                    }
                 } else if (cmd.equals(Commands.REMOVE_REQ)) {
+                    try {
+                        Major m = School.getSchool().getDepartment(rdr.readLine()).findMajor(rdr.readLine());
+                        Collection<Requirement> r = m.getRequirements();
+                        String s = rdr.readLine();
+                        for(Requirement re : r) {
+                            if (re.getId().equals(s))
+                                m.removeRequirement(re);
+                        }
+                        pw.println("OK");
+                    }
+                     catch(Exception e) {
+                         pw.print("ERR");
+                     }
                 } else if (cmd.equals(Commands.DOWNLOAD_REQ)) {
+                    try {
+                        user.writeFile("DOWNLOAD_REQ");
+                        pw.println("OK");
+                    }
+                    catch(Exception e)   {
+                        pw.println("ERR");
+                    }
                 } else if (cmd.equals(Commands.UPLOAD_REQ)) {
+                    try {
+                        user.parseFile(new File(rdr.readLine()));
+                        pw.println("OK");
+                    }
+                    catch(Exception e)   {
+                        pw.println("ERR");
+                    }
                 } else if (cmd.equals(Commands.EDIT_DEPT)) {
+                    try {
+                        School.getSchool().getDepartment(rdr.readLine()).setName(rdr.readLine());
+                        pw.println("OK");
+                    }
+                    catch(Exception e)  {
+                        pw.println("ERR");
+                    }
                 } else if (cmd.equals(Commands.GET_DEPT)) {
                      try{
                         objectOut.writeObject(School.getSchool().getDepartments());
-                        objectOut.flush();
                         pw.println("OK");
                     }catch(Exception e) {
                         pw.println("ERR");
-                    } finally {
-                        objectOut.flush();
-                        pw.flush();
                     }
                 } else if (cmd.equals(Commands.GETDEPTCOURSES)) {
-                      try{
+                    try{
                         objectOut.writeObject(School.getSchool().getDepartment(rdr.readLine()).getCourses());
                         pw.println("OK");
                     }catch(Exception e) {
                         pw.println("ERR");
-                    } finally {
-                        objectOut.flush();
-                        pw.flush();
                     }
                 } else if (cmd.equals(Commands.GET_REQS)) {
+
                 } else if (cmd.equals(Commands.ADD_DEPT)) {
                     try{
                         School.getSchool().addDepartment((Department)objectIn.readObject());
@@ -141,16 +174,57 @@ public class ServerThread implements Runnable{
                         pw.println("ERR");
                     }
                 } else if (cmd.equals(Commands.UPLOAD_COURSE_DATA)) {
+                    try {
+                        user.parseFile(new File(rdr.readLine()));
+                        pw.println("OK");
+                    }
+                    catch (Exception e) {
+                        pw.println("ERR");
+                    }
                 } else if (cmd.equals(Commands.UPLOAD_SCHED)) {
+                    try {
+                        user.parseFile(new File(rdr.readLine()));
+                        pw.println("OK");
+                    }
+                    catch (Exception e) {
+                        pw.println("ERR");
+                    }
                 } else if (cmd.equals(Commands.DOWNLOAD_COURSE_DATA)) {
+                    try {
+                        user.writeFile("DOWNLOAD_COURSE_DATA");
+                        pw.println("OK");
+                    }
+                    catch (Exception e) {
+                        pw.println("ERR");
+                    }
                 } else if (cmd.equals(Commands.DOWNLOAD_SCHED)) {
+                    try {
+
+                        pw.println("OK");
+                    }
+                    catch (Exception e) {
+                        pw.println("ERR");
+                    }
                 } else if (cmd.equals(Commands.EDIT_COURSE_TAKEN)) {
                 } else if (cmd.equals(Commands.EDIT_COURSE)) {
                 } else if (cmd.equals(Commands.EDIT_MAJOR)) {
+                    user.getMajor().setId(rdr.readLine());
                 } else if (cmd.equals(Commands.EDIT_REQUIREMENT)) {
                 } else if (cmd.equals(Commands.GET_MAJOR)) {
+                    try{
+                        objectOut.writeObject(School.getSchool().getDepartment(rdr.readLine()).getMajors());
+                        pw.println("OK");
+                    }catch(Exception e) {
+                        pw.println("ERR");
+                    }
                 } else if (cmd.equals(Commands.GETSCHED)) {
                 } else if (cmd.equals(Commands.GETCOURSE)) {
+                    try{
+                        objectOut.writeObject(School.getSchool().getDepartment(rdr.readLine()).getCourses());
+                        pw.println("OK");
+                    }catch(Exception e) {
+                        pw.println("ERR");
+                    }
                 } else if (cmd.equals(Commands.ADD_COURSE_RECORD)) {
                 } else if (cmd.equals(Commands.EDIT_COURSE_RECORD)) {
                 }
@@ -158,6 +232,18 @@ public class ServerThread implements Runnable{
 
             } catch(Exception e) {
                 e.printStackTrace();
+            }
+            finally {
+                try {
+                   pw.flush();
+                   objectOut.flush();
+                }
+                catch(Exception e)  {
+                    pw.println("ERR");
+                }
+                finally {
+                    pw.flush();
+                }
             }
         }
     }

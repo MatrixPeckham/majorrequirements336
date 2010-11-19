@@ -167,6 +167,7 @@ public class ClientGUI extends JFrame {
                 gui.setVisible(true);
 	}
         public Schedule generateSchedule() {return networking.generateSchedule();}
+	public File getFile(String str) {return networking.getFile(null, str);}
 	public int uploadFile(File file, String str) {return networking.uploadFile(file, str);}
 	public boolean addCourse(Course c, String str) {return networking.addCourse(c, str);}
 	public Course loadCourse(String str) {return networking.loadCourse(str);}
