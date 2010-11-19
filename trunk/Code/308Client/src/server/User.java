@@ -42,7 +42,6 @@ public class User implements Scheduler, FileParser{
     public int getPermissions() {return permissions;}
     public TreeMap<String, CourseRecord> getCourses() {return courses;}
 
-    public void setMajor(Major m) {major = m;}
     public void setUserId(Long id) {userId = id;}
     public void setName(String s) {name = s;}
     public void setPermissions(int i) {permissions = i;}

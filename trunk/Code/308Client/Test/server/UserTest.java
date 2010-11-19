@@ -233,10 +233,11 @@ public class UserTest {
      * Test of writeFile method, of class User.
      */
     @Test
-    public void testWriteFile() {
+    public void testWriteFile() throws Exception {
         System.out.println("writeFile");
-        String cmd = "";
-        User instance = null;
+        String cmd = "DOWNLOAD_COURSE_DATA";
+        User instance = new User(1);
+        instance.parseFile(new File("src/Courses.xml"));
         File expResult = null;
         File result = instance.writeFile(cmd);
         assertEquals(expResult, result);
