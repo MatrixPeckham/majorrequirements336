@@ -4,6 +4,7 @@
  */
 
 package server;
+import persistence.PersistenceManager;
 import java.util.*;
 /**
  *
@@ -33,5 +34,15 @@ public class School {
             school=new School();
         }
         return school;
+    }
+    public static void load() {
+     
+        School s=getSchool();
+        List l=PersistenceManager.executeQuery("Select d from Department d");
+        Iterator d=l.iterator();
+        while(d.hasNext()) {
+            Department dep=(Department) d.next();
+            s.addDepartment(dep);
+        }
     }
 }

@@ -41,9 +41,9 @@ public class Course implements Serializable {
     public static final int FALL=1;
     public static final int NONE=0;
     public static final int BOTH=3;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private Collection<CourseGroup> prereqs;
-    private int prereqsReqd;
+    private int min
     /*
      * prereqs- List of prequequisite courses maps from Courses table to itself
      */
@@ -105,7 +105,7 @@ public class Course implements Serializable {
         
         return tree;
     }
-
+    
     public boolean equals(Course c) {
         return c.getId().equals(id);
     }

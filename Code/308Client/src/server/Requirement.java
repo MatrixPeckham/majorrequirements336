@@ -102,24 +102,13 @@ public class Requirement implements Serializable {
             UseLogger.severe("line 80 Exception! :" +e.getMessage());
         }
     }
-
-    public RootlessTree<Course>  getRemainingCourses(TreeMap<String, CourseRecord> records) {
+    public RootlessTree<Course> getRemainingCourses(TreeMap<String, CourseRecord> records) {
         RootlessTree<Course> remaining=new RootlessTree<Course>();
         for(CourseGroup g : possibleCourses) {
-            RootlessTree<Course> c=g.getRemainingCourses(records);
-            
-            remaining.addTree(c, null);
+            g.getRemainingCourses(records, remaining);
             //remaining.removeDuplicates(c);
-
         }
-       return remaining;
-    }
-    public void getRemainingCourses(TreeMap<String, CourseRecord> records, RootlessTree<Course> remaining) {
-        if(remaining==null){ remaining=new RootlessTree<Course>();}
-        for(CourseGroup g : possibleCourses) {
-           RootlessTree<Course> c= g.getRemainingCourses(records);
-            RootlessTree.mergeTrees(remaining, c, null, 0);
-        }
+        return remaining;
     }
 
     public boolean requirementSatisfied(TreeMap<String, CourseRecord> courses){
