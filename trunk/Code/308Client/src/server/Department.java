@@ -13,13 +13,13 @@ import javax.persistence.*;
  */
 @Entity
 public class Department implements Serializable{
+    
     @Id
     private String name;
     @OneToMany
     private Collection<Course> courses;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private Collection<Major> majors;
-
     public Department() {
         courses=new ArrayList<Course>();
         majors=new ArrayList<Major>();
@@ -41,7 +41,6 @@ public class Department implements Serializable{
     public void removeMajor(String name) {
         majors.remove(name);
     }
-    
     public String getName() {return name;}
     public void setName(String n) {name=n;}
     public ArrayList<Course> getCourses() {

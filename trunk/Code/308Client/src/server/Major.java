@@ -34,6 +34,7 @@ public class Major implements Serializable {
     private String id;
     
     private Collection<Requirement> reqs;
+    private String department;
     private double minGPA;
     private int minCreditsHere;
     private static EntityManagerFactory emf;
@@ -108,8 +109,7 @@ public class Major implements Serializable {
         for(Requirement r : reqs) {
             if(year==r.getYear()) {
                 RootlessTree<Course> c=r.getRemainingCourses(records);
-               //c.removeDuplicates(remaining,);
-                remaining.addTree(c,null);
+                remaining.addTree(c);
             }
         }
         return remaining;
@@ -128,5 +128,7 @@ public class Major implements Serializable {
     public void removeRequirement(Requirement r) {
 
     }
+    public String getDepartment() {return department;}
+    public void setDepartment(String dept) {department=dept;}
 
 }

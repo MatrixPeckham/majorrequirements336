@@ -5,12 +5,14 @@
 
 package server;
 
+import persistence.PersistenceManager;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.*;
+import java.util.Map.Entry;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 /**
@@ -78,7 +80,9 @@ public class User implements Scheduler, FileParser{
                 fileElement=(Element) majors.item(i);
                 String dept=fileElement.getElementsByTagName("department").item(0).getTextContent();
                 major=parseMajorFile(fileElement);
-                School.getSchool().getDepartment(dept).addMajor(major);
+                Department d2=School.getSchool().getDepartment(dept);
+                d2.addMajor(major);
+                PersistenceManager.merge(d2);
             }
         } else if(fileType.equals("courses")) {
            // if(permissions!=this.SUPER_ADMIN) {return;}
@@ -113,9 +117,16 @@ public class User implements Scheduler, FileParser{
         
     }
     private void parseCourses(Element el, String dept) {
+        School s=School.getSchool();
+           Department d=s.getDepartment(dept);
+           if(d==null) {
+               d=new Department(dept);
+               s.addDepartment(d);
+           }
        NodeList courses= el.getElementsByTagName("course");
        for(int i=0; i<courses.getLength(); i++) {
            Element n=(Element)courses.item(i);
+         
            String description=((Element)n.getElementsByTagName("number").item(0)).getTextContent();
            int number=Integer.parseInt(((Element)n.getElementsByTagName("number").item(0)).getTextContent());
            int offered=0;
@@ -129,19 +140,25 @@ public class User implements Scheduler, FileParser{
                offered+=Course.SPRING;
            }
            Course c=new Course(dept,number,new Grade(mingrade), credits, offered);
-           parsePrereqs(c, n,dept);
+           //prereqs.put(c, this.parsePrereqs(n,dept));
+           this.parsePrereqs(c, n, dept);
            c.setDescription(description);
-           School s=School.getSchool();
-           Department d=s.getDepartment(dept);
-           if(d==null) {
-               d=new Department(dept);
-               s.addDepartment(d);
-           }
            d.addCourse(c);
+           PersistenceManager.merge(c);
        }
+       /*for(Entry<Course, Vector<CourseGroup>> e : prereqs.entrySet()) {
+           for(CourseGroup g : e.getValue()) {
+               e.getKey().addPreReq(g);
+               PersistenceManager.merge(g);
+               PersistenceManager.merge(e.getKey());
+           }
+       }*/
+       
+       PersistenceManager.merge(d);
     }
     private void parsePrereqs(Course c, Element e, String dept) {
         NodeList n=e.getElementsByTagName("prerequisite");
+        //Vector<CourseGroup> v=new Vector<CourseGroup>();
         for(int i=0; i<n.getLength(); i++) {
             NodeList n2=((Element)n.item(i)).getElementsByTagName("or");
             CourseGroup g=new CourseGroup();
@@ -149,8 +166,11 @@ public class User implements Scheduler, FileParser{
                 String course=n2.item(j).getTextContent();
                 g.addCourse(School.getSchool().getDepartment(dept).findCourse(course));
             }
+            //PersistenceManager.merge(g);
             c.addPreReq(g);
+            //v.add(g);
         }
+        //return v;
     }
     private Major parseMajorFile(Element el) {
         String name=el.getElementsByTagName("majorName").item(0).getTextContent();
@@ -166,6 +186,7 @@ public class User implements Scheduler, FileParser{
                 m.addRequirement(r);
             }
         }
+        PersistenceManager.merge(m);
         return m;
     }
     private Requirement parseRequirement(Element el) {
@@ -306,13 +327,18 @@ public class User implements Scheduler, FileParser{
         }
         return null;//throw new UnsupportedOperationException("Not supported yet.");
     }
-
+/*
     @Override
     public String getTextOfFile(String cmd) {
        String file="<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
        return file;
-    }
+    }*/
     private String writeCoursesFile(){return "";}
     private String writeRecordsFile(){return "";}
     private String writeMajorFile(){return "";}
+
+    @Override
+    public String getTextOfFile(String cmd) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
  }

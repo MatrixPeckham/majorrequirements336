@@ -113,11 +113,18 @@ public class CourseGroup implements Serializable {
         em.merge(this);
         em.getTransaction().commit();
     }
+    public void getRemainingCourses2(TreeMap<String,CourseRecord> records) {
+        for(Course c : courses) {
+            if(records.containsKey(c.getId()) && records.get(c.getId()).coursePassed()) {
+
+            }
+        }
+    }
     public void getRemainingCourses(TreeMap<String,CourseRecord> records, RootlessTree<Course> have) {
         if(have==null){
             have=new RootlessTree<Course>();
         }
-        getRemainingCourses(records, have, 0, null);
+        have.addTree(getRemainingCourses(records));
     }
     public RootlessTree<Course> getRemainingCourses(TreeMap<String,CourseRecord> records) {
         RootlessTree<Course> tree=new RootlessTree<Course>();
