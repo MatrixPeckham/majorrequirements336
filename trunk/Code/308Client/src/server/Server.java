@@ -13,6 +13,7 @@ public class Server {
     private static boolean running=true;
      public static void main(String[] args) {
          ServerSocket s=null;
+         School.load();
          try {
              s=new ServerSocket(8989);
          }catch(Exception e) {

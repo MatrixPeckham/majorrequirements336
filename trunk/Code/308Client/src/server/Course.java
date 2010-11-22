@@ -43,7 +43,7 @@ public class Course implements Serializable {
     public static final int BOTH=3;
     @OneToMany(cascade=CascadeType.ALL)
     private Collection<CourseGroup> prereqs;
-    private int min
+    private int minLevel;
     /*
      * prereqs- List of prequequisite courses maps from Courses table to itself
      */
