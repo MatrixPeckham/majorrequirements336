@@ -5,6 +5,7 @@ package structures;
  * and open the template in the editor.
  */
 import java.util.*;
+import java.util.Map.Entry;
 /**
  *
  * @author TJ
@@ -86,6 +87,12 @@ public class RootlessTree<T> {
             roots.add(new Node(null, data));
             size++;
     }
+    public void addRoot(Node data) {
+            roots.add(data);
+            Vector<Node> n=new Vector<Node>();
+            n.add(data);
+            size+=count(n);
+    }
     public void addChild(T parent, T childData) {
         if(parent==null) {
             addRoot(childData);
@@ -109,10 +116,20 @@ public class RootlessTree<T> {
         if(n.children.size()>0) {return -1;} else {
             n.parent.children.remove(n);
             n.parent=null;
+            n.children.clear();
+            n.children=null;
             size--;
             return 0;
         }
 
+    }
+    private void removeNode(Node n) {
+        if(n.parent==null) {
+            roots.remove(n);
+        } else {
+        n.parent.children.remove(n);
+        }
+        n.parent=null;
     }
     public RootlessTree<T> getSubtree(int index) {return new RootlessTree(roots.get(index).children);}
     public int dataExists(T data) {
@@ -144,18 +161,79 @@ public class RootlessTree<T> {
         return rootData;
     }
     public void addTree(RootlessTree<T> t) {
-        roots.addAll(t.roots);
-        size+=t.size();
+        //roots.addAll(t.roots);
+        //size+=t.size();
+        addTree(t, null);
     }
-    public void addTree(RootlessTree<T> t, T parent) {
+    /*public void addTree(RootlessTree<T> t, T parent) {
+        //TreeMap<Node,Node> toRemove=new TreeMap<Node,Node>();
+        Vector<Node> toRemove= new Vector<Node>();
+        addTree(t,parent,toRemove);
+        //Set<Entry<Node,Node>> pairs=toRemove.entrySet();
+        /*for(Entry e : pairs) {
+           Node parents=(Node) e.getKey();
+           Node child=(Node) e.getValue();
+           
+           parents.children.add(new Node(parents, child.data, child.children));
+           removeNode(child);
+           
+        }
+        for(Node n : toRemove) {
+            removeNode(n);
+        }
+    }*/
+   /* public T getDeepestNodes() {
+
+    }
+    public T removeDeepestNode() {
+
+    }*/
+    private Vector<Node> getDeepestNodes(Vector<Node> n) {
+        Vector<Node> n2=n;
+        for(Node n3 : n) {
+
+        }
+        return n2;
+    }
+    public  void addTree(RootlessTree<T> t, T parent) { //TreeMap<Node, Node> toRemove) {
         Node n=find(parent, roots);
-        if(n!=null && t!=null) {
+        int baselevel=n!=null?n.level:0;
+        if(t!=null) {
+            removeDuplicates(t.roots, baselevel+1);
+            int i=0;
+                
                 for(Node n2 : t.roots) {
-                    n2.parent=n;
-                    n.children.add(n2);
+                    if(n!=null) {
+                        n2.parent=n;
+                        n.children.add(n2);
+                    } else {
+                        this.addRoot(n2.data);
+                        addTree(t.getSubtree(i), n2.data);
+                    }
+                    i++;
                 }
                 size+=t.size();
-                updateLevels(n.children);
+                if(n!=null) {
+                    updateLevels(n.children);
+                }
+        }
+    }
+    public void removeDuplicates(RootlessTree<T> cmp) {
+        removeDuplicates(cmp.roots, 0);
+    }
+    private void removeDuplicates(Vector<Node> t2, int baselevel) {
+        Object[] t=t2.toArray();
+        for(int i=0; i<t.length; i++) {
+            Node n=(Node) t[i];
+            int l=dataExists(n.data);
+            if(l>-1 && n.level+baselevel>l) {
+                removeNode(find(n.data,roots));
+            } else if(l>-1) {
+                t2.remove(i);
+                
+            } else {
+                removeDuplicates(n.children, baselevel);
+            }
         }
     }
     public boolean equals(RootlessTree<T> a) {
@@ -176,6 +254,7 @@ public class RootlessTree<T> {
         return true;
     }
     private Node find(T data, Vector<Node> children) {
+        if(data==null){return null;}
         for(Node t : children) {
             if(t.data.equals(data)) {
                 return t;
@@ -200,6 +279,16 @@ public class RootlessTree<T> {
         Vector<Node> children;
         Node(Node parent, T data) {
             children=new Vector<Node>();
+         this.data=data;
+         this.parent=parent;
+         if(parent==null){
+             level=0;
+         } else {
+            level=parent.level;
+         }
+        }
+        Node(Node parent, T data, Vector<Node> c) {
+            children=c;
          this.data=data;
          this.parent=parent;
          if(parent==null){

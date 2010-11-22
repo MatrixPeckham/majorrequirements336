@@ -117,7 +117,10 @@
             <description>Writing Computer Science</description>
             <minGrade>2.0</minGrade>
             <credits>1</credits>
-            <prerequisite>CSE110</prerequisite>
+            <prerequisite>
+                <or>WRT 102</or>
+                <minstanding>U3</minstanding>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -138,6 +141,9 @@
             <description>Professional Ethics for Computer Science</description>
             <minGrade>2.0</minGrade>
             <credits>1</credits>
+            <prerequisiste>
+                <minstanding>U3</minstanding>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -149,7 +155,7 @@
             <minGrade>2.0</minGrade>
             <credits>3</credits>
             <prerequisite>
-                <or>CSE 219</or>
+                <or>CSE 215</or>
             </prerequisite>
             <offered>
                 <spring>true</spring>
@@ -161,7 +167,7 @@
             <description>Compiler Design</description>
             <minGrade>2.0</minGrade>
             <credits>3</credits>
-            <prerequisite>CSE110</prerequisite>
+            
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -233,17 +239,7 @@
                 <fall>true</fall>
             </offered>
         </course>
-        <course>
-            <number>220</number>
-            <description>Computer Organization</description>
-            <minGrade>2.0</minGrade>
-            <credits>3</credits>
-            <prerequisite>CSE114</prerequisite>
-            <offered>
-                <spring>true</spring>
-                <fall>true</fall>
-            </offered>
-        </course>
+        
         <course>
             <number>312</number>
             <description>Legal, Social, and Ethical Issues in Computer Science</description>
