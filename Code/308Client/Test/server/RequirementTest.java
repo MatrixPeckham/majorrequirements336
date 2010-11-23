@@ -267,11 +267,14 @@ public class RequirementTest {
     @Test
     public void testGetRemainingCourses() throws Exception {
         User u=new User(0);
-        u.parseFile(new File("src/Courses.xml"));
-        u.parseFile(new File("src/Major.xml"));
+       School.load();
         System.out.println("getRemainingCourses");
         TreeMap<String, CourseRecord> records = null;
-        RootlessTree<Course> courses = null;
+        RootlessTree<Course> courses = new RootlessTree<Course>();
+        Course c=School.getSchool().getDepartment("CSE").findCourse("CSE 214");
+        Course c2=School.getSchool().getDepartment("CSE").findCourse("CSE 114");
+        courses.addRoot(c);
+        courses.addChild(c, c2);
         Requirement instance = new Requirement();
         CourseGroup g=new CourseGroup();
         g.addCourse(School.getSchool().getDepartment("CSE").findCourse("CSE 114"));
@@ -279,9 +282,10 @@ public class RequirementTest {
         g2.addCourse(School.getSchool().getDepartment("CSE").findCourse("CSE 214"));
         instance.addCourseGroup(g);
         instance.addCourseGroup(g2);
-        RootlessTree<Course> c=instance.getRemainingCourses(new TreeMap<String, CourseRecord>());
-        int i=instance.getRemainingCourses(new TreeMap<String, CourseRecord>()).size();
-        assertEquals(2, i);
+        RootlessTree<Course> ct=instance.getRemainingCourses(new TreeMap<String, CourseRecord>());
+        RootlessTree<Course> ct2=instance.getRemainingCourses(new TreeMap<String, CourseRecord>());
+        int i=ct2.size();
+        assertTrue(courses.equals(ct2));
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
