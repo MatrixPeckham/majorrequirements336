@@ -117,15 +117,14 @@ public class MajorTest {
     @Test
     public void testGetRemainingCourse() throws Exception {
         System.out.println("getRemainingCourse");
-        User u=new User(0);
-        u.parseFile(new File("src/Courses.xml"));
-        u.parseFile(new File("src/Major.xml"));
+        School.load();
         TreeMap<String, CourseRecord> records = new TreeMap<String, CourseRecord>();
-        Major instance = School.getSchool().getDepartment("CSE").findMajor("CSE");
+        Department d=School.getSchool().getDepartment("CSE");
+        Major instance = d.findMajor("CSE");
         RootlessTree expResult = null;
         RootlessTree result = instance.getRemainingCourse(records, 2008);
         System.out.println(result.size());
-        assertEquals(result.size(), 0);
+        assertEquals(result.count(), 0);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
