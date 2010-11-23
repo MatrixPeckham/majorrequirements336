@@ -60,7 +60,7 @@ public class User implements Scheduler, FileParser{
         int maxCredits=17; //info will be received fromm school object
         //First get all remaining Courses
         //Vector<Course> remaining=major.getRemainingCourse(courses.values());
-        return new Schedule();
+        return Schedule.generateSchedule(this);
     }
 
     @Override

@@ -74,6 +74,16 @@ public class Course implements Serializable {
         semestersOffered=offered;
         num=level;
     }
+    public boolean canTake(Semester s) {
+        if(semestersOffered==0) {
+            return false;
+        } else if(semestersOffered==3) {
+            return true;
+        } else {
+            return semestersOffered==s.getSeason()+1;
+        }
+        
+    }
    public void addPreReq(CourseGroup c) {prereqs.add(c);}
    
     public void setPrereqs(Collection<CourseGroup> p) {prereqs=p;}
