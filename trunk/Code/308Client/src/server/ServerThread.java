@@ -34,6 +34,7 @@ public class ServerThread implements Runnable{
             //from socket streams, prepare various communication streams
             out=s.getOutputStream();
             in=s.getInputStream();
+            
             //BufferedReader, for plain text reading
             rdr=new BufferedReader(new InputStreamReader(in));
             //PrintWriter- for plain text writing
@@ -54,7 +55,6 @@ public class ServerThread implements Runnable{
     public void run() {
         while(connected) {
             try{
-
                 String cmd=rdr.readLine();
 
                 if(cmd.equals(Commands.LOGIN)) {
@@ -160,6 +160,7 @@ public class ServerThread implements Runnable{
                         pw.println("OK");
                     }catch(Exception e) {
                         pw.println("ERR");
+                    } finally {
                     }
                 } else if (cmd.equals(Commands.REMOVE_DEPT)) {
                     try{
@@ -229,8 +230,11 @@ public class ServerThread implements Runnable{
                 } else if (cmd.equals(Commands.ADD_COURSE_RECORD)) {
 
                 } else if (cmd.equals(Commands.EDIT_COURSE_RECORD)) {
+                } else {
+                        objectOut.writeObject(null);
+                        pw.println("ERR");
+                        throw new IllegalArgumentException("NO COMMAND:" + cmd);
                 }
-
 
             } catch(Exception e) {
                 e.printStackTrace();
@@ -239,6 +243,7 @@ public class ServerThread implements Runnable{
                 try {
                    pw.flush();
                    objectOut.flush();
+                   objectOut.reset();
                 }
                 catch(Exception e)  {
                     pw.println("ERR");

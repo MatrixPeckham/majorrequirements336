@@ -58,6 +58,7 @@ public class LoginScreen extends Screen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+                            if(validateForm()){
                             frame.login(nameField.getText(), passWordField.getText());
                             if(frame.reg){
                                 if(frame.getPermissions()==3)
@@ -69,7 +70,7 @@ public class LoginScreen extends Screen {
                                 if(frame.getPermissions()>1)
         				frame.changeScreen(ClientGUI.MAJORS, null);
                             }
-                        }
+                        }}
                 });
 		logInButton.setFont(new Font("Times New Roman",1,24));
 		back = new JButton("Back");

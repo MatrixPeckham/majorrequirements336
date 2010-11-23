@@ -141,7 +141,7 @@
             <description>Professional Ethics for Computer Science</description>
             <minGrade>2.0</minGrade>
             <credits>1</credits>
-            <prerequisiste>
+            <prerequisite>
                 <minstanding>U3</minstanding>
             </prerequisite>
             <offered>

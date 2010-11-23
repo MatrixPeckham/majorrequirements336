@@ -76,11 +76,11 @@ public class UserTest {
     @Test
     public void testParseFile() throws Exception {
         User u=new User(User.SUPER_ADMIN);
-        File f=new File("C:\\Users\\TJ\\Desktop\\New Folder (8)\\Code\\308Client\\src\\Courses.xml");
+        File f=new File(".\\src\\Courses.xml");
         System.out.println("parseFile");
         u.parseFile(f);
-        u.parseFile(new File("C:\\Users\\TJ\\Desktop\\New Folder (8)\\Code\\308Client\\src\\Major.xml"));
-        u.parseFile(new File("C:\\Users\\TJ\\Desktop\\New Folder (8)\\Code\\308Client\\src\\CoursesTaken.xml"));
+        u.parseFile(new File(".\\src\\Major.xml"));
+        u.parseFile(new File(".\\src\\CoursesTaken.xml"));
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
