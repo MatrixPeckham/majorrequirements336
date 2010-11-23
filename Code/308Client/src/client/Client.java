@@ -64,7 +64,7 @@ public class Client{
 	public boolean addCourse(Course c, String str) {
             try{
                 pw.println(Commands.ADD_CLASS);
-                oos.writeObject(c);
+                    oos.writeObject(c);
                 return Boolean.parseBoolean(rdr.readLine());
             }catch(Exception e) {return false;}
         }
@@ -72,6 +72,7 @@ public class Client{
             try{
                 pw.println(Commands.GETCOURSE);
                 pw.println(str);
+                ois=new ObjectInputStream(s.getInputStream());
                 return (Course) ois.readObject();
             }catch(Exception e){return null;}
         }
@@ -145,7 +146,8 @@ public class Client{
     Schedule generateSchedule() {
         pw.println(Commands.GETSCHED);
         try{
-        return (Schedule) ois.readObject();
+            ois=new ObjectInputStream(s.getInputStream());
+            return (Schedule) ois.readObject();
         }catch(Exception e){
             return null;
         }
@@ -166,7 +168,8 @@ public class Client{
         pw.println(Commands.GET_MAJOR);
         pw.println(str);
         try{
-        return (Major)ois.readObject();
+            ois=new ObjectInputStream(s.getInputStream());
+            return (Major)ois.readObject();
         }catch(Exception e) {
             return null;
         }
@@ -212,7 +215,8 @@ public class Client{
         pw.println(Commands.ADD_DEPT);
         try{
             oos.writeObject(dep);
-            return rdr.readLine().equals("OK");
+            String s = rdr.readLine();
+            return s.equals("OK");
         }catch(Exception e) {
             return false;
         }
@@ -257,6 +261,7 @@ public class Client{
        pw.println(str);
        pw.flush();
        try{
+        ois=new ObjectInputStream(s.getInputStream());
         return (ArrayList<Course>)ois.readObject();
         }catch(Exception e) {
             return null;
@@ -311,7 +316,8 @@ public User getStudentInfo() {
         pw.println(dept);
         pw.println(major);
         try{
-        return (Major) ois.readObject();
+            ois=new ObjectInputStream(s.getInputStream());
+            return (Major) ois.readObject();
         } catch(Exception e) {
             return null;
         }
@@ -326,7 +332,8 @@ public User getStudentInfo() {
         pw.println(Commands.GETCOURSE);
         pw.println(string);
         try{
-        return (Course) ois.readObject();
+            ois=new ObjectInputStream(s.getInputStream());
+            return (Course) ois.readObject();
         } catch(Exception e) {
             return null;
         }
