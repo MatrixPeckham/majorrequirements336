@@ -132,8 +132,7 @@ public class Client{
             try {
                 //first thing initiate connection
                 s = new Socket("localhost", 8989);
-                ois=new ObjectInputStream(s.getInputStream());
-                oos=new ObjectOutputStream(s.getOutputStream());;
+              
                 rdr=new BufferedReader(new InputStreamReader(s.getInputStream()));
                 pw=new PrintWriter(s.getOutputStream(), true);
             } catch (UnknownHostException ex) {
@@ -156,6 +155,7 @@ public class Client{
         pw.println(Commands.EDIT_COURSE);
         try{
         oos.writeObject(c);
+        oos.reset();
         return rdr.readLine().equals("OK");
         }catch(Exception e) {
             return false;
@@ -232,8 +232,11 @@ public class Client{
     ArrayList<Department> getDepartments() {
         pw.println(Commands.GET_DEPT);
         try{
-            return (ArrayList<Department>) ois.readObject();
+            ois=new ObjectInputStream(s.getInputStream());
+            ArrayList<Department> n=(ArrayList<Department>) ois.readObject();
+            return n;
         }catch(Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
