@@ -13,10 +13,12 @@ import java.util.*;
 public class School {
     private TreeMap<String, Department> departments;
     private static School school;
-
+    private static int maxSemesterCreds;
     private School() {
         departments=new TreeMap<String,Department>();
+        maxSemesterCreds=19;
     }
+    public int getMaxCreds() {return maxSemesterCreds;}
     public Department getDepartment(String dept) {
         if(dept==null) {return null;}
         if(departments.containsKey(dept)) {
@@ -25,6 +27,10 @@ public class School {
     }
     public void addDepartment(Department d) {
         departments.put(d.getName(), d);
+        PersistenceManager.merge(d);
+    }
+    public void removeDepartment(String d) {
+        departments.remove(d);
     }
     public ArrayList<Department> getDepartments() {
         return new ArrayList<Department>(departments.values());

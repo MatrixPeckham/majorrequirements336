@@ -7,6 +7,7 @@ package server;
 import java.net.*;
 import java.io.*;
 import java.util.Collection;
+import persistence.PersistenceManager;
 /**
  *
  * @author TJ
@@ -72,14 +73,9 @@ public class ServerThread implements Runnable{
                     pw.println("OK");
                 } else if(cmd.equals(Commands.ADD_MAJOR)) {
                     try{
-                        School.getSchool().getDepartment(rdr.readLine()).addMajor((Major)objectIn.readObject());
-                        pw.println("OK");
-                    }catch(Exception e) {
-                        pw.println("ERR");
-                    }
-                } else if(cmd.equals(Commands.ADD_CLASS)) {
-                    try{
-                        School.getSchool().getDepartment(rdr.readLine()).addCourse((Course)objectIn.readObject());
+                        Major m=(Major)objectIn.readObject();
+                        School.getSchool().getDepartment(rdr.readLine()).addMajor(m);
+                        PersistenceManager.merge(m);
                         pw.println("OK");
                     }catch(Exception e) {
                         pw.println("ERR");
@@ -93,7 +89,9 @@ public class ServerThread implements Runnable{
                     }
                 } else if (cmd.equals(Commands.REMOVE_MAJOR)) {
                      try{
-                        School.getSchool().getDepartment(rdr.readLine()).removeMajor(rdr.readLine());
+                        Department d=School.getSchool().getDepartment(rdr.readLine());
+                        d.removeMajor(rdr.readLine());
+                        PersistenceManager.merge(d);
                         pw.println("OK");
                     }catch(Exception e) {
                         pw.println("ERR");
@@ -114,7 +112,7 @@ public class ServerThread implements Runnable{
                      }
                 } else if (cmd.equals(Commands.DOWNLOAD_REQ)) {
                     try {
-                        user.writeFile("DOWNLOAD_REQ");
+                        pw.println(user.writeFile("DOWNLOAD_REQ"));
                         pw.println("OK");
                     }
                     catch(Exception e)   {
@@ -147,15 +145,24 @@ public class ServerThread implements Runnable{
                     }
                 } else if (cmd.equals(Commands.GETDEPTCOURSES)) {
                     try{
+                        objectOut=new ObjectOutputStream(out);
                         objectOut.writeObject(School.getSchool().getDepartment(rdr.readLine()).getCourses());
                         pw.println("OK");
                     }catch(Exception e) {
                         pw.println("ERR");
                     }
                 } else if (cmd.equals(Commands.GET_REQS)) {
+                    try{
 
+                        objectOut=new ObjectOutputStream(out);
+                        objectOut.writeObject(School.getSchool().getDepartment(rdr.readLine()).findMajor(rdr.readLine()).getRequirements());
+                        pw.println("OK");
+                    }catch(Exception e) {
+                        pw.println("ERR");
+                    }
                 } else if (cmd.equals(Commands.ADD_DEPT)) {
                     try{
+                        objectIn=new ObjectInputStream(in);
                         School.getSchool().addDepartment((Department)objectIn.readObject());
                         pw.println("OK");
                     }catch(Exception e) {
@@ -164,7 +171,7 @@ public class ServerThread implements Runnable{
                     }
                 } else if (cmd.equals(Commands.REMOVE_DEPT)) {
                     try{
-                        //School.getSchool().removeDepartment(rdr.readLine());
+                        School.getSchool().removeDepartment(rdr.readLine());
                         pw.println("OK");
                     }catch(Exception e) {
                         pw.println("ERR");
@@ -202,12 +209,21 @@ public class ServerThread implements Runnable{
                         pw.println("ERR");
                     }
                 } else if (cmd.equals(Commands.EDIT_COURSE_TAKEN)) {
-                } else if (cmd.equals(Commands.EDIT_COURSE)) {
+                } else if (cmd.equals(Commands.EDIT_COURSE) || cmd.equals(Commands.ADD_CLASS)) {
+                    try{
+                        Department d=School.getSchool().getDepartment(rdr.readLine());
+                        objectIn=new ObjectInputStream(in);
+                        d.addCourse((Course)objectIn.readObject());
+                        pw.println("OK");
+                    }catch(Exception e) {
+                        pw.println("ERR");
+                    }
                 } else if (cmd.equals(Commands.EDIT_MAJOR)) {
                     user.getMajor().setId(rdr.readLine());
                 } else if (cmd.equals(Commands.EDIT_REQUIREMENT)) {
                 } else if (cmd.equals(Commands.GET_MAJOR)) {
                      try{
+                         objectOut=new ObjectOutputStream(out);
                         objectOut.writeObject(School.getSchool().getDepartment(rdr.readLine()).findMajor(rdr.readLine()));
                         pw.println("OK");
                     }catch(Exception e) {
@@ -215,6 +231,7 @@ public class ServerThread implements Runnable{
                     }
                 } else if (cmd.equals(Commands.GETSCHED)) {
                     try{
+                        objectOut=new ObjectOutputStream(out);
                         objectOut.writeObject(user.generateSchedule());
                         pw.println("OK");
                     }catch(Exception e) {
@@ -222,14 +239,22 @@ public class ServerThread implements Runnable{
                     }
                 } else if (cmd.equals(Commands.GETCOURSE)) {
                     try{
+                        objectOut=new ObjectOutputStream(out);
                         objectOut.writeObject(School.getSchool().getDepartment(rdr.readLine()).findCourse(rdr.readLine()));
                         pw.println("OK");
                     }catch(Exception e) {
                         pw.println("ERR");
                     }
-                } else if (cmd.equals(Commands.ADD_COURSE_RECORD)) {
+                } else if (cmd.equals(Commands.ADD_COURSE_RECORD) || cmd.equals(Commands.EDIT_COURSE_RECORD)) {
+                    try{
+                        objectIn=new ObjectInputStream(in);
+                        CourseRecord r=(CourseRecord)objectIn.readObject();
+                        user.getRecords().put(r.getCourse().getId(),r);
+                        pw.println("OK");
+                    }catch(Exception e) {
+                        pw.println("ERR");
+                    }
 
-                } else if (cmd.equals(Commands.EDIT_COURSE_RECORD)) {
                 } else {
                         objectOut.writeObject(null);
                         pw.println("ERR");
