@@ -27,8 +27,11 @@ public class Server {
                  t.start();
                  Thread.sleep(50);
              }catch(NullPointerException e) {
+                 e.printStackTrace();
                  running=false;
              } catch (Exception e) {
+                 e.printStackTrace();
+                 running=false;
              }
          }
      }

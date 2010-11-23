@@ -114,6 +114,24 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                 table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
                 table.setFillsViewportHeight(true);
 	      
+                table.setModel(new DefaultTableModel() {
+
+                    @Override
+                    public java.lang.Class<?> getColumnClass(int columnIndex) {
+                        return getValueAt(0, columnIndex).getClass();
+                    }
+                    /**
+                     *
+                     */
+                    private static final long serialVersionUID = -7810042264203030452L;
+                });
+                DefaultTableModel model = (DefaultTableModel) table.getModel();
+                for (String s : columnNames) {
+                    model.addColumn(s);
+                }
+                for (Object[] o : data) {
+                    model.addRow(o);
+                }
                 JScrollPane scrollPane = new JScrollPane(table);
                 add(scrollPane);
 
@@ -140,7 +158,8 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
             if(fillWith instanceof ArrayList){
                 ArrayList<Department> depos = (ArrayList<Department>) fillWith;
                 DefaultTableModel model = (DefaultTableModel)table.getModel();
-                for(int i = 0; i < model.getRowCount(); i++){
+                int rows = model.getRowCount();
+                for(int i = 0; i < rows; i++){
                     model.removeRow(0);
                 }
                 for (Department d : depos) {
@@ -227,8 +246,11 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
                                     if(validateForm()){
-                                        frame.addDepartment(nameField.getName(), new server.Department());
-                                        frame.changeScreen(ClientGUI.DEPARTMENTS, frame.getDepartments());
+                                        Department d = new server.Department();
+                                        d.setName(nameField.getText());
+                                        frame.addDepartment(nameField.getName(), d);
+                                        Object o = frame.getDepartments();
+                                        frame.changeScreen(ClientGUI.DEPARTMENTS, o);
                                     }
 				}
 			});
@@ -254,7 +276,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
         @Override
         public boolean validateForm() {
             String s = nameField.getText();
-            for(int i = 0; i<=s.length(); i++)
+            for(int i = 0; i<s.length(); i++)
             {
                 if(s.charAt(i)!=' ')
                 {
