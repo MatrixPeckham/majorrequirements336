@@ -22,13 +22,14 @@ public class Schedule implements Serializable{
     }
     public static Schedule generateSchedule(User u) {
         Major m=u.getMajor();
-        RootlessTree<Course> t=m.getRemainingCourse(u.getRecords(), u.getMajorYear());
+        RootlessTree<Course> t=m.getRemainingCourse(u.getRecords(), 2008);
         Vector<Course> toTake=new Vector<Course>();
         int maxlevel=t.getMaxLevel();
         while(maxlevel>=0) {
             toTake.addAll(t.getDataAtlevel(maxlevel));
             maxlevel--;
         }
+        t=null;
         boolean canGenerate=true;
         Semester s=Semester.freeSemester();
         int maxSemCredits=School.getSchool().getMaxCreds();
@@ -46,9 +47,12 @@ public class Schedule implements Serializable{
                     found=true;
                 }
             }
-            if(maxSemCredits==0) {
+            if(!found || maxSemCredits==0) {
                     s=s.nextSemester();
                     sched.put(s.toString(), new Vector<Course>());
+                    maxSemCredits=School.getSchool().getMaxCreds();
+            }else if(maxSemCredits==School.getSchool().getMaxCreds()) {
+                break;
             }
         }
         return new Schedule(sched);

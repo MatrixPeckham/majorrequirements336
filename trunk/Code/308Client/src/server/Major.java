@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,8 +32,9 @@ import structures.RootlessTree;
 @Entity
 public class Major implements Serializable {
     
+    @Id
     private String id;
-    
+    @OneToMany
     private Collection<Requirement> reqs;
     private String department;
     private double minGPA;
@@ -83,7 +85,6 @@ public class Major implements Serializable {
          reqs=r;
      }
      
-    @Id
     public String getId() {
         return id;
     }

@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Persistence;
 import logging.UseLogger;
 import java.util.*;
+import javax.persistence.FetchType;
 import structures.RootlessTree;
 
 /** Requirements that need to be fullfiledd for a major for graduation
@@ -42,7 +43,7 @@ public class Requirement implements Serializable {
         em=emf.createEntityManager();
     }
 
-    @OneToMany
+    @OneToMany(fetch=FetchType.EAGER)
     private Collection<CourseGroup> possibleCourses;
     
     public Collection<CourseGroup> getPossibleCourses() {
