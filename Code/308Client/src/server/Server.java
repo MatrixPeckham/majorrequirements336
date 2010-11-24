@@ -14,6 +14,7 @@ public class Server {
      public static void main(String[] args) {
          ServerSocket s=null;
          School.load();
+         School sch = School.getSchool();
          try {
              s=new ServerSocket(8989);
          }catch(Exception e) {

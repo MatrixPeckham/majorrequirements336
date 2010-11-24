@@ -108,7 +108,7 @@ public class ClientGUI extends JFrame {
          */
         public void changeManageScreen(String str, Object fillWith){
 		if(str.equals(CURR_ADD)){
-			JPanel p = ((ManagerScreen)screens.get(curScreen)).getAddScreen();
+			Screen p = ((ManagerScreen)screens.get(curScreen)).getAddScreen();
 			if(p==null){
 				throw new UnsupportedOperationException("Cannot go to Screen " + str + ", it doesn't exist");
 			}
@@ -119,12 +119,13 @@ public class ClientGUI extends JFrame {
 				r=((ManagerScreen)screens.get(curScreen)).getRemoveScreen();
 			}
 			this.remove(r);
+                        p.getScreen(fillWith);
 			this.add(p);
 			this.validate();
 			this.repaint();
 			curMan=CURR_ADD;
 		} else if(str.equals(CURR_EDIT)){
-			JPanel p = ((ManagerScreen)screens.get(curScreen)).getEditScreen();
+			Screen p = ((ManagerScreen)screens.get(curScreen)).getEditScreen();
 			if(p==null){
 				throw new UnsupportedOperationException("Cannot go to Screen " + str + ", it doesn't exist");
 			}
@@ -135,13 +136,14 @@ public class ClientGUI extends JFrame {
 				r=((ManagerScreen)screens.get(curScreen)).getRemoveScreen();
 			}
 			this.remove(r);
+                        p.getScreen(fillWith);
 			this.add(p);
 			this.validate();
 			this.repaint();
 			curMan=CURR_EDIT;
 
 		} else if(str.equals(CURR_REM)){
-			JPanel p = ((ManagerScreen)screens.get(curScreen)).getRemoveScreen();
+			Screen p = ((ManagerScreen)screens.get(curScreen)).getRemoveScreen();
 			if(p==null){
 				throw new UnsupportedOperationException("Cannot go to Screen " + str + ", it doesn't exist");
 			}
@@ -152,6 +154,7 @@ public class ClientGUI extends JFrame {
 				r=((ManagerScreen)screens.get(curScreen)).getEditScreen();
 			}
 			this.remove(r);
+                        p.getScreen(fillWith);
 			this.add(p);
 			this.validate();
 			this.repaint();
@@ -234,6 +237,10 @@ public class ClientGUI extends JFrame {
 
     Course getCourse(String string) {
         return networking.getCourse(string);
+    }
+
+    ArrayList<Course> getAllCourses() {
+        return networking.getAllCourses();
     }
 
  }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -70,7 +71,12 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-                            frame.changeScreen(ClientGUI.COURSES, frame.getDepartment((String)table.getModel().getValueAt(table.getSelectedRow(), 0)));
+                            try{
+                                String dep = (String)table.getModel().getValueAt(table.getSelectedRow(), 0);
+                                frame.changeScreen(ClientGUI.COURSES, frame.getDepartmentCourses(dep));
+                            }catch(ArrayIndexOutOfBoundsException aioobe){
+                                JOptionPane.showMessageDialog(null, "You need to select a major to view");
+                            }
 			}
 		});
 		viewCourses.setFont(new Font("Times New Roman",1,24));
