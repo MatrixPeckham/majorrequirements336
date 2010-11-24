@@ -35,6 +35,29 @@ public class User implements Scheduler, FileParser{
         permissions=STUDENT;
         majorYear=(new Date()).getYear();
     }
+    public int getStanding(){
+        return School.getSchool().getStanding(this.getCompletedCredits());
+    }
+    public int getCompletedCredits() {
+        int totalCreds=0;
+        for(CourseRecord r: courses.values()) {
+            if(r.coursePassed()) {
+                totalCreds+=r.getCourse().getCredits();
+            }
+        }
+        return totalCreds;
+    }
+    public double calculateGPA() {
+        int totalCreds=0;
+        double totalPoints=0;
+        for(CourseRecord r: courses.values()) {
+            for(Grade g : r.getGrades()) {
+                totalPoints+=g.getGradePoints();
+                totalCreds+=r.getCourse().getCredits();
+            }
+        }
+        return totalPoints/totalCreds;
+    }
     public TreeMap<String, CourseRecord> getRecords() {return courses;}
     public Major getMajor() {return major;}
     public long getID() {return userId;}
@@ -160,7 +183,11 @@ public class User implements Scheduler, FileParser{
         NodeList n=e.getElementsByTagName("prerequisite");
         //Vector<CourseGroup> v=new Vector<CourseGroup>();
         for(int i=0; i<n.getLength(); i++) {
-            NodeList n2=((Element)n.item(i)).getElementsByTagName("or");
+            NodeList n2=((Element)n.item(i)).getElementsByTagName("minstanding");
+            if(n2.getLength()>0) {
+                c.setMinLevel(Integer.parseInt(n2.item(0).getTextContent().substring(1)));
+            }
+            n2=((Element)n.item(i)).getElementsByTagName("or");
             CourseGroup g=new CourseGroup();
             for(int j=0; j<n2.getLength(); j++) {
                 String course=n2.item(j).getTextContent();
@@ -182,6 +209,7 @@ public class User implements Scheduler, FileParser{
         NodeList nodes=el.getElementsByTagName("requirement");
         for(int i=0; i<nodes.getLength(); i++) {
             Requirement r=parseRequirement((Element) nodes.item(i));
+            PersistenceManager.merge(r);
             if(r!=null) {
                 m.addRequirement(r);
             }
@@ -200,6 +228,10 @@ public class User implements Scheduler, FileParser{
         String required=el.getAttribute("required");
         r.setYear(year);
         r.setId(name);
+        String req=el.getAttribute("required");
+        try{
+            r.setNumberOfCourses(Integer.parseInt(req));
+        }catch(Exception e){}
         int requiredSeq=nodes.getLength();
         if(!required.equals("")) {
             requiredSeq=Integer.parseInt(required);

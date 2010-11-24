@@ -8,6 +8,7 @@ package server;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.TreeMap;
 import java.util.Vector;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -60,8 +61,6 @@ public class Course implements Serializable {
     private int num; //course number, used for upper division identification
     private int credits;//credits satisfied by the course
     private int semestersOffered;//integer representing combination of semesesters when the course is offered
-    private static EntityManager em;//JPA interaction
-    private static EntityManagerFactory emf;
 
 
     public Course() {}
@@ -85,12 +84,22 @@ public class Course implements Serializable {
         }
         
     }
-   public void addPreReq(CourseGroup c) {prereqs.add(c);}
-   
+    public void addPreReq(CourseGroup c) {prereqs.add(c);}
+    public boolean prereqsComplete(TreeMap<String,CourseRecord> completed, int credits) {
+        if(School.getSchool().getStanding(credits)<minLevel) {
+            return false;
+        }
+        for(CourseGroup g : prereqs) {
+            if(g.numRemainingCourses(completed)>0) {
+                return false;
+            }
+        }
+        return true;
+    }
     public void setPrereqs(Collection<CourseGroup> p) {prereqs=p;}
     public void setId(String id) {this.id = id;}
     public void setName(String name) {this.name=name;}
-    public void setNum(int num) {this.num=num; em.merge(this);}
+    public void setNum(int num) {this.num=num;}
     public void setDescription(String d){description=d;}
     public void setCredits(int c) {credits=c;}
     public void setSemestersOfferd(int o) {semestersOffered=0;}
@@ -104,6 +113,8 @@ public class Course implements Serializable {
     public int getCredits() {return credits;}
     public int getSemestersOffered(){return semestersOffered;}
     public boolean isUpperDivision() {return num>=300;}
+    public int getMinLevel() {return minLevel;}
+    public void setMinLevel(int m) {minLevel=m;}
     //public boolean passedCourse(User u){return u.getRecords().get(id).coursePassed();}
 
     public RootlessTree<Course> getShortestPrereqPath() {

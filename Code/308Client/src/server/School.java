@@ -14,6 +14,7 @@ public class School {
     private TreeMap<String, Department> departments;
     private static School school;
     private static int maxSemesterCreds;
+    private static int[] creditThresholds=new int[]{24,57,85};
     private School() {
         departments=new TreeMap<String,Department>();
         maxSemesterCreds=19;
@@ -40,6 +41,14 @@ public class School {
             school=new School();
         }
         return school;
+    }
+    public int getStanding(int credits) {
+        for(int i=0; i<creditThresholds.length; i++) {
+            if(credits<creditThresholds[i]) {
+                return i+1;
+            }
+        }
+        return 4;
     }
     public static void load() {
      
