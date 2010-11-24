@@ -82,6 +82,34 @@ public class RootlessTree<T> {
            }
            return max;
     }
+    public Vector<T> getDeepestData(){
+        int d=getMaxLevel();
+        Vector<Node> n=getDeepestData(roots,0,d);
+        Vector<T> data=new Vector<T>();
+        for(Node n2 : n) {
+            data.add(n2.data);
+        }
+        return data;
+    }
+    public Vector<Node> getDeepestData(Vector<Node> nodes, int current, int deepest) {
+        if(current==deepest) {
+            return nodes;
+        }
+        Vector<Node> n=new Vector<Node>();
+        for(Node n2 :nodes) {
+            n.addAll(getDeepestData(n2.children,current+1, deepest));
+        }
+        return n;
+
+    }
+   public Vector<T> getDataAtlevel(int d){
+        Vector<Node> n=getDeepestData(roots,0,d);
+        Vector<T> data=new Vector<T>();
+        for(Node n2 : n) {
+            data.add(n2.data);
+        }
+        return data;
+    }
     public int size() {return size;}
     public void addRoot(T data) {
             roots.add(new Node(null, data));
