@@ -94,7 +94,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                             JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                for(int i=0; i<=3; i++)
+                for(int i=0; i<3; i++)
                 {
                     if(s.charAt(i)<'A'||s.charAt(i)>'Z')
                     {
@@ -123,7 +123,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                             JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                for(int i=0; i<=3; i++)
+                for(int i=0; i<3; i++)
                 {
                     if(s.charAt(i)<'A'||s.charAt(i)>'Z')
                     {

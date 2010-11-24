@@ -73,7 +73,7 @@ public class WelcomeScreen extends Screen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-                            if(frame.getPermissions()>=3){
+                            if(frame.getPermissions()<3){
 				frame.reg = true;
 				frame.changeScreen(ClientGUI.LOGIN, null);
                             } else {
