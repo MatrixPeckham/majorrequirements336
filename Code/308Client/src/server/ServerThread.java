@@ -138,6 +138,7 @@ public class ServerThread implements Runnable{
                      try{
                          objectOut=new ObjectOutputStream(out);
                          objectOut.writeObject(School.getSchool().getDepartments());
+                         //objectOut.reset();
                          //objectOut.close();
                         pw.println("OK");
                     }catch(Exception e) {
@@ -267,8 +268,8 @@ public class ServerThread implements Runnable{
             finally {
                 try {
                    pw.flush();
-                   objectOut.flush();
-                   objectOut.reset();
+                   //objectOut.flush();
+                   //objectOut.reset();
                 }
                 catch(Exception e)  {
                     pw.println("ERR");
