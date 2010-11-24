@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import server.*;
 import java.io.*;
+import java.util.Collection;
 import java.util.Scanner;
 import server.Commands;
 /**
@@ -352,6 +353,15 @@ public User getStudentInfo() {
     }
 
     ArrayList<Course> getAllCourses() {
-        return null;
+        pw.println(Commands.GET_ALL_COURSES);
+        try{
+            ois=new ObjectInputStream(s.getInputStream());
+            Object o = ois.readObject();
+            rdr.readLine();
+            ArrayList<Course> c = new ArrayList<Course>((Collection<Course>)o);
+            return c;
+        } catch(Exception e){
+            return null;
+        }
     }
 }

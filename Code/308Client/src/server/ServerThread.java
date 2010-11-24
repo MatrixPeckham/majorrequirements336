@@ -6,6 +6,7 @@
 package server;
 import java.net.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import persistence.PersistenceManager;
 /**
@@ -65,6 +66,7 @@ public class ServerThread implements Runnable{
                     permissions=system.checkLogin(username,password);
                     pw.println(permissions);
                     } catch(Exception e) {
+                        e.printStackTrace();
                         pw.println("0");
                     }
                 } else if(cmd.equals(Commands.LOGOUT)) {
@@ -150,6 +152,19 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject(School.getSchool().getDepartment(rdr.readLine()).getCourses());
                         pw.println("OK");
                     }catch(Exception e) {
+                        pw.println("ERR");
+                    }
+                } else if (cmd.equals(Commands.GET_ALL_COURSES)) {
+                    try{
+                        objectOut=new ObjectOutputStream(out);
+                        ArrayList<Department> depts = School.getSchool().getDepartments();
+                        ArrayList<Course> courses = new ArrayList<Course>();
+                        for(Department d : depts){
+                            courses.addAll(d.getCourses());
+                        }
+                        objectOut.writeObject(courses);
+                        pw.println("OK");
+                    } catch(Exception e){
                         pw.println("ERR");
                     }
                 } else if (cmd.equals(Commands.GET_REQS)) {
@@ -262,7 +277,9 @@ public class ServerThread implements Runnable{
                         throw new IllegalArgumentException("NO COMMAND:" + cmd);
                 }
 
-            } catch(Exception e) {
+            } catch(SocketException se){
+                connected=false;
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             finally {
