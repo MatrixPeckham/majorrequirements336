@@ -58,6 +58,10 @@ public class ClientGUI extends JFrame {
 		setExtendedState(getExtendedState()|MAXIMIZED_BOTH);
 	}
 
+        public static void main(String[] args) {
+		ClientGUI gui = new ClientGUI();
+                gui.setVisible(true);
+	}
         //initializes all the screens
         private void init(){
 		screens.put(WELCOME, new WelcomeScreen(this));
@@ -119,7 +123,7 @@ public class ClientGUI extends JFrame {
 				r=((ManagerScreen)screens.get(curScreen)).getRemoveScreen();
 			}
 			this.remove(r);
-                        p.getScreen(fillWith);
+                        //p.getScreen(fillWith);
 			this.add(p);
 			this.validate();
 			this.repaint();
@@ -165,10 +169,7 @@ public class ClientGUI extends JFrame {
 	 * Main Method, doesn't handle arguments (yet?)
 	 * @param args doesn't get handled
 	 */
-	public static void main(String[] args) {
-		ClientGUI gui = new ClientGUI();
-                gui.setVisible(true);
-	}
+
         public Schedule generateSchedule() {return networking.generateSchedule();}
 	public File getFile(String str) {return networking.getFile(null, str);}
 	public int uploadFile(File file, String str) {return networking.uploadFile(file, str);}

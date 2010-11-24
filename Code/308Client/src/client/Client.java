@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import server.*;
 import java.io.*;
 import java.util.Scanner;
+import server.Commands;
 /**
  * Main networking class for the client.
  * @author Bill
@@ -214,6 +215,7 @@ public class Client{
     boolean addDepartment(Department dep) {
         pw.println(Commands.ADD_DEPT);
         try{
+            oos = new ObjectOutputStream(s.getOutputStream());
             oos.writeObject(dep);
             String s = rdr.readLine();
             return s.equals("OK");

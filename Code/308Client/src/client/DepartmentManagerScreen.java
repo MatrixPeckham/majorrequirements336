@@ -85,7 +85,8 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame.changeManageScreen(ClientGUI.CURR_ADD, null);
+                                Object o=frame.getDepartments();
+				frame.changeManageScreen(ClientGUI.CURR_ADD, o);
 			}
 		});
 		addDepart.setFont(new Font("Times New Roman",1,24));
