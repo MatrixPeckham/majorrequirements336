@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,6 +17,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import server.Commands;
 import server.Course;
+import server.CourseGroup;
+import server.Department;
 
 /**
  * Manager for the courses
@@ -148,9 +151,24 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             {"CSE 114"}, {"CSE 215"}, {"CSE 219"}, {"CSE 110"},
             {"MAT 127"}};
 
-        table = new JTable(data, columnNames);
+        table = new JTable();
         table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
         table.setFillsViewportHeight(true);
+        table.setModel(new DefaultTableModel(){
+            @Override
+                    public java.lang.Class<?> getColumnClass(int columnIndex) {
+                        return getValueAt(0, columnIndex).getClass();
+                    }
+
+        });
+        DefaultTableModel model = (DefaultTableModel)table.getModel();
+        for (String s : columnNames) {
+                    model.addColumn(s);
+                }
+                for (Object[] o : data) {
+                    model.addRow(o);
+                }
+
 
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
@@ -173,7 +191,19 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
     @Override
     public void getScreen(Object fillWith) {
-        // TODO Auto-generated method stub
+            if(fillWith instanceof ArrayList){
+                //Department d = (Department) fillWith;
+                ArrayList<Course> courses = (ArrayList<Course>)fillWith;
+                DefaultTableModel model = (DefaultTableModel)table.getModel();
+                int rows = model.getRowCount();
+                for(int i = 0; i < rows; i++){
+                    model.removeRow(0);
+                }
+                for (Course c : courses) {
+                    String[] s = {c.getId()};
+                    model.addRow(s);
+                }
+            }
     }
 
     @Override
@@ -193,7 +223,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
     @Override
     public boolean validateForm() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return true;//throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
@@ -259,7 +289,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if(validateForm()){
-                        frame.addCourse(makeCourse(), "");
+                        frame.addCourse(makeCourse(), frame.getCurrentDepartment());
                         frame.changeScreen(ClientGUI.COURSES, frame.getDepartment(frame.getCurrentDepartment()));
                     }
                 }
@@ -322,7 +352,27 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         }
         @Override
         public void getScreen(Object fillWith) {
-            throw new UnsupportedOperationException("Not supported yet.");
+            Course cou=null;
+            ArrayList<Course> prereqlist = new ArrayList<Course>();
+            if(fillWith instanceof Course){
+                cou = (Course)fillWith;
+                ArrayList<CourseGroup> prereqs = new ArrayList<CourseGroup>(cou.getPrereqs());
+                for(CourseGroup cg : prereqs){
+                    prereqlist.addAll(cg.getCourses());
+                }
+            }
+            ArrayList<Course> courses = frame.getAllCourses();
+            DefaultTableModel model = (DefaultTableModel)prereq.getModel();
+            int num = model.getRowCount();
+            for(int i = 0;i<num;i++){
+                model.removeRow(0);
+            }
+            if(courses!=null) {
+                for(Course c : courses){
+                    Object[] o = {c.getId(),prereqlist.contains(c)};
+                    model.addRow(o);
+                }
+            }
         }
 
         @Override

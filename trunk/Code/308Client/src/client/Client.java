@@ -238,6 +238,7 @@ public class Client{
         try{
             ois=new ObjectInputStream(s.getInputStream());
             ArrayList<Department> n=(ArrayList<Department>) ois.readObject();
+            rdr.readLine();
             return n;
         }catch(Exception e) {
             e.printStackTrace();
@@ -262,7 +263,9 @@ public class Client{
        pw.flush();
        try{
         ois=new ObjectInputStream(s.getInputStream());
-        return (ArrayList<Course>)ois.readObject();
+        ArrayList<Course> arr = (ArrayList<Course>)ois.readObject();
+        rdr.readLine();
+        return arr;
         }catch(Exception e) {
             return null;
         }
@@ -277,7 +280,7 @@ public User getStudentInfo() {
 
     String getCurrentDepartment() {
         
-        return null;
+        return "CSE";
     }
 
     CourseRecord getCourseRecord(String str) {
@@ -330,10 +333,13 @@ public User getStudentInfo() {
 
     public Course getCourse(String string) {
         pw.println(Commands.GETCOURSE);
+        pw.println(getCurrentDepartment());
         pw.println(string);
         try{
             ois=new ObjectInputStream(s.getInputStream());
-            return (Course) ois.readObject();
+            Course c = (Course) ois.readObject();
+            rdr.readLine();
+            return c;
         } catch(Exception e) {
             return null;
         }
@@ -341,5 +347,9 @@ public User getStudentInfo() {
 
     public void downloadFile(File file, String str) {
         getFile(file,str);
+    }
+
+    ArrayList<Course> getAllCourses() {
+        return null;
     }
 }

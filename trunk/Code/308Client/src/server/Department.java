@@ -44,10 +44,10 @@ public class Department implements Serializable{
     public String getName() {return name;}
     public void setName(String n) {name=n;}
     public ArrayList<Course> getCourses() {
-        return (ArrayList<Course>)courses;
+        return new ArrayList<Course>(courses);
     }
     public ArrayList<Major> getMajors() {
-        return (ArrayList<Major>)majors;
+        return new ArrayList<Major>(majors);
     }
 
     public Major findMajor(String name) {
