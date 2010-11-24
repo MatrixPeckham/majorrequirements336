@@ -103,9 +103,38 @@ public class Requirement implements Serializable {
             UseLogger.severe("line 80 Exception! :" +e.getMessage());
         }
     }
+    private Vector<CourseGroup> topLeastRemaining(TreeMap<String, CourseRecord> records){
+        Vector<Integer> sizes=new Vector<Integer>();
+        int num=numberOfCourses;
+        if(num==0 || num>=possibleCourses.size()) {
+            return new Vector<CourseGroup>(possibleCourses);
+        }
+        Vector<CourseGroup> topX=new Vector<CourseGroup>();
+        Vector<CourseGroup> courses=new Vector<CourseGroup>(possibleCourses);
+        for(CourseGroup g : possibleCourses) {
+            int i=g.numRemainingCourses(records);
+            sizes.add(i);
+        }
+        for(int i=0; i<num;i++) {
+            int largest=-1;
+            int largestIndex=-1;
+            int j=0;
+            for(Integer i2 : sizes) {
+                if(i2>largest) {
+                    largest=i2;
+                    largestIndex=j;
+                }
+                j++;
+            }
+            Integer rem=sizes.remove(largestIndex);
+            topX.add(courses.get(rem));
+        }
+        return topX;
+    }
     public RootlessTree<Course> getRemainingCourses(TreeMap<String, CourseRecord> records) {
         RootlessTree<Course> remaining=new RootlessTree<Course>();
-        for(CourseGroup g : possibleCourses) {
+        Vector<CourseGroup> toUse=this.topLeastRemaining(records);
+        for(CourseGroup g : toUse) {
             g.getRemainingCourses(records, remaining);
             //remaining.removeDuplicates(c);
         }

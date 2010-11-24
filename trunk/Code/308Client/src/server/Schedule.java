@@ -24,36 +24,101 @@ public class Schedule implements Serializable{
         Major m=u.getMajor();
         RootlessTree<Course> t=m.getRemainingCourse(u.getRecords(), 2008);
         Vector<Course> toTake=new Vector<Course>();
+        Vector<Course> toRemove=new Vector<Course>();
         int maxlevel=t.getMaxLevel();
         while(maxlevel>=0) {
             toTake.addAll(t.getDataAtlevel(maxlevel));
             maxlevel--;
         }
-        t=null;
+        //t=null;
+        /*Semester s=Semester.freeSemester();
+        TreeMap<String, Vector<Course>> sched=new TreeMap<String, Vector<Course>>();
+        int maxSemCredits=School.getSchool().getMaxCreds();
+        toTake=t.getDataAtlevel(maxlevel);
+        sched.put(s.toString(), new Vector<Course>());
+        while(t.count()>0) {
+            boolean found=false;
+
+            Iterator<Course> it=toTake.iterator();
+            while(it.hasNext()) {
+
+                Course c=it.next();
+                if(c.canTake(s) && c.getCredits()<=maxSemCredits && !t.hasChildren(c)) {
+                    sched.get(s.toString()).add(c);
+                    toRemove.add(c);
+                    it.remove();
+                    maxSemCredits-=c.getCredits();
+                    found=true;
+
+                }
+            }
+            boolean reset=false;
+            if((toTake.size()==0 || !found) && maxlevel>=0) {
+                        maxlevel--;
+                        reset=true;
+            }
+             if(maxlevel<0 || maxSemCredits==0) {
+                    for(Course c : toRemove){
+                        t.removeData(c);
+                    }
+                    toRemove.clear();
+                    s=s.nextSemester();
+                    sched.put(s.toString(), new Vector<Course>());
+                    maxSemCredits=School.getSchool().getMaxCreds();
+                    maxlevel=School.getSchool().getMaxCreds();
+                    reset=true;
+            }
+            if(reset) {
+                toTake=t.getDataAtlevel(maxlevel);
+            }
+            
+           
+        }*/
         boolean canGenerate=true;
         Semester s=Semester.freeSemester();
         int maxSemCredits=School.getSchool().getMaxCreds();
         TreeMap<String, Vector<Course>> sched=new TreeMap<String, Vector<Course>>();
+        TreeMap<String, CourseRecord> added=new TreeMap<String,CourseRecord>();
+        int totalCredits=u.getCompletedCredits();
         sched.put(s.toString(), new Vector<Course>());
+        boolean flag=false;
         while(toTake.size()>0 && canGenerate) {
             Iterator<Course> it=toTake.iterator();
             boolean found=false;
-            while(it.hasNext() && !found) {
+            while(it.hasNext()) {
                 Course c=it.next();
-                if(c.canTake(s) && c.getCredits()<=maxSemCredits) {
+                if(c.canTake(s) && c.getCredits()<=maxSemCredits && c.prereqsComplete(added, totalCredits)) {
                     sched.get(s.toString()).add(c);
+                    added.put(c.getId(), new CourseRecord(c, new Grade("A"), false));
+                    toRemove.add(c);
+                    totalCredits+=c.getCredits();
                     it.remove();
                     maxSemCredits-=c.getCredits();
                     found=true;
                 }
-            }
-            if(!found || maxSemCredits==0) {
+                if(maxSemCredits==0) {
+                    for(Course c2 : toRemove) {
+                        t.removeData(c2);
+                    }
+                    toRemove.clear();
                     s=s.nextSemester();
                     sched.put(s.toString(), new Vector<Course>());
                     maxSemCredits=School.getSchool().getMaxCreds();
-            }else if(maxSemCredits==School.getSchool().getMaxCreds()) {
-                break;
+                }
             }
+            if(maxSemCredits>0) {
+                    for(Course c2 : toRemove) {
+                        t.removeData(c2);
+                    }
+                    toRemove.clear();
+                    s=s.nextSemester();
+                    sched.put(s.toString(), new Vector<Course>());
+                    maxSemCredits=School.getSchool().getMaxCreds();
+                }
+            if(!found) {
+                if(flag) {break;}
+                flag=true;
+            } else {flag=false;}
         }
         return new Schedule(sched);
     }

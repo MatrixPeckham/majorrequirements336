@@ -37,6 +37,7 @@ public class CourseGroup implements Serializable {
     private double minGPA;//minGPA to complete the sequence successfully
     @OneToMany(fetch=FetchType.EAGER)
     private Collection<Course> courses;//Required courses- maps to courses in course table
+    private int required;
      private static EntityManager em;
     private static EntityManagerFactory emf;
 
@@ -46,7 +47,12 @@ public class CourseGroup implements Serializable {
     public Long getId() {
         return id;
     }
-
+    public void setNumReqiured(int id) {
+        required = id;
+    }
+    public int getNumReqiured() {
+        return required;
+    }
     public void setId(Long id) {
         this.id = id;
     }
@@ -131,6 +137,26 @@ public class CourseGroup implements Serializable {
         RootlessTree<Course> tree=new RootlessTree<Course>();
         getRemainingCourses(records, tree, 0, null);
         return tree;
+    }
+    public Vector<Course> remainingCoursesNoPrereq(TreeMap<String, CourseRecord> records) {
+        Vector<Course> remain=new Vector<Course>();
+        for(Course c : courses) {
+            if(!records.containsKey(c.getId())) {
+                remain.add(c);
+            }
+        }
+        return remain;
+    }
+    public int numRemainingCourses(TreeMap<String, CourseRecord> records) {
+        int rem=required;
+        if(required==0) {rem=courses.size();}
+        for(Course c : courses) {
+            if(records.containsKey(c.getId())) {
+                rem--;
+            }
+        }
+
+        return rem<0?0:rem;
     }
     private void getRemainingCourses(TreeMap<String, CourseRecord> records, RootlessTree<Course> course, int level, Course parent) {
         int numrequired=courses.size();
