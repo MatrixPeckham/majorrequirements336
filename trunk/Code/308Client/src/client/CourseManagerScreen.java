@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -349,8 +350,27 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         }
 
         private Course makeCourse() {
-            return null;
+            Course c = new Course();
+            c.setCredits(3);
+            c.setDescription(descF.getText());
+            c.setName(deptF.getText());
+            c.setNum(Integer.parseInt(numF.getText()));
+            c.setSemestersOfferd(3);
+            CourseGroup cg = new CourseGroup();
+            DefaultTableModel model = (DefaultTableModel) prereq.getModel();
+            int num = model.getRowCount();
+            for(int i = 0; i < num; i++){
+                StringTokenizer st = new StringTokenizer((String)model.getValueAt(i, 0));
+                Boolean b = (Boolean)model.getValueAt(i, 1);
+                if(b){
+                    Course pr = frame.getCourse(st.nextToken());
+                    cg.addCourse(pr);
+                }
+            }
+            c.addPreReq(cg);
+            return c;
         }
+
         @Override
         public void getScreen(Object fillWith) {
             Course cou=null;
@@ -374,11 +394,16 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                     model.addRow(o);
                 }
             }
+            if(cou!=null){
+                nameF.setText(cou.getName());
+//                numF.setText(cou.getNum());
+                descF.setText(cou.getDescription());
+            }
         }
 
         @Override
         public boolean validateForm() {
-            throw new UnsupportedOperationException("Not supported yet.");
+            return true;
         }
     }
 

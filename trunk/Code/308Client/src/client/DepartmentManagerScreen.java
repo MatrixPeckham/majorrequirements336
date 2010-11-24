@@ -226,6 +226,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 		private JTextField nameField;
                 //add button
 		private JButton add;
+                private JButton cancel;
                 //error label
                 private JLabel error;
 
@@ -261,6 +262,16 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                                     }
 				}
 			});
+                        cancel = new JButton("Cancel");
+                        cancel.setFont(new Font("Times New Roman",1,24));
+			cancel.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+                                    Object o = frame.getDepartments();
+                                    frame.changeScreen(ClientGUI.DEPARTMENTS, o);
+				}
+			});
                         error = new JLabel("Error: Please Enter Only Letters For The Department Name");
                         error.setFont(new Font("Times New Roman",1,12));
                         error.setForeground(Color.red);
@@ -272,6 +283,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 			addJComponentToContainerUsingGBL(name, this, 1, 10, 1, 1);
 			addJComponentToContainerUsingGBL(nameField, this, 2, 10, 1, 1);
 			addJComponentToContainerUsingGBL(add, this, 1, 20, 1, 1);
+                        addJComponentToContainerUsingGBL(cancel, this, 2, 20, 1, 1);
                         addJComponentToContainerUsingGBL(error, this, 1, 30, 1, 1);
 		}
 
