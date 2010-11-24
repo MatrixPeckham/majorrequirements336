@@ -14,6 +14,7 @@ import java.util.Vector;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ public class CourseGroup implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;//a unique number for the course sequence
     private double minGPA;//minGPA to complete the sequence successfully
-    @OneToMany
+    @OneToMany(fetch=FetchType.EAGER)
     private Collection<Course> courses;//Required courses- maps to courses in course table
      private static EntityManager em;
     private static EntityManagerFactory emf;
