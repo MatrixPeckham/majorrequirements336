@@ -51,6 +51,7 @@ public class RootlessTree<T> {
     public int count() {return count(roots);}
     private int count(Vector<Node> n) {
         int count=0;
+        if(n==null) {return 0;}
         for(Node n2 : n) {
             count+=1+count(n2.children);
         }
@@ -139,13 +140,20 @@ public class RootlessTree<T> {
                     size++;
         }
     }
+    public boolean hasChildren(T data) {
+        Node n=find(data, roots);
+        return n.children!=null && n.children.size()>0;
+    }
     public int removeData(T data) {
         Node n=find(data, roots);
-        if(n.children.size()>0) {return -1;} else {
-            n.parent.children.remove(n);
+        if(n==null) {return -1;}
+        if(n.children!=null && n.children.size()>0) {return -1;} else {
+            if(n.parent!=null) {
+                n.parent.children.remove(n);
+            }
             n.parent=null;
             n.children.clear();
-            n.children=null;
+    
             size--;
             return 0;
         }

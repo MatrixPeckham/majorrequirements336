@@ -106,7 +106,9 @@
             <description>Intermediate Programming in C and C++</description>
             <minGrade>2.0</minGrade>
             <credits>3</credits>
-            <prerequisite>CSE 130</prerequisite>
+            <prerequisite>
+                <or>CSE 130</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -245,7 +247,9 @@
             <description>Legal, Social, and Ethical Issues in Computer Science</description>
             <minGrade>2.0</minGrade>
             <credits>3</credits>
-            <prerequisite>CSE110</prerequisite>
+            <prerequisite>
+                <minstanding>U3</minstanding>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -583,6 +587,33 @@
         </course>
     </department>
     <department>
+        <name>Writing</name>
+        <fullName>Writing</fullName>
+        <course>
+            <number>101</number>
+            <description>Writing I</description>
+            <credits>3</credits>
+            <minGrade>2.0</minGrade>
+            <offered>
+                <spring>true</spring>
+                <fall>true</fall>
+            </offered>
+        </course>
+        <course>
+            <number>102</number>
+            <description>Writing II</description>
+            <credits>3</credits>
+            <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>WRT 101</or>
+            </prerequisite>
+            <offered>
+                <spring>true</spring>
+                <fall>true</fall>
+            </offered>
+        </course>
+    </department>
+    <department>
         <name>AMS</name>
         <fullName>Applied Mathematics</fullName>
         <course>
@@ -698,6 +729,9 @@
             <description>Calculus II</description>
             <credits>3</credits>
             <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>MAT 127</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -708,6 +742,9 @@
             <description>Calculus III</description>
             <credits>3</credits>
             <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>MAT 126</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -728,6 +765,9 @@
             <description>Advanced Calculus II</description>
             <credits>3</credits>
             <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>MAT 131</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -796,6 +836,9 @@
             <description>Physics II</description>
             <credits>3</credits>
             <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>PHY 125</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -806,6 +849,9 @@
             <description>Physics III</description>
             <credits>3</credits>
             <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>PHY 126</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -826,6 +872,9 @@
             <description>Advanced Physics II</description>
             <credits>3</credits>
             <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>PHY 131</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -846,6 +895,9 @@
             <description>Physics Lab II</description>
             <credits>3</credits>
             <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>PHY 133</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -866,6 +918,9 @@
             <description>Honors II</description>
             <credits>3</credits>
             <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>PHY 141</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -890,6 +945,9 @@
             <description>Chemistry II</description>
             <credits>3</credits>
             <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>CHE 131</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -900,6 +958,9 @@
             <description>Chemistry III</description>
             <credits>3</credits>
             <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>CHE 132</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -920,6 +981,9 @@
             <description>Advanced Chemistry II</description>
             <credits>3</credits>
             <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>CHE 141</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
@@ -930,6 +994,9 @@
             <description>Advanced Chemistry III</description>
             <credits>3</credits>
             <minGrade>2.0</minGrade>
+            <prerequisite>
+                <or>CHE 142</or>
+            </prerequisite>
             <offered>
                 <spring>true</spring>
                 <fall>true</fall>
