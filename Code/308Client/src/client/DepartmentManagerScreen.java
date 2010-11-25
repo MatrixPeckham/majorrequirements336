@@ -289,7 +289,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 
         @Override
         public void getScreen(Object fillWith) {
-            throw new UnsupportedOperationException("Not supported yet.");
+            
         }
 
         @Override

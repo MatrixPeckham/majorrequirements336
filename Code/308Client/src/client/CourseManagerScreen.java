@@ -355,6 +355,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             c.setDescription(descF.getText());
             c.setName(deptF.getText());
             c.setNum(Integer.parseInt(numF.getText()));
+            c.setId(nameF.getText());
             c.setSemestersOfferd(3);
             CourseGroup cg = new CourseGroup();
             DefaultTableModel model = (DefaultTableModel) prereq.getModel();
@@ -395,9 +396,10 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 }
             }
             if(cou!=null){
-                nameF.setText(cou.getName());
-//                numF.setText(cou.getNum());
+                nameF.setText(cou.getId());
+                numF.setText(cou.getNum()+"");
                 descF.setText(cou.getDescription());
+                deptF.setText(cou.getName());
             }
         }
 
