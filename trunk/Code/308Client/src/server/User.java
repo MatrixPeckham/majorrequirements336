@@ -74,15 +74,6 @@ public class User implements Scheduler, FileParser{
 
     @Override
     public Schedule generateSchedule() {
-        //initiate values for starting semester;
-            //1->Fall
-            //2->Spring
-        // well use bitwise ops to compare for course semseter offered
-        int semester=1;
-        int year=2010;
-        int maxCredits=17; //info will be received fromm school object
-        //First get all remaining Courses
-        //Vector<Course> remaining=major.getRemainingCourse(courses.values());
         return Schedule.generateSchedule(this);
     }
 
