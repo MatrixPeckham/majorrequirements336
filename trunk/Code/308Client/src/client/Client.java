@@ -215,14 +215,21 @@ public class Client{
 
     boolean addDepartment(Department dep) {
         pw.println(Commands.ADD_DEPT);
+        boolean ret = false;
         try{
             oos = new ObjectOutputStream(s.getOutputStream());
             oos.writeObject(dep);
-            String s = rdr.readLine();
-            return s.equals("OK");
         }catch(Exception e) {
-            return false;
-        }
+            e.printStackTrace();
+        } finally{
+            String s="";
+            try {
+                s = rdr.readLine();
+            } catch (IOException ex) {
+            }
+            ret= s.equals("OK");
+       }
+        return ret;
     }
 
     boolean editDepartment(String str, Department d) {
@@ -238,6 +245,7 @@ public class Client{
 
     ArrayList<Department> getDepartments() {
         pw.println(Commands.GET_DEPT);
+        pw.flush();
         try{
             ois=new ObjectInputStream(s.getInputStream());
             ArrayList<Department> n=(ArrayList<Department>) ois.readObject();
@@ -251,13 +259,20 @@ public class Client{
 
     Department getDepartment(String str) {
         ArrayList<Department> a=getDepartments();
+        Department ret = null;
         if(a==null) {return null;}
         for(Department d : a) {
             if(d.getName().equals(str)) {
-                return d;
+                ret = d;
+                break;
             }
         }
-        return null;
+        try {
+            rdr.readLine();
+        } catch (IOException ex) {
+
+        }
+        return ret;
     }
 
     ArrayList<Course> getDepartmentCourses(String str) {
@@ -323,7 +338,9 @@ public User getStudentInfo() {
         pw.println(major);
         try{
             ois=new ObjectInputStream(s.getInputStream());
-            return (Major) ois.readObject();
+            Major m = (Major) ois.readObject();
+            rdr.readLine();
+            return m;
         } catch(Exception e) {
             return null;
         }
@@ -361,6 +378,7 @@ public User getStudentInfo() {
             ArrayList<Course> c = new ArrayList<Course>((Collection<Course>)o);
             return c;
         } catch(Exception e){
+            e.printStackTrace();
             return null;
         }
     }

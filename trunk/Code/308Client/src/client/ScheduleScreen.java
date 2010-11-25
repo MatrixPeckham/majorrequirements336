@@ -5,11 +5,17 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import server.Course;
+import server.Schedule;
 
 /**
  * Screen to view generated schedule
@@ -44,11 +50,25 @@ public class ScheduleScreen extends Screen {
         this.setLayout(new BorderLayout());
         sched = new JLabel("Remaining Schedule");
         sched.setFont(new Font("Times New Roman",1,72));
-        String[] columnNames = {"Class","Semester","Requirement","Credits"};
+        String[] columnNames = {"Class","Credits"};
         Object[][] data = {};
-        table = new JTable(data, columnNames);
+        table = new JTable();
         table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
         table.setFillsViewportHeight(true);
+        table.setModel(new DefaultTableModel(){
+            @Override
+            public java.lang.Class<?> getColumnClass(int columnIndex) {
+                return getValueAt(0, columnIndex).getClass();
+            }
+        });
+        DefaultTableModel model = (DefaultTableModel)table.getModel();
+        for (String s : columnNames) {
+                    model.addColumn(s);
+                }
+                for (Object[] o : data) {
+                    model.addRow(o);
+                }
+
         JScrollPane scrollPane = new JScrollPane(table);
         back = new JButton("Back");
         back.addActionListener(new ActionListener() {
@@ -67,7 +87,21 @@ public class ScheduleScreen extends Screen {
 
     @Override
     public void getScreen(Object fillWith) {
-        // TODO Auto-generated method stub
+        if(fillWith instanceof Schedule){
+            Schedule s = (Schedule) fillWith;
+            TreeMap<String,Vector<Course>> sched = s.getSchedule();
+
+            Set<String> semesters = sched.keySet();
+            for(String str : semesters){
+                Vector<Course> courses = sched.get(str);
+                Object[] sem = {str};
+                ((DefaultTableModel)table.getModel()).addRow(sem);
+                for(Course c : courses){
+                    Object[] obs = {c.getId(),c.getCredits()};
+                    ((DefaultTableModel)table.getModel()).addRow(obs);
+                }
+            }
+        }
     }
 
     @Override

@@ -152,6 +152,7 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject(School.getSchool().getDepartment(rdr.readLine()).getCourses());
                         pw.println("OK");
                     }catch(Exception e) {
+                        e.printStackTrace();
                         pw.println("ERR");
                     }
                 } else if (cmd.equals(Commands.GET_ALL_COURSES)) {
@@ -272,7 +273,7 @@ public class ServerThread implements Runnable{
                     }
 
                 } else {
-                        objectOut.writeObject(null);
+                        //objectOut.writeObject((Object)null);
                         pw.println("ERR");
                         throw new IllegalArgumentException("NO COMMAND:" + cmd);
                 }

@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -19,6 +20,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import server.Course;
 import server.Major;
 import server.Requirement;
 
@@ -155,7 +157,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(validateForm()){
-                    Major m = frame.getMajor((String)table.getModel().getValueAt(table.getSelectedRow(), 1));
+                    Major m = frame.getMajor((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
                     frame.changeManageScreen(ClientGUI.CURR_EDIT, m);
                 }
             }
@@ -209,7 +211,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             error.setVisible(true);
             return false;
         }
-        error.setVisible(true);
+        error.setVisible(false);
         return true;
     }
 
@@ -280,11 +282,9 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             addPage = new JLabel("Add Requirement Page");
             addPage.setFont(new Font("Times New Roman", 1, 72));
             courseL = new JLabel("Courses");
-            String[] columnNames = {"Department", "ID", "Credits", "Prereq"};
+            String[] columnNames = {"Course"};
             Object[][] data = {
-                {"CSE", "308", "3", "CSE 219"}, {"CSE", "381", "3", "CSE 219"}, {"CSE", "380", "3", "CSE 219"}, {"CSE", "220", "3", "CSE 219"},
-                {"CSE", "114", "3", "CSE 219"}, {"CSE", "215", "3", "CSE 219"}, {"CSE", "219", "3", "CSE 219"}, {"CSE", "110", "3", "CSE 219"},
-                {"MAT", "127", "3", "CSE 219"}};
+                {"CSE 101"}, {"CSE 900"}, {"CSE 282"}};
             courses = new JTable();
             courses.setPreferredScrollableViewportSize(new Dimension(100, 100));
             courses.setFillsViewportHeight(true);
@@ -404,6 +404,18 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
         @Override
         public void getScreen(Object fillWith) {
+            DefaultTableModel model = (DefaultTableModel) courses.getModel();
+            ArrayList<Course> courses = frame.getAllCourses();
+            int rows = model.getRowCount();
+            for(int i = 0; i < rows; i++){
+                model.removeRow(0);
+            }
+            if(courses!=null){
+                for(Course c : courses){
+                    Object[] o = {c.getId()};
+                    model.addRow(o);
+                }
+            }
         }
 
         @Override
@@ -493,7 +505,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
         @Override
         public void getScreen(Object fillWith) {
-            throw new UnsupportedOperationException("Not supported yet.");
+            //throw new UnsupportedOperationException("Not supported yet.");
         }
 
         @Override
