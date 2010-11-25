@@ -35,10 +35,10 @@ public class Client{
             try{
             FileWriter fw=new FileWriter(location);
             PrintWriter pw2=new PrintWriter(fw);
-            pw.println(str);
+            oos.writeObject(str);
             String s;
-            while(!(s=rdr.readLine()).equals("ENDXML")) {
-                pw.println(s);
+            while(!(s=(String) ois.readObject()).equals("ENDXML")) {
+                oos.writeObject(s);
             }
             pw.flush();
                 return location;
@@ -48,14 +48,15 @@ public class Client{
 
         }
 	public int uploadFile(File file, String str) {
-            pw.println(str);
             try{
+            oos.writeObject(str);
+            
             Scanner sc=new Scanner(file);
             while(sc.hasNext()) {
-                pw.println(sc.nextLine());
+                oos.writeObject(sc.nextLine());
             }
-            pw.println("ENDXML");
-            String s=rdr.readLine();
+            oos.writeObject("ENDXML");
+            String s=(String) ois.readObject();
             return s.equals("OK")?0:Integer.parseInt(s);
             }catch(Exception e) {
             return -1;
@@ -65,24 +66,24 @@ public class Client{
 //TODO	public Course loadCourse(String str) {return null;}
 	public boolean addCourse(Course c, String str) {
             try{
-                pw.println(Commands.ADD_CLASS);
+                oos.writeObject(Commands.ADD_CLASS);
                     oos.writeObject(c);
-                return Boolean.parseBoolean(rdr.readLine());
+                return Boolean.parseBoolean((String) ois.readObject());
             }catch(Exception e) {return false;}
         }
     	public Course loadCourse(String str) {
             try{
-                pw.println(Commands.GETCOURSE);
-                pw.println(str);
+                oos.writeObject(Commands.GETCOURSE);
+                oos.writeObject(str);
                 ois=new ObjectInputStream(s.getInputStream());
                 return (Course) ois.readObject();
             }catch(Exception e){return null;}
         }
 	public boolean removeCourse(String str) {
             try{
-                pw.println(Commands.REMOVE_COURSE);
-                pw.println(str);
-                return rdr.readLine().equals("OK");
+                oos.writeObject(Commands.REMOVE_COURSE);
+                oos.writeObject(str);
+                return ((String) ois.readObject()).equals("OK");
             } catch(Exception e){
                 return false;
             }
@@ -100,20 +101,22 @@ public class Client{
 
 	public boolean removeRequirement(String str1, String str2){return false;}
 	public int login(String usr,String pass) {
-            pw.println(Commands.LOGIN);
-            pw.println(usr);
-            pw.println(pass);
-            pw.flush();
             try{
-            return Integer.parseInt(rdr.readLine());
+            oos.writeObject(Commands.LOGIN);
+            oos.writeObject(usr);
+            oos.writeObject(pass);
+            pw.flush();
+            
+            return Integer.parseInt((String) ois.readObject());
             } catch(Exception e) {
                 return -1;
             }
         }
 	public boolean logout() {
-            pw.println(Commands.LOGOUT);
             try{
-            return rdr.readLine().equals("OK");
+            oos.writeObject(Commands.LOGOUT);
+  
+            return ((String) ois.readObject()).equals("OK");
             }catch(Exception e) {return false;}
         }
 //TODO	public Vector<Requirements> getRequirements() {return null;}
@@ -138,6 +141,9 @@ public class Client{
               
                 rdr=new BufferedReader(new InputStreamReader(s.getInputStream()));
                 pw=new PrintWriter(s.getOutputStream(), true);
+                ois=new ObjectInputStream(s.getInputStream());
+                oos=new ObjectOutputStream(s.getOutputStream());
+                
             } catch (UnknownHostException ex) {
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
@@ -146,9 +152,10 @@ public class Client{
         }
 
     Schedule generateSchedule() {
-        pw.println(Commands.GETSCHED);
         try{
-            ois=new ObjectInputStream(s.getInputStream());
+            oos.writeObject(Commands.GETSCHED);
+        
+            //ois=new ObjectInputStream(s.getInputStream());
             return (Schedule) ois.readObject();
         }catch(Exception e){
             return null;
@@ -156,21 +163,23 @@ public class Client{
     }
 
     boolean editCourse(Course c) {
-        pw.println(Commands.EDIT_COURSE);
         try{
+        oos.writeObject(Commands.EDIT_COURSE);
+
+            oos.reset();
         oos.writeObject(c);
-        oos.reset();
-        return rdr.readLine().equals("OK");
+        
+        return ((String) ois.readObject()).equals("OK");
         }catch(Exception e) {
             return false;
         }
     }
 
     Major loadMajor(String str) {
-        pw.println(Commands.GET_MAJOR);
-        pw.println(str);
         try{
-            ois=new ObjectInputStream(s.getInputStream());
+        oos.writeObject(Commands.GET_MAJOR);
+        oos.writeObject(str);
+                   //ois=new ObjectInputStream(s.getInputStream());
             return (Major)ois.readObject();
         }catch(Exception e) {
             return null;
@@ -178,24 +187,25 @@ public class Client{
     }
 
     boolean addMajor(Major m, String dept) {
-        pw.println(Commands.ADD_MAJOR);
-        pw.println(dept);
         try{
+        oos.writeObject(Commands.ADD_MAJOR);
+        oos.writeObject(dept);
+            oos.reset();
             oos.writeObject(m);
-            return rdr.readLine().equals("OK");
+            return ((String) ois.readObject()).equals("OK");
         } catch(Exception e) {
             return false;
         }
     }
 
     boolean editMajor(Major m, String dept) {
-        pw.println(Commands.EDIT_MAJOR);
-        pw.println(dept);
-
         try{
+        oos.writeObject(Commands.EDIT_MAJOR);
+        oos.writeObject(dept);
+            oos.reset();
             oos.writeObject(m);
 
-            return rdr.readLine().equals("OK");
+            return ((String) ois.readObject()).equals("OK");
         } catch(Exception e) {
             return false;
         }
@@ -214,43 +224,48 @@ public class Client{
     }
 
     boolean addDepartment(Department dep) {
-        pw.println(Commands.ADD_DEPT);
         boolean ret = false;
         try{
-            oos = new ObjectOutputStream(s.getOutputStream());
-            oos.writeObject(dep);
+        oos.writeObject(Commands.ADD_DEPT);
+             
+             //oos=new ObjectOutputStream(s.getOutputStream());
+             
+             oos.writeObject(dep);
+             oos.flush();
+             String s=(String) ois.readObject();
+             System.out.println(s);
+            return s.equals("OK");
         }catch(Exception e) {
             e.printStackTrace();
-        } finally{
-            String s="";
-            try {
-                s = rdr.readLine();
-            } catch (IOException ex) {
-            }
-            ret= s.equals("OK");
-       }
-        return ret;
+            return false;
+        }
     }
 
     boolean editDepartment(String str, Department d) {
-        pw.println(Commands.EDIT_DEPT);
-        pw.println(str);
         try{
+        oos.writeObject(Commands.EDIT_DEPT);
+        oos.writeObject(str);
+            
+
             oos.writeObject(d);
-            return rdr.readLine().equals("OK");
+
+            return ((String) ois.readObject()).equals("OK");
         }catch(Exception e) {
             return false;
         }
     }
 
     ArrayList<Department> getDepartments() {
-        pw.println(Commands.GET_DEPT);
         pw.flush();
         try{
-            ois=new ObjectInputStream(s.getInputStream());
-            ArrayList<Department> n=(ArrayList<Department>) ois.readObject();
-            rdr.readLine();
-            return n;
+        oos.writeObject(Commands.GET_DEPT);
+        oos.flush();
+           // ois=new ObjectInputStream(s.getInputStream());
+           //System.out.println((String) ois.readObject());
+            ArrayList<Department> a=(ArrayList<Department>)ois.readObject();
+            System.out.println((String) ois.readObject());
+            return a;
+
         }catch(Exception e) {
             e.printStackTrace();
             return null;
@@ -276,13 +291,13 @@ public class Client{
     }
 
     ArrayList<Course> getDepartmentCourses(String str) {
-       pw.println(Commands.GETDEPTCOURSES);
-       pw.println(str);
+        try{
+       oos.writeObject(Commands.GETDEPTCOURSES);
+       oos.writeObject(str);
        pw.flush();
-       try{
-        ois=new ObjectInputStream(s.getInputStream());
+        //ois=new ObjectInputStream(s.getInputStream());
         ArrayList<Course> arr = (ArrayList<Course>)ois.readObject();
-        rdr.readLine();
+        ois.readObject();
         return arr;
         }catch(Exception e) {
             return null;
@@ -310,33 +325,41 @@ public User getStudentInfo() {
     }
 
     ArrayList<Requirement> checkSchedule() {
-        pw.println(Commands.GET_REQS);
+       try{
+        oos.writeObject(Commands.GET_REQS);
 
         return null;
+        }catch(Exception e) {return  null;}
+
     }
 
     int addCourseRecord(CourseRecord r) {
-        pw.println(Commands.ADD_COURSE_RECORD);
+        try{
+        oos.writeObject(Commands.ADD_COURSE_RECORD);
         return sendCourseRecord(r);
+        }catch(Exception e){return -1;}
     }
 
     int editCourseRecord(CourseRecord r) {
-        pw.println(Commands.EDIT_COURSE_RECORD);
+        try{
+
+        oos.writeObject(Commands.EDIT_COURSE_RECORD);
         return sendCourseRecord(r);
+        }catch(Exception e){return -1;}
     }
     private int sendCourseRecord(CourseRecord r) {
         try{
             oos.writeObject(r);
-            return Integer.parseInt(rdr.readLine());
+            return Integer.parseInt((String) ois.readObject());
         } catch(Exception e) {
             return -1;
         }
     }
     Major getMajor(String dept, String major) {
-        pw.println(Commands.GET_MAJOR);
-        pw.println(dept);
-        pw.println(major);
         try{
+        oos.writeObject(Commands.GET_MAJOR);
+        oos.writeObject(dept);
+        oos.writeObject(major);
             ois=new ObjectInputStream(s.getInputStream());
             Major m = (Major) ois.readObject();
             rdr.readLine();
@@ -352,13 +375,13 @@ public User getStudentInfo() {
     }
 
     public Course getCourse(String string) {
-        pw.println(Commands.GETCOURSE);
-        pw.println(getCurrentDepartment());
-        pw.println(string);
         try{
+        oos.writeObject(Commands.GETCOURSE);
+        oos.writeObject(getCurrentDepartment());
+        oos.writeObject(string);
             ois=new ObjectInputStream(s.getInputStream());
             Course c = (Course) ois.readObject();
-            rdr.readLine();
+            ois.readObject();
             return c;
         } catch(Exception e) {
             return null;
@@ -370,7 +393,7 @@ public User getStudentInfo() {
     }
 
     ArrayList<Course> getAllCourses() {
-        pw.println(Commands.GET_ALL_COURSES);
+
         try{
             ois=new ObjectInputStream(s.getInputStream());
             Object o = ois.readObject();
