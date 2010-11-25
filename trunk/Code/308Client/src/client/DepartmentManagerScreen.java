@@ -96,8 +96,12 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        if(table.getSelectedRow()>=0 ) {
                         frame.removeDepartment((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
                         getScreen(frame.getDepartments());
+                        } else {
+                            JOptionPane.showMessageDialog(frame, "Select a department to remove.","Warning!", JOptionPane.WARNING_MESSAGE);
+                        }
                     }
                 });
 		back=new JButton("Back");
