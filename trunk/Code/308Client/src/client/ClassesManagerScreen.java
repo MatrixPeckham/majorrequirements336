@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.TreeMap;
+import javax.swing.ComboBoxModel;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -17,8 +19,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import server.Commands;
 import server.CourseRecord;
+import server.Grade;
+import server.Major;
 import server.Requirement;
 import server.Schedule;
+import server.User;
 
 /**
  * Classes manager screen
@@ -34,6 +39,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
     //these three are for returning from the manager screen
     private AddClasScreen addScreen;
     private EditClasScreen editScreen;
+    private JComboBox major;
     private RemoveClasScreen remScreen;
     //title screen
     private JLabel studentPage;
@@ -75,21 +81,15 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         studentPage = new JLabel("Student Page");
         studentPage.setFont(new Font("Times New Roman", 1, 72));
         String[] columnNames = {"Course", "Grade", "Transfer"};
-        Object[][] data = {
-            {"CSE 308", "A", new Boolean(false)},
-            {"CSE 381", "B", new Boolean(false)},
-            {"CSE 380", "C", new Boolean(false)},
-            {"CSE 220", "A-", new Boolean(false)},
-            {"CSE 114", "I", new Boolean(false)},
-            {"CSE 215", "A", new Boolean(false)},
-            {"CSE 219", "C+", new Boolean(false)},
-            {"CSE 110", "B+", new Boolean(false)},
-            {"MAT 127", "D", new Boolean(false)}};
+        Object[][] data = {};
         courses = new JTable();
         courses.setPreferredScrollableViewportSize(new Dimension(1000, 100));
         courses.setFillsViewportHeight(true);
         courses.setModel(new DefaultTableModel() {
 
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
             @Override
             public java.lang.Class<?> getColumnClass(int columnIndex) {
                 return getValueAt(0, columnIndex).getClass();
@@ -149,7 +149,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.uploadFile(getFile(true), Commands.UPLOAD_SCHED);
+                frame.uploadFile(getFile(true), Commands.UPLOADFILE);
+                frame.changeScreen(ClientGUI.CLASSES, null);
             }
         });
         downloadButton = new JButton("Dowload Courses");
@@ -193,6 +194,26 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         error.setVisible(false);
         error.setForeground(Color.red);
         this.setLayout(new GridBagLayout());
+        JLabel majorLabel=new JLabel();
+        majorLabel.setText("Current Major:");
+        major=new JComboBox();
+        major.addItem(new Major("Undecided",0,0));
+        for(Major m : frame.getAllMajors()) {
+            major.addItem(m);
+        }
+        major.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+
+                    frame.changeMajor((Major)major.getSelectedItem());
+
+                }
+        });
+        Major m2=frame.getCurrentMajor();
+        if(m2!=null) {
+            major.setSelectedItem(m2);
+        } else {
+        major.setSelectedIndex(0);
+        }
         addJComponentToContainerUsingGBL(studentPage, this, 1, 1, 5, 1);
         addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 5, 2);
         addJComponentToContainerUsingGBL(addButton, this, 1, 4, 1, 1);
@@ -200,15 +221,33 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         addJComponentToContainerUsingGBL(removeButton, this, 3, 4, 1, 1);
         addJComponentToContainerUsingGBL(uploadButton, this, 1, 5, 1, 1);
         addJComponentToContainerUsingGBL(downloadButton, this, 3, 5, 1, 1);
-        addJComponentToContainerUsingGBL(checkButton, this, 1, 6, 1, 1);
-        addJComponentToContainerUsingGBL(generateButton, this, 3, 6, 1, 1);
+        addJComponentToContainerUsingGBL(checkButton, this, 4, 4, 1, 1);
+        addJComponentToContainerUsingGBL(generateButton, this, 4, 5, 1, 1);
+        addJComponentToContainerUsingGBL(majorLabel, this, 1, 6, 1, 1);
+        addJComponentToContainerUsingGBL(major, this, 2, 6, 2, 1);
         addJComponentToContainerUsingGBL(backButton, this, 6, 7, 1, 1);
         addJComponentToContainerUsingGBL(error, this, 5, 6, 1, 1);
     }
 
     @Override
     public void getScreen(Object fillWith) {
-        // TODO Auto-generated method stub
+       DefaultTableModel m=((DefaultTableModel)courses.getModel());
+       for(int i=0; i<m.getRowCount(); i++) {
+           m.removeRow(0);
+       }
+
+        TreeMap<String,CourseRecord> t=frame.getStudentInfo().getCourses();
+            for(CourseRecord r : t.values()) {
+                for(Grade g : r.getGrades()) {
+                    Object[] o=new Object[3];
+                    o[0]=r.getCourse().getId();
+                    o[1]=g.getGrade();
+                    //JCheckBox j=new JCheckBox();
+                    //j.setSelected();
+                    o[2]=r.getTransfer();
+                    ((DefaultTableModel)courses.getModel()).addRow(o);
+                }
+            }
     }
 
     @Override

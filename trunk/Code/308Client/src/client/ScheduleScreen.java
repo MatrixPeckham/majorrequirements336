@@ -50,25 +50,21 @@ public class ScheduleScreen extends Screen {
         this.setLayout(new BorderLayout());
         sched = new JLabel("Remaining Schedule");
         sched.setFont(new Font("Times New Roman",1,72));
-        String[] columnNames = {"Class","Credits"};
-        Object[][] data = {};
+        String[] columnNames = {"Semester","Class","Credits"};
         table = new JTable();
         table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
         table.setFillsViewportHeight(true);
-        table.setModel(new DefaultTableModel(){
+        /*table.setModel(new DefaultTableModel(){
             @Override
             public java.lang.Class<?> getColumnClass(int columnIndex) {
                 return getValueAt(0, columnIndex).getClass();
             }
-        });
+        });*/
+
         DefaultTableModel model = (DefaultTableModel)table.getModel();
         for (String s : columnNames) {
                     model.addColumn(s);
                 }
-                for (Object[] o : data) {
-                    model.addRow(o);
-                }
-
         JScrollPane scrollPane = new JScrollPane(table);
         back = new JButton("Back");
         back.addActionListener(new ActionListener() {
@@ -87,6 +83,10 @@ public class ScheduleScreen extends Screen {
 
     @Override
     public void getScreen(Object fillWith) {
+        DefaultTableModel m=((DefaultTableModel)table.getModel());
+       for(int i=0; i<m.getRowCount(); i++) {
+           m.removeRow(0);
+       }
         if(fillWith instanceof Schedule){
             Schedule s = (Schedule) fillWith;
             TreeMap<String,Vector<Course>> sched = s.getSchedule();

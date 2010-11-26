@@ -34,7 +34,7 @@ public class Major implements Serializable {
     
     @Id
     private String id;
-    @OneToMany
+    @OneToMany(fetch=FetchType.EAGER)
     private Collection<Requirement> reqs;
     private String department;
     private double minGPA;
@@ -131,5 +131,5 @@ public class Major implements Serializable {
     }
     public String getDepartment() {return department;}
     public void setDepartment(String dept) {department=dept;}
-
+    public String toString() {return getId();}
 }

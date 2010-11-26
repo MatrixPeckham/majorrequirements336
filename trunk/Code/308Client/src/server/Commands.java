@@ -19,7 +19,7 @@ public final class Commands {
     public static final String REMOVE_MAJOR="RMV_MAJOR";
     public static final String REMOVE_REQ="RMV_REQ";
     public static final String DOWNLOAD_REQ="DOWNLOAD_REQ";
-     public static final String UPLOAD_REQ="UPLOAD_REQ";
+     public static final String UPLOADFILE="UPLOADFILE";
      public static final String EDIT_DEPT="EDIT_DEPT";
      public static final String GET_DEPT="GET_DEPT";
      public static final String GETDEPTCOURSES="GETDEPTCOURSES";
@@ -29,11 +29,9 @@ public final class Commands {
     public static final String REMOVE_DEPT="RMV_DEPT";
     
     public static final String REMOVE_CLASS="RMV_CLASS";
-    public static final String UPLOAD_COURSE_DATA="UPLOAD_COURSES";
-   
-    public static final String UPLOAD_SCHED="UPLOAD_SCHED";
     public static final String DOWNLOAD_COURSE_DATA="DOWNLOAD_COURSES";
-    
+
+    public static final String ALL_MAJORS="GETALLMAJORS";
     public static final String DOWNLOAD_SCHED="DOWNLOAD_SCHED";
     public static final String EDIT_COURSE_TAKEN="EDIT_COURSE_TAKEN";
     public static final String EDIT_COURSE="EDIT_COURSE";
@@ -44,6 +42,9 @@ public final class Commands {
     public static final String GETCOURSE="GET_COURSE";
     public static final String ADD_COURSE_RECORD="ADD_CR";
     public static final String EDIT_COURSE_RECORD="EDIT_CR";
+    public static final String CHANGEMAJOR="CHANGE_MAJOR";
+
+    public static final String GETUSER="GET_USER";
     public static final String USER="STUDENT";
     public static final String SUPER_ADMIN="SUPER";
     public static final String ADMIN="ADMIN";

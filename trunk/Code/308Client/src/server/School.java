@@ -31,7 +31,7 @@ public class School {
         PersistenceManager.merge(d);
     }
     public void removeDepartment(String d) {
-        departments.remove(d);
+        PersistenceManager.remove(departments.remove(d));
     }
     public ArrayList<Department> getDepartments() {
         return new ArrayList<Department>(departments.values());
@@ -49,6 +49,13 @@ public class School {
             }
         }
         return 4;
+    }
+    public ArrayList<Major> getAllMajors() {
+        ArrayList<Major> a=new ArrayList<Major>();
+        for(Department d : departments.values()) {
+            a.addAll(d.getMajors());
+        }
+        return a;
     }
     public static void load() {
      

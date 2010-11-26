@@ -10,16 +10,19 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
+import java.io.StringReader;
 import java.util.Iterator;
 import java.util.*;
 import java.util.Map.Entry;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
+import org.xml.sax.InputSource;
 /**
  *
  * @author tj
  */
-public class User implements Scheduler, FileParser{
+public class User implements Scheduler, FileParser, Serializable{
     public static final int STUDENT=0;
     public static final int DEPT_ADMIN=1;
     public static final int SUPER_ADMIN=2;
@@ -78,12 +81,13 @@ public class User implements Scheduler, FileParser{
     }
 
     @Override
-    public void parseFile(File f) throws Exception{
+    public void parseFile(String f) throws Exception{
         DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
         
         DocumentBuilder db= dbf.newDocumentBuilder();
-
-        Document d=db.parse(f);
+        InputSource is=new InputSource();
+        is.setCharacterStream(new StringReader(f));
+        Document d=db.parse(is);
         
         Element fileElement=d.getDocumentElement();
 
@@ -361,7 +365,7 @@ public class User implements Scheduler, FileParser{
     private String writeMajorFile(){return "";}
 
     @Override
-    public String getTextOfFile(String cmd) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void parseFile(File cmd) throws Exception {
+        //throw new UnsupportedOperationException("Not supported yet.");
     }
  }

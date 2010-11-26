@@ -181,11 +181,13 @@ public class ClientGUI extends JFrame {
 	public void addMajor(Major m) {networking.addMajor(m,networking.getCurrentDepartment());}
 	public boolean editMajor(Major m) {return networking.editMajor(m,networking.getCurrentDepartment());}
 	public boolean removeMajor(String str) {return networking.removeMajor(str);}
-	public boolean addRequirement(Requirement r, String str) {return networking.addRequirement(r,networking.getCurrentDepartment(),networking.getCurrentMajor());}
+	public boolean addRequirement(Requirement r, String str) {return networking.addRequirement(r,networking.getCurrentDepartment(),networking.getCurrentMajor().getId());}
 	public boolean removeRequirement(String str1, String str2){return networking.removeRequirement(str1, str2);}
 	public int login(String usr,String pass) {permissions = networking.login(usr, pass);return permissions;}
 	public boolean logout() {return networking.logout();}
-	public ArrayList<Requirement> getRequirements() {return networking.getRequirements(networking.getCurrentDepartment(),networking.getCurrentMajor());}
+        //added
+        public ArrayList<Major> getAllMajors() {return networking.getAllMajors();}
+	public ArrayList<Requirement> getRequirements() {return networking.getRequirements(networking.getCurrentDepartment(),networking.getCurrentMajor().getId());}
 	public int getCreditsRemaining() {return networking.getCreditsRemaining();}
 	public void addDepartment(String str, Department dep) {networking.addDepartment(dep);}
 	public void removeDepartment (String str) {networking.removeDepartment(str);}
@@ -232,7 +234,7 @@ public class ClientGUI extends JFrame {
         return networking.getMajor(networking.getCurrentDepartment(),string);
     }
 
-    String getCurrentMajor() {
+    Major getCurrentMajor() {
         return networking.getCurrentMajor();
     }
 
@@ -242,6 +244,11 @@ public class ClientGUI extends JFrame {
 
     ArrayList<Course> getAllCourses() {
         return networking.getAllCourses();
+    }
+
+    boolean changeMajor(Major selectedItem) {
+        networking.changeMajor(selectedItem);
+        return true;
     }
 
  }

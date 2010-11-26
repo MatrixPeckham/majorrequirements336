@@ -52,12 +52,13 @@ public class Client{
             oos.writeObject(str);
             
             Scanner sc=new Scanner(file);
+            String s="";
             while(sc.hasNext()) {
-                oos.writeObject(sc.nextLine());
+                s+=sc.nextLine();
             }
-            oos.writeObject("ENDXML");
-            String s=(String) ois.readObject();
-            return s.equals("OK")?0:Integer.parseInt(s);
+            oos.writeObject(s);
+            String s2=(String) ois.readObject();
+            return s2.equals("OK")?0:Integer.parseInt(s2);
             }catch(Exception e) {
             return -1;
             }
@@ -75,7 +76,7 @@ public class Client{
             try{
                 oos.writeObject(Commands.GETCOURSE);
                 oos.writeObject(str);
-                ois=new ObjectInputStream(s.getInputStream());
+                //ois=new ObjectInputStream(s.getInputStream());
                 return (Course) ois.readObject();
             }catch(Exception e){return null;}
         }
@@ -124,7 +125,16 @@ public class Client{
 	public int getCreditsRemaining() {return 0;}
 //TODO	public void addDepartment(String, Department) {}
 
-	public void removeDepartment (String str) {}
+	public boolean removeDepartment (String str) {
+            try{
+                oos.writeObject(Commands.REMOVE_DEPT);
+                oos.writeObject(str);
+                ois.readObject();
+                return true;
+            }catch(Exception e) {
+                return false;
+            }
+        }
 //TODO	public void editDepartment(String str, Department d) {}
 //TODO	public Vector<Department> getDepartments() {return null;}
 //TODO	public Department getDepartment(String str) {return null;}
@@ -154,9 +164,12 @@ public class Client{
     Schedule generateSchedule() {
         try{
             oos.writeObject(Commands.GETSCHED);
-        
+            oos.flush();
+            Object s= ois.readObject();
+
             //ois=new ObjectInputStream(s.getInputStream());
-            return (Schedule) ois.readObject();
+            ois.readObject();
+            return (Schedule) s;
         }catch(Exception e){
             return null;
         }
@@ -294,21 +307,27 @@ public class Client{
         try{
        oos.writeObject(Commands.GETDEPTCOURSES);
        oos.writeObject(str);
-       pw.flush();
+       oos.flush();
         //ois=new ObjectInputStream(s.getInputStream());
-        ArrayList<Course> arr = (ArrayList<Course>)ois.readObject();
-        ois.readObject();
+        ArrayList<Course> arr = new ArrayList((Collection<Course>)ois.readObject());
+        System.out.println(ois.readObject());
         return arr;
         }catch(Exception e) {
             return null;
         }
     }
 public User getStudentInfo() {
-    try{
-        return null;
-    } catch(Exception e) {
-    return null;
-    }
+        try{
+            oos.writeObject(Commands.GETUSER);
+            oos.flush();
+            Object o = ois.readObject();
+            ois.readObject();
+            //oos.reset();
+            return (User)o;
+        } catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
 }
 
     String getCurrentDepartment() {
@@ -360,18 +379,18 @@ public User getStudentInfo() {
         oos.writeObject(Commands.GET_MAJOR);
         oos.writeObject(dept);
         oos.writeObject(major);
-            ois=new ObjectInputStream(s.getInputStream());
+            //ois=new ObjectInputStream(s.getInputStream());
             Major m = (Major) ois.readObject();
-            rdr.readLine();
+            ois.readObject();
             return m;
         } catch(Exception e) {
             return null;
         }
     }
 
-    String getCurrentMajor() {
+    Major getCurrentMajor() {
 
-        return null;
+        return getStudentInfo().getMajor();
     }
 
     public Course getCourse(String string) {
@@ -379,7 +398,8 @@ public User getStudentInfo() {
         oos.writeObject(Commands.GETCOURSE);
         oos.writeObject(getCurrentDepartment());
         oos.writeObject(string);
-            ois=new ObjectInputStream(s.getInputStream());
+        oos.flush();
+            //ois=new ObjectInputStream(s.getInputStream());
             Course c = (Course) ois.readObject();
             ois.readObject();
             return c;
@@ -391,18 +411,45 @@ public User getStudentInfo() {
     public void downloadFile(File file, String str) {
         getFile(file,str);
     }
-
-    ArrayList<Course> getAllCourses() {
-
-        try{
-            ois=new ObjectInputStream(s.getInputStream());
+    public ArrayList<Major> getAllMajors() {
+         try{
+            oos.writeObject(Commands.ALL_MAJORS);
+            oos.flush();
             Object o = ois.readObject();
-            rdr.readLine();
-            ArrayList<Course> c = new ArrayList<Course>((Collection<Course>)o);
+            ArrayList<Major> c = new ArrayList<Major>((Collection<Major>)o);
+            ois.readObject();
+            oos.reset();
             return c;
         } catch(Exception e){
             e.printStackTrace();
             return null;
+        }
+    }
+    ArrayList<Course> getAllCourses() {
+
+        try{
+            oos.writeObject(Commands.GET_ALL_COURSES);
+            oos.flush();
+            Object o = ois.readObject();
+            ArrayList<Course> c = new ArrayList<Course>((Collection<Course>)o);
+            ois.readObject();
+            oos.reset();
+            return c;
+        } catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    boolean changeMajor(Major selectedItem) {
+        try{
+            oos.writeObject(Commands.CHANGEMAJOR);
+            oos.writeObject(selectedItem);
+            oos.flush();
+            return ((String) ois.readObject()).equals("OK");
+
+        }catch(Exception e) {
+            return false;
         }
     }
 }

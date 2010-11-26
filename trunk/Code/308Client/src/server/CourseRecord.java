@@ -5,6 +5,7 @@
 
 package server;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -12,7 +13,7 @@ import java.util.Vector;
  *
  * @author TJ
  */
-public class CourseRecord {
+public class CourseRecord implements Serializable{
     private Course course;
     private Vector<Grade> grades;
     private boolean transfer;
