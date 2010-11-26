@@ -131,4 +131,7 @@ public class Course implements Serializable {
     public boolean equals(Course c) {
         return c.getId().equals(id);
     }
+    public String toString() {
+        return getId();
+    }
 }

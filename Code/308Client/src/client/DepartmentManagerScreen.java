@@ -97,8 +97,14 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(table.getSelectedRow()>=0 ) {
-                        frame.removeDepartment((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
-                        getScreen(frame.getDepartments());
+                            int[] rows=table.getSelectedRows();
+                            if(JOptionPane.showConfirmDialog(frame, "Are you sure you want to remove these "+rows.length+" departments? This cannot be undone.")==JOptionPane.YES_OPTION) {
+
+                                    for(int i : rows) {
+                                        frame.removeDepartment((String)table.getModel().getValueAt(i, 0));
+                                    }
+                                    getScreen(frame.getDepartments());
+                            }
                         } else {
                             JOptionPane.showMessageDialog(frame, "Select a department to remove.","Warning!", JOptionPane.WARNING_MESSAGE);
                         }
@@ -126,7 +132,9 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                 table.setFillsViewportHeight(true);
 	      
                 table.setModel(new DefaultTableModel() {
-
+                    public boolean isCellEditable(int x, int y) {
+                        return false;
+                    }
                     @Override
                     public java.lang.Class<?> getColumnClass(int columnIndex) {
                         return getValueAt(0, columnIndex).getClass();

@@ -8,8 +8,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+import javax.swing.DefaultComboBoxModel;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -113,7 +115,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.uploadFile(new File(textField.getText()), Commands.UPLOAD_COURSE_DATA);
+                frame.uploadFile(new File(textField.getText()), Commands.UPLOADFILE);
             }
         });
         browse = new JButton("Browse");
@@ -148,15 +150,15 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
         String[] columnNames = {"Courses"};
 
-        Object[][] data = {
-            {"CSE 308"}, {"CSE 381"}, {"CSE 380"}, {"CSE 220"},
-            {"CSE 114"}, {"CSE 215"}, {"CSE 219"}, {"CSE 110"},
-            {"MAT 127"}};
+        Object[][] data = {};
 
         table = new JTable();
         table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
         table.setFillsViewportHeight(true);
         table.setModel(new DefaultTableModel(){
+            public boolean isCellEditable(int x, int y) {
+                return false;
+            }
             @Override
                     public java.lang.Class<?> getColumnClass(int columnIndex) {
                         return getValueAt(0, columnIndex).getClass();
@@ -265,6 +267,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         //cancel button
         private JButton back;
 
+        private JComboBox standingPrereq;
         //constructor
         public AddCouScreen(ClientGUI gui) {
             super(gui);
@@ -285,6 +288,8 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             descF = new JTextArea(10, 5);
             descF.setLineWrap(true);
             descF.setWrapStyleWord(true);
+            standingPrereq=new JComboBox(new String[]{"None","U1","U2","U3","U4"});
+
             ok = new JButton("Add");
             ok.addActionListener(new ActionListener() {
 
@@ -305,15 +310,14 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 }
             });
             String[] columnNames = {"Course", "Select"};
-            Object[][] data = {
-                {"CSE 308", new Boolean(false)}, {"CSE 381", new Boolean(false)}, {"CSE 380", new Boolean(false)}, {"CSE 220", new Boolean(false)},
-                {"CSE 114", new Boolean(false)}, {"CSE 215", new Boolean(false)}, {"CSE 219", new Boolean(false)}, {"CSE 110", new Boolean(false)},
-                {"MAT 127", new Boolean(false)}};
+            Object[][] data = {};
             prereq = new JTable();
             prereq.setPreferredScrollableViewportSize(new Dimension(200, 400));
             prereq.setFillsViewportHeight(true);
             prereq.setModel(new DefaultTableModel() {
-
+                public boolean isCellEditable(int x, int y) {
+                    return x==1;
+                }
                 @Override
                 public java.lang.Class<?> getColumnClass(int columnIndex) {
                     return getValueAt(0, columnIndex).getClass();
@@ -332,7 +336,8 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             }
             this.setLayout(new GridBagLayout());
             JScrollPane scrollPane = new JScrollPane(prereq);
-
+            JLabel pLbl=new JLabel();
+            pLbl.setText("Minimum Standing:");
             addJComponentToContainerUsingGBL(addL, this, 1, 1, 6, 1);
             addJComponentToContainerUsingGBL(nameL, this, 1, 2, 1, 1);
             addJComponentToContainerUsingGBL(nameF, this, 2, 2, 1, 1);
@@ -342,8 +347,10 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(deptF, this, 2, 4, 1, 1);
             addJComponentToContainerUsingGBL(descL, this, 1, 5, 1, 1);
             addJComponentToContainerUsingGBL(new JScrollPane(descF), this, 2, 5, 2, 1);
-            addJComponentToContainerUsingGBL(ok, this, 2, 6, 1, 1);
-            addJComponentToContainerUsingGBL(back, this, 3, 6, 1, 1);
+            addJComponentToContainerUsingGBL(pLbl, this, 1, 6, 1, 1);
+            addJComponentToContainerUsingGBL(standingPrereq, this, 2, 6, 1, 1);
+            addJComponentToContainerUsingGBL(ok, this, 2, 7, 1, 1);
+            addJComponentToContainerUsingGBL(back, this, 3, 7, 1, 1);
             addJComponentToContainerUsingGBL(scrollPane, this, 4, 2, 2, 5);
 
 
@@ -358,16 +365,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             c.setId(nameF.getText());
             c.setSemestersOfferd(3);
             CourseGroup cg = new CourseGroup();
-            DefaultTableModel model = (DefaultTableModel) prereq.getModel();
-            int num = model.getRowCount();
-            for(int i = 0; i < num; i++){
-                StringTokenizer st = new StringTokenizer((String)model.getValueAt(i, 0));
-                Boolean b = (Boolean)model.getValueAt(i, 1);
-                if(b){
-                    Course pr = frame.getCourse(st.nextToken());
-                    cg.addCourse(pr);
-                }
-            }
+            
             c.addPreReq(cg);
             return c;
         }
@@ -391,7 +389,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             }
             if(courses!=null) {
                 for(Course c : courses){
-                    Object[] o = {c.getId(),prereqlist.contains(c)};
+                    Object[] o = {c,prereqlist.contains(c)};
                     model.addRow(o);
                 }
             }

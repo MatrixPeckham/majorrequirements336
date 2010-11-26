@@ -49,6 +49,17 @@ public class PersistenceManager {
        t.commit();
 
     }
+    public static void remove(Object o) {
+         if(em==null) {
+            init();
+
+        }
+        if(!t.isActive()) {
+            t.begin();
+        }
+       em.remove(o);
+       t.commit();
+    }
     public static void merge(Object o) {
         if(em==null) {
             init();

@@ -21,7 +21,9 @@ public class Schedule implements Serializable{
         return schedule;
     }
     public static Schedule generateSchedule(User u) {
+
         Major m=u.getMajor();
+        if(m==null) {return null;}
         RootlessTree<Course> t=m.getRemainingCourse(u.getRecords(), 2008);
         Vector<Course> toTake=new Vector<Course>();
         Vector<Course> toRemove=new Vector<Course>();
