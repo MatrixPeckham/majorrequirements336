@@ -203,9 +203,9 @@ public class Client{
     boolean addMajor(Major m, String dept) {
         try{
         oos.writeObject(Commands.ADD_MAJOR);
-        oos.writeObject(dept);
+        oos.writeObject(m);
             oos.reset();
-            oos.writeObject(m);
+            oos.writeObject(dept);
             return ((String) ois.readObject()).equals("OK");
         } catch(Exception e) {
             return false;
@@ -273,8 +273,6 @@ public class Client{
     }
 
     ArrayList<Department> getDepartments() {
-        pw.flush();
-        pw.flush();
         try{
         oos.writeObject(Commands.GET_DEPT);
         oos.flush();
@@ -300,11 +298,6 @@ public class Client{
                 break;
             }
         }
-        try {
-            rdr.readLine();
-        } catch (IOException ex) {
-
-        }
         return ret;
     }
 
@@ -325,6 +318,7 @@ public User getStudentInfo() {
         try{
             oos.writeObject(Commands.GETUSER);
             oos.flush();
+            //ois = new ObjectInputStream(s.getInputStream());
             Object o = ois.readObject();
             ois.readObject();
             //oos.reset();
@@ -434,6 +428,13 @@ public User getStudentInfo() {
 
     public void downloadFile(File file, String str) {
         getFile(file,str);
+       /* try {
+            oos.writeObject(Commands.DOWNLOAD_COURSE_DATA);
+            oos.flush();
+        }
+        catch(Exception e)  {
+            e.printStackTrace();
+        }*/
     }
     public ArrayList<Major> getAllMajors() {
          try{
