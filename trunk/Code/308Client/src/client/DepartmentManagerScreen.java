@@ -73,6 +73,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 			public void actionPerformed(ActionEvent e) {
                             try{
                                 String dep = (String)table.getModel().getValueAt(table.getSelectedRow(), 0);
+                                frame.setCurrentDepartment(dep);
                                 frame.changeScreen(ClientGUI.COURSES, frame.getDepartmentCourses(dep));
                             }catch(ArrayIndexOutOfBoundsException aioobe){
                                 JOptionPane.showMessageDialog(null, "You need to select a major to view");
@@ -85,8 +86,8 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-                                Object o=frame.getDepartments();
-				frame.changeManageScreen(ClientGUI.CURR_ADD, o);
+                                //Object o=frame.getDepartments();
+				frame.changeManageScreen(ClientGUI.CURR_ADD, null);
 			}
 		});
 		addDepart.setFont(new Font("Times New Roman",1,24));
@@ -268,8 +269,12 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                                     if(validateForm()){
                                         Department d = new server.Department();
                                         d.setName(nameField.getText());
+                                        System.out.println("Calling addDepo");
                                         frame.addDepartment(nameField.getName(), d);
+                                        System.out.println("addDepo ret");
+                                        System.out.println("Calling getDepos");
                                         Object o = frame.getDepartments();
+                                        System.out.println("getDepos ret");
                                         frame.changeScreen(ClientGUI.DEPARTMENTS, o);
                                     }
 				}

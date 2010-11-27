@@ -68,7 +68,8 @@ public class Client{
 	public boolean addCourse(Course c, String str) {
             try{
                 oos.writeObject(Commands.ADD_CLASS);
-                    oos.writeObject(c);
+                oos.writeObject(str);
+                oos.writeObject(c);
                 return Boolean.parseBoolean((String) ois.readObject());
             }catch(Exception e) {return false;}
         }
@@ -238,6 +239,8 @@ public class Client{
 
     boolean addDepartment(Department dep) {
         boolean ret = false;
+        pw.flush();
+        System.out.println("printed");
         try{
         oos.writeObject(Commands.ADD_DEPT);
              
@@ -247,6 +250,7 @@ public class Client{
              oos.flush();
              String s=(String) ois.readObject();
              System.out.println(s);
+            System.out.println("result read: " +s);
             return s.equals("OK");
         }catch(Exception e) {
             e.printStackTrace();
@@ -269,6 +273,7 @@ public class Client{
     }
 
     ArrayList<Department> getDepartments() {
+        pw.flush();
         pw.flush();
         try{
         oos.writeObject(Commands.GET_DEPT);
@@ -332,7 +337,7 @@ public User getStudentInfo() {
 
     String getCurrentDepartment() {
         
-        return "CSE";
+        return currDepo;
     }
 
     CourseRecord getCourseRecord(String str) {
@@ -452,4 +457,9 @@ public User getStudentInfo() {
             return false;
         }
     }
+
+    void setCurrentDepartment(String dep) {
+        currDepo=dep;;
+    }
+    String currDepo="CSE";
 }

@@ -202,7 +202,10 @@ public class ClientGUI extends JFrame {
         return networking.getStudentInfo();
     }
 
-    String getCurrentDepartment() {
+    public void setCurrentDepartment(String dep){
+        networking.setCurrentDepartment(dep);
+    }
+    public String getCurrentDepartment() {
         return networking.getCurrentDepartment();
     }
 
