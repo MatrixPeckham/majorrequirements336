@@ -17,7 +17,7 @@ public class CourseRecord implements Serializable{
     private Course course;
     private Vector<Grade> grades;
     private boolean transfer;
-    CourseRecord(Course course, Grade grade, boolean transfer) {
+    public CourseRecord(Course course, Grade grade, boolean transfer) {
         grades=new Vector<Grade>();
         addGrade(grade);
         this.course=course;

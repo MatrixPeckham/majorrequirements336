@@ -341,11 +341,30 @@ public User getStudentInfo() {
     }
 
     CourseRecord getCourseRecord(String str) {
-        return null;
+        try{
+            oos.writeObject(Commands.GET_COURSE_RECORD);
+            oos.writeObject(str);
+            Object o = ois.readObject();
+            if(o instanceof CourseRecord)
+                return (CourseRecord)o;
+            else
+                return null;
+        } catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     boolean removeCourseRecord(String str) {
-        return false;
+        try{
+            oos.writeObject(Commands.REMOVE_COURSE_RECORD);
+            oos.writeObject(str);
+            return (Boolean)ois.readObject();
+        } catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
     ArrayList<Requirement> checkSchedule() {
@@ -361,7 +380,7 @@ public User getStudentInfo() {
         try{
         oos.writeObject(Commands.ADD_COURSE_RECORD);
         return sendCourseRecord(r);
-        }catch(Exception e){return -1;}
+        }catch(Exception e){e.printStackTrace();return -1;}
     }
 
     int editCourseRecord(CourseRecord r) {
@@ -401,7 +420,7 @@ public User getStudentInfo() {
     public Course getCourse(String string) {
         try{
         oos.writeObject(Commands.GETCOURSE);
-        oos.writeObject(getCurrentDepartment());
+        oos.writeObject(string.substring(0, 3));
         oos.writeObject(string);
         oos.flush();
             //ois=new ObjectInputStream(s.getInputStream());

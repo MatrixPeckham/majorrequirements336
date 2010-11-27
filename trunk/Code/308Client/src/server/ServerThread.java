@@ -295,11 +295,33 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("OK");
                         objectOut.flush();
                     }catch(Exception e) {
+                        e.printStackTrace();
                         objectOut.writeObject("ERR");
                         objectOut.flush();
                     }
 
-                } else if(cmd.equals(Commands.ALL_MAJORS)) {
+                } else if(cmd.equals(Commands.REMOVE_COURSE_RECORD)){
+                    try{
+                        String str = (String)objectIn.readObject();
+                        user.getRecords().remove(str);
+                        objectOut.writeObject(true);
+                        objectOut.flush();
+                    } catch(Exception e){
+                        e.printStackTrace();
+                        objectOut.writeObject(false);
+                        objectOut.flush();
+                    }
+                } else if(cmd.equals(Commands.GET_COURSE_RECORD)){
+                    try{
+                        String s = (String)objectIn.readObject();
+                        objectOut.writeObject(user.getRecords().get(s));
+                        out.flush();
+                    } catch(Exception e){
+                        e.printStackTrace();
+                        objectOut.writeObject("ERR");
+                        objectOut.flush();
+                    }
+                }  else if (cmd.equals(Commands.ALL_MAJORS)) {
                     try{
                         objectOut.reset();
                         objectOut.writeObject(School.getSchool().getAllMajors());
