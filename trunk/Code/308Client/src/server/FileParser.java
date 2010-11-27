@@ -12,6 +12,6 @@ import java.io.*;
 public interface FileParser {
 
     public void parseFile(File f) throws Exception;
-    public File writeFile(String cmd);
+    public String writeFile(String cmd);
     public void parseFile(String file) throws Exception;
 }

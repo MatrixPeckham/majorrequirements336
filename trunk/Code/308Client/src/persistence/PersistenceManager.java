@@ -49,7 +49,10 @@ public class PersistenceManager {
        t.commit();
 
     }
-    public static void remove(Object o) {
+    public static Object find(Object o, Object pk) {
+        return find(o.getClass(), pk);
+    }
+    public static void remove(Object o, Object pk) {
          if(em==null) {
             init();
 
@@ -57,7 +60,8 @@ public class PersistenceManager {
         if(!t.isActive()) {
             t.begin();
         }
-       em.remove(o);
+       Object e=find(o, pk);
+       em.remove(e);
        t.commit();
     }
     public static void merge(Object o) {

@@ -70,7 +70,9 @@ public class Client{
                 oos.writeObject(Commands.ADD_CLASS);
                 oos.writeObject(str);
                 oos.writeObject(c);
-                return Boolean.parseBoolean((String) ois.readObject());
+                    oos.flush();
+                    ois.readObject();
+                return true;
             }catch(Exception e) {return false;}
         }
     	public Course loadCourse(String str) {
@@ -231,7 +233,13 @@ public class Client{
     }
     ArrayList<Requirement> getRequirements(String dept, String major) {
        try{
-           return new ArrayList<Requirement>(this.getMajor(dept, major).getRequirements());
+           oos.writeObject(Commands.GET_REQS);
+           oos.writeObject(dept);
+           oos.writeObject(major);
+           oos.flush();
+           MajorCompletion m=(MajorCompletion)ois.readObject();
+           ois.readObject();
+           return new ArrayList<Requirement>();
        } catch(Exception e) {
            return null;
        }
@@ -361,11 +369,13 @@ public User getStudentInfo() {
 
     }
 
-    ArrayList<Requirement> checkSchedule() {
+    String checkSchedule() {
        try{
         oos.writeObject(Commands.GET_REQS);
-
-        return null;
+           oos.flush();
+           MajorCompletion m=(MajorCompletion)ois.readObject();
+           Object o=ois.readObject();
+           return m.getHtml();
         }catch(Exception e) {return  null;}
 
     }

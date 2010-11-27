@@ -71,11 +71,17 @@ public class Grade implements Serializable{
             gradePoints=1;
         } else if(grade.equals("F")) {
             gradePoints=0;
+        } else if(grade.equals("I")) {
+            gradePoints=0;
         }
     }
     public Grade(String s, double gp) {
         grade=s;
         gradePoints=gp;
+    }
+   public boolean equals(Object o) {
+        Grade g=(Grade)o;
+        return gradePoints==g.getGradePoints() && g.getGrade().equals(grade);
     }
     public double getGradePoints() {return gradePoints;}
     @Id
