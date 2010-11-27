@@ -84,7 +84,12 @@ public class Course implements Serializable {
         }
         
     }
-    public void addPreReq(CourseGroup c) {prereqs.add(c);}
+    public void addPreReq(CourseGroup c) {
+        if(prereqs==null){
+            prereqs=new ArrayList<CourseGroup>();
+        }
+        prereqs.add(c);
+    }
     public boolean prereqsComplete(TreeMap<String,CourseRecord> completed, int credits) {
         if(School.getSchool().getStanding(credits)<minLevel) {
             return false;

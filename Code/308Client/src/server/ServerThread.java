@@ -337,6 +337,7 @@ public class ServerThread implements Runnable{
             } catch(SocketException se){
                 connected=false;
             } catch (Exception e) {
+                pw.println("ERR");
                 e.printStackTrace();
             }
         }

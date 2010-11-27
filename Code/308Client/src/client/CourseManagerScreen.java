@@ -365,7 +365,14 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             c.setId(nameF.getText());
             c.setSemestersOfferd(3);
             CourseGroup cg = new CourseGroup();
-            
+            DefaultTableModel model = (DefaultTableModel)prereq.getModel();
+            int num = model.getRowCount();
+            for(int i = 0;i<num; i++){
+                if(model.getValueAt(i, 1).equals(true)){
+                    Course pre = frame.getCourse((String)model.getValueAt(i, 0));
+                    cg.addCourse(pre);
+                }
+            }
             c.addPreReq(cg);
             return c;
         }
