@@ -107,6 +107,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                     }
                 }
                 Major m = new Major();
+                m.setId(s);
+                m.setDepartment(frame.getCurrentDepartment());
                 frame.addMajor(m);
                 Object o = frame.getDepartment(frame.getCurrentDepartment());
                 getScreen(o);
@@ -135,8 +137,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                         return;
                     }
                 }
-                Major m = new Major();
-                frame.addMajor(m);
+                Major m = frame.getMajor((String)table.getModel().getValueAt(table.getSelectedRow(), 1));
+                m.setId(s);
                 Object o = frame.getDepartment(frame.getCurrentDepartment());
                 getScreen(o);
             }
