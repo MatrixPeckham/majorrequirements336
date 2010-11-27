@@ -47,7 +47,7 @@ public class Grade implements Serializable{
             grade="A";
         }
     }
-    Grade(String grade) {
+    public Grade(String grade) {
         this.grade=grade;
         if(grade.equals("A")) {
             gradePoints=4;

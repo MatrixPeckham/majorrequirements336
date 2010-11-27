@@ -48,5 +48,7 @@ public final class Commands {
     public static final String USER="STUDENT";
     public static final String SUPER_ADMIN="SUPER";
     public static final String ADMIN="ADMIN";
+    public static final String REMOVE_COURSE_RECORD = "REMOVE_COURSE_RECORD";
+    public static final String GET_COURSE_RECORD = "GET_COURSE_RECORD";
 
 }

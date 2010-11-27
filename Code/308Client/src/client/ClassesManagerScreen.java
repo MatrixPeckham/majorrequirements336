@@ -18,6 +18,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import server.Commands;
+import server.Course;
+import server.CourseGroup;
 import server.CourseRecord;
 import server.Grade;
 import server.Major;
@@ -232,7 +234,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
     @Override
     public void getScreen(Object fillWith) {
        DefaultTableModel m=((DefaultTableModel)courses.getModel());
-       for(int i=0; i<m.getRowCount(); i++) {
+       int num = m.getRowCount();
+       for(int i=0; i<num; i++) {
            m.removeRow(0);
        }
 
@@ -309,13 +312,13 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         private void initGUI() {
             addPage = new JLabel("Add Courses Page");
             addPage.setFont(new Font("Times New Roman", 1, 72));
-            String[] columnNames = {"Department", "ID", "Credits", "Prereq"};
+            String[] columnNames = {"Course", "Credits", "Prereq"};
             Object[][] data = {
-                {"CSE", "308", "3", "CSE 219"}, {"CSE", "381", "3", "CSE 219"},
-                {"CSE", "380", "3", "CSE 219"}, {"CSE", "220", "3", "CSE 219"},
-                {"CSE", "114", "3", "CSE 219"}, {"CSE", "215", "3", "CSE 219"},
-                {"CSE", "219", "3", "CSE 219"}, {"CSE", "110", "3", "CSE 219"},
-                {"MAT", "127", "3", "CSE 219"}};
+                {"CSE 308", "3", "CSE 219"}, {"CSE 381", "3", "CSE 219"},
+                {"CSE 380", "3", "CSE 219"}, {"CSE 220", "3", "CSE 219"},
+                {"CSE 114", "3", "CSE 219"}, {"CSE 215", "3", "CSE 219"},
+                {"CSE 219", "3", "CSE 219"}, {"CSE 110", "3", "CSE 219"},
+                {"MAT 127", "3", "CSE 219"}};
             courses = new JTable();
             courses.setPreferredScrollableViewportSize(new Dimension(1000, 100));
             courses.setFillsViewportHeight(true);
@@ -380,11 +383,36 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         }
 
         private CourseRecord makeRecord() {
-            return null;
+            String dep = (String)courses.getModel().getValueAt(courses.getSelectedRow(),0);
+            Course c = frame.getCourse(dep);
+            Grade g = new Grade((String)gradeBox.getSelectedItem());
+            Boolean t = transBox.isSelected();
+            CourseRecord cr = new CourseRecord(c,g,t);
+            return cr;
         }
         @Override
         public void getScreen(Object fillWith) {
-
+            ArrayList<Course> allC = frame.getAllCourses();
+            DefaultTableModel model = (DefaultTableModel)courses.getModel();
+            int num = model.getRowCount();
+            for(int i=0;i<num;i++){
+                model.removeRow(0);
+            }
+            num=allC.size();
+            for(int i = 0; i<num;i++){
+                Object[] o = new Object[4];
+                Course c = allC.get(i);
+                o[0]=c.getId();
+                o[1]=c.getCredits();
+                String s = "";
+                for(CourseGroup cg:c.getPrereqs()){
+                    for(Course ci : cg.getCourses()){
+                        s+=ci.getId()+", ";
+                    }
+                }
+                o[2]=s;
+                model.addRow(o);
+            }
         }
 
         @Override
