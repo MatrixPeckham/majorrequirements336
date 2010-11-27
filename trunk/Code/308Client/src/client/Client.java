@@ -73,7 +73,7 @@ public class Client{
                     oos.flush();
                     ois.readObject();
                 return true;
-            }catch(Exception e) {return false;}
+            }catch(Exception e) {e.printStackTrace();return false;}
         }
     	public Course loadCourse(String str) {
             try{
@@ -382,9 +382,12 @@ public User getStudentInfo() {
 
     int addCourseRecord(CourseRecord r) {
         try{
-        oos.writeObject(Commands.ADD_COURSE_RECORD);
-        return sendCourseRecord(r);
-        }catch(Exception e){e.printStackTrace();return -1;}
+            oos.writeObject(Commands.ADD_COURSE_RECORD);
+            return sendCourseRecord(r);
+        }catch(Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     int editCourseRecord(CourseRecord r) {
