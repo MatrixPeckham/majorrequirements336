@@ -34,11 +34,12 @@ public class SchoolTest {
     @Test
     public void testGetDepartment() {
         System.out.println("getDepartment");
-        String dept = "";
-        School instance = null;
+        School.load();
+        String dept = "AMS";
+        School instance = School.getSchool();
         Department expResult = null;
         Department result = instance.getDepartment(dept);
-        assertEquals(expResult, result);
+        assertEquals(result,expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
