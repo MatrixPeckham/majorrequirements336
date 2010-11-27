@@ -26,7 +26,7 @@ public class User implements Scheduler, FileParser, Serializable{
     public static final int STUDENT=0;
     public static final int DEPT_ADMIN=1;
     public static final int SUPER_ADMIN=2;
-    private int majorYear;
+    private int majorYear=2008;
     private String name;
     private Major major;
     private TreeMap<String, CourseRecord> courses;
@@ -36,7 +36,7 @@ public class User implements Scheduler, FileParser, Serializable{
         courses=new TreeMap<String, CourseRecord>();
         userId=i;
         permissions=STUDENT;
-        majorYear=(new Date()).getYear();
+        //majorYear=(new Date()).getYear();
     }
     public int getStanding(){
         return School.getSchool().getStanding(this.getCompletedCredits());
@@ -112,6 +112,12 @@ public class User implements Scheduler, FileParser, Serializable{
                 parseCourses((Element)depts.item(i), dept);
             }
         } else if(fileType.equals("record")) {
+            String major=fileElement.getElementsByTagName("major").item(0).getTextContent();
+            this.major=School.getSchool().findMajor(major);
+            try{
+            this.majorYear=Integer.parseInt(fileElement.getElementsByTagName("year").item(0).getTextContent());
+
+            }catch(Exception e){}
             NodeList course=fileElement.getElementsByTagName("course");
             for(int i=0; i<course.getLength(); i++) {
                 String dept=((Element)((Element)course.item(i)).getElementsByTagName("dept").item(0)).getTextContent();

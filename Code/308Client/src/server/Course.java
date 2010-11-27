@@ -122,12 +122,12 @@ public class Course implements Serializable {
     public void setMinLevel(int m) {minLevel=m;}
     //public boolean passedCourse(User u){return u.getRecords().get(id).coursePassed();}
 
-    public RootlessTree<Course> getShortestPrereqPath() {
+    public RootlessTree<Course> getShortestPrereqPath(TreeMap<String,CourseRecord> records) {
         
         RootlessTree<Course> tree=new RootlessTree<Course>();
         tree.addRoot(this);
         for(CourseGroup g : prereqs) {
-            tree.addTree(g.getTopPrereqPaths(), this);
+            tree.addTree(g.getTopPrereqPaths(records), this);
         }
         
         return tree;

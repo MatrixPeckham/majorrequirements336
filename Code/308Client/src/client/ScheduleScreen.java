@@ -98,7 +98,7 @@ public class ScheduleScreen extends Screen {
                 Object[] sem = {str};
                 ((DefaultTableModel)table.getModel()).addRow(sem);
                 for(Course c : courses){
-                    Object[] obs = {c.getId(),c.getCredits()};
+                    Object[] obs = {"",c.getId(),c.getCredits()};
                     ((DefaultTableModel)table.getModel()).addRow(obs);
                 }
             }

@@ -156,6 +156,7 @@ public class Client{
                 pw=new PrintWriter(s.getOutputStream(), true);
                 ois=new ObjectInputStream(s.getInputStream());
                 oos=new ObjectOutputStream(s.getOutputStream());
+
                 
             } catch (UnknownHostException ex) {
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);

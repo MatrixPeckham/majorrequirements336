@@ -50,6 +50,15 @@ public class School {
         }
         return 4;
     }
+    public Major findMajor(String major) {
+        for(Department d : departments.values()) {
+            Major m=d.findMajor(major);
+            if(m!=null) {
+                return m;
+            }
+        }
+        return null;
+    }
     public ArrayList<Major> getAllMajors() {
         ArrayList<Major> a=new ArrayList<Major>();
         for(Department d : departments.values()) {

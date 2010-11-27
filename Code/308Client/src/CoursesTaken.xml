@@ -9,6 +9,8 @@
 -->
 
 <file type="record">
+    <major>CSE</major>
+    <year>2008</year>
     <course>
         <dept>CSE</dept>
         <num>114</num>

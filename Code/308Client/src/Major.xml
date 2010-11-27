@@ -17,7 +17,6 @@
                 <name>Intro Courses</name>
                 <year>2008</year>
                 <sequence>
-                    <course>CSE 110</course>
                     <course>CSE 114</course>
                     <course>CSE 214</course>
                     <course>CSE 219</course>

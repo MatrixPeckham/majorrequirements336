@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.TreeMap;
 import javax.swing.ComboBoxModel;
@@ -151,8 +152,12 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.uploadFile(getFile(true), Commands.UPLOADFILE);
-                frame.changeScreen(ClientGUI.CLASSES, null);
+                File f=getFile(true);
+                if(f!=null) {
+                    frame.uploadFile(f, Commands.UPLOADFILE);
+                    frame.changeScreen(ClientGUI.CLASSES, null);
+                    major.setSelectedItem(frame.getStudentInfo().getMajor());
+                }
             }
         });
         downloadButton = new JButton("Dowload Courses");
