@@ -9,10 +9,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -97,9 +100,16 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.removeCourse((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
-                Object o = frame.getDepartment(frame.getCurrentDepartment());
-                getScreen(o);
+                try{
+                    int[] is = table.getSelectedRows();
+                    for(int i = 0; i<is.length; i++){
+//                        frame.removeCourse((String)table.getModel().getValueAt(i, 0));
+                    }
+                    Object o = frame.getDepartment(frame.getCurrentDepartment());
+                    getScreen(o);
+                } catch(ArrayIndexOutOfBoundsException aioobe){
+                    JOptionPane.showMessageDialog(frame, "Select one or more rows to remove");
+                }
             }
         });
         add = new JButton("Add Course");
@@ -262,10 +272,16 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         private JTextArea descF;
         //table for prereqs
         private JTable prereq;
+        //list for groups
+        private JList groupList;
         //ok button
         protected JButton ok;
         //cancel button
         private JButton back;
+
+        private JButton toGroup;
+        
+        private JButton outGroup;
 
         private JComboBox standingPrereq;
         //constructor
@@ -297,7 +313,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 public void actionPerformed(ActionEvent e) {
                     if(validateForm()){
                         frame.addCourse(makeCourse(), frame.getCurrentDepartment());
-                        frame.changeScreen(ClientGUI.COURSES, frame.getDepartment(frame.getCurrentDepartment()));
+                        frame.changeScreen(ClientGUI.COURSES, frame.getDepartmentCourses(frame.getCurrentDepartment()));
                     }
                 }
             });
@@ -309,14 +325,15 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                     frame.changeScreen(ClientGUI.COURSES, frame.getDepartment(frame.getCurrentDepartment()));
                 }
             });
-            String[] columnNames = {"Course", "Select"};
+            String[] columnNames = {"Course"};//, "Select"};
             Object[][] data = {};
             prereq = new JTable();
             prereq.setPreferredScrollableViewportSize(new Dimension(200, 400));
             prereq.setFillsViewportHeight(true);
             prereq.setModel(new DefaultTableModel() {
+                @Override
                 public boolean isCellEditable(int x, int y) {
-                    return x==1;
+                    return false;
                 }
                 @Override
                 public java.lang.Class<?> getColumnClass(int columnIndex) {
@@ -335,6 +352,38 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 model.addRow(o);
             }
             this.setLayout(new GridBagLayout());
+
+            groupList = new JList();
+//            groupList.setPreferredSize(new Dimension(200,400));
+            groupList.setModel(new DefaultListModel());
+            JScrollPane listPane = new JScrollPane(groupList);
+
+            toGroup = new JButton("Add courses to Group");
+            toGroup.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    int[] inds = prereq.getSelectedRows();
+                    DefaultTableModel model = (DefaultTableModel)prereq.getModel();
+                    CourseGroup cg = new CourseGroup();
+                    for(int i : inds){
+                        String s = (String)model.getValueAt(i, 0);
+                        cg.addCourse(frame.getCourse(s));
+                    }
+                    DefaultListModel listm = (DefaultListModel) groupList.getModel();
+                    listm.addElement(cg);
+                }
+            });
+            outGroup = new JButton("Remove Group from Prereqs");
+            outGroup.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int[] rem = groupList.getSelectedIndices();
+                    DefaultListModel listm = (DefaultListModel) groupList.getModel();
+                    for(int i = 0; i<rem.length;i++)
+                        listm.remove(rem[i]);
+                }
+            });
             JScrollPane scrollPane = new JScrollPane(prereq);
             JLabel pLbl=new JLabel();
             pLbl.setText("Minimum Standing:");
@@ -349,62 +398,64 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(new JScrollPane(descF), this, 2, 5, 2, 1);
             addJComponentToContainerUsingGBL(pLbl, this, 1, 6, 1, 1);
             addJComponentToContainerUsingGBL(standingPrereq, this, 2, 6, 1, 1);
-            addJComponentToContainerUsingGBL(ok, this, 2, 7, 1, 1);
-            addJComponentToContainerUsingGBL(back, this, 3, 7, 1, 1);
-            addJComponentToContainerUsingGBL(scrollPane, this, 4, 2, 2, 5);
+            addJComponentToContainerUsingGBL(toGroup, this, 3, 6, 1, 1);
+            addJComponentToContainerUsingGBL(outGroup, this, 3, 7, 1, 1);
+            addJComponentToContainerUsingGBL(listPane, this, 4, 8, 1, 1);
+            addJComponentToContainerUsingGBL(ok, this, 2, 8, 1, 1);
+            addJComponentToContainerUsingGBL(back, this, 3, 8, 1, 1);
+            addJComponentToContainerUsingGBL(scrollPane, this, 4, 2, 2, 6);
 
 
         }
 
         private Course makeCourse() {
             Course c = new Course();
-            c.setCredits(3);
-            c.setDescription(descF.getText());
-            c.setName(deptF.getText());
-            c.setNum(Integer.parseInt(numF.getText()));
             c.setId(nameF.getText());
-            c.setSemestersOfferd(3);
-            CourseGroup cg = new CourseGroup();
-            DefaultTableModel model = (DefaultTableModel)prereq.getModel();
-            int num = model.getRowCount();
-            for(int i = 0;i<num; i++){
-                if(model.getValueAt(i, 1).equals(true)){
-                    Course pre = frame.getCourse((String)model.getValueAt(i, 0));
-                    cg.addCourse(pre);
-                }
+            c.setDescription(descF.getText());
+            try{
+                c.setNum(Integer.parseInt(numF.getText()));
+            } catch(NumberFormatException nfe){
+                JOptionPane.showMessageDialog(frame, "Number field should be a number");
+                return null;
             }
-            c.addPreReq(cg);
+            c.setCredits(3);
+            c.setSemestersOfferd(Course.BOTH);
+            c.setMinLevel(standingPrereq.getSelectedIndex());
+            DefaultListModel listm = (DefaultListModel)groupList.getModel();
+            int num = listm.size();
+            ArrayList<CourseGroup> l = new ArrayList<CourseGroup>();
+            for(int i = 0; i<num;i++){
+                l.add((CourseGroup)listm.elementAt(i));
+            }
+
+            c.setPrereqs(l);
+
             return c;
         }
 
         @Override
         public void getScreen(Object fillWith) {
-            Course cou=null;
-            ArrayList<Course> prereqlist = new ArrayList<Course>();
-            if(fillWith instanceof Course){
-                cou = (Course)fillWith;
-                ArrayList<CourseGroup> prereqs = new ArrayList<CourseGroup>(cou.getPrereqs());
-                for(CourseGroup cg : prereqs){
-                    prereqlist.addAll(cg.getCourses());
+                DefaultTableModel model = (DefaultTableModel)prereq.getModel();
+                int num = model.getRowCount();
+                for(int i = 0; i<num; i++){
+                    model.removeRow(0);
                 }
-            }
-            ArrayList<Course> courses = frame.getAllCourses();
-            DefaultTableModel model = (DefaultTableModel)prereq.getModel();
-            int num = model.getRowCount();
-            for(int i = 0;i<num;i++){
-                model.removeRow(0);
-            }
-            if(courses!=null) {
+                ArrayList<Course> courses = frame.getAllCourses();
                 for(Course c : courses){
-                    Object[] o = {c,prereqlist.contains(c)};
+                    Object[] o = {c.getId()};
                     model.addRow(o);
                 }
-            }
-            if(cou!=null){
-                nameF.setText(cou.getId());
-                numF.setText(cou.getNum()+"");
-                descF.setText(cou.getDescription());
-                deptF.setText(cou.getName());
+                DefaultListModel listm = (DefaultListModel)groupList.getModel();
+                listm.clear();
+            if(fillWith instanceof Course){
+                Course c = (Course) fillWith;
+                nameF.setText(c.getId());
+                descF.setText(c.getDescription());
+                numF.setText(c.getNum()+"");
+                standingPrereq.setSelectedIndex(c.getMinLevel());
+                for(CourseGroup cg : c.getPrereqs()){
+                    listm.addElement(cg);
+                }
             }
         }
 
