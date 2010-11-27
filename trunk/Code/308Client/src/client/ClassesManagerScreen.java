@@ -442,7 +442,22 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
         @Override
         public void getScreen(Object fillWith) {
-
+            super.getScreen(fillWith);
+            if(fillWith instanceof CourseRecord){
+                CourseRecord cr = (CourseRecord) fillWith;
+                DefaultTableModel model = (DefaultTableModel)courses.getModel();
+                String id = cr.getCourse().getId();
+                int num = model.getRowCount();
+                for(int i = 0; i <num; i++){
+                    if(id.equals(model.getValueAt(i, 0))){
+                        courses.clearSelection();
+                        courses.setRowSelectionInterval(i, i);
+                        break;
+                    }
+                }
+                gradeBox.setSelectedItem(cr.getGrades().get(0).getGrade());
+                transBox.setSelected(cr.getTransfer());
+            }
         }
 
         @Override
