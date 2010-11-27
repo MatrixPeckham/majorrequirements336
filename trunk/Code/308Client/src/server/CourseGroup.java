@@ -187,12 +187,12 @@ public class CourseGroup implements Serializable {
             } else {
                 course.addChild(parent, c);
                 //getRemainingCourses(records, c.getShortestPrereqPath().getSubtree(0), level+1, c);
-                RootlessTree.mergeTrees(course, c.getShortestPrereqPath().getSubtree(0), c, level+1);
+                RootlessTree.mergeTrees(course, c.getShortestPrereqPath(records).getSubtree(0), c, level+1);
             }
         }
     }
     
-    public RootlessTree<Course> getTopPrereqPaths() {
+    public RootlessTree<Course> getTopPrereqPaths(TreeMap<String,CourseRecord> records) {
         RootlessTree<Course> c=new RootlessTree<Course>();
         /* IDEA
          * 1.) Get all prereq paths
@@ -201,7 +201,11 @@ public class CourseGroup implements Serializable {
          */
         float maxPath=Float.POSITIVE_INFINITY;
         for(Course c2 : courses) {
-            RootlessTree<Course> tmp=c2.getShortestPrereqPath();
+            CourseRecord r=records.get(c2.getId());
+            if(r!=null && r.coursePassed()) {
+                return new RootlessTree<Course>();
+            }
+            RootlessTree<Course> tmp=c2.getShortestPrereqPath(records);
             if(tmp.getMaxLevel()<maxPath) {c=tmp;}
         }
         return c;

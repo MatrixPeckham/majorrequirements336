@@ -132,4 +132,7 @@ public class Major implements Serializable {
     public String getDepartment() {return department;}
     public void setDepartment(String dept) {department=dept;}
     public String toString() {return getId();}
+    public boolean equals(Object o) {
+        return this.id.equals(((Major)o).getId());
+    }
 }

@@ -91,7 +91,7 @@ public class Schedule implements Serializable{
                 Course c=it.next();
                 if(c.canTake(s) && c.getCredits()<=maxSemCredits && c.prereqsComplete(added, totalCredits)) {
                     sched.get(s.toString()).add(c);
-                    added.put(c.getId(), new CourseRecord(c, new Grade("A"), false));
+                    
                     toRemove.add(c);
                     totalCredits+=c.getCredits();
                     it.remove();
@@ -100,6 +100,8 @@ public class Schedule implements Serializable{
                 }
                 if(maxSemCredits==0) {
                     for(Course c2 : toRemove) {
+                        it=toTake.iterator();
+                        added.put(c2.getId(), new CourseRecord(c2, new Grade("A"), false));
                         t.removeData(c2);
                     }
                     toRemove.clear();
@@ -110,6 +112,7 @@ public class Schedule implements Serializable{
             }
             if(maxSemCredits>0) {
                     for(Course c2 : toRemove) {
+                        added.put(c2.getId(), new CourseRecord(c2, new Grade("A"), false));
                         t.removeData(c2);
                     }
                     toRemove.clear();

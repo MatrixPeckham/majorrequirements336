@@ -1,5 +1,6 @@
 package client;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -11,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  * Screen for requirements check requiremnts
@@ -76,12 +78,15 @@ public class RequirementsScreen extends Screen {
 		});
 
 
-            this.setLayout(new GridBagLayout());
-            addJComponentToContainerUsingGBL(checkRequirementsLabel, this, 1, 1, 4, 1);
-            addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 4, 2);
-            addJComponentToContainerUsingGBL(requirementInfo, this, 1, 10, 1, 1);
-            addJComponentToContainerUsingGBL(back, this, 3, 30, 1, 1);
-            addJComponentToContainerUsingGBL(suggestSched, this, 4, 30, 1, 1);
+            this.setLayout(new BorderLayout());
+            JPanel south=new JPanel();
+            south.setLayout(new GridBagLayout());
+            this.add(checkRequirementsLabel, BorderLayout.NORTH);
+            this.add(scrollPane,BorderLayout.CENTER);
+            //addJComponentToContainerUsingGBL(requirementInfo, this, 1, 10, 1, 1);
+            addJComponentToContainerUsingGBL(back, south, 1, 1, 1, 1);
+            addJComponentToContainerUsingGBL(suggestSched, south, 2, 1, 1, 1);
+            this.add(south, BorderLayout.SOUTH);
         }
 
 
