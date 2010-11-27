@@ -57,11 +57,13 @@ public class PersistenceManager {
             init();
 
         }
+       //em.merge(o);
+       merge(o);
         if(!t.isActive()) {
             t.begin();
         }
-       Object e=find(o, pk);
-       em.remove(e);
+       //Object e=find(o, pk);
+       em.remove(o);
        t.commit();
     }
     public static void merge(Object o) {
