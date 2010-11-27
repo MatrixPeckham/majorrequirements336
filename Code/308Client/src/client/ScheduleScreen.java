@@ -84,7 +84,8 @@ public class ScheduleScreen extends Screen {
     @Override
     public void getScreen(Object fillWith) {
         DefaultTableModel m=((DefaultTableModel)table.getModel());
-       for(int i=0; i<m.getRowCount(); i++) {
+        int num = m.getRowCount();
+       for(int i=0; i<num; i++) {
            m.removeRow(0);
        }
         if(fillWith instanceof Schedule){
