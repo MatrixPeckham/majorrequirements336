@@ -31,16 +31,13 @@ public class Requirement implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;//(Primary key) name identifier for requirement
     private int numberOfCourses;/* min number of course groups to complete to satisfy requirement*/
+    private int minCredits;
     private double minGPA;//min Gpa for passing requirement
     private int minUpperDivCredits;// minimum upper divesion credits required
     private int minResidentCredits;//minumum non-transfer credits required
     private int version;//year of requirement
-    private static EntityManager em;
-    private static EntityManagerFactory emf;
     public Requirement() {
         possibleCourses=new ArrayList<CourseGroup>();
-        emf=Persistence.createEntityManagerFactory("ClientPU");
-        em=emf.createEntityManager();
     }
 
     @OneToMany(fetch=FetchType.EAGER)
@@ -141,21 +138,73 @@ public class Requirement implements Serializable {
         return remaining;
     }
 
-    public boolean requirementSatisfied(TreeMap<String, CourseRecord> courses){
+    public RequirementCompletion requirementSatisfied(TreeMap<String, CourseRecord> courses){
         double gpa=0;
         int upper=0;
+        int local=0;
         int credits=0;
+        int credOp=0;
         int num=0;
+        RequirementCompletion rc=new RequirementCompletion();
+        rc.complete=true;
+        rc.name=this.getId();
         for(CourseGroup cb : possibleCourses) {
-            if(cb.getRemainingCourses(courses).size()==0) {
-                num++;
-                upper+=cb.upperCredits(courses);
-                credits+=cb.credits(courses);
-                gpa+=cb.calculateGPA(courses);
+            for(Course c: cb.getCourses()) {
+                CourseCompletion c2=new CourseCompletion();
+                c2.course=c;
+                if(courses.containsKey(c.getId())) {
+                    CourseRecord cr=courses.get(c.getId());
+                    for(Grade g : cr.getGrades()) {
+                        gpa+=g.getGradePoints();
+                        credOp+=c.getCredits();
+                    }
+                    if(!cr.getGrades().contains(new Grade("I"))) {
+                        c2.message="Class in progress";
+                        c2.complete=false;
+                        rc.complete=false;
+                    } else
+                    if(!cr.coursePassed()) {
+                        c2.message="Course not passed with minimum grade.";
+                        c2.complete=false;
+                        rc.complete=false;
+                    } else {
+                        if(c.isUpperDivision()) {upper+=c.getCredits();}
+                        if(!cr.getTransfer()) {local+=c.getCredits();}
+                        credits+=c.getCredits();
+                        c2.complete=true;
+                        c2.message="CourseCompleted";
+                    }
+                } else {
+                    c2.message="Incomplete";
+                    c2.complete=false;
+                    rc.complete=false;
+                }
+                rc.courseMessages.add(c2);
             }
         }
-        gpa=gpa/num;
-         return num>=numberOfCourses && gpa>=minGPA && upper>=minUpperDivCredits;
+        rc.credsEarned=credits;
+        rc.credsTaken=credOp;
+        rc.gradePoints=gpa;
+        rc.localCreds=local;
+        if(credOp>0) {
+        gpa=gpa/credOp;
+        } else {
+            gpa=0;
+        }
+
+
+        rc.message="";
+        if(numberOfCourses>0) {
+            rc.message+=(num>=numberOfCourses?numberOfCourses:num)+" of "+numberOfCourses+" course sets complete.<br/>";
+        }
+        rc.message += "GPA: " + gpa + (gpa >= minGPA ? " Meets minimum" : " Does not meet minimum") + "</br>";
+        if(minUpperDivCredits>0) {
+            rc.message+=upper+" of "+minUpperDivCredits+" required upper division credits completed<br/>";
+        }
+        if(minCredits>0) {
+            rc.message+=credits+" of "+minCredits+" requiredCredits";
+        }
+        return rc;
     }
 
 }

@@ -115,16 +115,16 @@ public class Major implements Serializable {
         }
         return remaining;
     }
-    public Vector<Requirement> requirementsRemaining(TreeMap<String, CourseRecord> r, int year) {
-        Vector<Requirement> req=new Vector<Requirement>();
-        for(Requirement a : reqs) {
-            if(a.getVersion()==year) {
-                if(!a.requirementSatisfied(r)){
-                    req.add(a);
-                }
+    public MajorCompletion requirementsRemaining(TreeMap<String, CourseRecord> r, int year) {
+        MajorCompletion mc=new MajorCompletion();
+        mc.name=this.getId()+" Major Requirements";
+        for(Requirement re : reqs) {
+            if(re.getYear()==year) {
+               RequirementCompletion rc=re.requirementSatisfied(r);
+                mc.reqs.add(rc);
             }
         }
-        return null;
+        return mc;
     }
     public void removeRequirement(Requirement r) {
 

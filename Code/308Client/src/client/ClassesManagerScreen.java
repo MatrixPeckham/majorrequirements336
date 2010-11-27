@@ -168,8 +168,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                ArrayList<Requirement> o = frame.checkSchedule();
-                frame.changeScreen(ClientGUI.CHECK, o);
+                
+                frame.changeScreen(ClientGUI.CHECK, frame.checkSchedule());
             }
         });
         generateButton = new JButton("Generate Schedule");

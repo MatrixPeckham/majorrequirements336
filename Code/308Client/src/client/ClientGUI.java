@@ -221,7 +221,7 @@ public class ClientGUI extends JFrame {
         networking.downloadFile(file, str);
     }
 
-    ArrayList<Requirement> checkSchedule() {
+    String checkSchedule() {
         return networking.checkSchedule();
     }
 

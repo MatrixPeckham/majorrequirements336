@@ -88,8 +88,10 @@ public class User implements Scheduler, FileParser, Serializable{
         InputSource is=new InputSource();
         is.setCharacterStream(new StringReader(f));
         Document d=db.parse(is);
-        
-        Element fileElement=d.getDocumentElement();
+        parseXML(d);
+    }
+    private void parseXML(Document d) throws Exception{
+         Element fileElement=d.getDocumentElement();
 
         String fileType=fileElement.getAttribute("type");
         if(fileType.equals("majorRequirement")) {
@@ -132,7 +134,7 @@ public class User implements Scheduler, FileParser, Serializable{
         } else {
             throw new Exception("Invalid File Exception");
         }
-        
+
     }
     private void parseCourses(Element el, String dept) {
         School s=School.getSchool();
@@ -274,98 +276,79 @@ public class User implements Scheduler, FileParser, Serializable{
         return g;
     }
     @Override
-    public File writeFile(String cmd) {
-        FileWriter fw;
-        PrintWriter pw;
-        String fileName;
+    public String writeFile(String cmd) {
+        String s="";
 
         try {
-            if (cmd.equals("DOWNLOAD_COURSE_DATA"))
-                fileName = "CoursesTaken.xml";
-            else if(cmd.equals("DOWNLOAD_REQ"))
-                fileName = "Major.xml";
-            else
-                fileName = null;
-
-            fw = new FileWriter(fileName);
-            pw = new PrintWriter(fw);
-
-            if (fileName.equals("CoursesTaken.xml"))    {
+  
+            if (cmd.equals(Commands.DOWNLOAD_COURSE_DATA))    {
                 Collection<CourseRecord> courserecords = courses.values();
                 int i = 0;
-                pw.println("<file type=\"record\">");
+                s+="<file type=\"record\">";
                 for(CourseRecord r : courserecords) {
-                    pw.println("<course>");
-                    pw.println("<dept>" + r.getCourse().getName() + "</dept>");
-                    pw.println("<num>" + r.getCourse().getNum() + "</num>");
-                    pw.println("<grade>" + r.getGrades().get(i) + "</grade>");
-                    pw.println("<transfer" + r.getTransfer() + "</transfer>");
-                    pw.println("</course>");
+                    s+="<course>";
+                    s+="<dept>" + r.getCourse().getName() + "</dept>";
+                    s+="<num>" + r.getCourse().getNum() + "</num>";
+                    s+="<grade>" + r.getGrades().get(i) + "</grade>";
+                    s+="<transfer" + r.getTransfer() + "</transfer>";
+                    s+="</course>";
                     i++;
                 }
-                pw.println("</file>");
-                pw.flush();
-                fw.flush();
+                s+="</file>";
+ 
             }
-            else if (fileName.equals("Major.xml"))   {
-                School s = School.getSchool();
-                Collection<Department> departments = s.getDepartments();
-                pw.println("<file type=\"majorRequirement\">");
+            else if (cmd.equals(Commands.DOWNLOAD_REQ))   {
+                School s2 = School.getSchool();
+                Collection<Department> departments = s2.getDepartments();
+                s+="<file type=\"majorRequirement\">";
                 
                 for(Department d : departments) {
                     Collection<Major> majors = d.getMajors();
 
                     for(Major m : majors)   {
                         Collection<Requirement> requirements = m.getRequirements();
-                        pw.println("<major>");
-                        pw.println("<majorname>" + m.getId() + "</majorname>");
+                        s+="<major>";
+                        s+="<majorname>" + m.getId() + "</majorname>";
 
                         for(Requirement r : requirements)   {
-                            pw.println("<minGPA>" + r.getMinGPA() + "</minGPA>");
-                            pw.println("<minLocalCreds>" + r.getMinResidentCredits() + "</minLocalCreds>");
-                            pw.println("<department>" + d.getName() + "</departments>");
-                            pw.println("<requirement required=\"" + r.getNumberOfCourses() + "\">");
-                            pw.println("<name>" + r.getId() + "</name>");
-                            pw.println("<year>" + r.getYear() + "</year>");
+                            s+="<minGPA>" + r.getMinGPA() + "</minGPA>";
+                            s+="<minLocalCreds>" + r.getMinResidentCredits() + "</minLocalCreds>";
+                            s+="<department>" + d.getName() + "</departments>";
+                            s+="<requirement required=\"" + r.getNumberOfCourses() + "\">";
+                            s+="<name>" + r.getId() + "</name>";
+                            s+="<year>" + r.getYear() + "</year>";
                             Collection<CourseGroup> coursegroups = r.getPossibleCourses();
 
                             for(CourseGroup cg : coursegroups)  {
                                 Collection<Course> courses = cg.getCourses();
-                                pw.println("<sequence>");
+                                s+="<sequence>";
 
                                 for(Course c : courses) {
-                                    pw.println("<course>" + c.getName() + "</course>");
+                                    s+="<course>" + c.getName() + "</course>";
                                 }
-                                pw.println("</sequence>");
+                                s+="</sequence>";
                             }
-                            pw.println("</requirement>");
+                            s+="</requirement>";
                         }
                     }
-                    pw.println("</major>");
+                    s+="</major>";
                 }
-                pw.println("/file>");
-                pw.flush();
-                fw.flush();
+                s+="</file>";
             }
 
         }
-        catch (IOException ioe)   {
+        catch (Exception ioe)   {
 
         }
-        return null;//throw new UnsupportedOperationException("Not supported yet.");
+        return s;//throw new UnsupportedOperationException("Not supported yet.");
     }
-/*
-    @Override
-    public String getTextOfFile(String cmd) {
-       String file="<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-       return file;
-    }*/
-    private String writeCoursesFile(){return "";}
-    private String writeRecordsFile(){return "";}
-    private String writeMajorFile(){return "";}
-
     @Override
     public void parseFile(File cmd) throws Exception {
-        //throw new UnsupportedOperationException("Not supported yet.");
+        DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
+
+        DocumentBuilder db= dbf.newDocumentBuilder();
+
+        Document d=db.parse(cmd);
+        parseXML(d);
     }
  }

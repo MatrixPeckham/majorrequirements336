@@ -31,7 +31,7 @@ public class School {
         PersistenceManager.merge(d);
     }
     public void removeDepartment(String d) {
-        PersistenceManager.remove(departments.remove(d));
+        PersistenceManager.remove(departments.remove(d), d);
     }
     public ArrayList<Department> getDepartments() {
         return new ArrayList<Department>(departments.values());

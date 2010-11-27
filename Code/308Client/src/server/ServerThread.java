@@ -173,7 +173,7 @@ public class ServerThread implements Runnable{
                     try{
 
                         objectOut.reset();
-                        objectOut.writeObject(School.getSchool().getDepartment((String) objectIn.readObject()).findMajor((String) objectIn.readObject()).getRequirements());
+                        objectOut.writeObject(user.getMajor().requirementsRemaining(user.getCourses(), user.getMajorYear()));
                         objectOut.writeObject("OK");
                         objectOut.flush();
                     }catch(Exception e) {
@@ -245,9 +245,11 @@ public class ServerThread implements Runnable{
                 } else if (cmd.equals(Commands.EDIT_COURSE_TAKEN)) {
                 } else if (cmd.equals(Commands.EDIT_COURSE) || cmd.equals(Commands.ADD_CLASS)) {
                     try{
-                        Department d=School.getSchool().getDepartment((String) objectIn.readObject());
+                        String s=(String) objectIn.readObject();
+                        Course c=(Course)objectIn.readObject();
+                        Department d=School.getSchool().getDepartment(s);
                         
-                        d.addCourse((Course)objectIn.readObject());
+                        d.addCourse(c);
                         objectOut.writeObject("OK");
                     }catch(Exception e) {
                         e.printStackTrace();

@@ -15,6 +15,7 @@ import java.util.Vector;
  */
 public class CourseRecord implements Serializable{
     private Course course;
+    //private TreeMap<Semester, Grade> grades;
     private Vector<Grade> grades;
     private boolean transfer;
     public CourseRecord(Course course, Grade grade, boolean transfer) {
