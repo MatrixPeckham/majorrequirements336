@@ -15,11 +15,11 @@ import java.util.ArrayList;
  */
 public class OfferingList implements Serializable {
     public static final byte NONE = 0;
-    public static final byte FALL = 1;
+    public static final byte FALL = 16;
     public static final byte SPRI = 2;
-    public static final byte WINT = 4;
-    public static final byte SUM1 = 8;
-    public static final byte SUM2 = 16;
+    public static final byte WINT = 1;
+    public static final byte SUM1 = 4;
+    public static final byte SUM2 = 8;
     public static final byte ALL = (byte) 0xFF;
     private ArrayList<CourseOffering> offerings;
     private byte notListedStratagy;

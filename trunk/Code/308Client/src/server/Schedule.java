@@ -12,19 +12,19 @@ import structures.RootlessTree;
  * @author Bill
  */
 public class Schedule implements Serializable{
-    private TreeMap<String,Vector<Course>>  schedule;
+    private TreeMap<Semester,Vector<Course>>  schedule;
 
-    public Schedule(TreeMap<String,Vector<Course>> s) {
+    public Schedule(TreeMap<Semester,Vector<Course>> s) {
         schedule=s;
     }
-    public TreeMap<String,Vector<Course>> getSchedule() {
+    public TreeMap<Semester,Vector<Course>> getSchedule() {
         return schedule;
     }
     public static Schedule generateSchedule(User u) {
 
         Major m=u.getMajor();
         if(m==null) {return null;}
-        RootlessTree<Course> t=m.getRemainingCourse(u.getRecords(), 2008);
+        RootlessTree<Course> t=m.getRemainingCourse(u.getRecords(), u.getMajorYear());
         Vector<Course> toTake=new Vector<Course>();
         Vector<Course> toRemove=new Vector<Course>();
         int maxlevel=t.getMaxLevel();
@@ -79,10 +79,10 @@ public class Schedule implements Serializable{
         boolean canGenerate=true;
         Semester s=Semester.freeSemester();
         int maxSemCredits=School.getSchool().getMaxCreds();
-        TreeMap<String, Vector<Course>> sched=new TreeMap<String, Vector<Course>>();
+        TreeMap<Semester, Vector<Course>> sched=new TreeMap<Semester, Vector<Course>>();
         TreeMap<String, CourseRecord> added=new TreeMap<String,CourseRecord>();
         int totalCredits=u.getCompletedCredits();
-        sched.put(s.toString(), new Vector<Course>());
+        sched.put(s, new Vector<Course>());
         boolean flag=false;
         while(toTake.size()>0 && canGenerate) {
             Iterator<Course> it=toTake.iterator();
@@ -90,7 +90,7 @@ public class Schedule implements Serializable{
             while(it.hasNext()) {
                 Course c=it.next();
                 if(c.canTake(s) && c.getCredits()<=maxSemCredits && c.prereqsComplete(added, totalCredits)) {
-                    sched.get(s.toString()).add(c);
+                    sched.get(s).add(c);
                     
                     toRemove.add(c);
                     totalCredits+=c.getCredits();
@@ -106,7 +106,7 @@ public class Schedule implements Serializable{
                     }
                     toRemove.clear();
                     s=s.nextSemester();
-                    sched.put(s.toString(), new Vector<Course>());
+                    sched.put(s, new Vector<Course>());
                     maxSemCredits=School.getSchool().getMaxCreds();
                 }
             }
@@ -117,7 +117,7 @@ public class Schedule implements Serializable{
                     }
                     toRemove.clear();
                     s=s.nextSemester();
-                    sched.put(s.toString(), new Vector<Course>());
+                    sched.put(s, new Vector<Course>());
                     maxSemCredits=School.getSchool().getMaxCreds();
                 }
             if(!found) {
