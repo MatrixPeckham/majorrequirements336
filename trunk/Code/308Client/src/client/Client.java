@@ -83,9 +83,10 @@ public class Client{
                 return (Course) ois.readObject();
             }catch(Exception e){return null;}
         }
-	public boolean removeCourse(String str) {
+	public boolean removeCourse(String d, String str) {
             try{
                 oos.writeObject(Commands.REMOVE_COURSE);
+                oos.writeObject(d);
                 oos.writeObject(str);
                 return ((String) ois.readObject()).equals("OK");
             } catch(Exception e){
@@ -100,7 +101,17 @@ public class Client{
 
 
 
-	public boolean removeMajor(String str) {return false;}
+	public boolean removeMajor(String d, String str) {
+            try {
+                oos.writeObject(Commands.REMOVE_COURSE);
+                oos.writeObject(d);
+                oos.writeObject(str);
+                return ((String) ois.readObject()).equals("OK");
+            }
+            catch(Exception e)   {
+                return false;
+            }
+        }
 //TODO	public boolean addRequirement(Requirement r, String str) {return false;}
 
 	public boolean removeRequirement(String str1, String str2){return false;}
@@ -220,12 +231,14 @@ public class Client{
         }
     }
 
-    boolean editMajor(Major m, String dept) {
+    boolean editMajor(Major m, String dept, String s) {
         try{
         oos.writeObject(Commands.EDIT_MAJOR);
         oos.writeObject(dept);
             oos.reset();
-            oos.writeObject(m);
+            oos.writeObject(m.getId());
+            oos.reset();
+            oos.writeObject(s);
 
             return ((String) ois.readObject()).equals("OK");
         } catch(Exception e) {

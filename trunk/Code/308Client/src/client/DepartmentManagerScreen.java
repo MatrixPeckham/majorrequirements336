@@ -185,10 +185,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                 for (Department d : depos) {
                     String[] s = {d.getName()};
                     model.addRow(s);
-                }
-
-
-                
+                }  
             }
         }
 

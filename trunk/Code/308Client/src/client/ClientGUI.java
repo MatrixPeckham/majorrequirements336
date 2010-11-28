@@ -175,12 +175,12 @@ public class ClientGUI extends JFrame {
 	public int uploadFile(File file, String str) {return networking.uploadFile(file, str);}
 	public boolean addCourse(Course c, String str) {return networking.addCourse(c, str);}
 	public Course loadCourse(String str) {return networking.loadCourse(str);}
-	public boolean removeCourse(String str) {return networking.removeCourse(str);}
+	public boolean removeCourse(String str) {return networking.removeCourse(networking.getCurrentDepartment(),str);}
 	public boolean editCourse(Course c) {return networking.editCourse(c);}
 	public Major loadMajor(String str) {return networking.loadMajor(str);}
 	public void addMajor(Major m) {networking.addMajor(m,networking.getCurrentDepartment());}
-	public boolean editMajor(Major m) {return networking.editMajor(m,networking.getCurrentDepartment());}
-	public boolean removeMajor(String str) {return networking.removeMajor(str);}
+	public boolean editMajor(Major m, String s) {return networking.editMajor(m,networking.getCurrentDepartment(),s);}
+	public boolean removeMajor(String str) {return networking.removeMajor(networking.getCurrentDepartment(),str);}
 	public boolean addRequirement(Requirement r, String str) {return networking.addRequirement(r,networking.getCurrentDepartment(),networking.getCurrentMajor().getId());}
 	public boolean removeRequirement(String str1, String str2){return networking.removeRequirement(str1, str2);}
 	public int login(String usr,String pass) {permissions = networking.login(usr, pass);return permissions;}

@@ -91,7 +91,9 @@ public class ServerThread implements Runnable{
                     }
                 } else if (cmd.equals(Commands.REMOVE_COURSE)) {
                     try{
-                        School.getSchool().getDepartment((String) objectIn.readObject()).removeCourse((String) objectIn.readObject());
+                        Department d = School.getSchool().getDepartment((String) objectIn.readObject());
+                        d.removeCourse((String) objectIn.readObject());
+                        //PersistenceManager.merge(d);
                         objectOut.writeObject("OK");
                     }catch(Exception e) {
                         objectOut.writeObject("ERR");
@@ -100,7 +102,7 @@ public class ServerThread implements Runnable{
                      try{
                         Department d=School.getSchool().getDepartment((String) objectIn.readObject());
                         d.removeMajor((String) objectIn.readObject());
-                        PersistenceManager.merge(d);
+                        //PersistenceManager.merge(d);
                         objectOut.writeObject("OK");
                     }catch(Exception e) {
                         objectOut.writeObject("ERR");
@@ -138,7 +140,7 @@ public class ServerThread implements Runnable{
                 } else if (cmd.equals(Commands.GET_DEPT)) {
                      try{
 
-                        //objectOut.reset();
+                         objectOut.reset();
                          //objectOut=new ObjectOutputStream(out);
                          objectOut.writeObject(School.getSchool().getDepartments());
                          objectOut.writeObject("OK");
@@ -263,7 +265,24 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("ERR");
                     }
                 } else if (cmd.equals(Commands.EDIT_MAJOR)) {
-                   // user.getMajor().setId((String) objectIn.readObject());
+                  try   {
+                      String s = (String)objectIn.readObject();
+                      String mid = (String)objectIn.readObject();
+                      Department d = School.getSchool().getDepartment(s);
+
+                      ArrayList<Major> majors = d.getMajors();
+                      for (Major m : majors)   {
+                          if (m.getId().equals(mid))
+                              m.setId((String) objectIn.readObject());
+                      }
+                      PersistenceManager.merge(d);
+                      objectOut.writeObject("OK");
+                  }
+                  catch(Exception e)    {
+                        e.printStackTrace();
+                        objectOut.writeObject("ERR");
+                  }
+                   
                 } else if (cmd.equals(Commands.EDIT_REQUIREMENT)) {
                 } else if (cmd.equals(Commands.GET_MAJOR)) {
                      try{
