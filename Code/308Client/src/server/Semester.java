@@ -5,18 +5,19 @@
 
 package server;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author TJ
  */
-public class Semester {
-    public static final int FALL = 1;
+public class Semester implements Comparable, Serializable{
+    public static final int FALL = 16;
     public static final int SPRING = 2;
-    public static final int WINTER = 4;
-    public static final int SUMMER1 = 8;
-    public static final int SUMMER2 = 16;
+    public static final int WINTER = 1;
+    public static final int SUMMER1 = 4;
+    public static final int SUMMER2 = 8;
     private int year;
     private int season;
     Semester(int year, int season) {
@@ -31,10 +32,11 @@ public class Semester {
         }
         return new Semester(d.getYear()+1901, SPRING);
     }
+    public int getYear(){return year;}
     public int getSeason() {return season;}
     public Semester nextSemester() {
         int season=this.season,year=this.year;
-        season=(season+1)%2;
+        season=(season==FALL?SPRING:FALL);
         if(season==1) {
             year++;
         }
@@ -77,5 +79,18 @@ public class Semester {
         hash = 29 * hash + this.year;
         hash = 29 * hash + this.season;
         return hash;
+    }
+    private static int log2(int num) {
+        int ans=0;
+        while(num>1) {
+            num=num/2;
+            ans++;
+        }
+        return ans;
+    }
+    @Override
+    public int compareTo(Object o) {
+       Semester s=(Semester)o;
+        return 10*(year-s.getYear())+(log2(season)-log2(s.getSeason()));
     }
 }

@@ -16,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import server.Course;
 import server.Schedule;
+import server.Semester;
 
 /**
  * Screen to view generated schedule
@@ -90,12 +91,12 @@ public class ScheduleScreen extends Screen {
        }
         if(fillWith instanceof Schedule){
             Schedule s = (Schedule) fillWith;
-            TreeMap<String,Vector<Course>> sched = s.getSchedule();
+            TreeMap<Semester,Vector<Course>> sched = s.getSchedule();
 
-            Set<String> semesters = sched.keySet();
-            for(String str : semesters){
+            Set<Semester> semesters = sched.keySet();
+            for(Semester str : semesters){
                 Vector<Course> courses = sched.get(str);
-                Object[] sem = {str};
+                Object[] sem = {str.toString()};
                 ((DefaultTableModel)table.getModel()).addRow(sem);
                 for(Course c : courses){
                     Object[] obs = {"",c.getId(),c.getCredits()};
