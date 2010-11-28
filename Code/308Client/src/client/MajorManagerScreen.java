@@ -161,8 +161,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                         return;
                     }
                 }
-                Major m = frame.getMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 1));
-                m.setId(s);
+                Major m = frame.getMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 0));
+                frame.editMajor(m,s);
                 Object o = frame.getDepartment(frame.getCurrentDepartment()).getMajors();
                 getScreen(o);
             }
@@ -172,7 +172,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.removeMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 1));
+                frame.removeMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 0));
                 Object o = frame.getDepartment(frame.getCurrentDepartment()).getMajors();
                 getScreen(o);
             }
