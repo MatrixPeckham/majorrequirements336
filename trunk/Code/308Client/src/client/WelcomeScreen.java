@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import server.Commands;
+import server.User;
 /**
  * Welcome screen
  * @author Bill
@@ -59,10 +60,18 @@ public class WelcomeScreen extends Screen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-                            if(frame.getPermissions()<2){
+                            if(frame.getPermissions()<User.DEPT_ADMIN){
 				frame.reg = false;
       				frame.changeScreen(ClientGUI.LOGIN, null);
-                            } else {
+                            } else if(frame.getPermissions()>User.DEPT_ADMIN) {
+                                if(frame.getCurrentDepartment().equals("")) {
+                                    Object o =frame.getDepartments();
+                                    frame.changeScreen(ClientGUI.DEPARTMENTS, o);
+                                } else {
+                                    Object o = frame.getDepartment(frame.getCurrentDepartment());
+                                    frame.changeScreen(ClientGUI.MAJORS, o);
+                                }
+                            }else {
                                 Object o = frame.getDepartment(frame.getCurrentDepartment()).getMajors();
                                 frame.changeScreen(ClientGUI.MAJORS, o);
                             }
@@ -73,7 +82,7 @@ public class WelcomeScreen extends Screen {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-                            if(frame.getPermissions()<3){
+                            if(frame.getPermissions()<User.SUPER_ADMIN){
 				frame.reg = true;
 				frame.changeScreen(ClientGUI.LOGIN, null);
                             } else {

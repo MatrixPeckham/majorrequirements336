@@ -64,8 +64,15 @@ public class ServerThread implements Runnable{
                     try {
                     String username=(String) objectIn.readObject();
                     String password=(String) objectIn.readObject();
-                    permissions=system.checkLogin(username,password);
-                    objectOut.writeObject(""+permissions);
+                    String p=system.checkLogin(username,password);
+                    if(p.equals(""+User.SUPER_ADMIN)) {
+                        permissions=User.SUPER_ADMIN;
+                    } else if(p.equals(""+User.STUDENT)) {
+                        permissions=User.STUDENT;
+                    } else {
+                        permissions=User.DEPT_ADMIN;
+                    }
+                    objectOut.writeObject(p);
                     } catch(Exception e) {
                         objectOut.writeObject("0");
                     }

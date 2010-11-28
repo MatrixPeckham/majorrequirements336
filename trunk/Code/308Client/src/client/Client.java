@@ -109,9 +109,14 @@ public class Client{
             oos.writeObject(Commands.LOGIN);
             oos.writeObject(usr);
             oos.writeObject(pass);
-            pw.flush();
-            
-            return Integer.parseInt((String) ois.readObject());
+            oos.flush();
+            String resp=(String) ois.readObject();
+            if(resp.equals(""+User.STUDENT)) {return User.STUDENT;}
+            else if(resp.equals(""+User.SUPER_ADMIN)) {return User.DEPT_ADMIN;}
+            else {
+                            this.currDepo=resp;
+                            return User.DEPT_ADMIN;
+            }
             } catch(Exception e) {
                 return -1;
             }
@@ -495,5 +500,5 @@ public User getStudentInfo() {
     void setCurrentDepartment(String dep) {
         currDepo=dep;;
     }
-    String currDepo="CSE";
+    String currDepo="";
 }
