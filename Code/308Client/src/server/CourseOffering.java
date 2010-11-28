@@ -7,14 +7,21 @@ package server;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.*;
+import javax.persistence.Id;
 
 /**
  * Class to handle offering of courses in years to come
  * @author Bill
  */
+@Entity
 public class CourseOffering implements Serializable{
-    Semester semester;
-    boolean confirmed;
+    private Semester semester;
+    private boolean confirmed;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     public CourseOffering(Semester s, boolean b){
         semester=s;
         confirmed=b;
@@ -35,5 +42,13 @@ public class CourseOffering implements Serializable{
     }
     public void setConfirmed(boolean c){
         confirmed = c;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

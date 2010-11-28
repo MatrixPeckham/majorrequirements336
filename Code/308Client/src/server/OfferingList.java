@@ -7,12 +7,13 @@ package server;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+import javax.persistence.*;
 /**
  * Class to handle a list of offerings, and the
  * way to handle a semester that isn't listed
  * @author Bill
  */
+@Entity
 public class OfferingList implements Serializable {
     public static final byte NONE = 0;
     public static final byte FALL = 16;
@@ -21,8 +22,12 @@ public class OfferingList implements Serializable {
     public static final byte SUM1 = 4;
     public static final byte SUM2 = 8;
     public static final byte ALL = (byte) 0xFF;
+    @OneToMany(fetch=FetchType.EAGER)
     private ArrayList<CourseOffering> offerings;
     private byte notListedStratagy;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     public OfferingList(){
         offerings = new ArrayList<CourseOffering>();
         notListedStratagy = ALL;
@@ -38,6 +43,9 @@ public class OfferingList implements Serializable {
     }
     public void setNotListedStratagy(byte b){
         notListedStratagy=b;
+    }
+    public void setOfferings(ArrayList<CourseOffering> b){
+        offerings=b;
     }
     public boolean isOffered(Semester s){
         for(CourseOffering co : offerings){
@@ -56,5 +64,13 @@ public class OfferingList implements Serializable {
             }
         }
         return false;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
