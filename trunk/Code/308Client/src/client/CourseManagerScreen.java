@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -17,9 +20,14 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import server.Commands;
 import server.Course;
@@ -283,6 +291,10 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         
         private JButton outGroup;
 
+        private JLabel credL;
+
+        private JSpinner credF;
+
         private JComboBox standingPrereq;
         //constructor
         public AddCouScreen(ClientGUI gui) {
@@ -296,16 +308,37 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             addL.setFont(new Font("Times New Roman", 1, 72));
             nameL = new JLabel("Name");
             nameF = new JTextField(10);
+            nameF.setEditable(false);
             numL = new JLabel("Number");
             numF = new JTextField(10);
+            numF.getDocument().addDocumentListener(new DocumentListener() {
+
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    nameF.setText(deptF.getText()+" "+numF.getText());
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    nameF.setText(deptF.getText()+" "+numF.getText());
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                }
+            });
             deptL = new JLabel("Department");
             deptF = new JTextField(10);
+            deptF.setEditable(false);
             descL = new JLabel("Description");
             descF = new JTextArea(10, 5);
             descF.setLineWrap(true);
             descF.setWrapStyleWord(true);
             standingPrereq=new JComboBox(new String[]{"None","U1","U2","U3","U4"});
-
+            credL = new JLabel("Credits:");
+            credF = new JSpinner();
+            SpinnerModel m = new SpinnerNumberModel(3, 0, 6, 1);
+            credF.setModel(m);
             ok = new JButton("Add");
             ok.addActionListener(new ActionListener() {
 
@@ -396,13 +429,17 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(deptF, this, 2, 4, 1, 1);
             addJComponentToContainerUsingGBL(descL, this, 1, 5, 1, 1);
             addJComponentToContainerUsingGBL(new JScrollPane(descF), this, 2, 5, 2, 1);
-            addJComponentToContainerUsingGBL(pLbl, this, 1, 6, 1, 1);
-            addJComponentToContainerUsingGBL(standingPrereq, this, 2, 6, 1, 1);
+            
+            addJComponentToContainerUsingGBL(credL, this, 1, 6, 1, 1);
+            addJComponentToContainerUsingGBL(credF, this, 2, 6, 1, 1);
+
+            addJComponentToContainerUsingGBL(pLbl, this, 1, 7, 1, 1);
+            addJComponentToContainerUsingGBL(standingPrereq, this, 2, 7, 1, 1);
             addJComponentToContainerUsingGBL(toGroup, this, 3, 6, 1, 1);
             addJComponentToContainerUsingGBL(outGroup, this, 3, 7, 1, 1);
             addJComponentToContainerUsingGBL(listPane, this, 4, 8, 1, 1);
-            addJComponentToContainerUsingGBL(ok, this, 2, 8, 1, 1);
-            addJComponentToContainerUsingGBL(back, this, 3, 8, 1, 1);
+            addJComponentToContainerUsingGBL(ok, this, 2, 9, 1, 1);
+            addJComponentToContainerUsingGBL(back, this, 3, 9, 1, 1);
             addJComponentToContainerUsingGBL(scrollPane, this, 4, 2, 2, 6);
 
 
@@ -418,7 +455,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 JOptionPane.showMessageDialog(frame, "Number field should be a number");
                 return null;
             }
-            c.setCredits(3);
+            c.setCredits((Integer)credF.getValue());
             c.setSemestersOfferd(Course.BOTH);
             c.setMinLevel(standingPrereq.getSelectedIndex());
             DefaultListModel listm = (DefaultListModel)groupList.getModel();
@@ -447,11 +484,14 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 }
                 DefaultListModel listm = (DefaultListModel)groupList.getModel();
                 listm.clear();
+                deptF.setText(frame.getCurrentDepartment());
+                nameF.setText(frame.getCurrentDepartment());
             if(fillWith instanceof Course){
                 Course c = (Course) fillWith;
                 nameF.setText(c.getId());
                 descF.setText(c.getDescription());
                 numF.setText(c.getNum()+"");
+                credF.setValue(c.getCredits());
                 standingPrereq.setSelectedIndex(c.getMinLevel());
                 for(CourseGroup cg : c.getPrereqs()){
                     listm.addElement(cg);
