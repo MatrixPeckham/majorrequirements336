@@ -5,10 +5,12 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import server.Major;
 
 /**
  * Screen for login
@@ -67,8 +69,10 @@ public class LoginScreen extends Screen {
                                      }
                                  }
                                  else {
-                                     if(frame.getPermissions()>1)
-        				 frame.changeScreen(ClientGUI.MAJORS, null);
+                                     if(frame.getPermissions()>1)    {
+                                         Object o = (ArrayList<Major>)frame.getDepartment(frame.getCurrentDepartment()).getMajors();
+        				 frame.changeScreen(ClientGUI.MAJORS, o);
+                                     }
                                  }
                             }
                         }

@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import server.Course;
+import server.Department;
 import server.Major;
 import server.Requirement;
 
@@ -43,7 +44,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
     //title label
     private JLabel adminLabel;
     //table of majors
-    private JTable table;
+    private JTable majors;
     //button to add a major
     private JButton addButton;
     //button to edit the major name
@@ -76,12 +77,34 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         adminLabel.setFont(new Font("Times New Roman", 1, 72));
         String[] columnNames = {"Major"};
 
-        Object[][] data = {{"CSE"}, {"ISE"}};
+        //Object[][] data = {{"CSE"}, {"ISE"}};
+        Object [][] data = {};
 
-        table = new JTable(data, columnNames);
-        table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
-        table.setFillsViewportHeight(true);
-        JScrollPane scrollPane = new JScrollPane(table);
+        majors = new JTable();
+        majors.setPreferredScrollableViewportSize(new Dimension(1000, 100));
+        majors.setFillsViewportHeight(true);
+        JScrollPane scrollPane = new JScrollPane(majors);
+        majors.setModel(new DefaultTableModel() {
+
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+            @Override
+            public java.lang.Class<?> getColumnClass(int columnIndex) {
+                return getValueAt(0, columnIndex).getClass();
+            }
+            /**
+             *
+             */
+            private static final long serialVersionUID = -7810042264203030452L;
+        });
+        DefaultTableModel model = (DefaultTableModel) majors.getModel();
+        for (String s : columnNames) {
+            model.addColumn(s);
+        }
+        for (Object[] o : data) {
+            model.addRow(o);
+        }
 
         addButton = new JButton("Add Major");
         addButton.addActionListener(new ActionListener() {
@@ -110,7 +133,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 m.setId(s);
                 m.setDepartment(frame.getCurrentDepartment());
                 frame.addMajor(m);
-                Object o = frame.getDepartment(frame.getCurrentDepartment());
+                Department d = frame.getDepartment(frame.getCurrentDepartment());
+                Object o = frame.getDepartment(frame.getCurrentDepartment()).getMajors();
                 getScreen(o);
             }
         });
@@ -137,9 +161,9 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                         return;
                     }
                 }
-                Major m = frame.getMajor((String)table.getModel().getValueAt(table.getSelectedRow(), 1));
+                Major m = frame.getMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 1));
                 m.setId(s);
-                Object o = frame.getDepartment(frame.getCurrentDepartment());
+                Object o = frame.getDepartment(frame.getCurrentDepartment()).getMajors();
                 getScreen(o);
             }
         });
@@ -148,8 +172,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.removeMajor((String)table.getModel().getValueAt(table.getSelectedRow(), 1));
-                Object o = frame.getDepartment(frame.getCurrentDepartment());
+                frame.removeMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 1));
+                Object o = frame.getDepartment(frame.getCurrentDepartment()).getMajors();
                 getScreen(o);
             }
         });
@@ -159,7 +183,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(validateForm()){
-                    Major m = frame.getMajor((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
+                    Major m = frame.getMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 0));
                     frame.changeManageScreen(ClientGUI.CURR_EDIT, m);
                 }
             }
@@ -188,7 +212,19 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
     @Override
     public void getScreen(Object fillWith) {
-        // TODO Auto-generated method stub
+       if(fillWith instanceof ArrayList){
+                ArrayList<Major> major = (ArrayList<Major>) fillWith;
+                DefaultTableModel model = (DefaultTableModel)majors.getModel();
+                int rows = model.getRowCount();
+                for(int i = 0; i < rows; i++){
+                    model.removeRow(0);
+                }
+                for (Major m : major) {
+                    String[] s = {m.getId()};
+                    model.addRow(s);
+                }
+            }
+       
     }
 
     @Override
@@ -208,7 +244,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
     @Override
     public boolean validateForm() {
-        if(table.getSelectedRow()==-1)
+        if(majors.getSelectedRow()==-1)
         {
             error.setVisible(true);
             return false;
