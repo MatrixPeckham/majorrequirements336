@@ -7,6 +7,7 @@ package persistence;
 
 
 import java.io.Serializable;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import javax.persistence.*;
 import org.hibernate.Transaction;
@@ -26,11 +27,10 @@ public class PersistenceManager {
         if(em==null) {
             init();
         }
-        if(!t.isActive()) {
-            t.begin();
-        }
+        
         Query q2 = em.createQuery(q);
-        return q2.getResultList();
+        List l=q2.getResultList();;
+        return l;
 
     }
     private static void init() {
@@ -50,7 +50,7 @@ public class PersistenceManager {
 
     }
     public static Object find(Object o, Object pk) {
-        return find(o.getClass(), pk);
+        return em.find(o.getClass(), pk);
     }
     public static void remove(Object o, Object pk) {
          if(em==null) {
@@ -58,12 +58,11 @@ public class PersistenceManager {
 
         }
        //em.merge(o);
-       merge(o);
         if(!t.isActive()) {
             t.begin();
         }
-       //Object e=find(o, pk);
-       em.remove(o);
+       Object e=em.merge(o);
+       em.remove(e);
        t.commit();
     }
     public static void merge(Object o) {
@@ -74,7 +73,9 @@ public class PersistenceManager {
         if(!t.isActive()) {
             t.begin();
         }
-       em.merge(o);
+
+        em.merge(o);
+       
        t.commit();
     }
     //public static boolean exists()
