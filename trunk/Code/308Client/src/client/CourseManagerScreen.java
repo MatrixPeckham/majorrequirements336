@@ -33,6 +33,7 @@ import server.Commands;
 import server.Course;
 import server.CourseGroup;
 import server.Department;
+import server.OfferingList;
 
 /**
  * Manager for the courses
@@ -456,7 +457,9 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 return null;
             }
             c.setCredits((Integer)credF.getValue());
-            c.setSemestersOfferd(Course.BOTH);
+            OfferingList ol = new OfferingList();
+            ol.setNotListedStratagy(OfferingList.ALL);
+            c.setSemestersOfferd(ol);
             c.setMinLevel(standingPrereq.getSelectedIndex());
             DefaultListModel listm = (DefaultListModel)groupList.getModel();
             int num = listm.size();

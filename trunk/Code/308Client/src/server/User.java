@@ -172,17 +172,19 @@ public class User implements Scheduler, FileParser, Serializable{
          
            String description=((Element)n.getElementsByTagName("number").item(0)).getTextContent();
            int number=Integer.parseInt(((Element)n.getElementsByTagName("number").item(0)).getTextContent());
-           int offered=0;
+           byte offered=0;
            double mingrade=Double.parseDouble(((Element)n.getElementsByTagName("minGrade").item(0)).getTextContent());;
            int credits=Integer.parseInt(((Element)n.getElementsByTagName("credits").item(0)).getTextContent());
            Element offer=(Element) n.getElementsByTagName("offered").item(0);
            if(Boolean.parseBoolean(((Element)offer.getElementsByTagName("fall").item(0)).getTextContent())) {
-               offered+=Course.FALL;
+               offered|=OfferingList.FALL;
            }
            if(Boolean.parseBoolean(((Element)offer.getElementsByTagName("spring").item(0)).getTextContent())) {
-               offered+=Course.SPRING;
+               offered|=OfferingList.SPRI;
            }
-           Course c=new Course(dept,number,new Grade(mingrade), credits, offered);
+           OfferingList ol = new OfferingList();
+           ol.setNotListedStratagy(offered);
+           Course c=new Course(dept,number,new Grade(mingrade), credits, ol);
            
            //this.parsePrereqs(c, n, dept);
            c.setDescription(description);
