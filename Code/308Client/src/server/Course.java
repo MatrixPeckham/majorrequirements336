@@ -39,10 +39,6 @@ import structures.*;
  */
 @Entity
 public class Course implements Serializable, Comparable {
-    public static final int SPRING=2;
-    public static final int FALL=1;
-    public static final int NONE=0;
-    public static final int BOTH=3;
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private Collection<CourseGroup> prereqs;
     private int minLevel;
@@ -60,11 +56,11 @@ public class Course implements Serializable, Comparable {
     private String name;//course name, department identifier
     private int num; //course number, used for upper division identification
     private int credits;//credits satisfied by the course
-    private int semestersOffered;//integer representing combination of semesesters when the course is offered
+    private OfferingList semestersOffered;//integer representing combination of semesesters when the course is offered
 
 
     public Course() {}
-    Course(String dept, int level, Grade minGrade, int creds, int offered) {
+    Course(String dept, int level, Grade minGrade, int creds, OfferingList offered) {
         prereqs=new ArrayList<CourseGroup>();
         UseLogger logger = new UseLogger();
         id=dept+" "+level;
@@ -75,14 +71,7 @@ public class Course implements Serializable, Comparable {
         num=level;
     }
     public boolean canTake(Semester s) {
-        if(semestersOffered==0) {
-            return false;
-        } else if(semestersOffered==3) {
-            return true;
-        } else {
-            return semestersOffered==s.getSeason()+1;
-        }
-        
+        return semestersOffered.isOffered(s);
     }
     public void addPreReq(CourseGroup c) {
         if(prereqs==null){
@@ -107,7 +96,7 @@ public class Course implements Serializable, Comparable {
     public void setNum(int num) {this.num=num;}
     public void setDescription(String d){description=d;}
     public void setCredits(int c) {credits=c;}
-    public void setSemestersOfferd(int o) {semestersOffered=0;}
+    public void setSemestersOfferd(OfferingList o) {semestersOffered=o;}
 
     public String getName() {return name;}
     public int getNum(){return num;}
@@ -116,7 +105,7 @@ public class Course implements Serializable, Comparable {
     public Grade getMinGrade() {return minGrade;}
     public String getDescription() {return description;}
     public int getCredits() {return credits;}
-    public int getSemestersOffered(){return semestersOffered;}
+    public OfferingList getSemestersOffered(){return semestersOffered;}
     public boolean isUpperDivision() {return num>=300;}
     public int getMinLevel() {return minLevel;}
     public void setMinLevel(int m) {minLevel=m;}
