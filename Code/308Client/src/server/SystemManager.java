@@ -33,15 +33,15 @@ public class SystemManager {
            }
            return s;
        }
-       public int checkLogin(String user, String pass) {
+       public String checkLogin(String user, String pass) {
            Query q=em.createNativeQuery("Select permissions from USERS where USERNAME= ?user AND PASSWORD= ?pass");
            q.setParameter("user", user);
            q.setParameter("pass", pass);
-           Integer i=(Integer)q.getSingleResult();
+           String i=(String)q.getSingleResult();
            if(i!=null) {
                return i;
            } else {
-               return User.STUDENT;
+               return ""+User.STUDENT;
            }
        }
        public void removeUser(long id) {

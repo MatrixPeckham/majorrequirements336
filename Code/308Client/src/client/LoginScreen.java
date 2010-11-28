@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import server.Major;
+import server.User;
 
 /**
  * Screen for login
@@ -63,13 +64,13 @@ public class LoginScreen extends Screen {
                             if(validateForm())  {
                                 frame.login(nameField.getText(), passWordField.getText());
                                  if(frame.reg){
-                                     if(frame.getPermissions()==3)   {
+                                     if(frame.getPermissions()>User.DEPT_ADMIN)   {
                                          Object o=frame.getDepartments();
                                             frame.changeScreen(ClientGUI.DEPARTMENTS, o);
                                      }
                                  }
                                  else {
-                                     if(frame.getPermissions()>1)    {
+                                     if(frame.getPermissions()>User.STUDENT)
                                          Object o = (ArrayList<Major>)frame.getDepartment(frame.getCurrentDepartment()).getMajors();
         				 frame.changeScreen(ClientGUI.MAJORS, o);
                                      }
