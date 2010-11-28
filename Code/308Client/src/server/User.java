@@ -107,9 +107,29 @@ public class User implements Scheduler, FileParser, Serializable{
         } else if(fileType.equals("courses")) {
            // if(permissions!=this.SUPER_ADMIN) {return;}
             NodeList depts=fileElement.getElementsByTagName("department");
+            Vector<String> deptName=new Vector<String>();
             for(int i=0; i<depts.getLength(); i++) {
                 String dept=((Element)((Element)depts.item(i)).getElementsByTagName("name").item(0)).getTextContent();
-                parseCourses((Element)depts.item(i), dept);
+                deptName.add(dept);
+                School s=School.getSchool();
+               Department dep=s.getDepartment(dept);
+               if(dep==null) {
+                   dep=new Department(dept);
+                   s.addDepartment(dep);
+               }
+            }
+            int i=0;
+            Vector<Course> v=new Vector<Course>();
+            for(String dept : deptName) {
+                 v.addAll(parseCourses((Element)depts.item(i), dept));
+                 i++;
+            }
+            i=0;
+            NodeList courseNodes=d.getElementsByTagName("course");
+            for(Course c : v) {
+                c.setPrereqs(parsePrereqs(c, (Element)courseNodes.item(i),c.getName()));
+                i++;
+                PersistenceManager.merge(c);
             }
         } else if(fileType.equals("record")) {
             String major=fileElement.getElementsByTagName("major").item(0).getTextContent();
@@ -142,13 +162,10 @@ public class User implements Scheduler, FileParser, Serializable{
         }
 
     }
-    private void parseCourses(Element el, String dept) {
+    private Vector<Course> parseCourses(Element el, String dept) {
         School s=School.getSchool();
-           Department d=s.getDepartment(dept);
-           if(d==null) {
-               d=new Department(dept);
-               s.addDepartment(d);
-           }
+        Department d=s.getDepartment(dept);
+           Vector<Course>courseVec=new Vector<Course>();
        NodeList courses= el.getElementsByTagName("course");
        for(int i=0; i<courses.getLength(); i++) {
            Element n=(Element)courses.item(i);
@@ -166,25 +183,21 @@ public class User implements Scheduler, FileParser, Serializable{
                offered+=Course.SPRING;
            }
            Course c=new Course(dept,number,new Grade(mingrade), credits, offered);
-           //prereqs.put(c, this.parsePrereqs(n,dept));
-           this.parsePrereqs(c, n, dept);
+           
+           //this.parsePrereqs(c, n, dept);
            c.setDescription(description);
            d.addCourse(c);
+           courseVec.add(c);
+           //prereqs.put(c, this.parsePrereqs(c,n,dept));
            PersistenceManager.merge(c);
        }
-       /*for(Entry<Course, Vector<CourseGroup>> e : prereqs.entrySet()) {
-           for(CourseGroup g : e.getValue()) {
-               e.getKey().addPreReq(g);
-               PersistenceManager.merge(g);
-               PersistenceManager.merge(e.getKey());
-           }
-       }*/
-       
+
        PersistenceManager.merge(d);
+       return courseVec;
     }
-    private void parsePrereqs(Course c, Element e, String dept) {
+    private ArrayList<CourseGroup> parsePrereqs(Course c, Element e, String dept) {
         NodeList n=e.getElementsByTagName("prerequisite");
-        //Vector<CourseGroup> v=new Vector<CourseGroup>();
+        ArrayList<CourseGroup> v=new ArrayList<CourseGroup>();
         for(int i=0; i<n.getLength(); i++) {
             NodeList n2=((Element)n.item(i)).getElementsByTagName("minstanding");
             if(n2.getLength()>0) {
@@ -194,13 +207,13 @@ public class User implements Scheduler, FileParser, Serializable{
             CourseGroup g=new CourseGroup();
             for(int j=0; j<n2.getLength(); j++) {
                 String course=n2.item(j).getTextContent();
-                g.addCourse(School.getSchool().getDepartment(dept).findCourse(course));
+                g.addCourse(School.getSchool().getDepartment(course.split(" ")[0]).findCourse(course));
             }
-            //PersistenceManager.merge(g);
-            c.addPreReq(g);
-            //v.add(g);
+            PersistenceManager.merge(g);
+           // c.addPreReq(g);
+            v.add(g);
         }
-        //return v;
+        return v;
     }
     private Major parseMajorFile(Element el) {
         String name=el.getElementsByTagName("majorName").item(0).getTextContent();

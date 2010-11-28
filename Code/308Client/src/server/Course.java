@@ -38,7 +38,7 @@ import structures.*;
  * @author tj
  */
 @Entity
-public class Course implements Serializable {
+public class Course implements Serializable, Comparable {
     public static final int SPRING=2;
     public static final int FALL=1;
     public static final int NONE=0;
@@ -138,5 +138,10 @@ public class Course implements Serializable {
     }
     public String toString() {
         return getId();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+       return id.compareTo(((Course)o).getId());
     }
 }

@@ -42,6 +42,10 @@ public class Semester {
                 s+="FALL";
                 break;
             case 1: s+="SPRING";
+                break;
+            case 2: s+="SUMMER";
+                break;
+            case 3: s+="WINTER";
         }
         s+=""+year;
         return s;
