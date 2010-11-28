@@ -7,19 +7,28 @@ package server;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author TJ
  */
+@Entity
 public class Semester implements Comparable, Serializable{
     public static final int FALL = 16;
     public static final int SPRING = 2;
     public static final int WINTER = 1;
     public static final int SUMMER1 = 4;
     public static final int SUMMER2 = 8;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private int year;
     private int season;
+    public Semester(){}
     Semester(int year, int season) {
         this.year=year;
         this.season=season;
@@ -34,10 +43,12 @@ public class Semester implements Comparable, Serializable{
     }
     public int getYear(){return year;}
     public int getSeason() {return season;}
+    public void setYear(int y){year=y;}
+    public void setSeason(int s) {season=s;}
     public Semester nextSemester() {
         int season=this.season,year=this.year;
         season=(season==FALL?SPRING:FALL);
-        if(season==1) {
+        if(season==FALL) {
             year++;
         }
         return new Semester(year,season);
@@ -92,5 +103,13 @@ public class Semester implements Comparable, Serializable{
     public int compareTo(Object o) {
        Semester s=(Semester)o;
         return 10*(year-s.getYear())+(log2(season)-log2(s.getSeason()));
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
