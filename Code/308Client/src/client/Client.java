@@ -27,8 +27,8 @@ public class Client{
 //TODO public Schedule generateSchedule() {return null;}
         private ObjectInputStream ois;
         private ObjectOutputStream oos;
-        private BufferedReader rdr;
-        private PrintWriter pw;
+//        private BufferedReader rdr;
+  //      private PrintWriter pw;
 //TODO public Schedule generateSchedule() {return null;}
 	
 	public File getFile(File location, String str) {
@@ -40,7 +40,7 @@ public class Client{
             while(!(s=(String) ois.readObject()).equals("ENDXML")) {
                 oos.writeObject(s);
             }
-            pw.flush();
+//            pw.flush();
                 return location;
             }catch(Exception e) {
                 return null;
@@ -172,8 +172,8 @@ public class Client{
                 //first thing initiate connection
                 s = new Socket("localhost", 8989);
               
-                rdr=new BufferedReader(new InputStreamReader(s.getInputStream()));
-                pw=new PrintWriter(s.getOutputStream(), true);
+//                rdr=new BufferedReader(new InputStreamReader(s.getInputStream()));
+  //              pw=new PrintWriter(s.getOutputStream(), true);
                 ois=new ObjectInputStream(s.getInputStream());
                 oos=new ObjectOutputStream(s.getOutputStream());
 
@@ -270,7 +270,7 @@ public class Client{
 
     boolean addDepartment(Department dep) {
         boolean ret = false;
-        pw.flush();
+    //    pw.flush();
         System.out.println("printed");
         try{
         oos.writeObject(Commands.ADD_DEPT);

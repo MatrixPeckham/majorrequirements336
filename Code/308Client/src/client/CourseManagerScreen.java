@@ -475,10 +475,9 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     DefaultTableModel model = (DefaultTableModel)offeringTable.getModel();
-                    int[] ins = offeringTable.getSelectedRows();
-                    for(int i = ins.length-1;i>=0;i++){
-                        model.removeRow(ins[i]);
-                    }
+                    try{
+                        model.removeRow(offeringTable.getSelectedRow());
+                    }catch(ArrayIndexOutOfBoundsException aioobe){}
                 }
             });
             offeringTable = new JTable();
@@ -566,17 +565,16 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             }
             byte b = 0;
             if(fallB.isSelected())
-                b|=OfferingList.FALL;
+                b+=OfferingList.FALL;
             if(spriB.isSelected())
-                b|=OfferingList.SPRI;
+                b+=OfferingList.SPRI;
             if(wintB.isSelected())
-                b|=OfferingList.WINT;
+                b+=OfferingList.WINT;
             if(sum1B.isSelected())
-                b|=OfferingList.SUM1;
+                b+=OfferingList.SUM1;
             if(sum2B.isSelected())
-                b|=OfferingList.SUM2;
+                b+=OfferingList.SUM2;
             ol.setNotListedStratagy(b);
-            ol.setNotListedStratagy(OfferingList.ALL);
             c.setSemestersOfferd(ol);
             c.setMinLevel(standingPrereq.getSelectedIndex());
             DefaultListModel listm = (DefaultListModel)groupList.getModel();
@@ -636,6 +634,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 sum2B.setSelected((b&OfferingList.SUM2)!=0);
                 for(CourseOffering co : ol.getOfferings()){
                     Object[] o = {co.getSemester(),co.isConfirmed()};
+                    olmodel.addRow(o);
                 }
 
             }

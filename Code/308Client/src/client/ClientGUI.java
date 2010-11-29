@@ -37,7 +37,7 @@ public class ClientGUI extends JFrame {
         //client for handeling networking
         private Client networking;
         //permisions of user
-	private int permissions=0;
+	private int permissions=3;
         //current screen string
 	private String curScreen;
         //current manager screen
