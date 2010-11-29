@@ -76,6 +76,7 @@ public class UserTest {
     @Test
     public void testParseFile() throws Exception {
         User u=new User(User.SUPER_ADMIN);
+ 
         File f=new File(".\\src\\Courses.xml");
         System.out.println("parseFile");
         u.parseFile(f);
