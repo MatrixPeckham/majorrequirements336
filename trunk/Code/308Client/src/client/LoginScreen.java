@@ -70,7 +70,7 @@ public class LoginScreen extends Screen {
                                      }
                                  }
                                  else {
-                                     if(frame.getPermissions()>User.STUDENT)
+                                     if(frame.getPermissions()>User.STUDENT){
                                          Object o = (ArrayList<Major>)frame.getDepartment(frame.getCurrentDepartment()).getMajors();
         				 frame.changeScreen(ClientGUI.MAJORS, o);
                                      }

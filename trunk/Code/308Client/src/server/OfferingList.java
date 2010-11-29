@@ -21,7 +21,7 @@ public class OfferingList implements Serializable {
     public static final byte WINT = 1;
     public static final byte SUM1 = 4;
     public static final byte SUM2 = 8;
-    public static final byte ALL = (byte) 0xFF;
+    public static final byte ALL = 16+8+4+2+1;
     @OneToMany(fetch=FetchType.EAGER)
     private ArrayList<CourseOffering> offerings;
     private byte notListedStratagy;
@@ -30,7 +30,7 @@ public class OfferingList implements Serializable {
     private Long id;
     public OfferingList(){
         offerings = new ArrayList<CourseOffering>();
-        notListedStratagy = ALL;
+        notListedStratagy = 0;
     }
     public ArrayList<CourseOffering> getOfferings(){
         return offerings;

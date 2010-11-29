@@ -51,4 +51,14 @@ public class CourseOffering implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
+    @Override
+    public String toString(){
+        String s = "";
+        if(confirmed){
+            s+="is offered";
+        } else {
+            s+="is tentatively offered";
+        }
+        return s+" in "+semester.toString();
+    }
 }
