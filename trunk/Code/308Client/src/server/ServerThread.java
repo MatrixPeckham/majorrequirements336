@@ -20,10 +20,10 @@ public class ServerThread implements Runnable{
     private boolean connected;
     private Socket client;
     private Socket objects;
-    private BufferedReader rdr;
+//    private BufferedReader rdr;
     private ObjectOutputStream objectOut;
     private ObjectInputStream objectIn;
-    private PrintWriter pw;
+  //  private PrintWriter pw;
     private InputStream in;
     private OutputStream out;
     private int permissions;
@@ -119,7 +119,7 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("OK");
                     }
                      catch(Exception e) {
-                         pw.print("ERR");
+    //                     pw.print("ERR");
                      }
                 } else if (cmd.equals(Commands.DOWNLOAD_REQ)) {
                     try {
@@ -207,7 +207,7 @@ public class ServerThread implements Runnable{
 
                         e.printStackTrace();
                         objectOut.writeObject("ERR");
-                        pw.flush();
+      //                  pw.flush();
                     } 
                 } else if (cmd.equals(Commands.REMOVE_DEPT)) {
                     try{
@@ -387,7 +387,7 @@ public class ServerThread implements Runnable{
             } catch(SocketException se){
                 connected=false;
             } catch (Exception e) {
-                pw.println("ERR");
+        //        pw.println("ERR");
                 e.printStackTrace();
             }
         }
