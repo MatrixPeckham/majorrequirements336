@@ -65,7 +65,7 @@ public class ServerThread implements Runnable{
                     String username=(String) objectIn.readObject();
                     String password=(String) objectIn.readObject();
                     String p=system.checkLogin(username,password);
-                    if(p.equals(""+User.SUPER_ADMIN)) {
+                    if(Integer.parseInt(p)>=User.SUPER_ADMIN) {
                         permissions=User.SUPER_ADMIN;
                     } else if(p.equals(""+User.STUDENT)) {
                         permissions=User.STUDENT;

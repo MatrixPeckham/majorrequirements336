@@ -122,8 +122,12 @@ public class Client{
             oos.writeObject(pass);
             oos.flush();
             String resp=(String) ois.readObject();
-            if(resp.equals(""+User.STUDENT)) {return User.STUDENT;}
-            else if(resp.equals(""+User.SUPER_ADMIN)) {return User.DEPT_ADMIN;}
+                    int p=User.DEPT_ADMIN;
+            try {
+                p=Integer.parseInt(resp);
+            } catch(Exception e) {}
+            if(p==User.STUDENT) {return User.STUDENT;}
+            else if(p>=User.SUPER_ADMIN) {return User.SUPER_ADMIN;}
             else {
                             this.currDepo=resp;
                             return User.DEPT_ADMIN;
