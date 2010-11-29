@@ -49,11 +49,11 @@ public class SystemManagerTest {
         String[] user = {"TJ"};
         String[] pass = {"password"};
         SystemManager instance = SystemManager.getSystemManager();
-        int expResult = 2;
+        int expResult = 3;
         for(String u : user) {
             for(String p: pass) {
-                int result = instance.checkLogin(u, p);
-                assertEquals(expResult, result);
+                String result = instance.checkLogin(u, p);
+                assertEquals(""+expResult, result);
             }
         }
         
