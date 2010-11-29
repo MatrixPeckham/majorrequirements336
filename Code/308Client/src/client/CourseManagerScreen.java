@@ -11,14 +11,17 @@ import java.awt.event.KeyListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
@@ -26,14 +29,17 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.border.Border;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import server.Commands;
 import server.Course;
 import server.CourseGroup;
+import server.CourseOffering;
 import server.Department;
 import server.OfferingList;
+import server.Semester;
 
 /**
  * Manager for the courses
@@ -297,6 +303,18 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         private JSpinner credF;
 
         private JComboBox standingPrereq;
+
+        private JTable offeringTable;
+        private JButton addSemesterButton;
+        private JButton remSemesterButton;
+
+        private JPanel checkPanel;
+        private JCheckBox fallB;
+        private JCheckBox spriB;
+        private JCheckBox wintB;
+        private JCheckBox sum1B;
+        private JCheckBox sum2B;
+
         //constructor
         public AddCouScreen(ClientGUI gui) {
             super(gui);
@@ -346,7 +364,11 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if(validateForm()){
-                        frame.addCourse(makeCourse(), frame.getCurrentDepartment());
+                        if(ok.getText().equals("Add")){
+                            frame.addCourse(makeCourse(), frame.getCurrentDepartment());
+                        } else {
+                            frame.editCourse(makeCourse());
+                        }
                         frame.changeScreen(ClientGUI.COURSES, frame.getDepartmentCourses(frame.getCurrentDepartment()));
                     }
                 }
@@ -362,6 +384,8 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             String[] columnNames = {"Course"};//, "Select"};
             Object[][] data = {};
             prereq = new JTable();
+            prereq.setPreferredScrollableViewportSize(new Dimension(200, 400));
+            prereq.setFillsViewportHeight(true);
             prereq.setPreferredScrollableViewportSize(new Dimension(200, 400));
             prereq.setFillsViewportHeight(true);
             prereq.setModel(new DefaultTableModel() {
@@ -421,6 +445,80 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             JScrollPane scrollPane = new JScrollPane(prereq);
             JLabel pLbl=new JLabel();
             pLbl.setText("Minimum Standing:");
+
+
+            addSemesterButton = new JButton("Add next Semester");
+            addSemesterButton.addActionListener(new ActionListener() {
+                Semester s = Semester.freeSemester();
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    DefaultTableModel model = (DefaultTableModel)offeringTable.getModel();
+                    Object[] o = {s,false};
+                    model.addRow(o);
+                    incS();
+                }
+                public void incS(){
+                    int i = s.getSeason()*2;
+                    int y = s.getYear();
+                    if(i>16){
+                        i=1;
+                        y++;
+                    }
+                    s = new Semester();
+                    s.setSeason(i);
+                    s.setYear(y);
+                }
+            });
+            remSemesterButton = new JButton("Remove Selected Semester");
+            remSemesterButton.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    DefaultTableModel model = (DefaultTableModel)offeringTable.getModel();
+                    int[] ins = offeringTable.getSelectedRows();
+                    for(int i = ins.length-1;i>=0;i++){
+                        model.removeRow(ins[i]);
+                    }
+                }
+            });
+            offeringTable = new JTable();
+            offeringTable.setFillsViewportHeight(true);
+            offeringTable.setPreferredScrollableViewportSize(new Dimension(200, 400));
+            offeringTable.setModel(new DefaultTableModel(){
+
+                @Override
+                public Class<?> getColumnClass(int columnIndex) {
+                    return getValueAt(0,columnIndex).getClass();
+                }
+
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return column==1;
+                }
+
+            });
+
+            DefaultTableModel omodel = (DefaultTableModel)offeringTable.getModel();
+            omodel.addColumn("Semester");
+            omodel.addColumn("Confirmed");
+
+            fallB = new JCheckBox("Fall");
+            spriB = new JCheckBox("Spring");
+            wintB = new JCheckBox("Winter");
+            sum1B = new JCheckBox("Summer 1");
+            sum2B = new JCheckBox("Summer 2");
+
+            checkPanel = new JPanel();
+            checkPanel.setBorder(BorderFactory.createTitledBorder("Semesters for Unlisted Tentative Classes"));
+            checkPanel.setLayout(new GridBagLayout());
+            addJComponentToContainerUsingGBL(fallB, checkPanel, 1, 1, 1, 1);
+            addJComponentToContainerUsingGBL(spriB, checkPanel, 2, 1, 1, 1);
+            addJComponentToContainerUsingGBL(wintB, checkPanel, 1, 2, 1, 1);
+            addJComponentToContainerUsingGBL(sum1B, checkPanel, 2, 2, 1, 1);
+            addJComponentToContainerUsingGBL(sum2B, checkPanel, 1, 3, 1, 1);
+
+
+
             addJComponentToContainerUsingGBL(addL, this, 1, 1, 6, 1);
             addJComponentToContainerUsingGBL(nameL, this, 1, 2, 1, 1);
             addJComponentToContainerUsingGBL(nameF, this, 2, 2, 1, 1);
@@ -430,7 +528,9 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(deptF, this, 2, 4, 1, 1);
             addJComponentToContainerUsingGBL(descL, this, 1, 5, 1, 1);
             addJComponentToContainerUsingGBL(new JScrollPane(descF), this, 2, 5, 2, 1);
-            
+
+            addJComponentToContainerUsingGBL(ok, this, 1, 8, 1, 1);
+            addJComponentToContainerUsingGBL(back, this, 2, 8, 1, 1);
             addJComponentToContainerUsingGBL(credL, this, 1, 6, 1, 1);
             addJComponentToContainerUsingGBL(credF, this, 2, 6, 1, 1);
 
@@ -438,12 +538,13 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(standingPrereq, this, 2, 7, 1, 1);
             addJComponentToContainerUsingGBL(toGroup, this, 3, 6, 1, 1);
             addJComponentToContainerUsingGBL(outGroup, this, 3, 7, 1, 1);
-            addJComponentToContainerUsingGBL(listPane, this, 4, 8, 1, 1);
-            addJComponentToContainerUsingGBL(ok, this, 2, 9, 1, 1);
-            addJComponentToContainerUsingGBL(back, this, 3, 9, 1, 1);
+            addJComponentToContainerUsingGBL(listPane, this, 4, 8, 2, 2);
             addJComponentToContainerUsingGBL(scrollPane, this, 4, 2, 2, 6);
 
-
+            addJComponentToContainerUsingGBL(addSemesterButton, this, 6, 3, 1, 1);
+            addJComponentToContainerUsingGBL(remSemesterButton, this, 6, 5, 1, 1);
+            addJComponentToContainerUsingGBL(new JScrollPane(offeringTable), this, 7, 2, 2, 6);
+            addJComponentToContainerUsingGBL(checkPanel, this, 7, 8, 3, 3);
         }
 
         private Course makeCourse() {
@@ -458,13 +559,30 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             }
             c.setCredits((Integer)credF.getValue());
             OfferingList ol = new OfferingList();
+            DefaultTableModel olModel = (DefaultTableModel)offeringTable.getModel();
+            int num = olModel.getRowCount();
+            for(int i = 0;i<num;i++){
+                ol.addOffering((Semester)olModel.getValueAt(i, 0), (Boolean)olModel.getValueAt(i, 1));
+            }
+            byte b = 0;
+            if(fallB.isSelected())
+                b|=OfferingList.FALL;
+            if(spriB.isSelected())
+                b|=OfferingList.SPRI;
+            if(wintB.isSelected())
+                b|=OfferingList.WINT;
+            if(sum1B.isSelected())
+                b|=OfferingList.SUM1;
+            if(sum2B.isSelected())
+                b|=OfferingList.SUM2;
+            ol.setNotListedStratagy(b);
             ol.setNotListedStratagy(OfferingList.ALL);
             c.setSemestersOfferd(ol);
             c.setMinLevel(standingPrereq.getSelectedIndex());
             DefaultListModel listm = (DefaultListModel)groupList.getModel();
-            int num = listm.size();
+            int num2 = listm.size();
             ArrayList<CourseGroup> l = new ArrayList<CourseGroup>();
-            for(int i = 0; i<num;i++){
+            for(int i = 0; i<num2;i++){
                 l.add((CourseGroup)listm.elementAt(i));
             }
 
@@ -487,6 +605,16 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 }
                 DefaultListModel listm = (DefaultListModel)groupList.getModel();
                 listm.clear();
+                DefaultTableModel olmodel = (DefaultTableModel)offeringTable.getModel();
+                int num2 = olmodel.getRowCount();
+                for(int i = 0;i<num2;i++){
+                    olmodel.removeRow(0);
+                }
+                fallB.setSelected(false);
+                spriB.setSelected(false);
+                wintB.setSelected(false);
+                sum1B.setSelected(false);
+                sum2B.setSelected(false);
                 deptF.setText(frame.getCurrentDepartment());
                 nameF.setText(frame.getCurrentDepartment());
             if(fillWith instanceof Course){
@@ -499,6 +627,17 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 for(CourseGroup cg : c.getPrereqs()){
                     listm.addElement(cg);
                 }
+                OfferingList ol = c.getSemestersOffered();
+                byte b = ol.getNotListedStratagy();
+                fallB.setSelected((b&OfferingList.FALL)!=0);
+                spriB.setSelected((b&OfferingList.SPRI)!=0);
+                wintB.setSelected((b&OfferingList.WINT)!=0);
+                sum1B.setSelected((b&OfferingList.SUM1)!=0);
+                sum2B.setSelected((b&OfferingList.SUM2)!=0);
+                for(CourseOffering co : ol.getOfferings()){
+                    Object[] o = {co.getSemester(),co.isConfirmed()};
+                }
+
             }
         }
 
