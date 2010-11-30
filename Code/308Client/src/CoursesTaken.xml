@@ -20,13 +20,13 @@
     <course>
         <dept>CSE</dept>
         <num>214</num>
-        <grade>A</grade>
+        <grade>B</grade>
         <transfer>false</transfer>
     </course>
     <course>
         <dept>CSE</dept>
         <num>219</num>
-        <grade>A</grade>
+        <grade>B+</grade>
         <transfer>false</transfer>
     </course>
     <course>

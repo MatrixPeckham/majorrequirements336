@@ -149,7 +149,7 @@ public class Requirement implements Serializable {
         rc.complete=true;
         rc.name=this.getId();
         for(CourseGroup cb : possibleCourses) {
-            int remCourses=cb.getNumReqiured();
+            int remCourses=0;
             for(Course c: cb.getCourses()) {
                 CourseCompletion c2=new CourseCompletion();
                 c2.course=c;
@@ -173,7 +173,7 @@ public class Requirement implements Serializable {
                         if(!cr.getTransfer()) {local+=c.getCredits();}
                         credits+=c.getCredits();
                         c2.complete=true;
-                        remCourses--;
+                        remCourses++;
                         c2.message="CourseCompleted";
                     }
                 } else {
@@ -183,7 +183,7 @@ public class Requirement implements Serializable {
                 }
                 rc.courseMessages.add(c2);
             }
-            if(remCourses<=0) {
+            if(remCourses>=cb.getNumReqiured()) {
                 num++;
             }
         }
