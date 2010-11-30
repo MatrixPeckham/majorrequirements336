@@ -47,10 +47,10 @@ public class Semester implements Comparable, Serializable{
     public void setSeason(int s) {season=s;}
     public Semester nextSemester() {
         int season=this.season,year=this.year;
-        season=(season==FALL?SPRING:FALL);
         if(season==FALL) {
             year++;
         }
+        season=(season==FALL?SPRING:FALL);
         return new Semester(year,season);
     }
     public String toString() {

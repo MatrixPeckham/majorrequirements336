@@ -16,32 +16,32 @@
             <requirement required="3">
                 <name>Intro Courses</name>
                 <year>2008</year>
-                <sequence>
+                <sequence required="3">
                     <course>CSE 114</course>
                     <course>CSE 214</course>
                     <course>CSE 219</course>
                 </sequence>
-                <sequence>
+                <sequence required="1">
                     <course>CSE 215</course>
                 </sequence>
-                <sequence>
+                <sequence required="1">
                     <course>CSE 220</course>
                 </sequence>
             </requirement>
             <requirement required="1">
                 <name>Upper Division 1</name>
                 <year>2008</year>
-                <sequence>
+                <sequence required="1">
                     <course>CSE 302</course>
                 </sequence>
-                <sequence>
+                <sequence required="1">
                     <course>CSE 312</course>
                 </sequence>
             </requirement>
             <requirement>
                 <name>Upper Division 2</name>
                 <year>2008</year>
-                <sequence>
+                <sequence required="3">
                     <course>CSE 303</course>
                     <course>CSE 308</course>
                     <course>CSE 373</course>
@@ -50,22 +50,22 @@
             <requirement required="3">
                 <name>Upper Division 3</name>
                 <year>2008</year>
-                <sequence>
+                <sequence required="1">
                     <course>CSE 304</course>
                 </sequence>
-               <sequence>
+               <sequence required="1">
                     <course>CSE 305</course>
                 </sequence>
-                <sequence>
+                <sequence required="1">
                     <course>CSE 306</course>
                 </sequence>
-                <sequence>
+                <sequence required="1">
                     <course>CSE 307</course>
                 </sequence>
-                <sequence>
+                <sequence required="1">
                     <course>CSE 328</course>
                 </sequence>
-                <sequence>
+                <sequence required="1">
                     <course>CSE 333</course>
                 </sequence>
 
@@ -91,56 +91,56 @@
             <requirement required="1">
                 <name>Math</name>
                 <year>2008</year>
-                <sequence>
+                <sequence required="2">
                     <course>AMS 151</course>
                     <course>AMS 161</course>
                 </sequence>
-                <sequence>
+                <sequence required="3">
                     <course>MAT 125</course>
                     <course>MAT 126</course>
                     <course>MAT 127</course>
                 </sequence>
-                <sequence>
+                <sequence required="2">
                     <course>MAT 131</course>
                     <course>MAT 132</course>
                 </sequence>
-                <sequence>
+                <sequence required="2">
                     <course>MAT 141</course>
                     <course>MAT 142</course>
                 </sequence>
-                <sequence>
+                <sequence required="1">
                     <course>MAT 171</course>
                 </sequence>
             </requirement>
             <requirement required="1">
                 <name>Science Sequence</name>
                 <year>2008</year>
-               <!-- <sequence required="2">
+               <sequence required="2">
                     <course>BIO 201</course>
                     <course>BIO 202</course>
                     <course>BIO 203</course>
-                </sequence>-->
-                <sequence>
+                </sequence>
+                <sequence required="4">
                     <course>PHY 131</course>
                     <course>PHY 133</course>
                     <course>PHY 132</course>
                     <course>PHY 134</course>
                 </sequence>
-                <sequence>
+                <sequence required="2">
                     <course>PHY 141</course>
                     <course>PHY 142</course>
                 </sequence>
-                <sequence>
+                <sequence required="3">
                     <course>PHY 125</course>
                     <course>PHY 126</course>
                     <course>PHY 127</course>
                 </sequence>
-                <sequence>
+                <sequence required="3">
                     <course>CHE 131</course>
                     <course>CHE 132</course>
                     <course>CHE 133</course>
                 </sequence>
-                <sequence>
+                <sequence required="3">
                     <course>CHE 141</course>
                     <course>CHE 142</course>
                     <course>CHE 143</course>
@@ -149,7 +149,7 @@
             <requirement credits="4">
                 <name>4 additional credits</name>
                 <year>2008</year>
-                <sequence>
+                <sequence required="2">
                     <course>GEO 112</course>
                     <course>GEO 102</course>
                 </sequence>

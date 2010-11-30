@@ -289,6 +289,11 @@ public class User implements Scheduler, FileParser, Serializable{
     private CourseGroup parseCourseGroup(Element el) {
         CourseGroup g=new CourseGroup();
         NodeList nodes=el.getElementsByTagName("course");
+        try{
+         g.setNumReqiured(Integer.parseInt(el.getAttribute("required")));
+        }catch(Exception e) {
+            g.setNumReqiured(nodes.getLength());
+        }
         for(int i=0; i<nodes.getLength(); i++) {
             String dept=nodes.item(i).getTextContent();
             Course c=School.getSchool().getDepartment(dept.split(" ")[0]).findCourse(dept);

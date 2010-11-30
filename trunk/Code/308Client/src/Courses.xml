@@ -817,6 +817,36 @@
     <department>
         <name>BIO</name>
         <fullName>Biology</fullName>
+        <course>
+            <number>201</number>
+            <description>Bio I</description>
+            <credits>3</credits>
+            <minGrade>2.0</minGrade>
+            <offered>
+                <spring>true</spring>
+                <fall>true</fall>
+            </offered>
+        </course>
+        <course>
+            <number>202</number>
+            <description>Bio II</description>
+            <credits>3</credits>
+            <minGrade>2.0</minGrade>
+            <offered>
+                <spring>true</spring>
+                <fall>true</fall>
+            </offered>
+        </course>
+        <course>
+            <number>203</number>
+            <description>Bio III</description>
+            <credits>3</credits>
+            <minGrade>2.0</minGrade>
+            <offered>
+                <spring>true</spring>
+                <fall>true</fall>
+            </offered>
+        </course>
     </department>
     <department>
         <name>PHY</name>
