@@ -38,6 +38,7 @@ import server.Course;
 import server.CourseGroup;
 import server.CourseOffering;
 import server.Department;
+import server.Grade;
 import server.OfferingList;
 import server.Semester;
 
@@ -307,6 +308,8 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         private JTable offeringTable;
         private JButton addSemesterButton;
         private JButton remSemesterButton;
+        private JLabel minL;
+        private JComboBox minB;
 
         private JPanel checkPanel;
         private JCheckBox fallB;
@@ -510,6 +513,11 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             checkPanel = new JPanel();
             checkPanel.setBorder(BorderFactory.createTitledBorder("Semesters for Unlisted Tentative Classes"));
             checkPanel.setLayout(new GridBagLayout());
+
+            minL = new JLabel("Minimum Grade");
+            minB = new JComboBox(new String[]{"A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F", "I"});
+
+
             addJComponentToContainerUsingGBL(fallB, checkPanel, 1, 1, 1, 1);
             addJComponentToContainerUsingGBL(spriB, checkPanel, 2, 1, 1, 1);
             addJComponentToContainerUsingGBL(wintB, checkPanel, 1, 2, 1, 1);
@@ -528,13 +536,17 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(descL, this, 1, 5, 1, 1);
             addJComponentToContainerUsingGBL(new JScrollPane(descF), this, 2, 5, 2, 1);
 
-            addJComponentToContainerUsingGBL(ok, this, 1, 8, 1, 1);
-            addJComponentToContainerUsingGBL(back, this, 2, 8, 1, 1);
+            addJComponentToContainerUsingGBL(ok, this, 1, 9, 1, 1);
+            addJComponentToContainerUsingGBL(back, this, 2, 9, 1, 1);
             addJComponentToContainerUsingGBL(credL, this, 1, 6, 1, 1);
             addJComponentToContainerUsingGBL(credF, this, 2, 6, 1, 1);
 
             addJComponentToContainerUsingGBL(pLbl, this, 1, 7, 1, 1);
             addJComponentToContainerUsingGBL(standingPrereq, this, 2, 7, 1, 1);
+
+            addJComponentToContainerUsingGBL(minL, this, 1, 8, 1, 1);
+            addJComponentToContainerUsingGBL(minB, this, 2, 8, 1, 1);
+
             addJComponentToContainerUsingGBL(toGroup, this, 3, 6, 1, 1);
             addJComponentToContainerUsingGBL(outGroup, this, 3, 7, 1, 1);
             addJComponentToContainerUsingGBL(listPane, this, 4, 8, 2, 2);
@@ -586,6 +598,8 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
             c.setPrereqs(l);
 
+            c.setMinGrade(new Grade((String)minB.getSelectedItem()));
+
             return c;
         }
 
@@ -636,7 +650,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                     Object[] o = {co.getSemester(),co.isConfirmed()};
                     olmodel.addRow(o);
                 }
-
+                minB.setSelectedItem(c.getMinGrade().getGrade());
             }
         }
 
