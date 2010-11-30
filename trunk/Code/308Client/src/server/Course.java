@@ -134,4 +134,8 @@ public class Course implements Serializable, Comparable {
     public int compareTo(Object o) {
        return id.compareTo(((Course)o).getId());
     }
+
+    public void setMinGrade(Grade grade) {
+        minGrade=grade;
+    }
 }
