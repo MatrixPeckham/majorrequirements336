@@ -335,22 +335,22 @@ public class User implements Scheduler, FileParser, Serializable{
                         Collection<Requirement> requirements = m.getRequirements();
                         s+="<major>";
                         s+="<majorname>" + m.getId() + "</majorname>";
+                        s+="<minGPA>" + "</minGPA>";
+                            s+="<minLocalCreds>" + "</minLocalCreds>";
+                            s+="<department>"  + "</departments>";
 
                         for(Requirement r : requirements)   {
-                            s+="<minGPA>" + r.getMinGPA() + "</minGPA>";
-                            s+="<minLocalCreds>" + r.getMinResidentCredits() + "</minLocalCreds>";
-                            s+="<department>" + d.getName() + "</departments>";
-                            s+="<requirement required=\"" + r.getNumberOfCourses() + "\">";
+                            s+="<requirement required=\"" + r.getNumberOfCourses() + "\" minGPA=\"\" >";
                             s+="<name>" + r.getId() + "</name>";
                             s+="<year>" + r.getYear() + "</year>";
                             Collection<CourseGroup> coursegroups = r.getPossibleCourses();
 
                             for(CourseGroup cg : coursegroups)  {
                                 Collection<Course> courses = cg.getCourses();
-                                s+="<sequence>";
+                                s+="<sequence required=\""+cg.getNumReqiured()+"\">";
 
                                 for(Course c : courses) {
-                                    s+="<course>" + c.getName() + "</course>";
+                                    s+="<course>" + c.getId() + "</course>";
                                 }
                                 s+="</sequence>";
                             }

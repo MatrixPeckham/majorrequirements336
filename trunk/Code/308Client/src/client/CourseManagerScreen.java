@@ -561,6 +561,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         private Course makeCourse() {
             Course c = new Course();
             c.setId(nameF.getText());
+            c.setName(this.deptF.getText());
             c.setDescription(descF.getText());
             try{
                 c.setNum(Integer.parseInt(numF.getText()));
