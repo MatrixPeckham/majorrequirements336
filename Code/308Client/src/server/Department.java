@@ -7,6 +7,7 @@ package server;
 import java.io.Serializable;
 import java.util.*;
 import javax.persistence.*;
+import persistence.PersistenceManager;
 /**
  *
  * @author Bill
@@ -31,12 +32,14 @@ public class Department implements Serializable{
     }
     public void addCourse(Course c) {
         courses.add(c);
+//        PersistenceManager.merge(c);
     }
     public void removeCourse(String name) {
         courses.remove(name);
     }
     public void addMajor(Major c) {
         majors.add(c);
+//        PersistenceManager.merge(c);
     }
     public void removeMajor(String name) {
         majors.remove(name);

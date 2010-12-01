@@ -56,7 +56,7 @@ public class Course implements Serializable, Comparable {
     private String name;//course name, department identifier
     private int num; //course number, used for upper division identification
     private int credits;//credits satisfied by the course
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private OfferingList semestersOffered;//integer representing combination of semesesters when the course is offered
 
 

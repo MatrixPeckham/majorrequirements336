@@ -16,6 +16,7 @@ import javax.persistence.Id;
  */
 @Entity
 public class CourseOffering implements Serializable{
+    @OneToOne(cascade=CascadeType.ALL)
     private Semester semester;
     private boolean confirmed;
     @Id

@@ -22,7 +22,7 @@ public class OfferingList implements Serializable {
     public static final byte SUM1 = 4;
     public static final byte SUM2 = 8;
     public static final byte ALL = 16+8+4+2+1;
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     private ArrayList<CourseOffering> offerings;
     private byte notListedStratagy;
     @Id
