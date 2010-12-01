@@ -10,8 +10,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import server.*;
 import java.io.*;
+import java.net.SocketException;
 import java.util.Collection;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import server.Commands;
 /**
  * Main networking class for the client.
@@ -42,7 +44,10 @@ public class Client{
             }
 //            pw.flush();
                 return location;
-            }catch(Exception e) {
+            }catch(SocketException se){
+            connectionLostGTFO();
+            return null;
+        } catch(Exception e) {
                 return null;
             }
 
@@ -59,7 +64,10 @@ public class Client{
             oos.writeObject(s);
             String s2=(String) ois.readObject();
             return s2.equals("OK")?0:Integer.parseInt(s2);
-            }catch(Exception e) {
+            }catch(SocketException se){
+            connectionLostGTFO();
+            return -1;
+        } catch(Exception e) {
             return -1;
             }
         }
@@ -73,7 +81,10 @@ public class Client{
                     oos.flush();
                     ois.readObject();
                 return true;
-            }catch(Exception e) {e.printStackTrace();return false;}
+            }catch(SocketException se){
+            connectionLostGTFO();
+            return false;
+        } catch(Exception e) {e.printStackTrace();return false;}
         }
     	public Course loadCourse(String str) {
             try{
@@ -81,7 +92,10 @@ public class Client{
                 oos.writeObject(str);
                 //ois=new ObjectInputStream(s.getInputStream());
                 return (Course) ois.readObject();
-            }catch(Exception e){return null;}
+            }catch(SocketException se){
+            connectionLostGTFO();
+            return null;
+        } catch(Exception e){return null;}
         }
 	public boolean removeCourse(String d, String str) {
             try{
@@ -89,7 +103,10 @@ public class Client{
                 oos.writeObject(d);
                 oos.writeObject(str);
                 return ((String) ois.readObject()).equals("OK");
-            } catch(Exception e){
+            } catch(SocketException se){
+            connectionLostGTFO();
+            return false;
+        } catch(Exception e){
                 return false;
             }
         }
@@ -107,7 +124,10 @@ public class Client{
                 oos.writeObject(d);
                 oos.writeObject(str);
                 return ((String) ois.readObject()).equals("OK");
-            }
+            } catch(SocketException se){
+            connectionLostGTFO();
+            return false;
+        }
             catch(Exception e)   {
                 return false;
             }
@@ -132,7 +152,10 @@ public class Client{
                             this.currDepo=resp;
                             return User.DEPT_ADMIN;
             }
-            } catch(Exception e) {
+            } catch(SocketException se){
+            connectionLostGTFO();
+            return -1;
+        } catch(Exception e) {
                 return -1;
             }
         }
@@ -141,7 +164,10 @@ public class Client{
             oos.writeObject(Commands.LOGOUT);
   
             return ((String) ois.readObject()).equals("OK");
-            }catch(Exception e) {return false;}
+            } catch(SocketException se){
+            connectionLostGTFO();
+            return false;
+        } catch(Exception e) {return false;}
         }
 //TODO	public Vector<Requirements> getRequirements() {return null;}
 
@@ -154,7 +180,10 @@ public class Client{
                 oos.writeObject(str);
                 ois.readObject();
                 return true;
-            }catch(Exception e) {
+            } catch(SocketException se){
+            connectionLostGTFO();
+            return false;
+        } catch(Exception e) {
                 return false;
             }
         }
@@ -194,7 +223,10 @@ public class Client{
             //ois=new ObjectInputStream(s.getInputStream());
             ois.readObject();
             return (Schedule) s;
-        }catch(Exception e){
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return null;
+        } catch(Exception e){
             return null;
         }
     }
@@ -207,7 +239,10 @@ public class Client{
         oos.writeObject(c);
         
         return ((String) ois.readObject()).equals("OK");
-        }catch(Exception e) {
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return false;
+        } catch(Exception e) {
             return false;
         }
     }
@@ -218,7 +253,10 @@ public class Client{
         oos.writeObject(str);
                    //ois=new ObjectInputStream(s.getInputStream());
             return (Major)ois.readObject();
-        }catch(Exception e) {
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return null;
+        } catch(Exception e) {
             return null;
         }
     }
@@ -230,6 +268,9 @@ public class Client{
             oos.reset();
             oos.writeObject(dept);
             return ((String) ois.readObject()).equals("OK");
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return false;
         } catch(Exception e) {
             return false;
         }
@@ -245,6 +286,9 @@ public class Client{
             oos.writeObject(s);
 
             return ((String) ois.readObject()).equals("OK");
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return false;
         } catch(Exception e) {
             return false;
         }
@@ -263,7 +307,10 @@ public class Client{
            MajorCompletion m=(MajorCompletion)ois.readObject();
            ois.readObject();
            return new ArrayList<Requirement>();
-       } catch(Exception e) {
+       } catch(SocketException se){
+            connectionLostGTFO();
+            return null;
+        } catch(Exception e) {
            return null;
        }
     }
@@ -283,7 +330,10 @@ public class Client{
              System.out.println(s);
             System.out.println("result read: " +s);
             return s.equals("OK");
-        }catch(Exception e) {
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return false;
+        } catch(Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -298,7 +348,10 @@ public class Client{
             oos.writeObject(d);
 
             return ((String) ois.readObject()).equals("OK");
-        }catch(Exception e) {
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return false;
+        } catch(Exception e) {
             return false;
         }
     }
@@ -313,7 +366,10 @@ public class Client{
             System.out.println((String) ois.readObject());
             return a;
 
-        }catch(Exception e) {
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return null;
+        } catch(Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -341,7 +397,10 @@ public class Client{
         ArrayList<Course> arr = new ArrayList((Collection<Course>)ois.readObject());
         System.out.println(ois.readObject());
         return arr;
-        }catch(Exception e) {
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return null;
+        } catch(Exception e) {
             return null;
         }
     }
@@ -354,6 +413,9 @@ public User getStudentInfo() {
             ois.readObject();
             //oos.reset();
             return (User)o;
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return null;
         } catch(Exception e){
             e.printStackTrace();
             return null;
@@ -374,6 +436,9 @@ public User getStudentInfo() {
                 return (CourseRecord)o;
             else
                 return null;
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return null;
         } catch(Exception e){
             e.printStackTrace();
             return null;
@@ -385,6 +450,9 @@ public User getStudentInfo() {
             oos.writeObject(Commands.REMOVE_COURSE_RECORD);
             oos.writeObject(str);
             return (Boolean)ois.readObject();
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return false;
         } catch(Exception e){
             e.printStackTrace();
             return false;
@@ -399,7 +467,10 @@ public User getStudentInfo() {
            MajorCompletion m=(MajorCompletion)ois.readObject();
            Object o=ois.readObject();
            return m.getHtml();
-        }catch(Exception e) {return  null;}
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return null;
+        } catch(Exception e) {return  null;}
 
     }
 
@@ -407,7 +478,10 @@ public User getStudentInfo() {
         try{
             oos.writeObject(Commands.ADD_COURSE_RECORD);
             return sendCourseRecord(r);
-        }catch(Exception e){
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return -1;
+        } catch(Exception e){
             e.printStackTrace();
             return -1;
         }
@@ -418,12 +492,18 @@ public User getStudentInfo() {
 
         oos.writeObject(Commands.EDIT_COURSE_RECORD);
         return sendCourseRecord(r);
-        }catch(Exception e){return -1;}
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return -1;
+        } catch(Exception e){return -1;}
     }
     private int sendCourseRecord(CourseRecord r) {
         try{
             oos.writeObject(r);
             return Integer.parseInt((String) ois.readObject());
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return -1;
         } catch(Exception e) {
             return -1;
         }
@@ -437,6 +517,9 @@ public User getStudentInfo() {
             Major m = (Major) ois.readObject();
             ois.readObject();
             return m;
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return null;
         } catch(Exception e) {
             return null;
         }
@@ -457,6 +540,9 @@ public User getStudentInfo() {
             Course c = (Course) ois.readObject();
             ois.readObject();
             return c;
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return null;
         } catch(Exception e) {
             return null;
         }
@@ -481,6 +567,9 @@ public User getStudentInfo() {
             ois.readObject();
             oos.reset();
             return c;
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return null;
         } catch(Exception e){
             e.printStackTrace();
             return null;
@@ -496,6 +585,9 @@ public User getStudentInfo() {
             ois.readObject();
             oos.reset();
             return c;
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return null;
         } catch(Exception e){
             e.printStackTrace();
             return null;
@@ -509,7 +601,10 @@ public User getStudentInfo() {
             oos.flush();
             return ((String) ois.readObject()).equals("OK");
 
-        }catch(Exception e) {
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return false;
+        } catch (Exception e) {
             return false;
         }
     }
@@ -518,4 +613,9 @@ public User getStudentInfo() {
         currDepo=dep;;
     }
     String currDepo="";
+
+    void connectionLostGTFO(){
+        JOptionPane.showMessageDialog(null, "The connection to the server has been lost.\nUnable to continue, the program will exit.");
+        System.exit(-1);
+    }
 }
