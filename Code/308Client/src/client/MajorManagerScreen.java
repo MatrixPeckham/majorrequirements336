@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -21,6 +22,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import server.Course;
+import server.CourseGroup;
 import server.Department;
 import server.Major;
 import server.Requirement;
@@ -112,7 +114,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 String s = JOptionPane.showInputDialog("Input Major Name");
-                if(s.length()!=3)
+                if(s==null||s.length()!=3)
                 {
                     JOptionPane.showMessageDialog(frame, "Please Enter Three "
                             + "Letters To Represent The Major", "Invalid Entry",
@@ -279,6 +281,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         JCheckBox exclude;
         //button adds current sequence the requirement
         JButton finishButton;
+        //button removes the sequence
+        JButton removeSButton;
         //label for the sequences list
         JLabel seqL;
         //list for the sequences
@@ -352,8 +356,13 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //NO COMMUNICATION
-                    //DO LATER
+                    DefaultListModel model = (DefaultListModel)currList.getModel();
+                    for(int i : courses.getSelectedRows()){
+                        String s = (String)courses.getModel().getValueAt(i, 0);
+                        if(!model.contains(s)){
+                            model.addElement(s);
+                        }
+                    }
                 }
             });
             remButton = new JButton("<- Remove");
@@ -361,17 +370,45 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //NO COMMUNICATION
-                    //DO LATER
+                    DefaultListModel model = (DefaultListModel)currList.getModel();
+                    if(currList.getSelectedIndex()!=-1){
+                        model.remove(currList.getSelectedIndex());
+                    }
                 }
             });
             currL = new JLabel("Current Sequence");
             currList = new JList();
+            currList.setModel(new DefaultListModel());
             JScrollPane curScroll = new JScrollPane(currList);
             exclude = new JCheckBox("Exclude these courses");
             finishButton = new JButton("Finish ->");
+            finishButton.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    CourseGroup cg = new CourseGroup();
+
+                    DefaultListModel model = (DefaultListModel)seqList.getModel();
+                    for(Object o : ((DefaultListModel)currList.getModel()).toArray()){
+                        cg.addCourse(frame.getCourse((String)o));
+                    }
+                    model.addElement(cg);
+                    ((DefaultListModel)currList.getModel()).removeAllElements();
+                }
+            });
+            removeSButton = new JButton("Remove Sequence");
+            removeSButton.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(seqList.getSelectedIndex()!=-1){
+                        ((DefaultListModel)seqList.getModel()).remove(seqList.getSelectedIndex());
+                    }
+                }
+            });
             seqL = new JLabel("Requirement Sequences");
             seqList = new JList();
+            seqList.setModel(new DefaultListModel());
             JScrollPane seqScroll = new JScrollPane(seqList);
             minSeqL = new JLabel("Min Sequences");
             seqS = new JSpinner();
@@ -416,6 +453,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(remButton, this, 2, 5, 1, 1);
             addJComponentToContainerUsingGBL(curScroll, this, 3, 3, 2, 4);
             addJComponentToContainerUsingGBL(finishButton, this, 5, 4, 1, 1);
+            addJComponentToContainerUsingGBL(removeSButton, this, 5, 6, 1, 1);
             addJComponentToContainerUsingGBL(seqScroll, this, 6, 3, 1, 4);
             addJComponentToContainerUsingGBL(exclude, this, 3, 7, 1, 1);
             addJComponentToContainerUsingGBL(seqS, this, 6, 7, 1, 1);
@@ -497,7 +535,10 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
             Object[][] data = {{"REQ 1"}, {"REQ 2"}, {"..."}};
 
-            table = new JTable(data, columnNames);
+            table = new JTable();
+            table.setModel(new DefaultTableModel());
+            DefaultTableModel model = (DefaultTableModel)table.getModel();
+            model.addColumn(columnNames[0]);
             table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
             table.setFillsViewportHeight(true);
             JScrollPane scrollPane = new JScrollPane(table);
@@ -530,7 +571,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             });
             this.setLayout(new GridBagLayout());
             addJComponentToContainerUsingGBL(title, this, 1, 1, 5, 1);
-            addJComponentToContainerUsingGBL(table, this, 1, 2, 5, 2);
+            addJComponentToContainerUsingGBL(new JScrollPane(table), this, 1, 2, 5, 2);
             addJComponentToContainerUsingGBL(addReq, this, 2, 4, 1, 1);
             addJComponentToContainerUsingGBL(editReq, this, 3, 4, 1, 1);
             addJComponentToContainerUsingGBL(remReq, this, 4, 4, 1, 1);
@@ -543,12 +584,22 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
         @Override
         public void getScreen(Object fillWith) {
-            //throw new UnsupportedOperationException("Not supported yet.");
+            if(fillWith instanceof Major){
+                Major m = (Major) fillWith;
+                DefaultTableModel model = (DefaultTableModel)table.getModel();
+                int n = model.getRowCount();
+                for(int i = 0; i<n;i++){
+                    model.removeRow(0);
+                }
+                for(Requirement r : m.getRequirements()){
+                    model.addRow(new String[]{r.getId()});
+                }
+            }
         }
 
         @Override
         public boolean validateForm() {
-            throw new UnsupportedOperationException("Not supported yet.");
+            return table.getSelectedRow()!=-1;
         }
     }
 

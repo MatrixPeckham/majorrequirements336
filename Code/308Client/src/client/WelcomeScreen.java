@@ -68,7 +68,7 @@ public class WelcomeScreen extends Screen {
                                     Object o =frame.getDepartments();
                                     frame.changeScreen(ClientGUI.DEPARTMENTS, o);
                                 } else {
-                                    Object o = frame.getDepartment(frame.getCurrentDepartment());
+                                    Object o = frame.getDepartment(frame.getCurrentDepartment()).getMajors();
                                     frame.changeScreen(ClientGUI.MAJORS, o);
                                 }
                             }else {

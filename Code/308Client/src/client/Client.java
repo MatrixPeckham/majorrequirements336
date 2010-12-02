@@ -211,6 +211,9 @@ public class Client{
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception se){
+                JOptionPane.showMessageDialog(null, "There was a problem connecting to the server the program cannot continue");
+                System.exit(-1);
             }
         }
 
@@ -610,9 +613,9 @@ public User getStudentInfo() {
     }
 
     void setCurrentDepartment(String dep) {
-        currDepo=dep;;
+        currDepo=dep;
     }
-    String currDepo="";
+    String currDepo="CSE";
 
     void connectionLostGTFO(){
         JOptionPane.showMessageDialog(null, "The connection to the server has been lost.\nUnable to continue, the program will exit.");
