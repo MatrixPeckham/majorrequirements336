@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import server.Major;
 import server.User;
@@ -63,18 +64,18 @@ public class LoginScreen extends Screen {
 			public void actionPerformed(ActionEvent e) {
                             if(validateForm())  {
                                 frame.login(nameField.getText(), passWordField.getText());
-                                 if(frame.reg){
+                                 //if(frame.reg){
                                      if(frame.getPermissions()>User.DEPT_ADMIN)   {
                                          Object o=frame.getDepartments();
                                             frame.changeScreen(ClientGUI.DEPARTMENTS, o);
-                                     }
-                                 }
-                                 else {
-                                     if(frame.getPermissions()>User.STUDENT){
+                                     } else if(frame.getPermissions()>User.STUDENT){
                                          Object o = (ArrayList<Major>)frame.getDepartment(frame.getCurrentDepartment()).getMajors();
         				 frame.changeScreen(ClientGUI.MAJORS, o);
                                      }
-                                 }
+                                 //}
+                                if(frame.getPermissions()<=User.STUDENT) {
+                                    JOptionPane.showMessageDialog(passWordField, "Invalid Credentials");
+                                }
                             }
                         }
                 });

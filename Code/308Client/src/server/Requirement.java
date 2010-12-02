@@ -155,11 +155,16 @@ public class Requirement implements Serializable {
                 c2.course=c;
                 if(courses.containsKey(c.getId())) {
                     CourseRecord cr=courses.get(c.getId());
+                    boolean incomplete=false;
                     for(Grade g : cr.getGrades()) {
+                        if(g.getGrade().equals("I")) {
+                            incomplete=true;
+                        } else {
                         gpa+=g.getGradePoints()*c.getCredits();
                         credOp+=c.getCredits();
+                        }
                     }
-                    if(cr.getGrades().contains(new Grade("I"))) {
+                    if(incomplete) {
                         c2.message="Class in progress";
                         c2.complete=false;
                         rc.complete=false;
