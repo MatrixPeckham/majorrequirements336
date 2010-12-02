@@ -379,6 +379,28 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("ERR");
                         objectOut.flush();
                     }
+                } else if(cmd.equals(Commands.GET_MAJ_REQS)){
+                    try{
+                        String dep = (String)objectIn.readObject();
+                        String maj = (String)objectIn.readObject();
+                        Major ma = null;
+                        for(Major m : School.getSchool().getDepartment(dep).getMajors()){
+                            if(m.getId().equals(maj)){
+                                ma=m;
+                                break;
+                            }
+                        }
+                        ArrayList<Requirement> list = new ArrayList<Requirement>();
+                        if(ma!=null){
+                            list.addAll(ma.getRequirements());
+                        }
+                        objectOut.writeObject(list);
+                        objectOut.writeObject("OK");
+                        objectOut.flush();
+                    } catch(Exception e){
+                        objectOut.writeObject("ERR");
+                        objectOut.flush();
+                    }
                 } else {
                         //objectOut.writeObject(null);
                         //objectOut.writeObject("ERR");

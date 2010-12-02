@@ -26,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 import server.Course;
 import server.CourseGroup;
 import server.Department;
+import server.Grade;
 import server.Major;
 import server.Requirement;
 
@@ -197,6 +198,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             public void actionPerformed(ActionEvent e) {
                 if(validateForm()){
                     Major m = frame.getMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 0));
+                    frame.changeMajor(m);
                     frame.changeManageScreen(ClientGUI.CURR_EDIT, m);
                 }
             }
@@ -288,6 +290,10 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         JLabel currL;
         //current sequence list
         JList currList;
+        //label for curS
+        JLabel numCL;
+        //spinner for currlist
+        JSpinner curS;
         //checkbox to make the current sequence excluded
         JCheckBox exclude;
         //button adds current sequence the requirement
@@ -391,6 +397,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             currList = new JList();
             currList.setModel(new DefaultListModel());
             JScrollPane curScroll = new JScrollPane(currList);
+            curS = new JSpinner();
+            numCL = new JLabel("Number Required");
             exclude = new JCheckBox("Exclude these courses");
             finishButton = new JButton("Finish ->");
             finishButton.addActionListener(new ActionListener() {
@@ -403,6 +411,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                     for(Object o : ((DefaultListModel)currList.getModel()).toArray()){
                         cg.addCourse(frame.getCourse((String)o));
                     }
+                    cg.setNumReqiured((Integer)curS.getValue());
                     model.addElement(cg);
                     ((DefaultListModel)currList.getModel()).removeAllElements();
                 }
@@ -466,23 +475,36 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(finishButton, this, 5, 4, 1, 1);
             addJComponentToContainerUsingGBL(removeSButton, this, 5, 6, 1, 1);
             addJComponentToContainerUsingGBL(seqScroll, this, 6, 3, 1, 4);
-            addJComponentToContainerUsingGBL(exclude, this, 3, 7, 1, 1);
+            
+            addJComponentToContainerUsingGBL(numCL, this, 3, 7, 1, 1);
+            addJComponentToContainerUsingGBL(curS, this, 4, 7, 1, 1);
+            
+            addJComponentToContainerUsingGBL(exclude, this, 3, 8, 1, 1);
             addJComponentToContainerUsingGBL(seqS, this, 6, 7, 1, 1);
 
-            addJComponentToContainerUsingGBL(infoL, this, 3, 8, 2, 1);
-            addJComponentToContainerUsingGBL(nameL, this, 3, 9, 1, 1);
-            addJComponentToContainerUsingGBL(nameF, this, 4, 9, 1, 1);
-            addJComponentToContainerUsingGBL(minGPAL, this, 3, 10, 1, 1);
-            addJComponentToContainerUsingGBL(minGPAF, this, 4, 10, 1, 1);
-            addJComponentToContainerUsingGBL(minUpperL, this, 3, 11, 1, 1);
-            addJComponentToContainerUsingGBL(minUpperS, this, 4, 11, 1, 1);
-            addJComponentToContainerUsingGBL(ok, this, 3, 12, 1, 1);
-            addJComponentToContainerUsingGBL(cancel, this, 4, 12, 1, 1);
+            addJComponentToContainerUsingGBL(infoL, this, 3, 9, 2, 1);
+            addJComponentToContainerUsingGBL(nameL, this, 3, 10, 1, 1);
+            addJComponentToContainerUsingGBL(nameF, this, 4, 10, 1, 1);
+            addJComponentToContainerUsingGBL(minGPAL, this, 3, 11, 1, 1);
+            addJComponentToContainerUsingGBL(minGPAF, this, 4, 11, 1, 1);
+            addJComponentToContainerUsingGBL(minUpperL, this, 3, 12, 1, 1);
+            addJComponentToContainerUsingGBL(minUpperS, this, 4, 12, 1, 1);
+            addJComponentToContainerUsingGBL(ok, this, 3, 13, 1, 1);
+            addJComponentToContainerUsingGBL(cancel, this, 4, 13, 1, 1);
 
 
         }
         private Requirement makeReq() {
-                return null;
+            Requirement r = new Requirement();
+            int num = seqList.getModel().getSize();
+            for(int i = 0; i<num; i++){
+                r.addCourseGroup((CourseGroup)seqList.getModel().getElementAt(i));
+            }
+            r.setId(nameF.getText());
+            r.setMinGPA((Double.parseDouble(minGPAF.getText())));
+            r.setMinUpperDivCredits((Integer)minUpperS.getValue());
+            r.setNumberOfCourses((Integer)seqS.getValue());
+            return r;
         }
         /**
          * serial version ID that eclipse wants in all swing classes
@@ -502,6 +524,18 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                     Object[] o = {c.getId()};
                     model.addRow(o);
                 }
+            }
+            DefaultListModel seqM = (DefaultListModel)seqList.getModel();
+            seqM.removeAllElements();
+            if(fillWith instanceof Requirement){
+                Requirement r = (Requirement)fillWith;
+                for(CourseGroup cg : r.getPossibleCourses()){
+                    seqM.addElement(cg);
+                }
+                nameF.setText(r.getId());
+                minGPAF.setText(r.getMinGPA()+"");
+                minUpperS.setValue(r.getMinUpperDivCredits());
+                seqS.setValue(r.getNumberOfCourses());
             }
         }
 
@@ -567,7 +601,15 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     if(validateForm()){
-                        frame.changeManageScreen(ClientGUI.CURR_ADD, table.getModel().getValueAt(table.getSelectedRow(), 0));
+                        String s = (String)table.getModel().getValueAt(table.getSelectedRow(), 0);
+                        Requirement r = null;
+                        for(Requirement rec : frame.getRequirements()){
+                            if(rec.getId().equals(s)){
+                                r=rec;
+                                break;
+                            }
+                        }
+                        frame.changeManageScreen(ClientGUI.CURR_ADD, r);
                     }
                 }
             });
