@@ -24,7 +24,7 @@ public class Schedule implements Serializable{
 
         Major m=u.getMajor();
         if(m==null) {return null;}
-        RootlessTree<Course> t=m.getRemainingCourse(u.getRecords(), u.getMajorYear());
+        RootlessTree<Course> t=m.getRemainingCourse((TreeMap<String, CourseRecord>)u.getRecords().clone(), u.getMajorYear());
         Vector<Course> toTake=new Vector<Course>();
         Vector<Course> toRemove=new Vector<Course>();
         int maxlevel=t.getMaxLevel();
