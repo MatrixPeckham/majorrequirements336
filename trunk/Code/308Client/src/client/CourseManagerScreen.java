@@ -596,7 +596,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             for(int i = 0; i<num2;i++){
                 l.add((CourseGroup)listm.elementAt(i));
             }
-
+            c.setName(deptF.getText());
             c.setPrereqs(l);
 
             c.setMinGrade(new Grade((String)minB.getSelectedItem()));

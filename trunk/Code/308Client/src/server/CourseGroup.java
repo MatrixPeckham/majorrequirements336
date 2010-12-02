@@ -220,5 +220,12 @@ public class CourseGroup implements Serializable {
         }
         return num==0;
     }
+    public String toString(){
+        String s ="";
+        for(Course c : courses){
+            s+=c.getId() + ", ";
+        }
+        return s;
+    }
 
 }
