@@ -70,7 +70,11 @@ public class ServerThread implements Runnable{
                     } else if(p.equals(""+User.STUDENT)) {
                         permissions=User.STUDENT;
                     } else {
+                        if(School.getSchool().getDepartment(p)==null) {
+                            permissions=User.STUDENT;
+                        } else {
                         permissions=User.DEPT_ADMIN;
+                        }
                     }
                     objectOut.writeObject(p);
                     } catch(Exception e) {

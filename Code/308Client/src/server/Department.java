@@ -17,9 +17,9 @@ public class Department implements Serializable{
     
     @Id
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private Collection<Course> courses;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private Collection<Major> majors;
     public Department() {
         courses=new ArrayList<Course>();
