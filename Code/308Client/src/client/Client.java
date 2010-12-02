@@ -303,13 +303,14 @@ public class Client{
     }
     ArrayList<Requirement> getRequirements(String dept, String major) {
        try{
-           oos.writeObject(Commands.GET_REQS);
+           oos.writeObject(Commands.GET_MAJ_REQS);
            oos.writeObject(dept);
            oos.writeObject(major);
            oos.flush();
-           MajorCompletion m=(MajorCompletion)ois.readObject();
+           Collection m=(Collection)ois.readObject();
            ois.readObject();
-           return new ArrayList<Requirement>();
+           ArrayList<Requirement> arr =new ArrayList<Requirement>(m);
+           return arr;
        } catch(SocketException se){
             connectionLostGTFO();
             return null;
