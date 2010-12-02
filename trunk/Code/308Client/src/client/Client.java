@@ -120,7 +120,7 @@ public class Client{
 
 	public boolean removeMajor(String d, String str) {
             try {
-                oos.writeObject(Commands.REMOVE_COURSE);
+                oos.writeObject(Commands.REMOVE_MAJOR);
                 oos.writeObject(d);
                 oos.writeObject(str);
                 return ((String) ois.readObject()).equals("OK");

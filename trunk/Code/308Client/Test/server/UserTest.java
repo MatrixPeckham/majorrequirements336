@@ -95,7 +95,7 @@ public class UserTest {
         String cmd = "";
         User instance = null;
         File expResult = null;
-        File result = instance.writeFile(cmd);
+        File result = new File(instance.writeFile(cmd));
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

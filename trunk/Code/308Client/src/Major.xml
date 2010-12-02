@@ -1,12 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-    Document   : Major.xml
-    Created on : November 7, 2010, 10:01 AM
-    Author     : TJ
-    Description:
-        Purpose of the document follows.
--->
 <file type="majorRequirement">
     <major>
             <majorName>CSE</majorName>

@@ -6,14 +6,16 @@
 package server;
 
 import java.util.ArrayList;
+import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author TJ
+ * @author Admin
  */
 public class DepartmentTest {
 
@@ -26,6 +28,14 @@ public class DepartmentTest {
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
     }
 
     /**
@@ -132,8 +142,6 @@ public class DepartmentTest {
         ArrayList expResult = null;
         ArrayList result = instance.getMajors();
         assertEquals(1, result.size());
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**

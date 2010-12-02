@@ -145,6 +145,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+             try {
+                Major m = frame.getMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 0));
                 String s = JOptionPane.showInputDialog("Change Major Name");
                 if(s.length()!=3)
                 {
@@ -163,20 +165,27 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                         return;
                     }
                 }
-                Major m = frame.getMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 0));
                 frame.editMajor(m,s);
                 Object o = frame.getDepartment(frame.getCurrentDepartment()).getMajors();
                 getScreen(o);
-            }
-        });
+             }
+             catch(ArrayIndexOutOfBoundsException aioobe){
+                    JOptionPane.showMessageDialog(null, "You need to select a major to edit");
+             }
+        }});
         removeButton = new JButton("Remove Major");
         removeButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+              try   {
                 frame.removeMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 0));
                 Object o = frame.getDepartment(frame.getCurrentDepartment()).getMajors();
                 getScreen(o);
+              }
+              catch(ArrayIndexOutOfBoundsException aioobe){
+                    JOptionPane.showMessageDialog(null, "You need to select a major to remove");
+              }
             }
         });
         editMajor = new JButton("Edit Major Requiremnts");

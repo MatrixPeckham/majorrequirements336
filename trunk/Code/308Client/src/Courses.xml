@@ -1,13 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-    Document   : Courses.xml
-    Created on : November 9, 2010, 4:41 PM
-    Author     : TJ
-    Description:
-        Purpose of the document follows.
--->
-
 <file type="courses">
     <department>
         <name>CSE</name>

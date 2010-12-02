@@ -76,7 +76,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                                 frame.setCurrentDepartment(dep);
                                 frame.changeScreen(ClientGUI.COURSES, frame.getDepartmentCourses(dep));
                             }catch(ArrayIndexOutOfBoundsException aioobe){
-                                JOptionPane.showMessageDialog(null, "You need to select a major to view");
+                                JOptionPane.showMessageDialog(null, "You need to select a department to view");
                             }
 			}
 		});
