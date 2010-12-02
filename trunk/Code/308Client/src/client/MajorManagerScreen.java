@@ -1,6 +1,7 @@
 package client;
 
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -12,6 +13,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -637,6 +639,21 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         @Override
         public boolean validateForm() {
             throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+    class MajorDialog extends JDialog {
+        MajorDialog(Dialog d, String t){
+            super(d,t,true);
+            init();
+        }
+        private void init() {
+            this.setLayout(new GridBagLayout());
+            JLabel gpaL;
+            JLabel minLocalL;
+            //JLabel
+
+            //JLabel gpaF;
+
         }
     }
 }
