@@ -205,9 +205,6 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         majorLabel.setText("Current Major:");
         major=new JComboBox();
         major.addItem(new Major("Undecided",0,0));
-        for(Major m : frame.getAllMajors()) {
-            major.addItem(m);
-        }
         major.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
 
@@ -243,7 +240,10 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
        for(int i=0; i<num; i++) {
            m.removeRow(0);
        }
-
+       major.removeAllItems();
+        for(Major mag : frame.getAllMajors()) {
+            major.addItem(mag);
+        }
         TreeMap<String,CourseRecord> t=frame.getStudentInfo().getCourses();
             for(CourseRecord r : t.values()) {
                 for(Grade g : r.getGrades()) {
