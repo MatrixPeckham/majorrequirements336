@@ -311,6 +311,8 @@ public class User implements Scheduler, FileParser, Serializable{
                 Collection<CourseRecord> courserecords = courses.values();
                 int i = 0;
                 s+="<file type=\"record\">" + "\n";
+                s+="\t<major>" + major + "</major>\n";
+                s+="\t<year>" + majorYear + "</year>\n";
                 for(CourseRecord r : courserecords) {
                     s+="\t<course>" + "\n";
                     s+="\t\t<dept>" + r.getCourse().getName() + "</dept>" + "\n";
