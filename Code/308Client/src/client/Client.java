@@ -137,7 +137,21 @@ public class Client{
         }
 //TODO	public boolean addRequirement(Requirement r, String str) {return false;}
 
-	public boolean removeRequirement(String str1, String str2){return false;}
+	public boolean removeRequirement(String req, String maj){
+            try{
+                oos.writeObject(Commands.REMOVE_REQ);
+                oos.writeObject(getCurrentDepartment());
+                oos.writeObject(maj);
+                oos.writeObject(req);
+                oos.flush();
+                return ois.readObject().equals("OK");
+            } catch(SocketException se){
+                connectionLostGTFO();
+                return false;
+            } catch(Exception e){
+                return false;
+            }
+        }
 	public int login(String usr,String pass) {
             try{
             oos.writeObject(Commands.LOGIN);

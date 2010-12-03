@@ -138,8 +138,5 @@ public class Major implements Serializable {
             return false;
         }
         return this.id.equals(((Major)o).getId());
-        }
-        else
-            return false;
     }
 }

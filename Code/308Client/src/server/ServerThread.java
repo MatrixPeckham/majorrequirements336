@@ -110,11 +110,13 @@ public class ServerThread implements Runnable{
                     } 
                 } else if (cmd.equals(Commands.REMOVE_REQ)) {
                     try {
-                        Major m = School.getSchool().getDepartment((String) objectIn.readObject()).findMajor((String) objectIn.readObject());
+                        String depo = (String) objectIn.readObject();
+                        String maj = (String) objectIn.readObject();
+                        String req = (String) objectIn.readObject();
+                        Major m = School.getSchool().getDepartment(depo).findMajor(maj);
                         Collection<Requirement> r = m.getRequirements();
-                        String s = (String) objectIn.readObject();
                         for(Requirement re : r) {
-                            if (re.getId().equals(s))
+                            if (re.getId().equals(req))
                                 m.removeRequirement(re);
                         }
                         objectOut.writeObject("OK");
