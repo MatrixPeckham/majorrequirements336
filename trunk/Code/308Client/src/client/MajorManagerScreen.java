@@ -215,25 +215,26 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             }
         });
 
-        upload = new JButton("Upload");
+        upload = new JButton("Upload Requirements");
         upload.addActionListener(new ActionListener(){
+            
             @Override
             public void actionPerformed(ActionEvent e) {
                 File f = getFile(true);
                 if(f!=null) {
                     frame.uploadFile(f, Commands.UPLOADFILE);
-                    frame.changeScreen(ClientGUI.CLASSES, null);
+                    frame.changeScreen(ClientGUI.MAJORS, null);
                     error.setVisible(false);
                 }
                 }
 
             });
 
-        download = new JButton("Download");
+        download = new JButton("Download Requirements");
         download.addActionListener(new ActionListener(){
+            
             @Override
             public void actionPerformed(ActionEvent e){
-                File f = getFile(false);
                 frame.dowloadFile(getFile(false),Commands.DOWNLOAD_REQ);
                 }
 
