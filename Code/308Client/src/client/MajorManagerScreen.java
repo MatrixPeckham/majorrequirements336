@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
@@ -24,6 +25,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
+import server.Commands;
 import server.Course;
 import server.CourseGroup;
 import server.Department;
@@ -61,6 +63,13 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
     private JButton editMajor;
     //back button
     private JButton back;
+
+    //upload button
+    private JButton upload;
+
+    //download button
+    private JButton download;
+
     //error button
     private JLabel error;
 
@@ -197,12 +206,37 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(validateForm()){
+                if(validateForm())
+                {
                     Major m = frame.getMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 0));
                     frame.changeMajor(m);
                     frame.changeManageScreen(ClientGUI.CURR_EDIT, m);
                 }
             }
+        });
+
+        upload = new JButton("Upload");
+        upload.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                File f = getFile(true);
+                if(f!=null) {
+                    frame.uploadFile(f, Commands.UPLOADFILE);
+                    frame.changeScreen(ClientGUI.CLASSES, null);
+                    error.setVisible(false);
+                }
+                }
+
+            });
+
+        download = new JButton("Download");
+        download.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                File f = getFile(false);
+                frame.dowloadFile(getFile(false),Commands.DOWNLOAD_REQ);
+                }
+
         });
         back = new JButton("Back");
         back.addActionListener(new ActionListener() {
@@ -222,8 +256,10 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         addJComponentToContainerUsingGBL(editButton, this, 2, 4, 1, 1);
         addJComponentToContainerUsingGBL(removeButton, this, 3, 4, 1, 1);
         addJComponentToContainerUsingGBL(editMajor, this, 1, 5, 1, 1);
-        addJComponentToContainerUsingGBL(back, this, 3, 5, 1, 1);
-        addJComponentToContainerUsingGBL(error, this, 1, 6, 1, 1);
+        addJComponentToContainerUsingGBL(download, this, 2, 5, 1, 1);
+        addJComponentToContainerUsingGBL(upload, this, 3,5,1,1);
+        addJComponentToContainerUsingGBL(back, this, 4,5,1,1);
+        addJComponentToContainerUsingGBL(error, this, 1, 9, 1, 1);
     }
 
     @Override
