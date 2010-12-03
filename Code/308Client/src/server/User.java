@@ -352,12 +352,12 @@ public class User implements Scheduler, FileParser, Serializable{
                                 for(Course c : courses) {
                                     s+="\t\t\t\t<course>" + c.getId() + "</course>\n";
                                 }
-                                s+="\t\t\t</sequence>";
+                                s+="\t\t\t</sequence>\n";
                             }
-                            s+="\t\t</requirement>";
+                            s+="\t\t</requirement>\n";
                         }
                     }
-                    s+="\t</major>";
+                    s+="\t</major>\n";
                 
                 s+="</file>";
             }
