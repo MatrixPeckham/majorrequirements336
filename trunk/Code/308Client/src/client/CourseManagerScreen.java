@@ -162,13 +162,13 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 frame.changeScreen(ClientGUI.DEPARTMENTS, o);
             }
         });
-        registrarAdminPage = new JButton("Registrar Admin Page");
+        registrarAdminPage = new JButton("Department Admin Page");
         registrarAdminPage.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Object o = frame.getDepartments();
-                frame.changeScreen(ClientGUI.DEPARTMENTS, o);
+                Object o = frame.getDepartment(frame.getCurrentDepartment());
+                frame.changeScreen(ClientGUI.MAJORS, o);
             }
         });
         textField = new JTextField(20);
