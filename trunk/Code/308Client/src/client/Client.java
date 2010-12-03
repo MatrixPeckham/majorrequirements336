@@ -207,10 +207,6 @@ public class Client{
                 oos=new ObjectOutputStream(s.getOutputStream());
 
                 
-            } catch (UnknownHostException ex) {
-                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception se){
                 JOptionPane.showMessageDialog(null, "There was a problem connecting to the server the program cannot continue");
                 System.exit(-1);
@@ -298,8 +294,20 @@ public class Client{
     }
 
     boolean addRequirement(Requirement r, String dept, String major) {
-
-        return false;
+        try{
+            oos.writeObject(Commands.ADD_REQ);
+            oos.writeObject(r);
+            oos.writeObject(dept);
+            oos.writeObject(major);
+            oos.flush();
+            boolean b = Boolean.parseBoolean((String)ois.readObject());
+            return b;
+        } catch(SocketException se){
+            connectionLostGTFO();
+            return false;
+        } catch(Exception e){
+            return false;
+        }
     }
     ArrayList<Requirement> getRequirements(String dept, String major) {
        try{

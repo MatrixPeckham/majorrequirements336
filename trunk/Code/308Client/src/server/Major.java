@@ -24,6 +24,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Persistence;
 import logging.UseLogger;
+import persistence.PersistenceManager;
 import structures.RootlessTree;
 
 /** Contains info and actions for majors
@@ -99,9 +100,8 @@ public class Major implements Serializable {
      */
     public void addRequirement(Requirement r) {
         try {
-        //em.merge(r);
-        reqs.add(r);
-        //em.merge(this);
+            reqs.add(r);
+            PersistenceManager.merge(this);
         }catch(Exception e) {
 
         }
@@ -134,8 +134,9 @@ public class Major implements Serializable {
     public void setDepartment(String dept) {department=dept;}
     public String toString() {return getId();}
     public boolean equals(Object o) {
-        if(o instanceof Major)
-        {
+        if(o==null){
+            return false;
+        }
         return this.id.equals(((Major)o).getId());
         }
         else
