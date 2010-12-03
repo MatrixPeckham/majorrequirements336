@@ -301,8 +301,8 @@ public class User implements Scheduler, FileParser, Serializable{
         }
         return g;
     }
-    @Override
-    public String writeFile(String cmd) {
+   
+    public String writeFile(String cmd, String department) {
         String s="";
 
         try {
@@ -327,39 +327,38 @@ public class User implements Scheduler, FileParser, Serializable{
             else if (cmd.equals(Commands.DOWNLOAD_REQ))   {
                 School s2 = School.getSchool();
                 Collection<Department> departments = s2.getDepartments();
-                s+="<file type=\"majorRequirement\">";
+                s+="<file type=\"majorRequirement\">\n";
                 
-                for(Department d : departments) {
-                    Collection<Major> majors = d.getMajors();
+                Collection<Major> majors = s2.getDepartment(department).getMajors();
 
                     for(Major m : majors)   {
                         Collection<Requirement> requirements = m.getRequirements();
-                        s+="<major>";
-                        s+="<majorname>" + m.getId() + "</majorname>";
-                        s+="<minGPA>" + "</minGPA>";
-                            s+="<minLocalCreds>" + "</minLocalCreds>";
-                            s+="<department>"  + "</departments>";
-
+                        s+="\t<major>\n";
+                        s+="\t\t<majorname>" + m.getId() + "</majorname>\n";
+               
                         for(Requirement r : requirements)   {
-                            s+="<requirement required=\"" + r.getNumberOfCourses() + "\" minGPA=\"\" >";
-                            s+="<name>" + r.getId() + "</name>";
-                            s+="<year>" + r.getYear() + "</year>";
+                            s+="\t\t<minGPA>" + r.getMinGPA() + "</minGPA>\n";
+                            s+="\t\t<minLocalCreds>" + r.getMinResidentCredits() + "</minLocalCreds>\n";
+                            s+="\t\t<department>" + department + "</department>\n";
+                            s+="\t\t<requirement required=\"" + r.getNumberOfCourses() + "\">\n";
+                            s+="\t\t\t<name>" + r.getId() + "</name>\n";
+                            s+="\t\t\t<year>" + r.getYear() + "</year>\n";
                             Collection<CourseGroup> coursegroups = r.getPossibleCourses();
 
                             for(CourseGroup cg : coursegroups)  {
                                 Collection<Course> courses = cg.getCourses();
-                                s+="<sequence required=\""+cg.getNumReqiured()+"\">";
+                                s+="\t\t\t<sequence required=\"" + cg.getNumReqiured() + "\">\n";
 
                                 for(Course c : courses) {
-                                    s+="<course>" + c.getId() + "</course>";
+                                    s+="\t\t\t\t<course>" + c.getId() + "</course>\n";
                                 }
-                                s+="</sequence>";
+                                s+="\t\t\t</sequence>";
                             }
-                            s+="</requirement>";
+                            s+="\t\t</requirement>";
                         }
                     }
-                    s+="</major>";
-                }
+                    s+="\t</major>";
+                
                 s+="</file>";
             }
         }

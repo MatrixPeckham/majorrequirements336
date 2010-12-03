@@ -38,11 +38,9 @@ public class Client{
                 FileWriter fw=new FileWriter(location);
                 PrintWriter pw2=new PrintWriter(fw);
                 oos.writeObject(str);
+                oos.writeObject(getCurrentDepartment());
                 String s;
-                //while(!(
-                s=(String) ois.readObject();//).equals("ENDXML")) {
-                   //oos.writeObject(s);
-               // }
+                s=(String) ois.readObject();
                 pw2.println(s);
                 pw2.flush();
                 return location;
