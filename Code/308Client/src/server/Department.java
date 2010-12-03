@@ -40,14 +40,14 @@ public class Department implements Serializable{
     }
     public void addMajor(Major c) {
         majors.add(c);
-        PersistenceManager.merge(c);
+        //PersistenceManager.merge(c);
         PersistenceManager.merge(this);
     }
     public void removeMajor(String name) {
         Major m=findMajor(name);
-        PersistenceManager.remove(m,m.getId());
         majors.remove(m);
         PersistenceManager.merge(this);
+        PersistenceManager.remove(m,m.getId());
     }
     public String getName() {return name;}
     public void setName(String n) {name=n;}
