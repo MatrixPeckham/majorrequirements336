@@ -132,7 +132,7 @@ public class ServerThread implements Runnable{
                      }
                 } else if (cmd.equals(Commands.DOWNLOAD_REQ)) {
                     try {
-                        objectOut.writeObject(user.writeFile("DOWNLOAD_REQ"));
+                        objectOut.writeObject(user.writeFile("DOWNLOAD_REQ",(String)objectIn.readObject()));
                         objectOut.writeObject("OK");
                     }
                     catch(Exception e)   {
@@ -255,7 +255,7 @@ public class ServerThread implements Runnable{
                     }
                 } else if (cmd.equals(Commands.DOWNLOAD_COURSE_DATA)) {
                     try{
-                        objectOut.writeObject(user.writeFile(Commands.DOWNLOAD_COURSE_DATA));
+                        objectOut.writeObject(user.writeFile(Commands.DOWNLOAD_COURSE_DATA,(String)objectIn.readObject()));
                         objectOut.writeObject("OK");
                     }catch(Exception e) {
                         e.printStackTrace();
