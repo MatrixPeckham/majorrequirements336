@@ -83,7 +83,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
     private void initGUI() {
         studentPage = new JLabel("Student Page");
         studentPage.setFont(new Font("Times New Roman", 1, 72));
-        String[] columnNames = {"Course", "Grade", "Transfer"};
+        String[] columnNames = {"Course", "Grade", "Transfer", "Semester", };
         Object[][] data = {};
         courses = new JTable();
         courses.setPreferredScrollableViewportSize(new Dimension(1000, 100));
@@ -169,7 +169,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 error.setVisible(false);
-                frame.dowloadFile(getFile(false),Commands.DOWNLOAD_SCHED);
+                frame.dowloadFile(getFile(false),Commands.DOWNLOAD_COURSE_DATA);
             }
         });
         checkButton = new JButton("Check Requirements");
@@ -251,12 +251,13 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         TreeMap<String,CourseRecord> t=frame.getStudentInfo().getCourses();
             for(CourseRecord r : t.values()) {
                 for(Grade g : r.getGrades()) {
-                    Object[] o=new Object[3];
+                    Object[] o=new Object[4];
                     o[0]=r.getCourse().getId();
                     o[1]=g.getGrade();
                     //JCheckBox j=new JCheckBox();
                     //j.setSelected();
                     o[2]=r.getTransfer();
+                    o[3]=r.getSemester(g);
                     ((DefaultTableModel)courses.getModel()).addRow(o);
                 }
             }

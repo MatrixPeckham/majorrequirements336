@@ -146,7 +146,7 @@ public class User implements Scheduler, FileParser, Serializable{
                 boolean transfer=Boolean.parseBoolean(((Element)((Element)course.item(i)).getElementsByTagName("transfer").item(0)).getTextContent());
                 if(courses.containsKey(dept+" "+num)) {
                     CourseRecord r=courses.get(dept+" "+num);
-                    r.addGrade(g);
+                    //r.addGrade(g);
                     if(!transfer && g.greaterThan(r.getCourse().getMinGrade())) {
                         transfer=false;
                     }
