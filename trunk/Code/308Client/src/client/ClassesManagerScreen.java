@@ -128,6 +128,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                 if(validateForm()){
                     String str = (String) courses.getModel().getValueAt(courses.getSelectedRow(),0);
                     CourseRecord cr = frame.getCourseRecord(str);
+                    error.setVisible(false);
                     frame.changeManageScreen(ClientGUI.CURR_EDIT, cr);
                 }
             }
@@ -142,6 +143,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                     boolean b = frame.removeCourseRecord(str);
                     if(b){
                         Object o = frame.getStudentInfo();
+                        error.setVisible(false);
                         frame.changeScreen(ClientGUI.CLASSES, o);
                     }
                 }
@@ -156,6 +158,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                 if(f!=null) {
                     frame.uploadFile(f, Commands.UPLOADFILE);
                     frame.changeScreen(ClientGUI.CLASSES, null);
+                    error.setVisible(false);
                     major.setSelectedItem(frame.getStudentInfo().getMajor());
                 }
             }
@@ -165,6 +168,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                error.setVisible(false);
                 frame.dowloadFile(getFile(false),Commands.DOWNLOAD_SCHED);
             }
         });
@@ -173,7 +177,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                error.setVisible(false);
                 frame.changeScreen(ClientGUI.CHECK, frame.checkSchedule());
             }
         });
@@ -183,6 +187,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Schedule o = frame.generateSchedule();
+                error.setVisible(false);
                 frame.changeScreen(ClientGUI.SCHEDULE, o);
             }
         });
@@ -191,8 +196,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                error.setVisible(false);
                 frame.changeScreen(ClientGUI.WELCOME, null);
-
             }
         });
 
@@ -209,7 +214,6 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                 public void actionPerformed(ActionEvent e) {
 
                     frame.changeMajor((Major)major.getSelectedItem());
-
                 }
         });
         Major m2=frame.getCurrentMajor();
@@ -256,6 +260,11 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                     ((DefaultTableModel)courses.getModel()).addRow(o);
                 }
             }
+            major.removeAllItems();
+            major.addItem(new Major("Undecided",0,0));
+            for(Major mag : frame.getAllMajors()) {
+            major.addItem(mag);
+        }
     }
 
     @Override
@@ -306,6 +315,9 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         JButton ok;
         //cancel button
         JButton cancel;
+
+        //error button
+        JLabel error;
 
         //constructor
         public AddClasScreen(ClientGUI gui) {

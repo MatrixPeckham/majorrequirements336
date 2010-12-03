@@ -120,7 +120,8 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("OK");
                     }
                      catch(Exception e) {
-    //                     pw.print("ERR");
+                         objectOut.writeObject("ERR");
+
                      }
                 } else if (cmd.equals(Commands.DOWNLOAD_REQ)) {
                     try {
@@ -357,6 +358,7 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("OK");
                                 objectOut.flush();
                     } catch(Exception e) {
+                        e.printStackTrace();
                         objectOut.writeObject("ERR");
                         objectOut.flush();
                     }
@@ -410,8 +412,6 @@ public class ServerThread implements Runnable{
             } catch(SocketException se){
                 connected=false;
             } catch (Exception e) {
-        //        pw.println("ERR");
-                e.printStackTrace();
             }
         }
     }
