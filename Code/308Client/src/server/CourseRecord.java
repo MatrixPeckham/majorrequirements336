@@ -29,7 +29,6 @@ public class CourseRecord implements Serializable{
     }
 
     //public TreeMap<Semester, Grade> getGradeTreeMap() { return grades; }
-
     public Semester getSemester(Grade g) {
            for(Semester s : grades.keySet())
            {
@@ -40,6 +39,7 @@ public class CourseRecord implements Serializable{
            }
            return null;
     }
+    
     public boolean getTransfer() {return transfer;}
     public Course getCourse() {return course;}
     public boolean coursePassed() {
