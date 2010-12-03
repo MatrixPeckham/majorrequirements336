@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import server.Major;
 import server.User;
@@ -56,7 +57,7 @@ public class LoginScreen extends Screen {
 		logIn = new JLabel("Please Log In");
 		logIn.setFont(new Font("Times New Roman",1,72));
 		nameField = new JTextField(15);
-		passWordField = new JTextField(15);
+		passWordField = new JPasswordField(15);
 		logInButton = new JButton("Log In");
 		logInButton.addActionListener(new ActionListener() {
 			
@@ -76,6 +77,8 @@ public class LoginScreen extends Screen {
                                 if(frame.getPermissions()<=User.STUDENT) {
                                     JOptionPane.showMessageDialog(passWordField, "Invalid Credentials");
                                 }
+                                nameField.setText("");
+                                passWordField.setText("");
                             }
                         }
                 });
@@ -111,8 +114,9 @@ public class LoginScreen extends Screen {
 
 	@Override
 	public void getScreen(Object fillWith) {
-		// TODO Auto-generated method stub
-	}
+            nameField.setText("");
+            passWordField.setText("");
+        }
 
     @Override
     public boolean validateForm() {

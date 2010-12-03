@@ -265,19 +265,18 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
     @Override
     public void getScreen(Object fillWith) {
-       if(fillWith instanceof ArrayList){
-                ArrayList<Major> major = (ArrayList<Major>) fillWith;
-                DefaultTableModel model = (DefaultTableModel)majors.getModel();
-                int rows = model.getRowCount();
-                for(int i = 0; i < rows; i++){
-                    model.removeRow(0);
-                }
-                for (Major m : major) {
-                    String[] s = {m.getId()};
-                    model.addRow(s);
-                }
+        DefaultTableModel model = (DefaultTableModel)majors.getModel();
+        int rows = model.getRowCount();
+        for(int i = 0; i < rows; i++){
+            model.removeRow(0);
+        }
+        if(fillWith instanceof ArrayList){
+            ArrayList<Major> major = (ArrayList<Major>) fillWith;
+            for (Major m : major) {
+                String[] s = {m.getId()};
+                model.addRow(s);
             }
-       
+        }
     }
 
     @Override
@@ -480,9 +479,9 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             nameF = new JTextField(10);
             minGPAL = new JLabel("Min GPA");
             minGPAF = new JTextField(10);
-            minUpperL = new JLabel("Min Upper Division");
+            minUpperL = new JLabel("Min Credits");
             minUpperS = new JSpinner();
-
+            minUpperS.setModel(new SpinnerNumberModel(0,0,100,1));
             yearL = new JLabel("Year");
             yearS = new JSpinner();
             yearS.setModel(new SpinnerNumberModel(2010, 2000, 2200, 1));
@@ -526,7 +525,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(numCL, this, 3, 7, 1, 1);
             addJComponentToContainerUsingGBL(curS, this, 4, 7, 1, 1);
             
-            addJComponentToContainerUsingGBL(exclude, this, 3, 8, 1, 1);
+            //addJComponentToContainerUsingGBL(exclude, this, 3, 8, 1, 1);
             addJComponentToContainerUsingGBL(seqS, this, 6, 7, 1, 1);
 
             addJComponentToContainerUsingGBL(infoL, this, 3, 9, 2, 1);
@@ -587,6 +586,12 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 minUpperS.setValue(r.getMinUpperDivCredits());
                 seqS.setValue(r.getNumberOfCourses());
                 yearS.setValue(r.getYear());
+            } else {
+                nameF.setText("");
+                minGPAF.setText("");
+                minUpperS.setValue(0);
+                seqS.setValue(0);
+                yearS.setValue(2010);
             }
         }
 
@@ -697,13 +702,13 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
         @Override
         public void getScreen(Object fillWith) {
+            DefaultTableModel model = (DefaultTableModel)table.getModel();
+            int n = model.getRowCount();
+            for(int i = 0; i<n;i++){
+                model.removeRow(0);
+            }
             if(fillWith instanceof Major){
                 Major m = (Major) fillWith;
-                DefaultTableModel model = (DefaultTableModel)table.getModel();
-                int n = model.getRowCount();
-                for(int i = 0; i<n;i++){
-                    model.removeRow(0);
-                }
                 for(Requirement r : m.getRequirements()){
                     model.addRow(new String[]{r.getId()});
                 }

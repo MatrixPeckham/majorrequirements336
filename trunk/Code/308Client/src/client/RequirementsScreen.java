@@ -92,8 +92,10 @@ public class RequirementsScreen extends Screen {
 
 	@Override
 	public void getScreen(Object fillWith) {
-		htmlLabel.setText((String)fillWith);
-                
+            if(fillWith!=null)
+		htmlLabel.setText(fillWith.toString());
+            else
+                htmlLabel.setText("Error");
 
 	}
 
