@@ -313,11 +313,11 @@ public class User implements Scheduler, FileParser, Serializable{
                 s+="<file type=\"record\">";
                 for(CourseRecord r : courserecords) {
                     s+="<course>";
-                    s+="<dept>" + r.getCourse().getName() + "</dept>";
-                    s+="<num>" + r.getCourse().getNum() + "</num>";
-                    s+="<grade>" + r.getGrades().get(i) + "</grade>";
-                    s+="<transfer" + r.getTransfer() + "</transfer>";
-                    s+="</course>";
+                    s+="<dept>" + r.getCourse().getName() + "</dept>" + "\n";
+                    s+="<num>" + r.getCourse().getNum() + "</num>" + "\n";
+                    s+="<grade>" + r.getGrades().get(i) + "</grade>" + "\n";
+                    s+="<transfer> " + r.getTransfer() + "</transfer>" + "\n";
+                    s+="</course>" + "\n";
                     i++;
                 }
                 s+="</file>";

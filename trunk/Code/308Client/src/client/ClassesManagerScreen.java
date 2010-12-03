@@ -66,6 +66,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
     private JButton backButton;
     //error label
     private JLabel error;
+    private MajorActionListener majorActList;
 
     /**
      * constructor
@@ -76,6 +77,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         addScreen = new AddClasScreen(gui);
         editScreen = new EditClasScreen(gui);
         remScreen = new RemoveClasScreen(gui);
+        majorActList = new MajorActionListener();
         initGUI();
     }
     //sets up GUI includding actio listeners
@@ -165,7 +167,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         });
         downloadButton = new JButton("Dowload Courses");
         downloadButton.addActionListener(new ActionListener() {
-
+            
             @Override
             public void actionPerformed(ActionEvent e) {
                 error.setVisible(false);
@@ -210,12 +212,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         majorLabel.setText("Current Major:");
         major=new JComboBox();
         major.addItem(new Major("Undecided",0,0));
-        major.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-
-                    frame.changeMajor((Major)major.getSelectedItem());
-                }
-        });
+        major.addActionListener(majorActList);
         Major m2=frame.getCurrentMajor();
         if(m2!=null) {
             major.setSelectedItem(m2);
@@ -244,28 +241,36 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
        for(int i=0; i<num; i++) {
            m.removeRow(0);
        }
+       major.removeActionListener(majorActList);
        major.removeAllItems();
-        for(Major mag : frame.getAllMajors()) {
-            major.addItem(mag);
-        }
-        TreeMap<String,CourseRecord> t=frame.getStudentInfo().getCourses();
-            for(CourseRecord r : t.values()) {
-                for(Grade g : r.getGrades()) {
-                    Object[] o=new Object[4];
-                    o[0]=r.getCourse().getId();
-                    o[1]=g.getGrade();
-                    //JCheckBox j=new JCheckBox();
-                    //j.setSelected();
-                    o[2]=r.getTransfer();
-                    o[3]=r.getSemester(g);
-                    ((DefaultTableModel)courses.getModel()).addRow(o);
-                }
-            }
-            major.removeAllItems();
+       major.addItem(new Major("Undecided",0,0));
+       for(Major mag : frame.getAllMajors()) {
+           major.addItem(mag);
+       }
+       major.addActionListener(majorActList);
+       Major m2=frame.getCurrentMajor();
+       if(m2!=null) {
+           major.setSelectedItem(m2);
+       } else {
+       major.setSelectedIndex(0);
+       }
+       TreeMap<String,CourseRecord> t=frame.getStudentInfo().getCourses();
+           for(CourseRecord r : t.values()) {
+               for(Grade g : r.getGrades()) {
+                   Object[] o=new Object[3];
+                   o[0]=r.getCourse().getId();
+                   o[1]=g.getGrade();
+                   //JCheckBox j=new JCheckBox();
+                   //j.setSelected();
+                   o[2]=r.getTransfer();
+                   ((DefaultTableModel)courses.getModel()).addRow(o);
+               }
+           }
+            /*major.removeAllItems();
             major.addItem(new Major("Undecided",0,0));
             for(Major mag : frame.getAllMajors()) {
             major.addItem(mag);
-        }
+        }*/
     }
 
     @Override
@@ -516,4 +521,13 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             return false;
         }
     }
+
+    private class MajorActionListener implements ActionListener   {
+        public void actionPerformed(ActionEvent e) {
+                    frame.changeMajor((Major)major.getSelectedItem());
+                }
+
+    }
 }
+
+

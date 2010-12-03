@@ -35,16 +35,19 @@ public class Client{
 	
 	public File getFile(File location, String str) {
             try{
-            FileWriter fw=new FileWriter(location);
-            PrintWriter pw2=new PrintWriter(fw);
-            oos.writeObject(str);
-            String s;
-            while(!(s=(String) ois.readObject()).equals("ENDXML")) {
-                oos.writeObject(s);
-            }
-//            pw.flush();
+                FileWriter fw=new FileWriter(location);
+                PrintWriter pw2=new PrintWriter(fw);
+                oos.writeObject(str);
+                String s;
+                //while(!(
+                s=(String) ois.readObject();//).equals("ENDXML")) {
+                   //oos.writeObject(s);
+               // }
+                pw2.println(s);
+                pw2.flush();
                 return location;
-            }catch(SocketException se){
+            }
+            catch(SocketException se){
             connectionLostGTFO();
             return null;
         } catch(Exception e) {
