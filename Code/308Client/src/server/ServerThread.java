@@ -403,6 +403,30 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("ERR");
                         objectOut.flush();
                     }
+                } else if(cmd.equals(Commands.ADD_REQ)){
+                    try{
+                        Requirement r = (Requirement)objectIn.readObject();
+                        String dept = (String)objectIn.readObject();
+                        String major = (String)objectIn.readObject();
+                        Major ma = null;
+                        for(Major m : School.getSchool().getDepartment(dept).getMajors()){
+                            if(m.getId().equals(major)){
+                                ma=m;
+                                break;
+                            }
+                        }
+                        if(ma!=null){
+                            ma.addRequirement(r);
+                            objectOut.writeObject(true);
+                            objectOut.flush();
+                        } else {
+                            objectOut.writeObject(false);
+                            objectOut.flush();
+                        }
+                    } catch(Exception e){
+                        objectOut.writeObject(false);
+                        objectOut.flush();
+                    }
                 } else {
                         //objectOut.writeObject(null);
                         //objectOut.writeObject("ERR");
@@ -412,6 +436,7 @@ public class ServerThread implements Runnable{
             } catch(SocketException se){
                 connected=false;
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

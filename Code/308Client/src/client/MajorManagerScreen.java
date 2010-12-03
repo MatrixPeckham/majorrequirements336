@@ -22,6 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import server.Course;
 import server.CourseGroup;
@@ -322,6 +323,10 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         JLabel minUpperL;
         //min upper courses for requirement spinner
         JSpinner minUpperS;
+        //spinner for year of requirement
+        JSpinner yearS;
+        //label for year
+        JLabel yearL;
         //ok button
         JButton ok;
         //cancel button
@@ -440,6 +445,11 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             minGPAF = new JTextField(10);
             minUpperL = new JLabel("Min Upper Division");
             minUpperS = new JSpinner();
+
+            yearL = new JLabel("Year");
+            yearS = new JSpinner();
+            yearS.setModel(new SpinnerNumberModel(2010, 2000, 2200, 1));
+
             ok = new JButton("OK");
             ok.addActionListener(new ActionListener() {
 
@@ -489,8 +499,10 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(minGPAF, this, 4, 11, 1, 1);
             addJComponentToContainerUsingGBL(minUpperL, this, 3, 12, 1, 1);
             addJComponentToContainerUsingGBL(minUpperS, this, 4, 12, 1, 1);
-            addJComponentToContainerUsingGBL(ok, this, 3, 13, 1, 1);
-            addJComponentToContainerUsingGBL(cancel, this, 4, 13, 1, 1);
+            addJComponentToContainerUsingGBL(yearL, this, 3, 13, 1, 1);
+            addJComponentToContainerUsingGBL(yearS, this, 4, 13, 1, 1);
+            addJComponentToContainerUsingGBL(ok, this, 3, 14, 1, 1);
+            addJComponentToContainerUsingGBL(cancel, this, 4, 14, 1, 1);
 
 
         }
@@ -504,6 +516,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             r.setMinGPA((Double.parseDouble(minGPAF.getText())));
             r.setMinUpperDivCredits((Integer)minUpperS.getValue());
             r.setNumberOfCourses((Integer)seqS.getValue());
+            r.setYear((Integer)yearS.getValue());
             return r;
         }
         /**
@@ -536,6 +549,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 minGPAF.setText(r.getMinGPA()+"");
                 minUpperS.setValue(r.getMinUpperDivCredits());
                 seqS.setValue(r.getNumberOfCourses());
+                yearS.setValue(r.getYear());
             }
         }
 
