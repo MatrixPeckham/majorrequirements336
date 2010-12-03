@@ -128,7 +128,8 @@ public class Major implements Serializable {
         return mc;
     }
     public void removeRequirement(Requirement r) {
-
+        reqs.remove(r);
+        PersistenceManager.merge(this);
     }
     public String getDepartment() {return department;}
     public void setDepartment(String dept) {department=dept;}
