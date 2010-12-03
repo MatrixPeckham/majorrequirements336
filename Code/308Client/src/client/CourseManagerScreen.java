@@ -221,19 +221,19 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
     @Override
     public void getScreen(Object fillWith) {
-            if(fillWith instanceof ArrayList){
-                //Department d = (Department) fillWith;
-                ArrayList<Course> courses = (ArrayList<Course>)fillWith;
-                DefaultTableModel model = (DefaultTableModel)table.getModel();
-                int rows = model.getRowCount();
-                for(int i = 0; i < rows; i++){
-                    model.removeRow(0);
-                }
-                for (Course c : courses) {
-                    String[] s = {c.getId()};
-                    model.addRow(s);
-                }
+        DefaultTableModel model = (DefaultTableModel)table.getModel();
+        int rows = model.getRowCount();
+        for(int i = 0; i < rows; i++){
+            model.removeRow(0);
+        }
+        if(fillWith instanceof ArrayList){
+            //Department d = (Department) fillWith;
+            ArrayList<Course> courses = (ArrayList<Course>)fillWith;
+            for (Course c : courses) {
+                String[] s = {c.getId()};
+                model.addRow(s);
             }
+        }
     }
 
     @Override
@@ -630,6 +630,11 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 sum2B.setSelected(false);
                 deptF.setText(frame.getCurrentDepartment());
                 nameF.setText(frame.getCurrentDepartment());
+                numF.setText("");
+                descF.setText("");
+                credF.setValue(0);
+                standingPrereq.setSelectedIndex(0);
+                minB.setSelectedIndex(0);
             if(fillWith instanceof Course){
                 Course c = (Course) fillWith;
                 nameF.setText(c.getId());

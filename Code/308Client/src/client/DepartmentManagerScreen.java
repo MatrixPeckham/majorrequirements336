@@ -175,17 +175,17 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 
 	@Override
 	public void getScreen(Object fillWith) {
+            DefaultTableModel model = (DefaultTableModel)table.getModel();
+            int rows = model.getRowCount();
+            for(int i = 0; i < rows; i++){
+                model.removeRow(0);
+            }
             if(fillWith instanceof ArrayList){
                 ArrayList<Department> depos = (ArrayList<Department>) fillWith;
-                DefaultTableModel model = (DefaultTableModel)table.getModel();
-                int rows = model.getRowCount();
-                for(int i = 0; i < rows; i++){
-                    model.removeRow(0);
-                }
                 for (Department d : depos) {
                     String[] s = {d.getName()};
                     model.addRow(s);
-                }  
+                }
             }
         }
 
@@ -303,7 +303,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 
         @Override
         public void getScreen(Object fillWith) {
-            
+            nameField.setText("");
         }
 
         @Override
