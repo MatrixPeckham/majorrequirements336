@@ -361,7 +361,6 @@ public class User implements Scheduler, FileParser, Serializable{
                 }
                 s+="</file>";
             }
-
         }
         catch (Exception ioe)   {
 

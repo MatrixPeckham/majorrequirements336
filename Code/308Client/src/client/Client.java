@@ -553,7 +553,11 @@ public User getStudentInfo() {
     }
 
     public void downloadFile(File file, String str) {
-        getFile(file,str);
+        File f = getFile(file,str);
+        if(f!=null)
+        {
+
+        }
        /* try {
             oos.writeObject(Commands.DOWNLOAD_COURSE_DATA);
             oos.flush();

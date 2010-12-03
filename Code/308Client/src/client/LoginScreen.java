@@ -86,6 +86,7 @@ public class LoginScreen extends Screen {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.changeScreen(ClientGUI.WELCOME, null);
+                                error.setVisible(false);
 			}
 		});
 		back.setFont(new Font("Times New Roman",1,24));
@@ -105,7 +106,7 @@ public class LoginScreen extends Screen {
 		addJComponentToContainerUsingGBL(passWordField, this, 2, 20, 1, 1);
 		addJComponentToContainerUsingGBL(logInButton, this, 1, 30, 1, 1);
 		addJComponentToContainerUsingGBL(back, this, 2, 30, 1, 1);
-                addJComponentToContainerUsingGBL(error, this, 1, 40, 1, 1);
+                addJComponentToContainerUsingGBL(error, this, 2, 40, 1, 1);
 	}
 
 	@Override
