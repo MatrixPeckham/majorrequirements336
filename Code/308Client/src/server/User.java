@@ -356,11 +356,10 @@ public class User implements Scheduler, FileParser, Serializable{
                             }
                             s+="\t\t</requirement>\n";
                         }
+                        s+="\t</major>\n";
                     }
-                    s+="\t</major>\n";
-                
-                s+="</file>";
-            }
+                    s+="</file>";
+             }
         }
         catch (Exception ioe)   {
 
