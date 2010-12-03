@@ -628,6 +628,15 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 }
             });
             remReq = new JButton("Remove");
+            remReq.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    if(validateForm()){
+                        String s = (String)table.getModel().getValueAt(table.getSelectedRow(), 0);
+                        frame.removeRequirement(s, frame.getCurrentMajor().getId());
+                    }
+                }
+            });
             back = new JButton("Back");
             back.addActionListener(new ActionListener() {
 

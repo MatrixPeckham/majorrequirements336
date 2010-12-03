@@ -179,7 +179,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         Object[][] data = {};
 
         table = new JTable();
-        table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
+        table.setPreferredScrollableViewportSize(new Dimension(1000, 200));
         table.setFillsViewportHeight(true);
         table.setModel(new DefaultTableModel(){
             public boolean isCellEditable(int x, int y) {
@@ -208,7 +208,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
         addJComponentToContainerUsingGBL(editDepartmentPage, this, 1, 1, 4, 1);
         addJComponentToContainerUsingGBL(coursesForDepartment, this, 1, 2, 1, 1);
-        addJComponentToContainerUsingGBL(scrollPane, this, 1, 3, 4, 5);
+        addJComponentToContainerUsingGBL(scrollPane, this, 1, 3, 5, 5);
         addJComponentToContainerUsingGBL(add, this, 1, 10, 1, 1);
         addJComponentToContainerUsingGBL(remove, this, 2, 10, 1, 1);
         addJComponentToContainerUsingGBL(edit, this, 3, 10, 1, 1);
