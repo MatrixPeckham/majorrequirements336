@@ -257,12 +257,13 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
        TreeMap<String,CourseRecord> t=frame.getStudentInfo().getCourses();
            for(CourseRecord r : t.values()) {
                for(Grade g : r.getGrades()) {
-                   Object[] o=new Object[3];
+                   Object[] o=new Object[4];
                    o[0]=r.getCourse().getId();
                    o[1]=g.getGrade();
                    //JCheckBox j=new JCheckBox();
                    //j.setSelected();
                    o[2]=r.getTransfer();
+                   o[3]=r.getSemester(g);
                    ((DefaultTableModel)courses.getModel()).addRow(o);
                }
            }
@@ -423,7 +424,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             }
             num=allC.size();
             for(int i = 0; i<num;i++){
-                Object[] o = new Object[4];
+                Object[] o = new Object[3];
                 Course c = allC.get(i);
                 o[0]=c.getId();
                 o[1]=c.getCredits();
