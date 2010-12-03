@@ -7,6 +7,7 @@ package server;
 
 import java.io.Serializable;
 import java.util.Iterator;
+import java.util.TreeMap;
 import java.util.Vector;
 
 /**
@@ -15,12 +16,13 @@ import java.util.Vector;
  */
 public class CourseRecord implements Serializable{
     private Course course;
-    //private TreeMap<Semester, Grade> grades;
-    private Vector<Grade> grades;
+    private TreeMap<Semester, Grade> grades;
+    //private Vector<Grade> grades;
     private boolean transfer;
     public CourseRecord(Course course, Grade grade, boolean transfer) {
-        grades=new Vector<Grade>();
-        addGrade(grade);
+        //grades=new Vector<Grade>();
+        grades=new TreeMap<Semester, Grade>();
+        addGrade(grade, Semester.freeSemester());
         this.course=course;
         this.transfer=transfer;
     }
@@ -28,16 +30,16 @@ public class CourseRecord implements Serializable{
     public boolean getTransfer() {return transfer;}
     public Course getCourse() {return course;}
     public boolean coursePassed() {
-        for(Grade g : grades) {
+        for(Grade g : grades.values()) {
             if(g.greaterThan(course.getMinGrade())) {return true;}
         }
         return false;
     }
-    public void addGrade(Grade g) {grades.add(g);}
-    public Vector<Grade> getGrades() {return grades;}
+    public void addGrade(Grade g, Semester s) {grades.put(s,g);}
+    public Vector<Grade> getGrades() {return new Vector(grades.values());}
     public double getGPA() {
         double d=0;
-        Iterator<Grade> g=grades.iterator();
+        Iterator<Grade> g=grades.values().iterator();
         while(g.hasNext()) {
             d+=g.next().getGradePoints();
         }
