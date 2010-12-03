@@ -310,15 +310,14 @@ public class User implements Scheduler, FileParser, Serializable{
             if (cmd.equals(Commands.DOWNLOAD_COURSE_DATA))    {
                 Collection<CourseRecord> courserecords = courses.values();
                 int i = 0;
-                s+="<file type=\"record\">";
+                s+="<file type=\"record\">" + "\n";
                 for(CourseRecord r : courserecords) {
-                    s+="<course>";
-                    s+="<dept>" + r.getCourse().getName() + "</dept>" + "\n";
-                    s+="<num>" + r.getCourse().getNum() + "</num>" + "\n";
-                    s+="<grade>" + r.getGrades().get(i) + "</grade>" + "\n";
-                    s+="<transfer> " + r.getTransfer() + "</transfer>" + "\n";
-                    s+="</course>" + "\n";
-                    i++;
+                    s+="\t<course>" + "\n";
+                    s+="\t\t<dept>" + r.getCourse().getName() + "</dept>" + "\n";
+                    s+="\t\t<num>" + r.getCourse().getNum() + "</num>" + "\n";
+                    s+="\t\t<grade>" + r.getGrades().get(i).getGrade() + "</grade>" + "\n";
+                    s+="\t\t<transfer>" + r.getTransfer() + "</transfer>" + "\n";
+                    s+="\t</course>" + "\n";
                 }
                 s+="</file>";
  
