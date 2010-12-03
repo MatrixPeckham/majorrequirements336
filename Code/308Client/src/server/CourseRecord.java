@@ -7,6 +7,7 @@ package server;
 
 import java.io.Serializable;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.TreeMap;
 import java.util.Vector;
 
@@ -27,6 +28,18 @@ public class CourseRecord implements Serializable{
         this.transfer=transfer;
     }
 
+    //public TreeMap<Semester, Grade> getGradeTreeMap() { return grades; }
+
+    public Semester getSemester(Grade g) {
+           for(Semester s : grades.keySet())
+           {
+               if(grades.get(s).equals(g))
+               {
+                   return s;
+               }
+           }
+           return null;
+    }
     public boolean getTransfer() {return transfer;}
     public Course getCourse() {return course;}
     public boolean coursePassed() {
