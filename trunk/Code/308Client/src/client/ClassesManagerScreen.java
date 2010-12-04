@@ -159,7 +159,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                 File f=getFile(true);
                 if(f!=null) {
                     frame.uploadFile(f, Commands.UPLOADFILE);
-                    frame.changeScreen(ClientGUI.CLASSES, null);
+                    frame.changeScreen(ClientGUI.CLASSES, frame.getStudentInfo());
                     error.setVisible(false);
                     major.setSelectedItem(frame.getStudentInfo().getMajor());
                 }

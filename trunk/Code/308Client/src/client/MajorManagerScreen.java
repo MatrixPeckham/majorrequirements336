@@ -221,11 +221,11 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 File f = getFile(true);
-                if(f!=null) {
-                    frame.uploadFile(f, Commands.UPLOADFILE);
-                    frame.changeScreen(ClientGUI.MAJORS, null);
-                    error.setVisible(false);
-                }
+                    if(f!=null) {
+                        frame.uploadFile(f, Commands.UPLOADFILE);
+                        frame.changeScreen(ClientGUI.MAJORS, frame.getDepartment(frame.getCurrentDepartment()).getMajors());
+                        error.setVisible(false);
+                    }
                 }
 
             });
@@ -505,7 +505,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     Object o = frame.getCurrentMajor();
-                    frame.changeManageScreen(ClientGUI.CURR_EDIT, null);
+                    frame.changeManageScreen(ClientGUI.CURR_EDIT, frame.getCurrentMajor().getRequirements());
                 }
             });
             setLayout(new GridBagLayout());
@@ -684,7 +684,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    frame.changeScreen(ClientGUI.MAJORS, frame.getDepartment(frame.getCurrentDepartment()));
+                    frame.changeScreen(ClientGUI.MAJORS, frame.getDepartment(frame.getCurrentDepartment()).getMajors());
                 }
             });
             this.setLayout(new GridBagLayout());

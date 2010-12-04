@@ -168,7 +168,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Object o = frame.getDepartment(frame.getCurrentDepartment());
+                Object o = frame.getDepartment(frame.getCurrentDepartment()).getMajors();
                 frame.changeScreen(ClientGUI.MAJORS, o);
             }
         });
@@ -384,7 +384,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    frame.changeScreen(ClientGUI.COURSES, frame.getDepartment(frame.getCurrentDepartment()));
+                    frame.changeScreen(ClientGUI.COURSES, frame.getDepartmentCourses(frame.getCurrentDepartment()));
                 }
             });
             String[] columnNames = {"Course"};//, "Select"};
