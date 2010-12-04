@@ -493,7 +493,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 public void actionPerformed(ActionEvent arg0) {
                     if(validateForm()){
                         frame.addRequirement(makeReq(), nameF.getText());
-                        Object o = frame.getCurrentMajor().getRequirements();
+                        Object o = frame.getCurrentMajor();
                         frame.changeManageScreen(ClientGUI.CURR_EDIT, o);
                     }
                 }
@@ -505,7 +505,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     Object o = frame.getCurrentMajor();
-                    frame.changeManageScreen(ClientGUI.CURR_EDIT, frame.getCurrentMajor().getRequirements());
+                    frame.changeManageScreen(ClientGUI.CURR_EDIT, frame.getCurrentMajor());
                 }
             });
             setLayout(new GridBagLayout());
