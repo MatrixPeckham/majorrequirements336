@@ -178,6 +178,7 @@ public class ClientGUI extends JFrame {
 	public boolean removeCourse(String str) {return networking.removeCourse(networking.getCurrentDepartment(),str);}
 	public boolean editCourse(Course c) {return networking.editCourse(c);}
 	public Major loadMajor(String str) {return networking.loadMajor(str);}
+        public int changeYear(int i){return networking.changeYear(i);}
 	public void addMajor(Major m) {networking.addMajor(m,networking.getCurrentDepartment());}
 	public boolean editMajor(Major m, String s) {return networking.editMajor(m,networking.getCurrentDepartment(),s);}
 	public boolean removeMajor(String str) {return networking.removeMajor(networking.getCurrentDepartment(),str);}
