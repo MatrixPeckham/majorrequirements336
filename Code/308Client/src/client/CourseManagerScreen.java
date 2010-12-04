@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -306,6 +307,8 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         private JComboBox standingPrereq;
 
         private JTable offeringTable;
+        private JComboBox semBox;
+        private JSpinner semSpi;
         private JButton addSemesterButton;
         private JButton remSemesterButton;
         private JLabel minL;
@@ -449,27 +452,28 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             JLabel pLbl=new JLabel();
             pLbl.setText("Minimum Standing:");
 
+            semBox = new JComboBox();
+            BoxModel boxModel = new BoxModel();
+            semBox.setModel(boxModel);
+            boxModel.addElm("FALL", Semester.FALL);
+            boxModel.addElm("SPRING", Semester.SPRING);
+            boxModel.addElm("WINTER", Semester.WINTER);
+            boxModel.addElm("Summer 1", Semester.SUMMER1);
+            boxModel.addElm("Summer 1", Semester.SUMMER2);
+
+            semSpi = new JSpinner();
+            semSpi.setModel(new SpinnerNumberModel(2008,2000,2100,1));
 
             addSemesterButton = new JButton("Add next Semester");
             addSemesterButton.addActionListener(new ActionListener() {
-                Semester s = Semester.freeSemester();
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     DefaultTableModel model = (DefaultTableModel)offeringTable.getModel();
+                    Semester s = new Semester();
+                    s.setSeason(((BoxModel)semBox.getModel()).getValAt(semBox.getSelectedIndex()));
+                    s.setYear((Integer)semSpi.getValue());
                     Object[] o = {s,false};
                     model.addRow(o);
-                    incS();
-                }
-                public void incS(){
-                    int i = s.getSeason()*2;
-                    int y = s.getYear();
-                    if(i>16){
-                        i=1;
-                        y++;
-                    }
-                    s = new Semester();
-                    s.setSeason(i);
-                    s.setYear(y);
                 }
             });
             remSemesterButton = new JButton("Remove Selected Semester");
@@ -507,8 +511,8 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             fallB = new JCheckBox("Fall");
             spriB = new JCheckBox("Spring");
             wintB = new JCheckBox("Winter");
-            sum1B = new JCheckBox("Summer 1");
-            sum2B = new JCheckBox("Summer 2");
+            sum1B = new JCheckBox("SUMMER 1");
+            sum2B = new JCheckBox("SUMMER 2");
 
             checkPanel = new JPanel();
             checkPanel.setBorder(BorderFactory.createTitledBorder("Semesters for Unlisted Tentative Classes"));
@@ -552,10 +556,13 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(listPane, this, 4, 8, 2, 2);
             addJComponentToContainerUsingGBL(scrollPane, this, 4, 2, 2, 6);
 
-            addJComponentToContainerUsingGBL(addSemesterButton, this, 6, 3, 1, 1);
-            addJComponentToContainerUsingGBL(remSemesterButton, this, 6, 5, 1, 1);
-            addJComponentToContainerUsingGBL(new JScrollPane(offeringTable), this, 7, 2, 2, 6);
-            addJComponentToContainerUsingGBL(checkPanel, this, 7, 8, 3, 3);
+            addJComponentToContainerUsingGBL(semBox, this, 6, 2, 1, 1);
+            addJComponentToContainerUsingGBL(semSpi, this, 7, 2, 1, 1);
+
+            addJComponentToContainerUsingGBL(addSemesterButton, this, 6, 3, 2, 1);
+            addJComponentToContainerUsingGBL(remSemesterButton, this, 6, 5, 2, 1);
+            addJComponentToContainerUsingGBL(new JScrollPane(offeringTable), this, 8, 2, 2, 6);
+            addJComponentToContainerUsingGBL(checkPanel, this, 8, 8, 3, 3);
         }
 
         private Course makeCourse() {
@@ -712,6 +719,16 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         @Override
         public boolean validateForm() {
             throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+    class BoxModel extends DefaultComboBoxModel{
+        Vector<Integer> nums = new Vector<Integer>();
+        public void addElm(String disp, int num){
+            super.addElement(disp);
+            nums.add(num);
+        }
+        public int getValAt(int i){
+            return nums.get(i);
         }
     }
 }
