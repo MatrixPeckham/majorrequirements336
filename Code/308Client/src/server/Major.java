@@ -55,29 +55,6 @@ public class Major implements Serializable {
         this.minGPA=minGPA;
         minCreditsHere=minLocalCreds;
     }
-    /**
-     * test main method
-     * @param args
-     */
-     public static void main(String[] args) {
-        emf=Persistence.createEntityManagerFactory("ClientPU");
-        em=emf.createEntityManager();
-        em.getTransaction().begin();
-        Major c=new Major();
-        c.setId("CSE2");
-        Course co=new Course();
-        co.setId("CSE39");
-        Department d=new Department();
-        d.setName("CSE2");
-        em.persist(d);
-        d.addMajor(c);
-        d.addCourse(co);
-       // em.getTransaction().commit();
-
-        // Set the LogLevel to Info, severe, warning and info will be written
-	// Finest is still not written
-	
-    }
 
      @OneToMany()
      public Collection<Requirement> getRequirements() {
