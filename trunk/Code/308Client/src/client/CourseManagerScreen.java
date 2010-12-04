@@ -464,7 +464,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             semSpi = new JSpinner();
             semSpi.setModel(new SpinnerNumberModel(2008,2000,2100,1));
 
-            addSemesterButton = new JButton("Add next Semester");
+            addSemesterButton = new JButton("Add Semester");
             addSemesterButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
