@@ -148,6 +148,24 @@ public class Requirement implements Serializable {
         RequirementCompletion rc=new RequirementCompletion();
         rc.complete=true;
         rc.name=this.getId();
+        if(possibleCourses.size()==0) {
+            for(CourseRecord cr : courses.values()) {
+                int cc=cr.getCourse().getCredits();
+                for(Grade g : cr.getGrades()) {
+                    credOp+=cc;
+                    gpa+=g.getGradePoints()*cc;
+                }
+                if(cr.coursePassed()) {
+                    if(!cr.getTransfer()) {
+                        local+=cc;
+                    }
+                    if(cr.getCourse().isUpperDivision()) {
+                        upper+=cc;
+                    }
+                    credits++;
+                }
+            }
+        } else {
         for(CourseGroup cb : possibleCourses) {
             int remCourses=0;
             for(Course c: cb.getCourses()) {
@@ -191,6 +209,7 @@ public class Requirement implements Serializable {
             if(remCourses>=cb.getNumReqiured()) {
                 num++;
             }
+        }
         }
         rc.credsEarned=credits;
         rc.credsTaken=credOp;

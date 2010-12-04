@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.TreeMap;
 import javax.swing.ComboBoxModel;
 
@@ -16,7 +17,11 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import server.Commands;
 import server.Course;
@@ -43,6 +48,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
     private AddClasScreen addScreen;
     private EditClasScreen editScreen;
     private JComboBox major;
+    private JSpinner year;
     private RemoveClasScreen remScreen;
     //title screen
     private JLabel studentPage;
@@ -67,6 +73,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
     //error label
     private JLabel error;
     private MajorActionListener majorActList;
+
 
     /**
      * constructor
@@ -158,10 +165,13 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             public void actionPerformed(ActionEvent e) {
                 File f=getFile(true);
                 if(f!=null) {
+                    
                     frame.uploadFile(f, Commands.UPLOADFILE);
+                    User u=frame.getStudentInfo();
                     frame.changeScreen(ClientGUI.CLASSES, frame.getStudentInfo());
                     error.setVisible(false);
-                    major.setSelectedItem(frame.getStudentInfo().getMajor());
+                    major.setSelectedItem(u.getMajor());
+                    year.getModel().setValue(u.getMajorYear());
                 }
             }
         });
@@ -208,6 +218,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         error.setVisible(false);
         error.setForeground(Color.red);
         this.setLayout(new GridBagLayout());
+
         JLabel majorLabel=new JLabel();
         majorLabel.setText("Current Major:");
         major=new JComboBox();
@@ -219,6 +230,22 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         } else {
         major.setSelectedIndex(0);
         }
+        JLabel yearLabel=new JLabel("Requirement Year:");
+        year=new JSpinner();
+        SpinnerNumberModel s=new SpinnerNumberModel();
+        s.setMaximum(2100);
+        s.setMinimum(1900);
+        s.setStepSize(1);
+        s.addChangeListener(new ChangeListener(){
+
+            @Override
+            public void stateChanged(ChangeEvent e) {
+               ((SpinnerNumberModel)e.getSource()).getValue();
+            }
+
+        });
+        s.setValue((new Date()).getYear()+1900);
+        year.setModel(s);
         addJComponentToContainerUsingGBL(studentPage, this, 1, 1, 5, 1);
         addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 5, 2);
         addJComponentToContainerUsingGBL(addButton, this, 1, 4, 1, 1);
@@ -230,7 +257,9 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         addJComponentToContainerUsingGBL(generateButton, this, 4, 5, 1, 1);
         addJComponentToContainerUsingGBL(majorLabel, this, 1, 6, 1, 1);
         addJComponentToContainerUsingGBL(major, this, 2, 6, 2, 1);
-        addJComponentToContainerUsingGBL(backButton, this, 6, 7, 1, 1);
+        addJComponentToContainerUsingGBL(yearLabel, this, 1, 7, 1, 1);
+        addJComponentToContainerUsingGBL(year, this, 2, 7, 2, 1);
+        addJComponentToContainerUsingGBL(backButton, this, 6, 8, 1, 1);
         addJComponentToContainerUsingGBL(error, this, 5, 6, 1, 1);
     }
 

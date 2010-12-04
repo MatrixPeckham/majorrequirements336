@@ -60,7 +60,14 @@ public class ServerThread implements Runnable{
 
             try{
                 cmd=(String)objectIn.readObject();
-               
+               if(cmd.equals(Commands.CHANGEYEAR)) {
+                   try{
+                   user.setMajorYear((Integer)objectIn.readObject());
+                   objectOut.writeObject("OK");
+                   }catch(Exception e) {
+                       objectOut.writeObject("ERR");
+                   }
+               } else
                 if(cmd.equals(Commands.LOGIN)) {
                     try {
                     String username=(String) objectIn.readObject();

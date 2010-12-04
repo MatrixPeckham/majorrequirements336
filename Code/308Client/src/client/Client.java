@@ -644,7 +644,19 @@ public User getStudentInfo() {
         currDepo=dep;
     }
     String currDepo="CSE";
-
+    public int changeYear(int i) {
+        try{
+        oos.writeObject(Commands.CHANGEYEAR);
+        oos.flush();
+        if(ois.readObject().equals("OK")){
+            return 1;
+        } else {
+            return 0;
+        }
+        }catch(Exception e){
+            return -1;
+        }
+    }
     void connectionLostGTFO(){
         JOptionPane.showMessageDialog(null, "The connection to the server has been lost.\nUnable to continue, the program will exit.");
         System.exit(-1);

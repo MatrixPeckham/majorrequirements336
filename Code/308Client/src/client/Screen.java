@@ -52,7 +52,7 @@ public abstract class Screen extends JPanel {
          * @param w width in grid cells of the component
          * @param h height in grid cells of the component
          */
-	public void addJComponentToContainerUsingGBL(JComponent jc, Container c,
+	public static void addJComponentToContainerUsingGBL(JComponent jc, Container c,
 			int x, int y, int w, int h) {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = x;
