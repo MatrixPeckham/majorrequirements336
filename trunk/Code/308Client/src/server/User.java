@@ -26,13 +26,14 @@ public class User implements Scheduler, FileParser, Serializable{
     public static final int STUDENT=0;
     public static final int DEPT_ADMIN=1;
     public static final int SUPER_ADMIN=2;
-    private int majorYear=2008;
+    private int majorYear;
     private String name;
     private Major major;
     private TreeMap<String, CourseRecord> courses;
     private long userId;
     private int permissions;
     User(long i) {
+        majorYear=(new Date()).getYear();
         courses=new TreeMap<String, CourseRecord>();
         userId=i;
         permissions=STUDENT;
@@ -314,12 +315,19 @@ public class User implements Scheduler, FileParser, Serializable{
                 s+="\t<major>" + major + "</major>\n";
                 s+="\t<year>" + majorYear + "</year>\n";
                 for(CourseRecord r : courserecords) {
+                    for(Grade g : r.getGrades()) {
+                        Semester s2=r.getSemester(g);
                     s+="\t<course>" + "\n";
                     s+="\t\t<dept>" + r.getCourse().getName() + "</dept>" + "\n";
                     s+="\t\t<num>" + r.getCourse().getNum() + "</num>" + "\n";
-                    s+="\t\t<grade>" + r.getGrades().get(i).getGrade() + "</grade>" + "\n";
+                    s+="\t\t<grade>" + g.getGrade() + "</grade>" + "\n";
+                    s+="\t\t<semester>";
+                    s+="\t\t\t<year>"+s2.getYear()+"</year>";
+                    s+="\t\t\t<season>"+s2.getSeason()+"</season>";
+                    s+="\t\t</semester>";
                     s+="\t\t<transfer>" + r.getTransfer() + "</transfer>" + "\n";
                     s+="\t</course>" + "\n";
+                    }
                 }
                 s+="</file>";
  
@@ -335,7 +343,7 @@ public class User implements Scheduler, FileParser, Serializable{
                         Collection<Requirement> requirements = m.getRequirements();
                         s+="\t<major>\n";
                         s+="\t\t<majorname>" + m.getId() + "</majorname>\n";
-               
+             
                         for(Requirement r : requirements)   {
                             s+="\t\t<minGPA>" + r.getMinGPA() + "</minGPA>\n";
                             s+="\t\t<minLocalCreds>" + r.getMinResidentCredits() + "</minLocalCreds>\n";

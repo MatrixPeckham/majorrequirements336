@@ -240,7 +240,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void stateChanged(ChangeEvent e) {
-               ((SpinnerNumberModel)e.getSource()).getValue();
+               frame.changeYear((Integer)((SpinnerNumberModel)e.getSource()).getValue());
             }
 
         });
