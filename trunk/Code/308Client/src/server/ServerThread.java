@@ -86,7 +86,7 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("0");
                     }
                 } else if(cmd.equals(Commands.LOGOUT)) {
-                    connected=false;
+                    //connected=false;
                     system.removeUser(user.getID());
                     objectOut.writeObject("OK");
                 } else if(cmd.equals(Commands.ADD_MAJOR)) {

@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
@@ -134,12 +135,16 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(validateForm()){
+                //if(validateForm()){
+                    try{
                     String str = (String) courses.getModel().getValueAt(courses.getSelectedRow(),0);
                     CourseRecord cr = frame.getCourseRecord(str);
                     error.setVisible(false);
                     frame.changeManageScreen(ClientGUI.CURR_EDIT, cr);
-                }
+                    }catch(ArrayIndexOutOfBoundsException s){
+                       JOptionPane.showMessageDialog(null, "You must select a course from the table");
+                    }
+                //}
             }
         });
         removeButton = new JButton("Remove Course");
@@ -147,15 +152,19 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                if(validateForm()){
+                //if(validateForm()){
+                    try{
                     String str = (String) courses.getModel().getValueAt(courses.getSelectedRow(),0);
                     boolean b = frame.removeCourseRecord(str);
                     if(b){
                         Object o = frame.getStudentInfo();
                         error.setVisible(false);
                         frame.changeScreen(ClientGUI.CLASSES, o);
+                        }
+                    }catch(ArrayIndexOutOfBoundsException a){
+                        JOptionPane.showMessageDialog(null, "You must select a course from the table");
                     }
-                }
+                //}
             }
         });
         uploadButton = new JButton("Upload Courses");
@@ -404,6 +413,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     if(validateForm()){
+                        try{
                         if(addPage.getText().startsWith("Add")){
                             CourseRecord r = makeRecord();
                             frame.addCourseRecord(r);
@@ -413,6 +423,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                         }
                         Object o = frame.getStudentInfo();
                         frame.changeScreen(ClientGUI.CLASSES, o);
+                        }catch(ArrayIndexOutOfBoundsException e){
+                        JOptionPane.showMessageDialog(null, "You must select a course to add from the table");}
                     }
                 }
             });

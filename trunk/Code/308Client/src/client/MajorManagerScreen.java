@@ -63,16 +63,14 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
     private JButton editMajor;
     //back button
     private JButton back;
-
     //upload button
     private JButton upload;
-
     //download button
     private JButton download;
-
     //error button
     private JLabel error;
-
+    //log out button
+    private JButton logout;
     /**
      * constructor
      * @param gui passed to super class Screen
@@ -251,6 +249,16 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         error.setFont(new Font("Times New Roman",1,12));
         error.setForeground(Color.red);
         error.setVisible(false);
+
+        logout = new JButton("Log Out");
+        logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                frame.changeScreen(ClientGUI.WELCOME, null);
+                frame.logout();
+            }
+        });
+        logout.setFont(new Font("Times New Roman",1,12));
         addJComponentToContainerUsingGBL(adminLabel, this, 1, 1, 4, 1);
         addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 4, 2);
         addJComponentToContainerUsingGBL(addButton, this, 1, 4, 1, 1);
@@ -260,6 +268,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         addJComponentToContainerUsingGBL(download, this, 2, 5, 1, 1);
         addJComponentToContainerUsingGBL(upload, this, 3,5,1,1);
         addJComponentToContainerUsingGBL(back, this, 4,5,1,1);
+        addJComponentToContainerUsingGBL(logout, this, 1, 6, 1, 1);
         addJComponentToContainerUsingGBL(error, this, 1, 9, 1, 1);
     }
 
