@@ -254,8 +254,7 @@ public class ClientGUI extends JFrame implements WindowListener {
     }
 
     boolean changeMajor(Major selectedItem) {
-
-        return true;
+        return networking.changeMajor(selectedItem);
     }
 
     @Override

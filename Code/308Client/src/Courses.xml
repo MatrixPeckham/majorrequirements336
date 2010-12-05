@@ -147,6 +147,19 @@
 				<summer2>false</summer2>
 			</offered>
 		</course>
+		<course>
+			<number>204</number>
+			<description>Biological Sciences I</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
 	</department>
 	<department>
 		<name>CHE</name>
