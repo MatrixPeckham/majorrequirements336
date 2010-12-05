@@ -76,5 +76,4 @@ public abstract class Screen extends JPanel {
          * @return true if form is correctly filled out false otherwise
          */
         public abstract boolean validateForm();
-
 }

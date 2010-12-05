@@ -448,7 +448,14 @@ public class ServerThread implements Runnable{
                         objectOut.flush();
                         UseLogger.severe(e.getMessage());
                     }
-                } else if(cmd.equals(Commands.ADD_REQ)){
+                } else if(cmd.equals(Commands.EXIT))
+                {
+                    system.removeUser(user.getID());
+                    objectOut.writeObject("OK");
+                    connected=false;
+                    System.exit(0);
+                }
+                else if(cmd.equals(Commands.ADD_REQ)){
                     try{
                         Requirement r = (Requirement)objectIn.readObject();
                         String dept = (String)objectIn.readObject();
