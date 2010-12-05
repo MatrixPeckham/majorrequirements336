@@ -647,6 +647,7 @@ public User getStudentInfo() {
     public int changeYear(int i) {
         try{
         oos.writeObject(Commands.CHANGEYEAR);
+        oos.writeObject(i);
         oos.flush();
         if(ois.readObject().equals("OK")){
             return 1;
