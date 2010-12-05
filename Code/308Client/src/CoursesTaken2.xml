@@ -1,28 +1,8 @@
 <file type="record">
-	<major>CSE</major>
-	<year>2008</year>
 	<course>
-		<dept>CSE</dept>
-		<num>114</num>
+		<dept>AMS</dept>
+		<num>301</num>
 		<grade>A</grade>
-		<transfer>true</transfer>
-	</course>
-	<course>
-		<dept>CSE</dept>
-		<num>214</num>
-		<grade>B</grade>
-		<transfer>false</transfer>
-	</course>
-	<course>
-		<dept>CSE</dept>
-		<num>215</num>
-		<grade>A</grade>
-		<transfer>false</transfer>
-	</course>
-	<course>
-		<dept>CSE</dept>
-		<num>219</num>
-		<grade>B+</grade>
 		<transfer>false</transfer>
 	</course>
 </file>
