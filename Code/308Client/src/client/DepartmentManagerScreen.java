@@ -36,6 +36,8 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 	private JButton back;
         //table for departments
 	private JTable table;
+        //log out button
+        private JButton logout;
         //error label for remove
         private JLabel error;
 	/**
@@ -160,6 +162,16 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                 error.setFont(new Font("Times New Roman",1,12));
                 error.setForeground(Color.red);
                 error.setVisible(false);
+
+                logout = new JButton("Log Out");
+                logout.setFont(new Font("Times New Roman",1,24));
+                logout.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent arg0) {
+                        frame.changeScreen(ClientGUI.WELCOME, null);
+                        frame.logout();;
+                       }
+                });
 		
                 GridBagLayout gbl = new GridBagLayout();
 		this.setLayout(gbl);
@@ -171,6 +183,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 		addJComponentToContainerUsingGBL(removeDepart, this, 3, 10, 1, 1);
 		addJComponentToContainerUsingGBL(back, this, 4, 10, 1, 1);
                 addJComponentToContainerUsingGBL(error, this, 1, 15, 1, 1);
+                addJComponentToContainerUsingGBL(logout, this, 1, 12, 1, 1);
 	}
 
 	@Override
