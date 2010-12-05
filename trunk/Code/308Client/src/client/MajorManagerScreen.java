@@ -544,7 +544,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     if(validateForm()){
-                        frame.addRequirement(makeReq(), nameF.getText());
+                        String s = nameF.getText();
+                        frame.addRequirement(makeReq(), s);
                         Object o = frame.getCurrentMajor();
                         frame.changeManageScreen(ClientGUI.CURR_EDIT, o);
                     }
