@@ -158,7 +158,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 				frame.changeScreen(ClientGUI.WELCOME, null);
 			}
 		});
-		back.setFont(new Font("Times New Roman",1,24));
+		//back.setFont(new Font("Times New Roman",1,72));
                 textField = new JTextField(20);
 		
 		String[] columnNames = {"Department"};
@@ -202,12 +202,12 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                 error.setVisible(false);
 
                 logout = new JButton("Log Out");
-                logout.setFont(new Font("Times New Roman",1,24));
+                //logout.setFont(new Font("Times New Roman",1,72));
                 logout.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent arg0) {
+                        frame.logout();
                         frame.changeScreen(ClientGUI.WELCOME, null);
-                        frame.logout();;
                        }
                 });
 		
@@ -223,9 +223,9 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                 addJComponentToContainerUsingGBL(textField, this, 2, 20, 1, 1);
                 addJComponentToContainerUsingGBL(browse, this, 3, 20, 1, 1);
                 addJComponentToContainerUsingGBL(downloadCourses, this, 1, 30, 1, 1);
-		addJComponentToContainerUsingGBL(back, this, 4, 10, 1, 1);
+		addJComponentToContainerUsingGBL(back, this, 5, 30, 1, 1);
                 addJComponentToContainerUsingGBL(error, this, 1, 35, 1, 1);
-                addJComponentToContainerUsingGBL(logout, this, 4, 40, 1, 1);
+                addJComponentToContainerUsingGBL(logout, this, 5, 40, 1, 1);
 	}
 
 	@Override

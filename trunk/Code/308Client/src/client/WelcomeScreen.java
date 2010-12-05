@@ -33,6 +33,7 @@ public class WelcomeScreen extends Screen {
          */
 	private JButton adminButton;
 	private JButton superAdminButton;
+        private JButton logoffbutton;
 	
 	/**
 	 * Constructor sets up the GUI
@@ -91,6 +92,15 @@ public class WelcomeScreen extends Screen {
                             }
 			}
 		});
+                logoffbutton = new JButton("Log Off");
+                logoffbutton.addActionListener(new ActionListener()  {
+
+                        @Override
+                        public void actionPerformed(ActionEvent e)  {
+                             frame.logout();
+                             frame.changeScreen(ClientGUI.WELCOME, null);
+                        }
+                });
                 this.setLayout(new BorderLayout());
                 JPanel pane = new JPanel();
                 JLabel lab = new JLabel("Welcome");
@@ -99,16 +109,20 @@ public class WelcomeScreen extends Screen {
                 this.add(pane,BorderLayout.NORTH);
                 pane=new JPanel();
                 pane.setLayout(new GridBagLayout());
+                logoffbutton.setVisible(false);
 		addJComponentToContainerUsingGBL(studentButton, pane, 1, 2, 1, 1);
 		addJComponentToContainerUsingGBL(adminButton, pane, 2, 2, 1, 1);
 		addJComponentToContainerUsingGBL(superAdminButton, pane, 3, 2, 1, 1);
+		addJComponentToContainerUsingGBL(logoffbutton, pane, 3, 4, 1, 1);
                 this.add(pane);
 	}
 
 	@Override
 	public void getScreen(Object fillWith) {
-		// TODO Auto-generated method stub
-
+		if (frame.getPermissions() > User.STUDENT)
+                    logoffbutton.setVisible(true);
+                else
+                    logoffbutton.setVisible(false);
 	}
 
     @Override
