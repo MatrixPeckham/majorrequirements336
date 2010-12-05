@@ -74,6 +74,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
     //error label
     private JLabel error;
     private MajorActionListener majorActList;
+    private JButton logout;
 
 
     /**
@@ -220,7 +221,15 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                 frame.changeScreen(ClientGUI.WELCOME, null);
             }
         });
-
+        logout = new JButton("Log Out");
+        logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                frame.logout();
+                frame.changeScreen(ClientGUI.WELCOME, null);
+            }
+        });
+        logout.setVisible(false);
         error = new JLabel("Error: Please select a course from the above table");
         error.setFont(new Font("Times New Roman", 1, 12));
         error.setVisible(false);
@@ -267,7 +276,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         addJComponentToContainerUsingGBL(major, this, 2, 6, 2, 1);
         addJComponentToContainerUsingGBL(yearLabel, this, 1, 7, 1, 1);
         addJComponentToContainerUsingGBL(year, this, 2, 7, 2, 1);
-        addJComponentToContainerUsingGBL(backButton, this, 6, 8, 1, 1);
+        addJComponentToContainerUsingGBL(backButton, this, 6, 7, 1, 1);
+        addJComponentToContainerUsingGBL(logout, this, 6, 8, 1, 1);
         addJComponentToContainerUsingGBL(error, this, 5, 6, 1, 1);
     }
 
@@ -309,6 +319,10 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             for(Major mag : frame.getAllMajors()) {
             major.addItem(mag);
         }*/
+        if (frame.getPermissions() > User.STUDENT)
+            logout.setVisible(true);
+        else
+            logout.setVisible(false);
     }
 
     @Override

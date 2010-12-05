@@ -32,6 +32,7 @@ import server.Department;
 import server.Grade;
 import server.Major;
 import server.Requirement;
+import server.User;
 
 /**
  * Manager screen for the department Admin page
@@ -71,6 +72,12 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
     private JLabel error;
     //log out button
     private JButton logout;
+    //Department Combo Box
+    private JComboBox currentDepartment;
+    //Label for department combo box
+    private JLabel departmentLabel;
+
+    private DeptActList deptComboActList;
     /**
      * constructor
      * @param gui passed to super class Screen
@@ -80,13 +87,14 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         addScreen = new AddMajScreen(gui);
         editScreen = new EditMajScreen(gui);
         remScreen = new RemoveMajScreen(gui);
+        deptComboActList = new DeptActList();
         initGUI();
     }
     /*
      * lays out the GUI including action listneners
      */
     private void initGUI() {
-        adminLabel = new JLabel("Department Administrator");
+        adminLabel = new JLabel("Department Administrator - " + frame.getCurrentDepartment());
         adminLabel.setFont(new Font("Times New Roman", 1, 72));
         String[] columnNames = {"Major"};
 
@@ -254,21 +262,36 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0){
-                frame.changeScreen(ClientGUI.WELCOME, null);
                 frame.logout();
+                frame.changeScreen(ClientGUI.WELCOME, null);
             }
         });
-        logout.setFont(new Font("Times New Roman",1,12));
-        addJComponentToContainerUsingGBL(adminLabel, this, 1, 1, 4, 1);
-        addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 4, 2);
+        //logout.setFont(new Font("Times New Roman",1,12));
+        departmentLabel = new JLabel();
+        departmentLabel.setText("Selected Department:");
+        currentDepartment = new JComboBox();
+        currentDepartment.addActionListener(deptComboActList);
+        Department d = frame.getDepartment(frame.getCurrentDepartment());
+        if(d != null) {
+            currentDepartment.setSelectedItem(d);
+        }
+        if (frame.getPermissions() < User.SUPER_ADMIN)  {
+            currentDepartment.setVisible(false);
+            departmentLabel.setVisible(false);
+        }
+
+        addJComponentToContainerUsingGBL(adminLabel, this, 1, 1, 5, 1);
+        addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 5, 2);
         addJComponentToContainerUsingGBL(addButton, this, 1, 4, 1, 1);
         addJComponentToContainerUsingGBL(editButton, this, 2, 4, 1, 1);
         addJComponentToContainerUsingGBL(removeButton, this, 3, 4, 1, 1);
+        addJComponentToContainerUsingGBL(departmentLabel, this, 4, 4, 1, 1);
+        addJComponentToContainerUsingGBL(currentDepartment, this, 5, 4, 1, 1);
         addJComponentToContainerUsingGBL(editMajor, this, 1, 5, 1, 1);
         addJComponentToContainerUsingGBL(download, this, 2, 5, 1, 1);
         addJComponentToContainerUsingGBL(upload, this, 3,5,1,1);
-        addJComponentToContainerUsingGBL(back, this, 4,5,1,1);
-        addJComponentToContainerUsingGBL(logout, this, 1, 6, 1, 1);
+        addJComponentToContainerUsingGBL(back, this, 6,6,1,1);
+        addJComponentToContainerUsingGBL(logout, this, 6, 7, 1, 1);
         addJComponentToContainerUsingGBL(error, this, 1, 9, 1, 1);
     }
 
@@ -285,6 +308,26 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 String[] s = {m.getId()};
                 model.addRow(s);
             }
+        }
+        adminLabel.setText("Department Administrator - " + frame.getCurrentDepartment());
+        if (frame.getPermissions() >= User.SUPER_ADMIN)  {
+            currentDepartment.setVisible(true);
+            departmentLabel.setVisible(true);
+        }
+        else    {
+            currentDepartment.setVisible(false);
+            departmentLabel.setVisible(false);
+        }
+
+        currentDepartment.removeActionListener(deptComboActList);
+        currentDepartment.removeAllItems();
+        for(Department d : frame.getDepartments()) {
+            currentDepartment.addItem(d.getName());
+        }
+        currentDepartment.addActionListener(deptComboActList);
+        Department d2 = frame.getDepartment(frame.getCurrentDepartment());
+        if(d2 != null) {
+            currentDepartment.setSelectedItem(d2.getName());
         }
     }
 
@@ -771,5 +814,13 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             //JLabel gpaF;
 
         }
+    }
+    private class DeptActList implements ActionListener {
+
+                public void actionPerformed(ActionEvent e) {
+                    frame.setCurrentDepartment(currentDepartment.getSelectedItem().toString());
+                    Object o = frame.getDepartment(frame.getCurrentDepartment()).getMajors();
+                    frame.changeScreen(ClientGUI.MAJORS, o);
+                }
     }
 }
