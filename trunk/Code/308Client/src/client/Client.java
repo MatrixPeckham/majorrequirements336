@@ -658,6 +658,13 @@ public User getStudentInfo() {
             return -1;
         }
     }
+
+    public void Exit(){
+       try{
+           oos.writeObject(Commands.EXIT);
+           }catch(Exception e){}
+       }
+
     void connectionLostGTFO(){
         JOptionPane.showMessageDialog(null, "The connection to the server has been lost.\nUnable to continue, the program will exit.");
         System.exit(-1);

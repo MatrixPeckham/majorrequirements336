@@ -1,5 +1,7 @@
 package client;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -13,7 +15,7 @@ import server.*;
  * @author Bill
  *
  */
-public class ClientGUI extends JFrame {
+public class ClientGUI extends JFrame implements WindowListener {
 	/*
 	 * String ID's of states
 	 */
@@ -56,6 +58,7 @@ public class ClientGUI extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		init();
 		setExtendedState(getExtendedState()|MAXIMIZED_BOTH);
+                this.addWindowListener(this);
 	}
 
         public static void main(String[] args) {
@@ -251,8 +254,43 @@ public class ClientGUI extends JFrame {
     }
 
     boolean changeMajor(Major selectedItem) {
-        networking.changeMajor(selectedItem);
+
         return true;
     }
 
+    @Override
+    public void windowOpened(WindowEvent e) {
+        return;
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        networking.Exit();
+        System.exit(0);
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        return;
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        return;
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        return;
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        return;
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        return;
+    }
  }
