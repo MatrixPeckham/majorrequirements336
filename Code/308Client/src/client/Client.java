@@ -46,10 +46,10 @@ public class Client{
                 return location;
             }
             catch(SocketException se){
-            connectionLostGTFO();
-            return null;
-        } catch(Exception e) {
-                return null;
+                 connectionLostGTFO();
+                 return null;
+            } catch(Exception e) {
+                 return null;
             }
 
         }

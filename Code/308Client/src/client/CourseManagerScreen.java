@@ -70,16 +70,10 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
     private JButton remove;
     //add button
     private JButton add;
-    //ubload button
-    private JButton uploadCourses;
-    //browse button
-    private JButton browse;
     //back button
     private JButton back;
     //to registar admin button
     private JButton registrarAdminPage;
-    //file URL text field
-    private JTextField textField;
 
     /**
      * constructor
@@ -137,23 +131,6 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 frame.changeManageScreen(ClientGUI.CURR_ADD, null);
             }
         });
-        uploadCourses = new JButton("Upload Courses");
-        uploadCourses.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.uploadFile(new File(textField.getText()), Commands.UPLOADFILE);
-            }
-        });
-        browse = new JButton("Browse");
-        browse.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                File f = getFile(true);
-                textField.setText(f.getAbsolutePath());
-            }
-        });
         back = new JButton("Back");
         back.addActionListener(new ActionListener() {
 
@@ -172,8 +149,6 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 frame.changeScreen(ClientGUI.MAJORS, o);
             }
         });
-        textField = new JTextField(20);
-
 
         String[] columnNames = {"Courses"};
 
@@ -213,9 +188,6 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         addJComponentToContainerUsingGBL(add, this, 1, 10, 1, 1);
         addJComponentToContainerUsingGBL(remove, this, 2, 10, 1, 1);
         addJComponentToContainerUsingGBL(edit, this, 3, 10, 1, 1);
-        addJComponentToContainerUsingGBL(uploadCourses, this, 1, 20, 1, 1);
-        addJComponentToContainerUsingGBL(textField, this, 2, 20, 1, 1);
-        addJComponentToContainerUsingGBL(browse, this, 3, 20, 1, 1);
         addJComponentToContainerUsingGBL(back, this, 5, 30, 1, 1);
         addJComponentToContainerUsingGBL(registrarAdminPage, this, 6, 30, 1, 1);
     }

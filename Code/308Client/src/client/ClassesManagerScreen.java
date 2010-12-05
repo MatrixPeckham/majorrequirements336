@@ -189,7 +189,6 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                error.setVisible(false);
                 frame.dowloadFile(getFile(false),Commands.DOWNLOAD_COURSE_DATA);
             }
         });
