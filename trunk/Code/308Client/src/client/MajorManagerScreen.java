@@ -233,7 +233,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             
             @Override
             public void actionPerformed(ActionEvent e){
-                frame.dowloadFile(getFile(false),Commands.DOWNLOAD_REQ);
+                frame.downloadFile(getFile(false),Commands.DOWNLOAD_REQ);
                 }
 
         });

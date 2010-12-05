@@ -189,7 +189,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dowloadFile(getFile(false),Commands.DOWNLOAD_COURSE_DATA);
+                frame.downloadFile(getFile(false),Commands.DOWNLOAD_COURSE_DATA);
             }
         });
         checkButton = new JButton("Check Requirements");

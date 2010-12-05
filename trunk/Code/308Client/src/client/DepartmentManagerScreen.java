@@ -147,7 +147,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        frame.dowloadFile(getFile(false),Commands.DOWNLOAD_COURSES);
+                        frame.downloadFile(getFile(false),Commands.DOWNLOAD_COURSES);
                     }
                 });
 		back=new JButton("Back");
@@ -222,10 +222,10 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                 addJComponentToContainerUsingGBL(uploadCourses, this, 1, 20, 1, 1);
                 addJComponentToContainerUsingGBL(textField, this, 2, 20, 1, 1);
                 addJComponentToContainerUsingGBL(browse, this, 3, 20, 1, 1);
-                addJComponentToContainerUsingGBL(downloadCourses, this, 4, 20, 1, 1);
+                addJComponentToContainerUsingGBL(downloadCourses, this, 1, 30, 1, 1);
 		addJComponentToContainerUsingGBL(back, this, 4, 10, 1, 1);
-                addJComponentToContainerUsingGBL(error, this, 1, 15, 1, 1);
-                addJComponentToContainerUsingGBL(logout, this, 1, 25, 1, 1);
+                addJComponentToContainerUsingGBL(error, this, 1, 35, 1, 1);
+                addJComponentToContainerUsingGBL(logout, this, 4, 40, 1, 1);
 	}
 
 	@Override
