@@ -225,7 +225,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                 addJComponentToContainerUsingGBL(downloadCourses, this, 4, 20, 1, 1);
 		addJComponentToContainerUsingGBL(back, this, 4, 10, 1, 1);
                 addJComponentToContainerUsingGBL(error, this, 1, 15, 1, 1);
-                addJComponentToContainerUsingGBL(logout, this, 1, 12, 1, 1);
+                addJComponentToContainerUsingGBL(logout, this, 1, 25, 1, 1);
 	}
 
 	@Override
