@@ -291,6 +291,10 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         private JTable prereq;
         //list for groups
         private JList groupList;
+        //label for num required courses
+        private JLabel numReqL;
+        //spinner for num required courses
+        private JSpinner numReqS;
         //ok button
         protected JButton ok;
         //cancel button
@@ -364,6 +368,10 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             credF = new JSpinner();
             SpinnerModel m = new SpinnerNumberModel(3, 0, 6, 1);
             credF.setModel(m);
+
+            numReqL = new JLabel("Number of courses required");
+            numReqS = new JSpinner(new SpinnerNumberModel(0,0,100,1));
+
             ok = new JButton("Add");
             ok.addActionListener(new ActionListener() {
 
@@ -433,6 +441,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                         String s = (String)model.getValueAt(i, 0);
                         cg.addCourse(frame.getCourse(s));
                     }
+                    cg.setNumReqiured((Integer)numReqS.getValue());
                     DefaultListModel listm = (DefaultListModel) groupList.getModel();
                     listm.addElement(cg);
                 }
@@ -553,8 +562,11 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
 
             addJComponentToContainerUsingGBL(toGroup, this, 3, 6, 1, 1);
             addJComponentToContainerUsingGBL(outGroup, this, 3, 7, 1, 1);
-            addJComponentToContainerUsingGBL(listPane, this, 4, 8, 2, 2);
+
             addJComponentToContainerUsingGBL(scrollPane, this, 4, 2, 2, 6);
+            addJComponentToContainerUsingGBL(numReqL, this, 4, 8, 1, 1);
+            addJComponentToContainerUsingGBL(numReqS, this, 5, 8, 1, 1);
+            addJComponentToContainerUsingGBL(listPane, this, 4, 9, 2, 2);
 
             addJComponentToContainerUsingGBL(semBox, this, 6, 2, 1, 1);
             addJComponentToContainerUsingGBL(semSpi, this, 7, 2, 1, 1);
