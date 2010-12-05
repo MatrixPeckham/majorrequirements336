@@ -28,9 +28,10 @@ public final class Commands {
     public static final String GET_ALL_COURSES = "GET_ALL_COURSES";
     public static final String REMOVE_DEPT="RMV_DEPT";
     public static final String CHANGEYEAR="CHANGEYEAR";
+    public static final String DOWNLOAD_COURSES="DOWNLOAD_COURSES_OFFERED";
 
     public static final String REMOVE_CLASS="RMV_CLASS";
-    public static final String DOWNLOAD_COURSE_DATA="DOWNLOAD_COURSES";
+    public static final String DOWNLOAD_COURSE_DATA="DOWNLOAD_COURSES_TAKEN";
 
     public static final String ALL_MAJORS="GETALLMAJORS";
     public static final String DOWNLOAD_SCHED="DOWNLOAD_SCHED";

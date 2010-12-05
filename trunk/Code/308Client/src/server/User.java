@@ -368,6 +368,39 @@ public class User implements Scheduler, FileParser, Serializable{
                     }
                     s+="</file>";
              }
+             else if (cmd.equals(Commands.DOWNLOAD_COURSES))   {
+                School s2 = School.getSchool();
+                Collection<Department> departments = s2.getDepartments();
+                s+="<file type=\"courses\">\n";
+
+                for (Department d : departments)    {
+                    Collection<Course> courses = d.getCourses();
+                    s+="\t<department>\n";
+                    s+="\t\t<name>" + d.getName() + "</name>\n";
+
+                    for (Course c : courses)    {
+                        OfferingList semesters = c.getSemestersOffered();
+                        Collection<CourseOffering> offerings = semesters.getOfferings();
+                        s+="\t\t<course>\n";
+                        s+="\t\t\t<number>" + c.getNum() + "</number>\n";
+                        s+="\t\t\t<description>" + c.getDescription() + "</description>\n";
+                        s+="\t\t\t<minGrade>" + c.getMinGrade().getGradePoints() + "</minGrade>\n";
+                        s+="\t\t\t<credits>" + c.getCredits() + "</credits>\n";
+                        s+="\t\t\t<offered>\n";
+
+                        for (CourseOffering co : offerings) {
+                            Semester sem = co.getSemester();
+                            String semName = sem.toString();
+                            if (semesters.isOffered(sem))
+                                s+="\t\t\t\t<" + semName + ">" + semesters.isOffered(sem) + "</" + semName + ">\n";
+                        }
+                        s+="\t\t\t</offered>\n";
+                        s+="\t\t</course>\n";
+                    }
+                    s+="\t</department>\n";
+                }
+                s+="</file>";
+             }
         }
         catch (Exception ioe)   {
 

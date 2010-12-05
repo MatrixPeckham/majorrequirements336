@@ -269,6 +269,15 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("ERR");
                         UseLogger.severe(e.getMessage());
                     }
+                } else if (cmd.equals(Commands.DOWNLOAD_COURSES))   {
+                    try {
+                        objectOut.writeObject(user.writeFile(Commands.DOWNLOAD_COURSES, (String)objectIn.readObject()));
+                        objectOut.writeObject("OK");
+                    } catch(Exception e)    {
+                        e.printStackTrace();
+                        objectOut.writeObject("ERR");
+                        UseLogger.severe(e.getMessage());
+                    }
                 } else if (cmd.equals(Commands.DOWNLOAD_SCHED)) {
                     try {
 

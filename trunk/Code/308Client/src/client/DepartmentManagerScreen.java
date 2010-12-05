@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -18,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import server.Commands;
 import server.Department;
 /**
  *
@@ -32,7 +34,13 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 	private JButton addDepart;
         //remove department button
 	private JButton removeDepart;
-        // back button
+        //upload courses button
+        private JButton uploadCourses;
+        //browse button
+        private JButton browse;
+        //download courses button
+        private JButton downloadCourses;
+        //back button
 	private JButton back;
         //table for departments
 	private JTable table;
@@ -40,6 +48,8 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
         private JButton logout;
         //error label for remove
         private JLabel error;
+        //file URL text field
+        private JTextField textField;
 	/**
 	 * serial version ID that eclipse wants in all swing classes
 	 */
@@ -113,6 +123,33 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                         }
                     }
                 });
+                browse = new JButton("Browse");
+                browse.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        File f = getFile(true);
+                        textField.setText(f.getAbsolutePath());
+                    }
+                });
+                uploadCourses = new JButton("Upload Courses");
+                uploadCourses.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        frame.uploadFile(new File(textField.getText()), Commands.UPLOADFILE);
+                        Object o = frame.getDepartments();
+                        frame.changeScreen(ClientGUI.DEPARTMENTS, o);
+                    }
+                });
+                downloadCourses = new JButton("Download Courses");
+                downloadCourses.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        frame.dowloadFile(getFile(false),Commands.DOWNLOAD_COURSES);
+                    }
+                });
 		back=new JButton("Back");
 		back.addActionListener(new ActionListener() {
 			
@@ -122,6 +159,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 			}
 		});
 		back.setFont(new Font("Times New Roman",1,24));
+                textField = new JTextField(20);
 		
 		String[] columnNames = {"Department"};
 
@@ -181,6 +219,10 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 		addJComponentToContainerUsingGBL(viewCourses, this, 1, 10, 1, 1);
 		addJComponentToContainerUsingGBL(addDepart, this, 2, 10, 1, 1);
 		addJComponentToContainerUsingGBL(removeDepart, this, 3, 10, 1, 1);
+                addJComponentToContainerUsingGBL(uploadCourses, this, 1, 20, 1, 1);
+                addJComponentToContainerUsingGBL(textField, this, 2, 20, 1, 1);
+                addJComponentToContainerUsingGBL(browse, this, 3, 20, 1, 1);
+                addJComponentToContainerUsingGBL(downloadCourses, this, 4, 20, 1, 1);
 		addJComponentToContainerUsingGBL(back, this, 4, 10, 1, 1);
                 addJComponentToContainerUsingGBL(error, this, 1, 15, 1, 1);
                 addJComponentToContainerUsingGBL(logout, this, 1, 12, 1, 1);
