@@ -245,10 +245,10 @@ public class Client{
         }
     }
 
-    boolean editCourse(Course c) {
+    boolean editCourse(Course c, String str) {
         try{
         oos.writeObject(Commands.EDIT_COURSE);
-
+        oos.writeObject(str);
             oos.reset();
         oos.writeObject(c);
         

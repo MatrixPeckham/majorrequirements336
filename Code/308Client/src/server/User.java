@@ -171,9 +171,11 @@ public class User implements Scheduler, FileParser, Serializable{
        for(int i=0; i<courses.getLength(); i++) {
            Element n=(Element)courses.item(i);
          
-           String description=((Element)n.getElementsByTagName("number").item(0)).getTextContent();
+           String description=((Element)n.getElementsByTagName("description").item(0)).getTextContent();
            int number=Integer.parseInt(((Element)n.getElementsByTagName("number").item(0)).getTextContent());
            byte offered=0;
+           boolean spring = false;
+           boolean fall = false;
            double mingrade=Double.parseDouble(((Element)n.getElementsByTagName("minGrade").item(0)).getTextContent());;
            int credits=Integer.parseInt(((Element)n.getElementsByTagName("credits").item(0)).getTextContent());
            Element offer=(Element) n.getElementsByTagName("offered").item(0);
@@ -182,6 +184,15 @@ public class User implements Scheduler, FileParser, Serializable{
            }
            if(Boolean.parseBoolean(((Element)offer.getElementsByTagName("spring").item(0)).getTextContent())) {
                offered|=OfferingList.SPRI;
+           }
+           if(Boolean.parseBoolean(((Element)offer.getElementsByTagName("winter").item(0)).getTextContent())) {
+               offered|=OfferingList.WINT;
+           }
+           if(Boolean.parseBoolean(((Element)offer.getElementsByTagName("summer1").item(0)).getTextContent())) {
+               offered|=OfferingList.SUM1;
+           }
+           if(Boolean.parseBoolean(((Element)offer.getElementsByTagName("summer2").item(0)).getTextContent())) {
+               offered|=OfferingList.SUM2;
            }
            OfferingList ol = new OfferingList();
            ol.setNotListedStratagy(offered);
@@ -387,13 +398,30 @@ public class User implements Scheduler, FileParser, Serializable{
                         s+="\t\t\t<minGrade>" + c.getMinGrade().getGradePoints() + "</minGrade>\n";
                         s+="\t\t\t<credits>" + c.getCredits() + "</credits>\n";
                         s+="\t\t\t<offered>\n";
+                        byte check = semesters.getNotListedStratagy();
 
-                        for (CourseOffering co : offerings) {
-                            Semester sem = co.getSemester();
-                            String semName = sem.toString();
-                            if (semesters.isOffered(sem))
-                                s+="\t\t\t\t<" + semName + ">" + semesters.isOffered(sem) + "</" + semName + ">\n";
-                        }
+                        boolean fall = false;
+                        boolean sum2 = false;
+                        boolean sum1 = false;
+                        boolean spring = false;
+                        boolean winter = false;
+
+                        if ((check & 16) == 16)
+                            fall = true;
+                        if ((check & 8) == 8)
+                            sum2 = true;
+                        if ((check & 4) == 4)
+                            sum1 = true;
+                        if ((check & 2) == 2)
+                            spring = true;
+                        if ((check & 1) == 1)
+                            winter = true;
+
+                        s+="\t\t\t\t<spring>" + spring + "</spring>\n";
+                        s+="\t\t\t\t<fall>" + fall + "</fall>\n";
+                        s+="\t\t\t\t<winter>" + winter + "</winter>\n";
+                        s+="\t\t\t\t<summer1>" + sum1 + "</summer1>\n";
+                        s+="\t\t\t\t<summer2>" + sum2 + "</summer2>\n";
                         s+="\t\t\t</offered>\n";
                         s+="\t\t</course>\n";
                     }

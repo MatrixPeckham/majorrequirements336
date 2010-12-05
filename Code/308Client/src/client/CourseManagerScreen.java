@@ -353,7 +353,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                         if(ok.getText().equals("Add")){
                             frame.addCourse(makeCourse(), frame.getCurrentDepartment());
                         } else {
-                            frame.editCourse(makeCourse());
+                            frame.editCourse(makeCourse(), frame.getCurrentDepartment());
                         }
                         frame.changeScreen(ClientGUI.COURSES, frame.getDepartmentCourses(frame.getCurrentDepartment()));
                     }
