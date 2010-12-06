@@ -242,7 +242,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             });
 
         download = new JButton("Download Requirements");
-        download.setToolTipText("Download Requirements From A File");
+        download.setToolTipText("Download Requirements To A File");
         download.addActionListener(new ActionListener(){
             
             @Override
@@ -421,6 +421,10 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         JSpinner minUpperS;
         //spinner for year of requirement
         JSpinner yearS;
+        //label for min upper local credits
+        JLabel minUpperLocalL;
+        //spinner for minUpperLocal
+        JSpinner minUpperLocalS;
         //label for year
         JLabel yearL;
         //ok button
@@ -545,6 +549,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             minGPAF = new JTextField(10);
             minUpperL = new JLabel("Min Credits");
             minUpperS = new JSpinner();
+            minUpperLocalL = new JLabel("Min Local Credits");
+            minUpperLocalS = new JSpinner();
             minUpperS.setModel(new SpinnerNumberModel(0,0,100,1));
             yearL = new JLabel("Year");
             yearS = new JSpinner();
@@ -611,10 +617,12 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             addJComponentToContainerUsingGBL(minGPAF, this, 4, 11, 1, 1);
             addJComponentToContainerUsingGBL(minUpperL, this, 3, 12, 1, 1);
             addJComponentToContainerUsingGBL(minUpperS, this, 4, 12, 1, 1);
-            addJComponentToContainerUsingGBL(yearL, this, 3, 13, 1, 1);
-            addJComponentToContainerUsingGBL(yearS, this, 4, 13, 1, 1);
-            addJComponentToContainerUsingGBL(ok, this, 3, 14, 1, 1);
-            addJComponentToContainerUsingGBL(cancel, this, 4, 14, 1, 1);
+            addJComponentToContainerUsingGBL(minUpperLocalL, this, 3, 13, 1, 1);
+            addJComponentToContainerUsingGBL(minUpperLocalS, this, 4, 13, 1, 1);
+            addJComponentToContainerUsingGBL(yearL, this, 3, 14, 1, 1);
+            addJComponentToContainerUsingGBL(yearS, this, 4, 14, 1, 1);
+            addJComponentToContainerUsingGBL(ok, this, 3, 15, 1, 1);
+            addJComponentToContainerUsingGBL(cancel, this, 4, 15, 1, 1);
 
 
         }
