@@ -45,7 +45,7 @@ public class RequirementCompletion implements Serializable{
             s+=c.course.getId()+"</td>";
             s+="<td>"+c.complete+"</td>";
             s+="<td>"+c.message+"</td></tr>";
-            s+="<hr/>"
+            s+="<hr/>";
         }
         s+="</table>";
         s+=message;
