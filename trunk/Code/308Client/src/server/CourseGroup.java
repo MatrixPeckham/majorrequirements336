@@ -195,7 +195,7 @@ public class CourseGroup implements Serializable {
                  if(!flag) {course2.add(c);}
              }
          }
-         course2.setSize(required);
+         course2.setSize(numrequired);
         for(Course c : course2) {
             int i;
             
@@ -205,8 +205,11 @@ public class CourseGroup implements Serializable {
                 }
             } else {
                 course.addChild(parent, c);
+                RootlessTree<Course> sub=c.getShortestPrereqPath(records);
+                if(sub!=null && sub.getRoots().size()>0) {
                 //getRemainingCourses(records, c.getShortestPrereqPath().getSubtree(0), level+1, c);
-                RootlessTree.mergeTrees(course, c.getShortestPrereqPath(records).getSubtree(0), c, level+1);
+                RootlessTree.mergeTrees(course, sub.getSubtree(0), c, level+1);
+                }
             }
         }
     }

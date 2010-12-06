@@ -38,7 +38,7 @@ public class CourseRecord implements Serializable{
     }
      public Semester getIncompleteSemester(){
         for(Semester s : grades.keySet()) {
-            if(grades.get(s).equals(s)){
+            if(grades.get(s).equals(new Grade("I"))){
                 return s;
             }
         }

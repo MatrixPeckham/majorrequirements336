@@ -166,6 +166,7 @@
 			<year>2010</year>
 			<sequence required="1">
 				<course>CSE 312</course>
+                                <course>CSE 302</course>
 			</sequence>
 		</requirement>
 		<minGPA>2.0</minGPA>
@@ -184,9 +185,6 @@
 		<requirement required="3">
 			<name>Upper Division Computer Science Electives</name>
 			<year>2010</year>
-			<sequence required="1">
-				<course>CSE 302</course>
-			</sequence>
 			<sequence required="1">
 				<course>CSE 304</course>
 			</sequence>

@@ -259,13 +259,14 @@ public class RootlessTree<T> {
     }
     private void removeDuplicates(Vector<Node> t2, int baselevel) {
         Object[] t=t2.toArray();
-        for(int i=0; i<t.length; i++) {
-            Node n=(Node) t[i];
+        Iterator<Node> it=t2.iterator();
+        while(it.hasNext()) {
+            Node n=it.next();
             int l=dataExists(n.data);
             if(l>-1 && n.level+baselevel>l) {
                 removeNode(find(n.data,roots));
             } else if(l>-1) {
-                t2.remove(i);
+                it.remove();
                 
             } else {
                 removeDuplicates(n.children, baselevel);

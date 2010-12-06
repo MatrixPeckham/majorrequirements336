@@ -189,6 +189,7 @@ public class ClientGUI extends JFrame implements WindowListener {
 	public boolean removeRequirement(String str1, String str2){return networking.removeRequirement(str1, str2);}
 	public int login(String usr,String pass) {permissions = networking.login(usr, pass);return permissions;}
 	public boolean logout() { permissions=User.STUDENT; return networking.logout();}
+        public void uploadCSV(File f) throws Exception {networking.uploadCSV(f);}
         //added
         public ArrayList<Major> getAllMajors() {return networking.getAllMajors();}
 	public ArrayList<Requirement> getRequirements() {return networking.getRequirements(networking.getCurrentDepartment(),networking.getCurrentMajor().getId());}

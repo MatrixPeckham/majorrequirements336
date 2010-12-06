@@ -342,6 +342,8 @@ public class ServerThread implements Runnable{
                         objectOut.flush();
                     }catch(Exception e) {
                         e.printStackTrace();
+
+                        objectOut.writeObject(null);
                         objectOut.writeObject("ERR");
                         objectOut.flush();
                         UseLogger.severe(e.getMessage());

@@ -51,7 +51,7 @@ public class ScheduleScreen extends Screen {
         this.setLayout(new BorderLayout());
         sched = new JLabel("Remaining Schedule");
         sched.setFont(new Font("Times New Roman",1,72));
-        String[] columnNames = {"Semester","Class","Credits"};
+        String[] columnNames = {"Semester","Class","Credits", "Offering status"};
         table = new JTable();
         table.setPreferredScrollableViewportSize(new Dimension(1000, 100));
         table.setFillsViewportHeight(true);
@@ -99,7 +99,17 @@ public class ScheduleScreen extends Screen {
                 Object[] sem = {str.toString()};
                 ((DefaultTableModel)table.getModel()).addRow(sem);
                 for(Course c : courses){
-                    Object[] obs = {"",c.getId(),c.getCredits()};
+                    String canTake="";
+                    switch(c.canTake(str)) {
+                        case -1:
+                            canTake = str.getSeason() == -1 ? "Not Offered" :  "Student Plan, Not Offered";
+                            break;
+                        case 0: canTake="Tentative";
+                            break;
+                        case 1: canTake="Offered";
+
+                    }
+                    Object[] obs = {"",c.getId(),c.getCredits(),canTake};
                     ((DefaultTableModel)table.getModel()).addRow(obs);
                 }
             }

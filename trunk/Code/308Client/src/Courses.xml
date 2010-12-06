@@ -882,6 +882,12 @@
                                 <pre>CSE 230</pre>
                             </sequence>
                         </prerequisite>
+                        <offerings>
+                            <offering>
+                                <season>SPRING</season>
+                                <year>2011</year>
+                            </offering>
+                        </offerings>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>

@@ -100,7 +100,7 @@ public class Schedule implements Serializable{
         Semester s=Semester.freeSemester();
         int maxSemCredits=School.getSchool().getMaxCreds();
         TreeMap<Semester, Vector<Course>> sched=new TreeMap<Semester, Vector<Course>>();
-        TreeMap<String, CourseRecord> added=new TreeMap<String,CourseRecord>();
+        TreeMap<String, CourseRecord> added=u.getRecords();
         int totalCredits=u.getCompletedCredits();
         sched.put(s, new Vector<Course>());
         int tmp=Schedule.getSemesterPlan(s, u, totalCredits, toRemove, toTake, sched.get(s), added);
@@ -140,7 +140,7 @@ public class Schedule implements Serializable{
                 }
 
             }
-            if(maxSemCredits>0) {
+            if(maxSemCredits>=0) {
                     //try tentative courses now
                     for(Course c2 : tentative) {
                         if(maxSemCredits>=c2.getCredits()) {
@@ -165,7 +165,11 @@ public class Schedule implements Serializable{
             if(!found) {
                 if(flag) {break;}
                 flag=true;
+                //maxSemCredits=0;//go to next semester
             } else {flag=false;}
+        }
+        if(toTake.size()>0) {
+            sched.put(new Semester(9999,-1), toTake);
         }
         return new Schedule(sched);
     }
@@ -173,7 +177,7 @@ public class Schedule implements Serializable{
         TreeMap<String,CourseRecord> records=u.getCourses();
         int credits=0;
         for(CourseRecord r : records.values()) {
-            if(r.getIncompleteSemester().equals(s) && r.getCourse().prereqsComplete(added, cred)) {
+            if(r.getIncompleteSemester()!=null && r.getIncompleteSemester().equals(s) && r.getCourse().prereqsComplete(added, cred)) {
                 sched.add(r.getCourse());
 
                     remove.add(r.getCourse());

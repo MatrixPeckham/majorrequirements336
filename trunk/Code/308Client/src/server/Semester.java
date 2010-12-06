@@ -73,8 +73,12 @@ public class Semester implements Comparable, Serializable{
             case SUMMER2:
                 s+="SUMMER2";
                 break;
+            case -1:
+                s+="UNSCHEDULED REQUIRED COURSES";
         }
+        if(season>0) {
         s+=" "+year;
+        }
         return s;
     }
     @Override
