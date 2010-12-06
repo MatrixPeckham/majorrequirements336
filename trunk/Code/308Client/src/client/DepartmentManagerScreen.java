@@ -79,6 +79,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 		registrarAdminPage = new JLabel("Registrar Admin Page");
 		registrarAdminPage.setFont(new Font("Times New Roman",1,72));
 		viewCourses = new JButton("View/Edit Courses");
+                viewCourses.setToolTipText("Go To Edit Department Page");
 		viewCourses.addActionListener(new ActionListener() {
 			
 			@Override
@@ -94,6 +95,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 		});
 		viewCourses.setFont(new Font("Times New Roman",1,24));
 		addDepart = new JButton("Add Department");
+                addDepart.setToolTipText("Go To Add Department Page");
 		addDepart.addActionListener(new ActionListener() {
 			
 			@Override
@@ -104,6 +106,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 		});
 		addDepart.setFont(new Font("Times New Roman",1,24));
 		removeDepart = new JButton("Remove Department");
+                removeDepart.setToolTipText("Remove Selected Department From Table");
 		removeDepart.setFont(new Font("Times New Roman",1,24));
                 removeDepart.addActionListener(new ActionListener() {
 
@@ -124,6 +127,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                     }
                 });
                 browse = new JButton("Browse");
+                browse.setToolTipText("Select File To Upload");
                 browse.addActionListener(new ActionListener() {
 
                     @Override
@@ -133,6 +137,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                     }
                 });
                 uploadCourses = new JButton("Upload Courses");
+                uploadCourses.setToolTipText("Upload Courses From Selected File");
                 uploadCourses.addActionListener(new ActionListener() {
 
                     @Override
@@ -143,6 +148,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                     }
                 });
                 downloadCourses = new JButton("Download Courses");
+                downloadCourses.setToolTipText("Download Courses From A File");
                 downloadCourses.addActionListener(new ActionListener() {
 
                     @Override
@@ -151,6 +157,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                     }
                 });
 		back=new JButton("Back");
+                back.setToolTipText("Go Back To Welcome Screen");
 		back.addActionListener(new ActionListener() {
 			
 			@Override
@@ -202,6 +209,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
                 error.setVisible(false);
 
                 logout = new JButton("Log Out");
+                logout.setToolTipText("Log Out And Go To Welcome Screen");
                 //logout.setFont(new Font("Times New Roman",1,72));
                 logout.addActionListener(new ActionListener(){
                     @Override
@@ -313,11 +321,18 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 			name.setFont(new Font("Times New Roman",1,24));
 			nameField = new JTextField(20);
 			add = new JButton("Add");
+                        add.setToolTipText("Add The Department");
 			add.setFont(new Font("Times New Roman",1,24));
 			add.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
+                                    if(nameField.getText().isEmpty()||nameField.getText().contains(" ")||nameField.getText().startsWith(" ")
+                                            ||nameField.getText().length()!=3)
+                                        {
+                                            JOptionPane.showMessageDialog(null, "Please Enter A Three Letter Department Name");
+                                            return;
+                                        }
                                     if(validateForm()){
                                         Department d = new server.Department();
                                         d.setName(nameField.getText());
@@ -332,6 +347,7 @@ public class DepartmentManagerScreen extends Screen implements ManagerScreen {
 				}
 			});
                         cancel = new JButton("Cancel");
+                        cancel.setToolTipText("Go Back To Registrar Admin Page");
                         cancel.setFont(new Font("Times New Roman",1,24));
 			cancel.addActionListener(new ActionListener() {
 

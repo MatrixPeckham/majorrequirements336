@@ -128,6 +128,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         }
 
         addButton = new JButton("Add Major");
+        addButton.setToolTipText("Add A Major");
         addButton.addActionListener(new ActionListener() {
 
             @Override
@@ -160,6 +161,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             }
         });
         editButton = new JButton("Edit Major");
+        editButton.setToolTipText("Edit Major's Name");
         editButton.addActionListener(new ActionListener() {
 
             @Override
@@ -193,6 +195,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
              }
         }});
         removeButton = new JButton("Remove Major");
+        removeButton.setToolTipText("Remove Selected Major From Table");
         removeButton.addActionListener(new ActionListener() {
 
             @Override
@@ -208,6 +211,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             }
         });
         editMajor = new JButton("Edit Major Requiremnts");
+        editMajor.setToolTipText("Go To Requirements Page");
         editMajor.addActionListener(new ActionListener() {
 
             @Override
@@ -222,6 +226,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         });
 
         upload = new JButton("Upload Requirements");
+        upload.setToolTipText("Upload Requirements From A File");
         upload.addActionListener(new ActionListener(){
             
             @Override
@@ -237,6 +242,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             });
 
         download = new JButton("Download Requirements");
+        download.setToolTipText("Download Requirements From A File");
         download.addActionListener(new ActionListener(){
             
             @Override
@@ -246,6 +252,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
 
         });
         back = new JButton("Back");
+        back.setToolTipText("Go Back To Welcome Screen");
         back.addActionListener(new ActionListener() {
 
             @Override
@@ -259,6 +266,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         error.setVisible(false);
 
         logout = new JButton("Log Out");
+        logout.setToolTipText("Log Out And Go Back To Welcome Screen");
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0){
@@ -431,7 +439,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
          * sets up the GUI including at this time most action listneners
          */
         private void initGUI() {
-            addPage = new JLabel("Add Requirement Page");
+            addPage = new JLabel("Add/Edit Requirement Page");
             addPage.setFont(new Font("Times New Roman", 1, 72));
             courseL = new JLabel("Courses");
             String[] columnNames = {"Course"};
@@ -462,6 +470,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             JScrollPane courseScroll = new JScrollPane(courses);
 
             addButton = new JButton("Add ->");
+            addButton.setToolTipText("Add Selected Course To Current Sequence");
             addButton.addActionListener(new ActionListener() {
 
                 @Override
@@ -476,6 +485,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 }
             });
             remButton = new JButton("<- Remove");
+            remButton.setToolTipText("Remove Selected Course From Sequence");
             remButton.addActionListener(new ActionListener() {
 
                 @Override
@@ -494,6 +504,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             numCL = new JLabel("Number Required");
             exclude = new JCheckBox("Exclude these courses");
             finishButton = new JButton("Finish ->");
+            finishButton.setToolTipText("Add The Current Sequence To The Requirement Sequences");
             finishButton.addActionListener(new ActionListener() {
 
                 @Override
@@ -510,6 +521,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 }
             });
             removeSButton = new JButton("Remove Sequence");
+            removeSButton.setToolTipText("Remove The Selected Sequence From Requirement Sequences");
             removeSButton.addActionListener(new ActionListener() {
 
                 @Override
@@ -539,22 +551,29 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             yearS.setModel(new SpinnerNumberModel(2010, 2000, 2200, 1));
 
             ok = new JButton("OK");
+            ok.setToolTipText("Add The Requirement And Go Back To Requirement Page");
             ok.addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     if(validateForm()){
+                        try{
                         String s = nameF.getText();
                         frame.addRequirement(makeReq(), s);
                         Object o = frame.getCurrentMajor();
                         Major m = (Major)o;
                         Major maj = frame.getMajor(m.getId());
                         frame.changeManageScreen(ClientGUI.CURR_EDIT, maj);
+                        }catch(NumberFormatException e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Make Sure All The Fields Are Filled Out Correctly");
+                        }
                     }
                 }
 
             });
             cancel = new JButton("Cancel");
+            cancel.setToolTipText("Go Back To Requirement Page");
             cancel.addActionListener(new ActionListener() {
 
                 @Override
@@ -701,6 +720,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             table.setFillsViewportHeight(true);
             JScrollPane scrollPane = new JScrollPane(table);
             addReq = new JButton("Add");
+            addReq.setToolTipText("Go To Add/Edit Requirement Page");
             addReq.addActionListener(new ActionListener() {
 
                 @Override
@@ -709,6 +729,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 }
             });
             editReq = new JButton("Edit");
+            editReq.setToolTipText("Go To Add/Edit Requirement Page");
             editReq.addActionListener(new ActionListener() {
 
                 @Override
@@ -727,6 +748,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 }
             });
             remReq = new JButton("Remove");
+            remReq.setToolTipText("Remove Selected Requirement From Table");
             remReq.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
@@ -737,6 +759,7 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 }
             });
             back = new JButton("Back");
+            back.setToolTipText("Go Back To Department Administrator Page");
             back.addActionListener(new ActionListener() {
 
                 @Override

@@ -132,6 +132,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         JScrollPane scrollPane = new JScrollPane(courses);
 
         addButton = new JButton("Add Course");
+        addButton.setToolTipText("Go to Add Courses Page");
         addButton.addActionListener(new ActionListener() {
 
             @Override
@@ -140,6 +141,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             }
         });
         editButton = new JButton("Edit Course");
+        editButton.setToolTipText("Go to Edit Courses Page");
         editButton.addActionListener(new ActionListener() {
 
             @Override
@@ -157,6 +159,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             }
         });
         removeButton = new JButton("Remove Course");
+        removeButton.setToolTipText("Remove Selected Course");
         removeButton.addActionListener(new ActionListener() {
 
             @Override
@@ -177,6 +180,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             }
         });
         uploadButton = new JButton("Upload Courses");
+        uploadButton.setToolTipText("Upload Courses From A File");
         uploadButton.addActionListener(new ActionListener() {
 
             @Override
@@ -194,6 +198,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             }
         });
         downloadButton = new JButton("Dowload Courses");
+        downloadButton.setToolTipText("Download Courses To A File");
         downloadButton.addActionListener(new ActionListener() {
             
             @Override
@@ -203,6 +208,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             }
         });
         checkButton = new JButton("Check Requirements");
+        checkButton.setToolTipText("Go To Check Requirements Page");
         checkButton.addActionListener(new ActionListener() {
 
             @Override
@@ -212,6 +218,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             }
         });
         generateButton = new JButton("Generate Schedule");
+        generateButton.setToolTipText("Go To Generate Schedule Page");
         generateButton.addActionListener(new ActionListener() {
 
             @Override
@@ -222,6 +229,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             }
         });
         backButton = new JButton("Back");
+        backButton.setToolTipText("Go Back To Welcome Screen ");
         backButton.addActionListener(new ActionListener() {
 
             @Override
@@ -231,6 +239,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             }
         });
         logout = new JButton("Log Out");
+        logout.setToolTipText("Log Out");
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0){
@@ -439,6 +448,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             Grade[] gradeL = {new Grade("A"), new Grade("A-"), new Grade("B+"), new Grade("B"), new Grade("B-"), new Grade("C+"), new Grade("C"), new Grade("C-"), new Grade("D+"), new Grade("D"), new Grade("D-"), new Grade("F"), new Grade("I")};
             gradeBox = new JComboBox(gradeL);
             ok = new JButton("OK");
+            ok.setToolTipText("Add Desired Course And Go To Student Page ");
             ok.addActionListener(new ActionListener() {
 
                 @Override
@@ -460,6 +470,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                 }
             });
             cancel = new JButton("Cancel");
+            cancel.setToolTipText("Go Back To Student Page");
             cancel.addActionListener(new ActionListener() {
 
                 @Override
@@ -517,6 +528,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             Object[] o = {"FALL",2010,new Grade("A")};
             graModel.addRow(o);
             addGradeB = new JButton("Add Grade");
+            addGradeB.setToolTipText("Add Grade To Course");
             addGradeB.addActionListener(new ActionListener() {
             
                 @Override
@@ -527,6 +539,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                 }
             });
             remGradeB = new JButton("Remove Grade");
+            remGradeB.setToolTipText("Remove Grade From Course");
             remGradeB.addActionListener(new ActionListener() {
 
                 @Override
