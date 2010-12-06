@@ -31,6 +31,7 @@ public class ClientGUI extends JFrame implements WindowListener {
 	public static final String CURR_EDIT = "CURR_EDIT";
 	public static final String CURR_ADD = "CURR_ADD";
 	public static final String CURR_REM = "CURR_REM";
+        private String currentMajor;
 	/**
 	 * just a serial version ID that eclipse always wants in swing classes
 	 */
@@ -189,6 +190,8 @@ public class ClientGUI extends JFrame implements WindowListener {
 	public boolean removeRequirement(String str1, String str2){return networking.removeRequirement(str1, str2);}
 	public int login(String usr,String pass) {permissions = networking.login(usr, pass);return permissions;}
 	public boolean logout() { permissions=User.STUDENT; return networking.logout();}
+        public void sCurrentMajor(String s) {currentMajor=s;}
+        public String gCurrentMajor() {return currentMajor;}
         //added
         public ArrayList<Major> getAllMajors() {return networking.getAllMajors();}
 	public ArrayList<Requirement> getRequirements() {return networking.getRequirements(networking.getCurrentDepartment(),networking.getCurrentMajor().getId());}
