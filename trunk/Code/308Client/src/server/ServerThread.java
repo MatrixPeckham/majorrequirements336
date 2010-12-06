@@ -205,7 +205,7 @@ public class ServerThread implements Runnable{
                     try{
 
                         objectOut.reset();
-                        objectOut.writeObject(user.getMajor().requirementsRemaining(user.getCourses(), user.getMajorYear()));
+                        objectOut.writeObject((Object)user.getMajor().requirementsRemaining(user.getCourses(), user.getMajorYear()));
                         objectOut.writeObject("OK");
                         objectOut.flush();
                     }catch(Exception e) {
@@ -290,7 +290,24 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("ERR");
                     }
                 } else if (cmd.equals(Commands.EDIT_COURSE_TAKEN)) {
-                } else if (cmd.equals(Commands.EDIT_COURSE) || cmd.equals(Commands.ADD_CLASS)) {
+
+
+                } else if (cmd.equals(Commands.EDIT_COURSE)) {
+                    try{
+                        Department d = School.getSchool().getDepartment((String) objectIn.readObject());
+                        Course c=(Course)objectIn.readObject();
+                        Course oldCourse = d.findCourse((String)objectIn.readObject());
+                        d.removeCourse(oldCourse.toString());
+                        PersistenceManager.merge(d);
+                        PersistenceManager.remove(oldCourse, oldCourse.toString());
+                        d.addCourse(c);
+                        objectOut.writeObject("OK");
+                    }catch(Exception e) {
+                        e.printStackTrace();
+                        objectOut.writeObject("ERR");
+                        UseLogger.severe(e.getMessage());
+                    }
+                } else if (cmd.equals(Commands.ADD_CLASS))  {
                     try{
                         String s=(String) objectIn.readObject();
                         Course c=(Course)objectIn.readObject();

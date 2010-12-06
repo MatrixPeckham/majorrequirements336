@@ -245,12 +245,14 @@ public class Client{
         }
     }
 
-    boolean editCourse(Course c, String str) {
+    boolean editCourse(Course c, String str, String cstr) {
         try{
         oos.writeObject(Commands.EDIT_COURSE);
         oos.writeObject(str);
             oos.reset();
         oos.writeObject(c);
+            oos.reset();
+        oos.writeObject(cstr);
         
         return ((String) ois.readObject()).equals("OK");
         } catch(SocketException se){
@@ -492,7 +494,7 @@ public User getStudentInfo() {
         oos.writeObject(Commands.GET_REQS);
            oos.flush();
            MajorCompletion m=(MajorCompletion)ois.readObject();
-           Object o=ois.readObject();
+           ois.readObject();
            return m.getHtml();
         } catch(SocketException se){
             connectionLostGTFO();
