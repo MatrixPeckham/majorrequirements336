@@ -204,7 +204,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 error.setVisible(false);
-                frame.downloadFile(getFile(false),Commands.DOWNLOAD_SCHED);
+                frame.downloadFile(getFile(false),Commands.DOWNLOAD_COURSE_DATA);
             }
         });
         checkButton = new JButton("Check Requirements");

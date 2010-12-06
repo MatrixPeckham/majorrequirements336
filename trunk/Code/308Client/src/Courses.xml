@@ -318,6 +318,19 @@
 			</offered>
 		</course>
 		<course>
+			<number>130</number>
+			<description>Introduction to C and C++ Programming</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
 			<number>214</number>
 			<description>Computer Science II</description>
 			<minGrade>2.0</minGrade>
