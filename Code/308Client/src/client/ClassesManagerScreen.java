@@ -1,6 +1,7 @@
 package client;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -9,8 +10,12 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.EventObject;
 import java.util.TreeMap;
-import javax.swing.ComboBoxModel;
+import java.util.Vector;
+import javax.swing.AbstractCellEditor;
+import javax.swing.DefaultCellEditor;
+import javax.swing.DefaultComboBoxModel;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -21,17 +26,20 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableColumn;
 import server.Commands;
 import server.Course;
 import server.CourseGroup;
 import server.CourseRecord;
 import server.Grade;
 import server.Major;
-import server.Requirement;
 import server.Schedule;
+import server.Semester;
 import server.User;
 
 /**
@@ -363,12 +371,20 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         JLabel addPage;
         //courses table
         JTable courses;
-        //grade lable
-        JLabel gradeL;
         //grade combo box
         JComboBox gradeBox;
         //transfer box
         JCheckBox transBox;
+        //Semester Box
+        JComboBox semBox;
+        //year spinner;
+        JSpinner yearS;
+        //table for grades
+        JTable grades;
+        //button to add a grade
+        JButton addGradeB;
+        //button for removing a grade
+        JButton remGradeB;
         //ok button
         JButton ok;
         //cancel button
@@ -401,7 +417,11 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public java.lang.Class<?> getColumnClass(int columnIndex) {
-                    return getValueAt(0, columnIndex).getClass();
+                    try{
+                        return getValueAt(0, columnIndex).getClass();
+                    }catch(ArrayIndexOutOfBoundsException aioobe){
+                        return String.class;
+                    }
                 }
                 /**
                  *
@@ -417,9 +437,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             }
 
             JScrollPane scrollPane = new JScrollPane(courses);
-            gradeL = new JLabel("Grade");
-            gradeBox = new JComboBox(new String[]{"A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F", "I"});
-            transBox = new JCheckBox("Transfer");
+            Grade[] gradeL = {new Grade("A"), new Grade("A-"), new Grade("B+"), new Grade("B"), new Grade("B-"), new Grade("C+"), new Grade("C"), new Grade("C-"), new Grade("D+"), new Grade("D"), new Grade("D-"), new Grade("F"), new Grade("I")};
+            gradeBox = new JComboBox(gradeL);
             ok = new JButton("OK");
             ok.addActionListener(new ActionListener() {
 
@@ -450,22 +469,110 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                     frame.changeScreen(ClientGUI.CLASSES, o);
                 }
             });
+
+            semBox = new JComboBox();
+            BoxModel boxModel = new BoxModel();
+            semBox.setModel(boxModel);
+            boxModel.addElm("FALL", Semester.FALL);
+            boxModel.addElm("SPRING", Semester.SPRING);
+            boxModel.addElm("WINTER", Semester.WINTER);
+            boxModel.addElm("Summer 1", Semester.SUMMER1);
+            boxModel.addElm("Summer 1", Semester.SUMMER2);
+            yearS = new JSpinner(new SpinnerNumberModel(2010,2000,2100,1));
+
+            grades = new JTable();
+            grades.setModel(new DefaultTableModel() {
+
+                @Override
+                public java.lang.Class<?> getColumnClass(int columnIndex) {
+                    try{
+                        return getValueAt(0, columnIndex).getClass();
+                    }catch(ArrayIndexOutOfBoundsException aioobe){
+                        return String.class;
+                    }
+                }
+
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return true;
+                }
+
+
+                /**
+                 *
+                 */
+                private static final long serialVersionUID = -7810042264203030452L;
+            });
+            grades.setFillsViewportHeight(true);
+
+            grades.setPreferredScrollableViewportSize(new Dimension(1000, 100));
+            DefaultTableModel graModel = (DefaultTableModel)grades.getModel();
+            graModel.addColumn("Semester");
+            graModel.addColumn("Year");
+            graModel.addColumn("Grade");
+
+            grades.setDefaultEditor(String.class, new DefaultCellEditor(semBox));
+            grades.setDefaultEditor(Integer.class, new Editor());
+            grades.setDefaultEditor(Grade.class, new DefaultCellEditor(gradeBox));
+
+            Object[] o = {"FALL",2010,new Grade("A")};
+            graModel.addRow(o);
+            addGradeB = new JButton("Add Grade");
+            addGradeB.addActionListener(new ActionListener() {
+            
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    DefaultTableModel model = (DefaultTableModel)grades.getModel();
+                    Object[] o = {"FALL",2010,new Grade("A")};
+                    model.addRow(o);
+                }
+            });
+            remGradeB = new JButton("Remove Grade");
+            remGradeB.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(grades.getSelectedRow()!=-1){
+                        DefaultTableModel model = (DefaultTableModel)grades.getModel();
+                        model.removeRow(grades.getSelectedRow());
+                    }
+                }
+            });
+            transBox = new JCheckBox("Transfer");
             setLayout(new GridBagLayout());
             addJComponentToContainerUsingGBL(addPage, this, 1, 1, 4, 1);
-            addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 4, 2);
-            addJComponentToContainerUsingGBL(gradeL, this, 1, 4, 1, 1);
+            addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 5, 2);
+//            addJComponentToContainerUsingGBL(gradeL, this, 1, 4, 1, 1);
             addJComponentToContainerUsingGBL(transBox, this, 3, 4, 1, 1);
-            addJComponentToContainerUsingGBL(gradeBox, this, 2, 4, 1, 1);
-            addJComponentToContainerUsingGBL(ok, this, 1, 5, 1, 1);
-            addJComponentToContainerUsingGBL(cancel, this, 3, 5, 1, 1);
+//            addJComponentToContainerUsingGBL(gradeBox, this, 2, 4, 1, 1);
+
+            addJComponentToContainerUsingGBL(new JScrollPane(grades), this, 1, 5, 5, 1);
+            addJComponentToContainerUsingGBL(addGradeB, this, 1, 6, 1, 1);
+            addJComponentToContainerUsingGBL(remGradeB, this, 3, 6, 1, 1);
+//            addJComponentToContainerUsingGBL(sem, this, 1, 5, 1, 1);
+//            addJComponentToContainerUsingGBL(semBox, this, 2, 5, 1, 1);
+//            addJComponentToContainerUsingGBL(yearL, this, 3, 5, 1, 1);
+//            addJComponentToContainerUsingGBL(yearS, this, 4, 5, 1, 1);
+
+            addJComponentToContainerUsingGBL(ok, this, 1, 7, 1, 1);
+            addJComponentToContainerUsingGBL(cancel, this, 3, 7, 1, 1);
         }
 
         private CourseRecord makeRecord() {
             String dep = (String)courses.getModel().getValueAt(courses.getSelectedRow(),0);
             Course c = frame.getCourse(dep);
-            Grade g = new Grade((String)gradeBox.getSelectedItem());
+            //Grade g = new Grade((String)gradeBox.getSelectedItem());
             Boolean t = transBox.isSelected();
-            CourseRecord cr = new CourseRecord(c,g,t);
+            CourseRecord cr = new CourseRecord(c,null,t);
+            DefaultTableModel model = (DefaultTableModel)grades.getModel();
+            for(int i =0; i<model.getRowCount();i++){
+                Semester s = new Semester();
+                BoxModel mod = (BoxModel)semBox.getModel();
+                int j = mod.getIndexOf(model.getValueAt(i, 0));
+                s.setSeason(mod.getValAt(j));
+                s.setYear((Integer)model.getValueAt(i, 1));
+                cr.addGrade((Grade)model.getValueAt(i, 2), s);
+            }
             return cr;
         }
         @Override
@@ -491,6 +598,9 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                 o[2]=s;
                 model.addRow(o);
             }
+            DefaultTableModel gmodel = (DefaultTableModel)grades.getModel();
+            for(int i = 0; i<gmodel.getRowCount();i++)
+                gmodel.removeRow(0);
         }
 
         @Override
@@ -533,8 +643,12 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                         break;
                     }
                 }
-                gradeBox.setSelectedItem(cr.getGrades().get(0).getGrade());
-                transBox.setSelected(cr.getTransfer());
+                DefaultTableModel gmodel = (DefaultTableModel)grades.getModel();
+                BoxModel sem = (BoxModel)semBox.getModel();
+                for(Semester s : cr.getSemesters()){
+                    sem.getElementAt(sem.indexOf(s.getSeason()));
+                    gmodel.addRow(new Object[]{sem.getElementAt(sem.indexOf(s.getSeason())),s.getYear(),cr.getGrade(s)});
+                }
             }
         }
 
@@ -578,10 +692,40 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
     }
 
     private class MajorActionListener implements ActionListener   {
+        @Override
         public void actionPerformed(ActionEvent e) {
                     frame.changeMajor((Major)major.getSelectedItem());
                 }
 
+    }
+    class BoxModel extends DefaultComboBoxModel{
+        Vector<Integer> nums = new Vector<Integer>();
+        public void addElm(String disp, int num){
+            super.addElement(disp);
+            nums.add(num);
+        }
+        public int indexOf(int i){
+            return nums.indexOf(i);
+        }
+        public int getValAt(int i){
+            return nums.get(i);
+        }
+    }
+    private class Editor extends AbstractCellEditor implements TableCellEditor{
+        JSpinner yearS;
+        public Editor(){
+            yearS=new JSpinner(new SpinnerNumberModel(2010,2000,2100,1));
+        }
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            yearS.setValue(value);
+            return yearS;
+        }
+
+        @Override
+        public Object getCellEditorValue() {
+            return yearS.getValue();
+        }
     }
 }
 

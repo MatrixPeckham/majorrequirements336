@@ -104,4 +104,8 @@ public class Grade implements Serializable{
 
             return gradePoints>=g.getGradePoints();
         }
+        @Override
+        public String toString(){
+            return grade;
+        }
 }
