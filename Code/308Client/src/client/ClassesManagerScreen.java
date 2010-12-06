@@ -71,6 +71,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
     private JButton removeButton;
     //upload button
     private JButton uploadButton;
+    private JButton uploadCSV;
     //download button
     private JButton downloadButton;
     //check button
@@ -102,7 +103,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
     private void initGUI() {
         studentPage = new JLabel("Student Page");
         studentPage.setFont(new Font("Times New Roman", 1, 72));
-        String[] columnNames = {"Course", "Grade", "Transfer", "Semester", };
+        String[] columnNames = {"Course", "Grade", "Transfer", "Semester", "Status"};
         Object[][] data = {};
         courses = new JTable();
         courses.setPreferredScrollableViewportSize(new Dimension(1000, 100));
@@ -190,7 +191,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                     
                     frame.uploadFile(f, Commands.UPLOADFILE);
                     User u=frame.getStudentInfo();
-                    frame.changeScreen(ClientGUI.CLASSES, frame.getStudentInfo());
+                    frame.changeScreen(ClientGUI.CLASSES, u);
                     error.setVisible(false);
                     major.setSelectedItem(u.getMajor());
                     year.getModel().setValue(u.getMajorYear());
@@ -281,12 +282,33 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         });
         s.setValue((new Date()).getYear()+1900);
         year.setModel(s);
+        uploadCSV=new JButton("Upload CSV");
+        uploadCSV.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                File f=getFile(true);
+                if(f!=null) {
+                    try{
+                    frame.uploadCSV(f);
+                    User u=frame.getStudentInfo();
+                    frame.changeScreen(ClientGUI.CLASSES, u);
+                    error.setVisible(false);
+                    major.setSelectedItem(u.getMajor());
+                    year.getModel().setValue(u.getMajorYear());
+                } catch(Exception ex) {
+                    JOptionPane.showMessageDialog(frame, "Error uploading CSV:"+ex.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+                }
+                }
+            }
+        });
         addJComponentToContainerUsingGBL(studentPage, this, 1, 1, 5, 1);
         addJComponentToContainerUsingGBL(scrollPane, this, 1, 2, 5, 2);
         addJComponentToContainerUsingGBL(addButton, this, 1, 4, 1, 1);
         addJComponentToContainerUsingGBL(editButton, this, 2, 4, 1, 1);
         addJComponentToContainerUsingGBL(removeButton, this, 3, 4, 1, 1);
         addJComponentToContainerUsingGBL(uploadButton, this, 1, 5, 1, 1);
+        addJComponentToContainerUsingGBL(uploadCSV, this, 1, 6, 1, 1);
         addJComponentToContainerUsingGBL(downloadButton, this, 3, 5, 1, 1);
         addJComponentToContainerUsingGBL(checkButton, this, 4, 4, 1, 1);
         addJComponentToContainerUsingGBL(generateButton, this, 4, 5, 1, 1);
@@ -321,13 +343,31 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
        }
        TreeMap<String,CourseRecord> t=frame.getStudentInfo().getCourses();
            for(CourseRecord r : t.values()) {
-               Object[] o=new Object[4];
+               Object[] o=new Object[5];
                o[0]=r.getCourse().getId();
                o[1]=r.getGrades().get(r.getGrades().size()-1);
                //JCheckBox j=new JCheckBox();
                //j.setSelected();
                o[2]=r.getTransfer();
                o[3]=r.getSemester(r.getGrades().get(r.getGrades().size()-1));
+
+               int courseStatus;
+               Semester s=r.getIncompleteSemester();
+               if(s==null) {
+                   courseStatus=4;
+               } else {
+                   courseStatus=r.getCourse().canTake(s);
+               }
+               o[4]="";
+               switch(courseStatus) {
+                   case -1: o[4]="Not Offererd "+s.toString();
+                   break;
+                   case 0: o[4]="Tentative for "+s.toString();
+                   break;
+                   case 1: o[4]="Offered "+ s.toString();
+                   break;
+                   default: o[4]="Completed";
+               }
                ((DefaultTableModel)courses.getModel()).addRow(o);
            }
             /*major.removeAllItems();

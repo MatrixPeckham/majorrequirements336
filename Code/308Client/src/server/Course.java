@@ -138,4 +138,7 @@ public class Course implements Serializable, Comparable {
     public void setMinGrade(Grade grade) {
         minGrade=grade;
     }
+    public void takenPrereqs(TreeMap<String, CourseRecord> records) {
+
+    }
 }

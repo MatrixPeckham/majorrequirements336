@@ -148,7 +148,12 @@ public class User implements Scheduler, FileParser, Serializable{
                 int year = Integer.parseInt(((Element)((Element)course.item(i)).getElementsByTagName("year").item(0)).getTextContent());
                 int season = Integer.parseInt(((Element)((Element)course.item(i)).getElementsByTagName("season").item(0)).getTextContent());
                 Semester sem = new Semester(year,season);
-                boolean transfer=Boolean.parseBoolean(((Element)((Element)course.item(i)).getElementsByTagName("transfer").item(0)).getTextContent());
+                boolean transfer;
+                try{
+                    transfer=Boolean.parseBoolean(((Element)((Element)course.item(i)).getElementsByTagName("transfer").item(0)).getTextContent());
+                } catch(Exception e) {
+                    transfer=false;
+                }
                 if(courses.containsKey(dept+" "+num)) {
                     CourseRecord r=courses.get(dept+" "+num);
                     r.addGrade(g, sem);

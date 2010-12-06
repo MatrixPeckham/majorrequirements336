@@ -669,4 +669,55 @@ public User getStudentInfo() {
         JOptionPane.showMessageDialog(null, "The connection to the server has been lost.\nUnable to continue, the program will exit.");
         System.exit(-1);
     }
+    void uploadCSV(File f) throws Exception {
+        Scanner sc=new Scanner(f);
+        String file="<file type=\"record\">";
+        while(sc.hasNextLine()) {
+            file+=CSVtoXML(sc.nextLine());
+        }
+        file+="</file>";
+        oos.writeObject(Commands.UPLOADFILE);
+        oos.writeObject(file);
+        ois.readObject();
+    }
+    public static String CSVtoXML(String csv) {
+        String[] vals=csv.split(",");
+        for(String s : vals) {
+            s=s.trim();
+        }
+        if(vals.length==2) {
+            if(vals[0].toLowerCase().equals("major")) {
+                return "<major>"+vals[1]+"</major>";
+            }else if(vals[0].toLowerCase().equals("year")) {
+                return "<year>"+vals[1]+"</year>";
+            } else {
+                return "";
+            }
+        }else {
+            String ret="<course><dept>"+vals[1].split(" ")[0]+"</dept>";
+            ret+="<num>"+vals[1].split(" ")[1]+"</num>";
+            String grade="";
+            if(vals.length>=4) {
+                grade=vals[3];
+            } else {
+                grade="I";
+            }
+            ret+="<grade>"+grade+"</grade>";
+            ret+="<semester><year>"+vals[0].split(" ")[1]+"</year><season>";
+            String sem=vals[0].split(" ")[0].toLowerCase();
+            if(sem.equals("fall")) {
+                sem=""+Semester.FALL;
+            }else if(sem.equals("winter")){
+                sem=""+Semester.WINTER;
+            }else if(sem.equals("summer1")) {
+                sem=""+Semester.SUMMER1;
+            }else if(sem.equals("summer2")) {
+                sem=""+Semester.SUMMER2;
+            } else if(sem.equals("spring")){
+                sem=""+Semester.SPRING;
+            }
+            ret+=sem+"</season></semester></course>";
+            return ret;
+        }
+    }
 }
