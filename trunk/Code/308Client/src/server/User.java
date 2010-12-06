@@ -144,16 +144,19 @@ public class User implements Scheduler, FileParser, Serializable{
                 String dept=((Element)((Element)course.item(i)).getElementsByTagName("dept").item(0)).getTextContent();
                 int num=Integer.parseInt(((Element)((Element)course.item(i)).getElementsByTagName("num").item(0)).getTextContent());
                 Grade g=new Grade(((Element)((Element)course.item(i)).getElementsByTagName("grade").item(0)).getTextContent());
+                int year = Integer.parseInt(((Element)((Element)course.item(i)).getElementsByTagName("year").item(0)).getTextContent());
+                int season = Integer.parseInt(((Element)((Element)course.item(i)).getElementsByTagName("season").item(0)).getTextContent());
+                Semester sem = new Semester(year,season);
                 boolean transfer=Boolean.parseBoolean(((Element)((Element)course.item(i)).getElementsByTagName("transfer").item(0)).getTextContent());
                 if(courses.containsKey(dept+" "+num)) {
                     CourseRecord r=courses.get(dept+" "+num);
-                    //r.addGrade(g);
+                    r.addGrade(g, sem);
                     if(!transfer && g.greaterThan(r.getCourse().getMinGrade())) {
                         transfer=false;
                     }
                 } else {
                     Course c=School.getSchool().getDepartment(dept).findCourse(dept+" "+num);
-                    CourseRecord r=new CourseRecord(c, g,transfer);
+                    CourseRecord r=new CourseRecord(c, g, transfer, sem);
                     courses.put(c.getId(), r);
                 }
             }
@@ -321,7 +324,6 @@ public class User implements Scheduler, FileParser, Serializable{
   
             if (cmd.equals(Commands.DOWNLOAD_COURSE_DATA))    {
                 Collection<CourseRecord> courserecords = courses.values();
-                int i = 0;
                 s+="<file type=\"record\">" + "\n";
                 s+="\t<major>" + major + "</major>\n";
                 s+="\t<year>" + majorYear + "</year>\n";
@@ -332,10 +334,10 @@ public class User implements Scheduler, FileParser, Serializable{
                     s+="\t\t<dept>" + r.getCourse().getName() + "</dept>" + "\n";
                     s+="\t\t<num>" + r.getCourse().getNum() + "</num>" + "\n";
                     s+="\t\t<grade>" + g.getGrade() + "</grade>" + "\n";
-                    s+="\t\t<semester>";
-                    s+="\t\t\t<year>"+s2.getYear()+"</year>";
-                    s+="\t\t\t<season>"+s2.getSeason()+"</season>";
-                    s+="\t\t</semester>";
+                    s+="\t\t<semester>\n";
+                    s+="\t\t\t<year>"+s2.getYear()+"</year>\n";
+                    s+="\t\t\t<season>"+s2.getSeason()+"</season>\n";
+                    s+="\t\t</semester>\n";
                     s+="\t\t<transfer>" + r.getTransfer() + "</transfer>" + "\n";
                     s+="\t</course>" + "\n";
                     }
@@ -353,7 +355,7 @@ public class User implements Scheduler, FileParser, Serializable{
                     for(Major m : majors)   {
                         Collection<Requirement> requirements = m.getRequirements();
                         s+="\t<major>\n";
-                        s+="\t\t<majorname>" + m.getId() + "</majorname>\n";
+                        s+="\t\t<majorName>" + m.getId() + "</majorName>\n";
              
                         for(Requirement r : requirements)   {
                             s+="\t\t<minGPA>" + r.getMinGPA() + "</minGPA>\n";

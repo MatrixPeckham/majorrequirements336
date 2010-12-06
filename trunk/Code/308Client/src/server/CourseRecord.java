@@ -29,6 +29,13 @@ public class CourseRecord implements Serializable{
         this.course=course;
         this.transfer=transfer;
     }
+    public CourseRecord(Course course, Grade grade, boolean transfer, Semester semester) {
+        grades=new TreeMap<Semester, Grade>();
+        if(grade!=null)
+            addGrade(grade, semester);
+        this.course=course;
+        this.transfer=transfer;
+    }
 
     //public TreeMap<Semester, Grade> getGradeTreeMap() { return grades; }
     public Semester getSemester(Grade g) {

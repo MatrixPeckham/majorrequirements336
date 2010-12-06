@@ -1,6 +1,6 @@
 <file type="majorRequirement">
 	<major>
-		<majorname>CSE</majorname>
+		<majorName>CSE</majorName>
 		<minGPA>2.0</minGPA>
 		<minLocalCreds>0</minLocalCreds>
 		<department>CSE</department>

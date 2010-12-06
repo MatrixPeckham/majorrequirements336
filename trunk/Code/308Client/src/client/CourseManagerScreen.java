@@ -112,10 +112,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    int[] is = table.getSelectedRows();
-                    for(int i = 0; i<is.length; i++){
-//                        frame.removeCourse((String)table.getModel().getValueAt(i, 0));
-                    }
+                    frame.removeCourse((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
                     Object o = frame.getDepartment(frame.getCurrentDepartment()).getCourses();
                     getScreen(o);
                 } catch(ArrayIndexOutOfBoundsException aioobe){

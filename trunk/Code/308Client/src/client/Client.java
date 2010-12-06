@@ -612,7 +612,7 @@ public User getStudentInfo() {
             oos.writeObject(Commands.GET_ALL_COURSES);
             oos.flush();
             Object o = ois.readObject();
-            ArrayList<Course> c = new ArrayList<Course>((Collection<Course>)o);
+            ArrayList<Course> c = (ArrayList<Course>)o;
             ois.readObject();
             oos.reset();
             return c;
