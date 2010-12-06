@@ -198,7 +198,8 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.downloadFile(getFile(false),Commands.DOWNLOAD_COURSE_DATA);
+                error.setVisible(false);
+                frame.downloadFile(getFile(false),Commands.DOWNLOAD_SCHED);
             }
         });
         checkButton = new JButton("Check Requirements");
@@ -247,7 +248,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         JLabel majorLabel=new JLabel();
         majorLabel.setText("Current Major:");
         major=new JComboBox();
-        major.addItem(new Major("Undecided",0,0));
+        major.addItem(new Major("Undecided"));
         major.addActionListener(majorActList);
         Major m2=frame.getCurrentMajor();
         if(m2!=null) {

@@ -103,7 +103,7 @@ public class User implements Scheduler, FileParser, Serializable{
                 major=parseMajorFile(fileElement);
                 Department d2=School.getSchool().getDepartment(dept);
                 d2.addMajor(major);
-                PersistenceManager.merge(d2);
+                PersistenceManager.merge(d2, d2.getName());
             }
         } else if(fileType.equals("courses")) {
            // if(permissions!=this.SUPER_ADMIN) {return;}
@@ -130,7 +130,7 @@ public class User implements Scheduler, FileParser, Serializable{
             for(Course c : v) {
                 c.setPrereqs(parsePrereqs(c, (Element)courseNodes.item(i),c.getName()));
                 i++;
-                PersistenceManager.merge(c);
+                PersistenceManager.merge(c,c.getId());
             }
         } else if(fileType.equals("record")) {
             String major=fileElement.getElementsByTagName("major").item(0).getTextContent();
@@ -145,16 +145,29 @@ public class User implements Scheduler, FileParser, Serializable{
                 int num=Integer.parseInt(((Element)((Element)course.item(i)).getElementsByTagName("num").item(0)).getTextContent());
                 Grade g=new Grade(((Element)((Element)course.item(i)).getElementsByTagName("grade").item(0)).getTextContent());
                 boolean transfer=Boolean.parseBoolean(((Element)((Element)course.item(i)).getElementsByTagName("transfer").item(0)).getTextContent());
+                NodeList sem=((Element)course.item(i)).getElementsByTagName("semester").item(0).getChildNodes();
+                int semester=0, year=0;
+                for(int j=0; j<sem.getLength(); j++) {
+                    Element el=((Element)sem.item(j));
+                    String name=el.getTagName().toLowerCase();
+                    if(name.equals("year")) {
+                        year=Integer.parseInt(el.getTextContent());
+                    } else if(name.equals("season")) {
+                        semester=Integer.parseInt(el.getTextContent());
+                    }
+                }
                 if(courses.containsKey(dept+" "+num)) {
                     CourseRecord r=courses.get(dept+" "+num);
-                    //r.addGrade(g);
+                    r.addGrade(g, new Semester(year,semester));
                     if(!transfer && g.greaterThan(r.getCourse().getMinGrade())) {
                         transfer=false;
                     }
                 } else {
                     Course c=School.getSchool().getDepartment(dept).findCourse(dept+" "+num);
-                    CourseRecord r=new CourseRecord(c, g,transfer);
-                    courses.put(c.getId(), r);
+                    if(c!=null) {
+                        CourseRecord r=new CourseRecord(c, g,transfer);
+                        courses.put(c.getId(), r);
+                    }
                 }
             }
 
@@ -203,10 +216,10 @@ public class User implements Scheduler, FileParser, Serializable{
            d.addCourse(c);
            courseVec.add(c);
            //prereqs.put(c, this.parsePrereqs(c,n,dept));
-           PersistenceManager.merge(c);
+           PersistenceManager.merge(c, c.getId());
        }
 
-       PersistenceManager.merge(d);
+       PersistenceManager.merge(d,d.getName());
        return courseVec;
     }
     private ArrayList<CourseGroup> parsePrereqs(Course c, Element e, String dept) {
@@ -223,7 +236,7 @@ public class User implements Scheduler, FileParser, Serializable{
                 String course=n2.item(j).getTextContent();
                 g.addCourse(School.getSchool().getDepartment(course.split(" ")[0]).findCourse(course));
             }
-            PersistenceManager.merge(g);
+            PersistenceManager.merge(g, g.getId());
            // c.addPreReq(g);
             v.add(g);
         }
@@ -234,17 +247,17 @@ public class User implements Scheduler, FileParser, Serializable{
         double gpa=Double.parseDouble(el.getElementsByTagName("minGPA").item(0).getTextContent());
         int minLocalCreds=Integer.parseInt(el.getElementsByTagName("minLocalCreds").item(0).getTextContent());
 
-        Major m=new Major(name,gpa,minLocalCreds);
+        Major m=new Major(name);
         /* each major is composed of requirements so load them*/
         NodeList nodes=el.getElementsByTagName("requirement");
         for(int i=0; i<nodes.getLength(); i++) {
             Requirement r=parseRequirement((Element) nodes.item(i));
-            PersistenceManager.merge(r);
+            PersistenceManager.merge(r, r.getId());
             if(r!=null) {
                 m.addRequirement(r);
             }
         }
-        PersistenceManager.merge(m);
+        PersistenceManager.merge(m, m.getId());
         return m;
     }
     private Requirement parseRequirement(Element el) {

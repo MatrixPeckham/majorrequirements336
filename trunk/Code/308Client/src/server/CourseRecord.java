@@ -29,7 +29,14 @@ public class CourseRecord implements Serializable{
         this.course=course;
         this.transfer=transfer;
     }
-
+    public Semester getIncompleteSemester(){
+        for(Semester s : grades.keySet()) {
+            if(grades.get(s).equals(s)){
+                return s;
+            }
+        }
+        return null;
+    }
     //public TreeMap<Semester, Grade> getGradeTreeMap() { return grades; }
     public Semester getSemester(Grade g) {
            for(Semester s : grades.keySet())

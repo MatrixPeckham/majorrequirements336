@@ -25,6 +25,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Persistence;
 import logging.UseLogger;
 import persistence.PersistenceManager;
+import persistence.Updater;
 import structures.RootlessTree;
 
 /** Contains info and actions for majors
@@ -32,15 +33,13 @@ import structures.RootlessTree;
  * @author tj
  */
 @Entity
-public class Major implements Serializable {
+public class Major implements Serializable, Updater {
     
     @Id
     private String id;
     @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private Collection<Requirement> reqs;
     private String department;
-    private double minGPA;
-    private int minCreditsHere;
     private static EntityManagerFactory emf;
     private static EntityManager em;
     private static UseLogger logger;
@@ -49,11 +48,9 @@ public class Major implements Serializable {
         logger = new UseLogger();
         reqs=new ArrayList<Requirement>();
     }
-    public Major(String major, double minGPA, int minLocalCreds) {
+    public Major(String major) {
         reqs=new ArrayList<Requirement>();
         id=major;
-        this.minGPA=minGPA;
-        minCreditsHere=minLocalCreds;
     }
 
      @OneToMany()
@@ -78,7 +75,7 @@ public class Major implements Serializable {
     public void addRequirement(Requirement r) {
         try {
             reqs.add(r);
-            PersistenceManager.merge(this);
+            PersistenceManager.merge(this, this.getId());
         }catch(Exception e) {
 
         }
@@ -105,8 +102,10 @@ public class Major implements Serializable {
         return mc;
     }
     public void removeRequirement(Requirement r) {
+        r.getPossibleCourses().clear();
+        PersistenceManager.persist(r);
         reqs.remove(r);
-        PersistenceManager.merge(this);
+        PersistenceManager.merge(this, this.getId());
     }
     public String getDepartment() {return department;}
     public void setDepartment(String dept) {department=dept;}
@@ -118,4 +117,11 @@ public class Major implements Serializable {
         else
             return false;
     }
+
+    @Override
+    public void update(Object toUpdate) {
+        Major set=(Major) toUpdate;
+        set.setRequirements(reqs);
+        set.setId(id);
+   }
 }

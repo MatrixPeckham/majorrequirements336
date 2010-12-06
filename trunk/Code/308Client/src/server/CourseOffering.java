@@ -9,13 +9,14 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 import javax.persistence.Id;
+import persistence.Updater;
 
 /**
  * Class to handle offering of courses in years to come
  * @author Bill
  */
 @Entity
-public class CourseOffering implements Serializable{
+public class CourseOffering implements Serializable, Updater{
     @OneToOne(cascade=CascadeType.ALL)
     private Semester semester;
     private boolean confirmed;
@@ -61,5 +62,12 @@ public class CourseOffering implements Serializable{
             s+="is tentatively offered";
         }
         return s+" in "+semester.toString();
+    }
+
+    @Override
+    public void update(Object toUpdate) {
+        CourseOffering set=(CourseOffering)toUpdate;
+        set.setSemester(semester);
+        set.setConfirmed(confirmed);
     }
 }
