@@ -61,12 +61,11 @@ public class PersistenceManager {
         if(!t.isActive()) {
             t.begin();
         }
-
        Object e=em.merge(o);
        em.remove(e);
        t.commit();
     }
-    public static void merge(Object o,Object pk) {
+    public static void merge(Object o) {
         if(em==null) {
             init();
 
@@ -74,17 +73,10 @@ public class PersistenceManager {
         if(!t.isActive()) {
             t.begin();
         }
-        Object up=find(o,pk);
-        boolean insert=up==null;
-        if(insert){
+
         em.merge(o);
-        t.commit();
-        } else {
-            ((Updater) o).update(up);
-            t.commit();
-        }
        
-       
+       t.commit();
     }
     //public static boolean exists()
 }

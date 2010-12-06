@@ -8,14 +8,13 @@ package server;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.*;
-import persistence.Updater;
 /**
  * Class to handle a list of offerings, and the
  * way to handle a semester that isn't listed
  * @author Bill
  */
 @Entity
-public class OfferingList implements Serializable, Updater {
+public class OfferingList implements Serializable {
     public static final byte NONE = 0;
     public static final byte FALL = 16;
     public static final byte SPRI = 2;
@@ -48,15 +47,15 @@ public class OfferingList implements Serializable, Updater {
     public void setOfferings(ArrayList<CourseOffering> b){
         offerings=b;
     }
-    public int isOffered(Semester s){
+    public boolean isOffered(Semester s){
         for(CourseOffering co : offerings){
             if(co.getSemester().equals(s)){
-                return co.isConfirmed()?1:0;
+                return true;
             }
         }
         if((s.getSeason()&notListedStratagy)!=0)
-            return 0;
-        return -1;
+            return true;
+        return false;
     }
     public boolean isConfirmed(Semester s){
         for(CourseOffering co : offerings){
@@ -73,12 +72,5 @@ public class OfferingList implements Serializable, Updater {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    @Override
-    public void update(Object toUpdate) {
-        OfferingList o=(OfferingList)toUpdate;
-        o.setNotListedStratagy(this.notListedStratagy);
-        o.setOfferings(offerings);
     }
 }

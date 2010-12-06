@@ -28,7 +28,7 @@ public class School {
     }
     public void addDepartment(Department d) {
         departments.put(d.getName(), d);
-        PersistenceManager.merge(d,d.getName());
+        PersistenceManager.merge(d);
     }
     public void removeDepartment(String d) {
         PersistenceManager.remove(departments.remove(d), d);

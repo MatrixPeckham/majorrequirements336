@@ -35,11 +35,6 @@ public class Semester implements Comparable, Serializable{
         this.year=year;
         this.season=season;
     }
-    /**
-     * Poorly named
-     * Returns the next semester according to the current date.
-     * @return next semester
-     */
     public static Semester freeSemester() {
         Date d=new Date();
         int month=d.getMonth();

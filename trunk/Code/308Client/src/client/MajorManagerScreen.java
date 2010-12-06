@@ -27,8 +27,6 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import server.Commands;
 import server.Course;
-import server.Commands;
-import java.io.*;
 import server.CourseGroup;
 import server.Department;
 import server.Grade;
@@ -217,12 +215,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                 if(validateForm())
                 {
                     Major m = frame.getMajor((String)majors.getModel().getValueAt(majors.getSelectedRow(), 0));
-                    if(m==null) {
-                       JOptionPane.showMessageDialog(frame, "Error: Major does not exist.");
-                    } else {
                     frame.changeMajor(m);
                     frame.changeManageScreen(ClientGUI.CURR_EDIT, m);
-                    }
                 }
             }
         });

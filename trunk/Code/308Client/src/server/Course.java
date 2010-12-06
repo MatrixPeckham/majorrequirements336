@@ -31,7 +31,6 @@ import javax.persistence.PersistenceUnit;
 import logging.UseLogger;
 //import javax.persistence.criteria.Fetch;
 //import org.eclipse.persistence.internal.oxm.schema.model.All;
-import persistence.Updater;
 import structures.*;
 
 /**
@@ -39,7 +38,7 @@ import structures.*;
  * @author tj
  */
 @Entity
-public class Course implements Serializable, Comparable, Updater {
+public class Course implements Serializable, Comparable {
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private Collection<CourseGroup> prereqs;
     private int minLevel;
@@ -62,7 +61,7 @@ public class Course implements Serializable, Comparable, Updater {
 
 
     public Course() {}
-    public Course(String dept, int level, Grade minGrade, int creds, OfferingList offered) {
+    Course(String dept, int level, Grade minGrade, int creds, OfferingList offered) {
         prereqs=new ArrayList<CourseGroup>();
         UseLogger logger = new UseLogger();
         id=dept+" "+level;
@@ -72,7 +71,7 @@ public class Course implements Serializable, Comparable, Updater {
         semestersOffered=offered;
         num=level;
     }
-    public int canTake(Semester s) {
+    public boolean canTake(Semester s) {
         return semestersOffered.isOffered(s);
     }
     public void addPreReq(CourseGroup c) {
@@ -135,21 +134,8 @@ public class Course implements Serializable, Comparable, Updater {
     public int compareTo(Object o) {
        return id.compareTo(((Course)o).getId());
     }
+
     public void setMinGrade(Grade grade) {
         minGrade=grade;
-    }
-
-    @Override
-    public void update(Object toUpdate) {
-        Course set=(Course) toUpdate;
-        set.setCredits(credits);
-        set.setPrereqs(this.prereqs);
-        set.setMinGrade(minGrade);
-        set.setMinLevel(this.minLevel);
-        set.setId(id);;
-        set.setSemestersOfferd(this.semestersOffered);
-        set.setDescription(description);
-        set.setName(name);
-        set.setNum(num);
     }
 }

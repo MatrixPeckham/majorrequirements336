@@ -8,7 +8,6 @@ package server;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.Vector;
@@ -160,7 +159,7 @@ public class CourseGroup implements Serializable {
         return rem<0?0:rem;
     }
     private void getRemainingCourses(TreeMap<String, CourseRecord> records, RootlessTree<Course> course, int level, Course parent) {
-        int numrequired=required;
+        int numrequired=courses.size();
 
         /* IDEA
          * 1.) Go Through courses
@@ -175,42 +174,21 @@ public class CourseGroup implements Serializable {
          * iii.) if it dosnt exist, all we have to do is add the course and do the repeat the process
          * for all prereqs
          */
-        Vector<RootlessTree<Course>> tmp=new Vector<RootlessTree<Course>>();
-         Vector<Course> course2=new Vector<Course>();
-        for(Course c : courses){
+
+        for(Course c : courses) {
+            int i;
             CourseRecord r=records.get(c.getId());
             if(r!=null && r.coursePassed()) {
                 numrequired-=1;
-            }  else{
-                Iterator<Course> it=course2.iterator();
-                boolean flag=false;
-                int k=0;
-                while(it.hasNext() && !flag) {
-
-                    Course c3=it.next();
-                    if(c.getShortestPrereqPath(records).getMaxLevel()<c3.getShortestPrereqPath(records).getMaxLevel()) {
-                        course2.add(k,c);
-                        flag=true;
-                    }
-                    k++;
-                }
-                if(!flag) {course2.add(c);}
-            }
-        }
-        course2.setSize(numrequired);
-         for(Course c : course2) {
-            int i;
-            if((i=course.dataExists(c))!=-1) {
+            } else if((i=course.dataExists(c))!=-1) {
                 if(level>=i) {
                     course.changeParent(c, parent);
                 }
             } else {
                 course.addChild(parent, c);
-
                 //getRemainingCourses(records, c.getShortestPrereqPath().getSubtree(0), level+1, c);
                 RootlessTree.mergeTrees(course, c.getShortestPrereqPath(records).getSubtree(0), c, level+1);
             }
-               
         }
     }
     
