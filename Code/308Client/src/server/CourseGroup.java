@@ -8,6 +8,7 @@ package server;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.Vector;
@@ -159,7 +160,7 @@ public class CourseGroup implements Serializable {
         return rem<0?0:rem;
     }
     private void getRemainingCourses(TreeMap<String, CourseRecord> records, RootlessTree<Course> course, int level, Course parent) {
-        int numrequired=courses.size();
+        int numrequired=required;
 
         /* IDEA
          * 1.) Go Through courses
@@ -174,13 +175,31 @@ public class CourseGroup implements Serializable {
          * iii.) if it dosnt exist, all we have to do is add the course and do the repeat the process
          * for all prereqs
          */
-
-        for(Course c : courses) {
-            int i;
+         Vector<Course> course2=new Vector<Course>();
+         for(Course c : courses) {
             CourseRecord r=records.get(c.getId());
-            if(r!=null && r.coursePassed()) {
+             if(r!=null && r.coursePassed()) {
                 numrequired-=1;
-            } else if((i=course.dataExists(c))!=-1) {
+            } else{
+                 Iterator<Course> it=course2.iterator();
+                 int k=0;
+                 boolean flag=false;
+                 while(it.hasNext() && !flag) {
+                     Course c2=it.next();
+                     if(c.getShortestPrereqPath(records).getMaxLevel()<c2.getShortestPrereqPath(records).getMaxLevel()) {
+                         flag=true;
+                         course2.add(k,c);
+                     }
+                     k++;
+                 }
+                 if(!flag) {course2.add(c);}
+             }
+         }
+         course2.setSize(required);
+        for(Course c : course2) {
+            int i;
+            
+             if((i=course.dataExists(c))!=-1) {
                 if(level>=i) {
                     course.changeParent(c, parent);
                 }

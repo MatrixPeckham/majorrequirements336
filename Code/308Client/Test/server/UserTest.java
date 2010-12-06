@@ -80,7 +80,7 @@ public class UserTest {
         File f=new File(".\\src\\Courses.xml");
         System.out.println("parseFile");
         u.parseFile(f);
-        u.parseFile(new File(".\\src\\Major.xml"));
+        u.parseFile(new File(".\\src\\Major2.xml"));
         u.parseFile(new File(".\\src\\CoursesTaken.xml"));
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

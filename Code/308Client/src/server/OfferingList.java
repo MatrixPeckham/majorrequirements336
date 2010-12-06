@@ -47,15 +47,15 @@ public class OfferingList implements Serializable {
     public void setOfferings(ArrayList<CourseOffering> b){
         offerings=b;
     }
-    public boolean isOffered(Semester s){
+    public int isOffered(Semester s){
         for(CourseOffering co : offerings){
             if(co.getSemester().equals(s)){
-                return true;
+                return co.isConfirmed()?1:0;
             }
         }
         if((s.getSeason()&notListedStratagy)!=0)
-            return true;
-        return false;
+            return 0;
+        return -1;
     }
     public boolean isConfirmed(Semester s){
         for(CourseOffering co : offerings){

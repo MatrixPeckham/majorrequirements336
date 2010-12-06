@@ -19,6 +19,7 @@
 			<description>Advanced Calculus II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                       
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -181,6 +182,11 @@
 			<description>Chemistry II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CHE 131</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -194,6 +200,11 @@
 			<description>Chemistry III</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                       <prerequisite>
+                            <sequence required="1">
+                                <pre>CHE 132</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -220,6 +231,11 @@
 			<description>Advanced Chemistry II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CHE 141</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -233,6 +249,11 @@
 			<description>Advanced Chemistry III</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CHE 142</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -301,6 +322,11 @@
 			<description>Computer Science II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 114</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -327,6 +353,11 @@
 			<description>Computer Science III</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 214</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -339,6 +370,11 @@
 			<number>220</number>
 			<description>Computer Organization</description>
 			<minGrade>2.0</minGrade>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 214</pre>
+                            </sequence>
+                        </prerequisite>
 			<credits>3</credits>
 			<offered>
 				<spring>true</spring>
@@ -353,6 +389,11 @@
 			<description>Intermediate Programming in C and C++</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 130</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -365,6 +406,11 @@
 			<number>300</number>
 			<description>Writing Computer Science</description>
 			<minGrade>2.0</minGrade>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>WRT 102</pre>
+                            </sequence>
+                        </prerequisite>
 			<credits>1</credits>
 			<offered>
 				<spring>true</spring>
@@ -392,6 +438,9 @@
 			<description>Professional Ethics for Computer Science</description>
 			<minGrade>2.0</minGrade>
 			<credits>1</credits>
+                        <prerequisite>
+                            <minstanding>U3</minstanding>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -405,6 +454,11 @@
 			<description>Introduction to Theory of Computation</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 215</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -418,6 +472,11 @@
 			<description>Compiler Design</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 219</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -431,6 +490,11 @@
 			<description>Principles of database Systems</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 219</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -444,6 +508,11 @@
 			<description>Operating Systems</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 219</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -457,6 +526,11 @@
 			<description>Principles of Programming Languages</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 219</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -470,6 +544,11 @@
 			<description>Software Engineering</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 219</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -483,6 +562,11 @@
 			<description>Data Communication and Networks</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 219</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -509,6 +593,9 @@
 			<description>Legal, Social, and Ethical Issues in Computer Science</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <minstanding>U3</minstanding>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -625,6 +712,11 @@
 			<number>336</number>
 			<description>Internet Programming</description>
 			<minGrade>2.0</minGrade>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 219</pre>
+                            </sequence>
+                        </prerequisite>
 			<credits>3</credits>
 			<offered>
 				<spring>true</spring>
@@ -639,6 +731,11 @@
 			<description>Computer Communications</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 219</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -704,6 +801,11 @@
 			<description>Wireless and Mobile Networking</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 310</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -729,6 +831,11 @@
 			<number>373</number>
 			<description>Analysis of Algorithms</description>
 			<minGrade>2.0</minGrade>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 214</pre>
+                            </sequence>
+                        </prerequisite>
 			<credits>3</credits>
 			<offered>
 				<spring>true</spring>
@@ -756,6 +863,12 @@
 			<description>Advanced Systems Programming in C/C++</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 306</pre>
+                                <pre>CSE 230</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -781,6 +894,12 @@
 			<number>380</number>
 			<description>Computer Game Programming</description>
 			<minGrade>2.0</minGrade>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 230</pre>
+                                <pre>CSE 214</pre>
+                            </sequence>
+                        </prerequisite>
 			<credits>3</credits>
 			<offered>
 				<spring>true</spring>
@@ -795,6 +914,11 @@
 			<description>Advanced Game Programming</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 380</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -808,6 +932,11 @@
 			<description>Special Topics</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 219</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -821,6 +950,11 @@
 			<description>Computer Network Security</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 310</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -834,6 +968,11 @@
 			<description>Computer System Security</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 306</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -915,6 +1054,11 @@
 			<description>Something</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CSE 219</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -973,6 +1117,11 @@
 			<description>Calculus II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MAT 125</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -986,6 +1135,11 @@
 			<description>Calculus III</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MAT 126</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1012,6 +1166,11 @@
 			<description>Advanced Calculus II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MAT 131</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1038,6 +1197,11 @@
 			<description>Advanced Calculus II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MAT 141</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1093,6 +1257,11 @@
 			<description>Physics II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>PHY 125</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1106,6 +1275,11 @@
 			<description>Physics III</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>PHY 126</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1132,7 +1306,12 @@
 			<description>Advanced Physics II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
-			<offered>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CHE 131</pre>
+                            </sequence>
+			</prerequisite>
+                        <offered>
 				<spring>true</spring>
 				<fall>true</fall>
 				<winter>false</winter>
@@ -1145,6 +1324,7 @@
 			<description>Physics Lab I</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1158,6 +1338,11 @@
 			<description>Physics Lab II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                        <sequence required="1">
+                                <pre>PHY 133</pre>
+                            </sequence>
+                            </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1184,6 +1369,11 @@
 			<description>Honors II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                        <sequence required="1">
+                                <pre>PHY 141</pre>
+                            </sequence>
+                            </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1213,6 +1403,11 @@
 			<description>Writing II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                        <sequence required="1">
+                                <pre>WRT 101</pre>
+                            </sequence>
+                            </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
