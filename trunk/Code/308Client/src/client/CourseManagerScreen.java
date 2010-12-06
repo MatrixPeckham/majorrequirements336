@@ -116,7 +116,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                     for(int i = 0; i<is.length; i++){
 //                        frame.removeCourse((String)table.getModel().getValueAt(i, 0));
                     }
-                    Object o = frame.getDepartment(frame.getCurrentDepartment());
+                    Object o = frame.getDepartment(frame.getCurrentDepartment()).getCourses();
                     getScreen(o);
                 } catch(ArrayIndexOutOfBoundsException aioobe){
                     JOptionPane.showMessageDialog(frame, "Select one or more rows to remove");
