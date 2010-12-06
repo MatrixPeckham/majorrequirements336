@@ -248,7 +248,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         JLabel majorLabel=new JLabel();
         majorLabel.setText("Current Major:");
         major=new JComboBox();
-        major.addItem(new Major("Undecided"));
+        major.addItem(new Major("Undecided",0,0));
         major.addActionListener(majorActList);
         Major m2=frame.getCurrentMajor();
         if(m2!=null) {
@@ -312,16 +312,14 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
        }
        TreeMap<String,CourseRecord> t=frame.getStudentInfo().getCourses();
            for(CourseRecord r : t.values()) {
-               for(Grade g : r.getGrades()) {
-                   Object[] o=new Object[4];
-                   o[0]=r.getCourse().getId();
-                   o[1]=g.getGrade();
-                   //JCheckBox j=new JCheckBox();
-                   //j.setSelected();
-                   o[2]=r.getTransfer();
-                   o[3]=r.getSemester(g);
-                   ((DefaultTableModel)courses.getModel()).addRow(o);
-               }
+               Object[] o=new Object[4];
+               o[0]=r.getCourse().getId();
+               o[1]=r.getGrades().get(r.getGrades().size()-1);
+               //JCheckBox j=new JCheckBox();
+               //j.setSelected();
+               o[2]=r.getTransfer();
+               o[3]=r.getSemester(r.getGrades().get(r.getGrades().size()-1));
+               ((DefaultTableModel)courses.getModel()).addRow(o);
            }
             /*major.removeAllItems();
             major.addItem(new Major("Undecided",0,0));
