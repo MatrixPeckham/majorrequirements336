@@ -103,8 +103,10 @@ public class ServerThread implements Runnable{
                 } else if (cmd.equals(Commands.REMOVE_COURSE)) {
                     try{
                         Department d = School.getSchool().getDepartment((String) objectIn.readObject());
-                        d.removeCourse((String) objectIn.readObject());
-                        //PersistenceManager.merge(d);
+                        Course c = d.findCourse((String)objectIn.readObject());
+                        d.removeCourse(c.toString());
+                        PersistenceManager.merge(d);
+                        PersistenceManager.remove(c, c.toString());
                         objectOut.writeObject("OK");
                     }catch(Exception e) {
                         objectOut.writeObject("ERR");

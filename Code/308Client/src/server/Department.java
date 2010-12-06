@@ -32,11 +32,11 @@ public class Department implements Serializable{
     }
     public void addCourse(Course c) {
         courses.add(c);
-       PersistenceManager.merge(c);
-       PersistenceManager.merge(this);
+        PersistenceManager.merge(this);
+        PersistenceManager.merge(c);
     }
     public void removeCourse(String name) {
-        courses.remove(name);
+        courses.remove(findCourse(name));
     }
     public void addMajor(Major c) {
         majors.add(c);
