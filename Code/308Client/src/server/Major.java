@@ -96,12 +96,22 @@ public class Major implements Serializable {
     public MajorCompletion requirementsRemaining(TreeMap<String, CourseRecord> r, int year) {
         MajorCompletion mc=new MajorCompletion();
         mc.name=this.getId()+" Major Requirements";
+        mc.complete = true;
+        int count = 0;
         for(Requirement re : reqs) {
             if(re.getYear()==year) {
                RequirementCompletion rc=re.requirementSatisfied(r);
                 mc.reqs.add(rc);
+                if (!rc.complete)
+                    mc.complete = false;
+                else
+                    count++;
             }
         }
+        if (mc.complete)
+            mc.message = "Congratulations you have completed " + count + " out of " + mc.reqs.size() + " requirements! Go graduate!";
+        else
+            mc.message = "You have only completed " + count + " out of " + mc.reqs.size() + " requirements. Stay in school!";
         return mc;
     }
     public void removeRequirement(Requirement r) {

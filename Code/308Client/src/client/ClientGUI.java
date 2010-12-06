@@ -179,7 +179,7 @@ public class ClientGUI extends JFrame implements WindowListener {
 	public boolean addCourse(Course c, String str) {return networking.addCourse(c, str);}
 	public Course loadCourse(String str) {return networking.loadCourse(str);}
 	public boolean removeCourse(String str) {return networking.removeCourse(networking.getCurrentDepartment(),str);}
-	public boolean editCourse(Course c, String str) {return networking.editCourse(c, str);}
+	public boolean editCourse(Course c, String str, String cstr) {return networking.editCourse(c, str, cstr);}
 	public Major loadMajor(String str) {return networking.loadMajor(str);}
         public int changeYear(int i){return networking.changeYear(i);}
 	public void addMajor(Major m) {networking.addMajor(m,networking.getCurrentDepartment());}

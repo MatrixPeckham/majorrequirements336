@@ -298,6 +298,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         private JCheckBox wintB;
         private JCheckBox sum1B;
         private JCheckBox sum2B;
+        private String originalName;
 
         //constructor
         public AddCouScreen(ClientGUI gui) {
@@ -356,7 +357,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                         if(ok.getText().equals("Add")){
                             frame.addCourse(makeCourse(), frame.getCurrentDepartment());
                         } else {
-                            frame.editCourse(makeCourse(), frame.getCurrentDepartment());
+                            frame.editCourse(makeCourse(), frame.getCurrentDepartment(), originalName);
                         }
                         frame.changeScreen(ClientGUI.COURSES, frame.getDepartmentCourses(frame.getCurrentDepartment()));
                     }
@@ -639,6 +640,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 nameF.setText(c.getId());
                 descF.setText(c.getDescription());
                 numF.setText(c.getNum()+"");
+                originalName = c.getId();
                 credF.setValue(c.getCredits());
                 standingPrereq.setSelectedIndex(c.getMinLevel());
                 for(CourseGroup cg : c.getPrereqs()){
