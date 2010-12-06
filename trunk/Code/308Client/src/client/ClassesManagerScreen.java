@@ -7,10 +7,13 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.EventObject;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.Vector;
 import javax.swing.AbstractCellEditor;
@@ -503,6 +506,9 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                             frame.editCourseRecord(r);
                         }
                         Object o = frame.getStudentInfo();
+                        if(grades.getCellEditor()!=null){
+                            grades.getCellEditor().stopCellEditing();
+                        }
                         frame.changeScreen(ClientGUI.CLASSES, o);
                         }catch(ArrayIndexOutOfBoundsException e){
                         JOptionPane.showMessageDialog(null, "You must select a course to add from the table");}
@@ -516,6 +522,9 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
                     Object o = frame.getStudentInfo();
+                        if(grades.getCellEditor()!=null){
+                            grades.getCellEditor().stopCellEditing();
+                        }
                     frame.changeScreen(ClientGUI.CLASSES, o);
                 }
             });
@@ -562,7 +571,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             graModel.addColumn("Grade");
 
             grades.setDefaultEditor(String.class, new DefaultCellEditor(semBox));
-            grades.setDefaultEditor(Integer.class, new Editor());
+            grades.setDefaultEditor(Integer.class, new Editor(yearS));
             grades.setDefaultEditor(Grade.class, new DefaultCellEditor(gradeBox));
 
             Object[] o = {"FALL",2010,new Grade("A")};
@@ -584,9 +593,13 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if(grades.getSelectedRow()!=-1){
+                    int sel = grades.getSelectedRow();
+                    if(sel!=-1){
                         DefaultTableModel model = (DefaultTableModel)grades.getModel();
-                        model.removeRow(grades.getSelectedRow());
+                        if(grades.getCellEditor()!=null){
+                            grades.getCellEditor().stopCellEditing();
+                        }
+                        model.removeRow(sel);
                     }
                 }
             });
@@ -630,6 +643,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         @Override
         public void getScreen(Object fillWith) {
             ArrayList<Course> allC = frame.getAllCourses();
+            Set<String> taken = frame.getStudentInfo().getCourses().keySet();
             DefaultTableModel model = (DefaultTableModel)courses.getModel();
             int num = model.getRowCount();
             for(int i=0;i<num;i++){
@@ -648,11 +662,17 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
                     }
                 }
                 o[2]=s;
-                model.addRow(o);
+                if(!taken.contains(c.getId()))
+                    model.addRow(o);
             }
             DefaultTableModel gmodel = (DefaultTableModel)grades.getModel();
-            for(int i = 0; i<gmodel.getRowCount();i++)
+            num = gmodel.getRowCount();
+            for(int i = 0; i<num;i++)
                 gmodel.removeRow(0);
+            if(fillWith==null){
+                Object[] o = {"FALL",2010,new Grade("A")};
+                gmodel.addRow(o);
+            }
         }
 
         @Override
@@ -763,10 +783,11 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
             return nums.get(i);
         }
     }
-    private class Editor extends AbstractCellEditor implements TableCellEditor{
+    private class Editor extends AbstractCellEditor implements TableCellEditor, FocusListener{
         JSpinner yearS;
-        public Editor(){
-            yearS=new JSpinner(new SpinnerNumberModel(2010,2000,2100,1));
+        public Editor(JSpinner s){
+            yearS=s;
+            yearS.addFocusListener(this);
         }
         @Override
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
@@ -777,6 +798,16 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         @Override
         public Object getCellEditorValue() {
             return yearS.getValue();
+        }
+
+        @Override
+        public void focusGained(FocusEvent e) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+            stopCellEditing();
         }
     }
 }
