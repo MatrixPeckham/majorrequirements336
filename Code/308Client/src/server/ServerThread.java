@@ -8,7 +8,6 @@ import java.net.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import logging.UseLogger;
 import persistence.PersistenceManager;
 /**
@@ -47,6 +46,9 @@ public class ServerThread implements Runnable{
         }catch(Exception e) {
             connected=false;
         }
+    }
+    private void clearStream() throws IOException {
+        objectIn.skip(objectIn.available());
     }
     @Override
     /**
@@ -87,16 +89,16 @@ public class ServerThread implements Runnable{
                     //connected=false;
                     system.removeUser(user.getID());
                     objectOut.writeObject("OK");
-                    user=system.addUser();
                 } else if(cmd.equals(Commands.ADD_MAJOR)) {
                     try{
                         Major m=(Major)objectIn.readObject();
                         School.getSchool().getDepartment((String) objectIn.readObject()).addMajor(m);
-                        PersistenceManager.merge(m, m.getId());
+                        PersistenceManager.merge(m);
                         objectOut.writeObject("OK");
                     }catch(Exception e) {
                         objectOut.writeObject("ERR");
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.REMOVE_COURSE)) {
                     try{
@@ -106,7 +108,7 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("OK");
                     }catch(Exception e) {
                         objectOut.writeObject("ERR");
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.REMOVE_MAJOR)) {
                      try{
@@ -116,7 +118,7 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("OK");
                     }catch(Exception e) {
                         objectOut.writeObject("ERR");
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     } 
                 } else if (cmd.equals(Commands.REMOVE_REQ)) {
                     try {
@@ -125,17 +127,15 @@ public class ServerThread implements Runnable{
                         String req = (String) objectIn.readObject();
                         Major m = School.getSchool().getDepartment(depo).findMajor(maj);
                         Collection<Requirement> r = m.getRequirements();
-                        Iterator<Requirement> it=r.iterator();
-                        while(it.hasNext()) {
-                            Requirement re=it.next();
+                        for(Requirement re : r) {
                             if (re.getId().equals(req))
-                                it.remove();;
+                                m.removeRequirement(re);
                         }
                         objectOut.writeObject("OK");
                     }
                      catch(Exception e) {
                          objectOut.writeObject("ERR");
-                         UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                         UseLogger.severe(e.getMessage());
                      }
                 } else if (cmd.equals(Commands.DOWNLOAD_REQ)) {
                     try {
@@ -144,7 +144,7 @@ public class ServerThread implements Runnable{
                     }
                     catch(Exception e)   {
                         objectOut.writeObject("ERR");
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.EDIT_DEPT)) {
                     try {
@@ -153,7 +153,7 @@ public class ServerThread implements Runnable{
                     }
                     catch(Exception e)  {
                         objectOut.writeObject("ERR");
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.GET_DEPT)) {
                      try{
@@ -169,7 +169,7 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject(null);
                         objectOut.flush();*/
                         objectOut.writeObject("ERR");
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                         //System.out.println("ERROR");
                     }
                 } else if (cmd.equals(Commands.GETDEPTCOURSES)) {
@@ -181,7 +181,7 @@ public class ServerThread implements Runnable{
                     }catch(Exception e) {
                         objectOut.writeObject("ERR");
                          objectOut.flush();
-                         UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                         UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.GET_ALL_COURSES)) {
                     try{
@@ -197,7 +197,7 @@ public class ServerThread implements Runnable{
                     } catch(Exception e){
                         objectOut.writeObject("ERR");
                         objectOut.flush();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.GET_REQS)) {
                     try{
@@ -209,7 +209,7 @@ public class ServerThread implements Runnable{
                     }catch(Exception e) {
                         objectOut.writeObject("ERR");
                         objectOut.flush();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.ADD_DEPT)) {
                     try{
@@ -229,7 +229,7 @@ public class ServerThread implements Runnable{
 
                         e.printStackTrace();
                         objectOut.writeObject("ERR");
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
       //                  pw.flush();
                     } 
                 } else if (cmd.equals(Commands.REMOVE_DEPT)) {
@@ -239,7 +239,7 @@ public class ServerThread implements Runnable{
                     }catch(Exception e) {
                         e.printStackTrace();
                         objectOut.writeObject("ERR");
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.REMOVE_CLASS)) {
                     try{
@@ -248,7 +248,7 @@ public class ServerThread implements Runnable{
                     }catch(Exception e) {
                         e.printStackTrace();
                         objectOut.writeObject("ERR");
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.UPLOADFILE)) {
                     try{
@@ -258,7 +258,7 @@ public class ServerThread implements Runnable{
                     } catch(Exception e) {
                         objectOut.writeObject("ERR");
                         objectOut.flush();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.DOWNLOAD_COURSE_DATA)) {
                     try{
@@ -267,7 +267,7 @@ public class ServerThread implements Runnable{
                     }catch(Exception e) {
                         e.printStackTrace();
                         objectOut.writeObject("ERR");
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.DOWNLOAD_COURSES))   {
                     try {
@@ -299,7 +299,7 @@ public class ServerThread implements Runnable{
                     }catch(Exception e) {
                         e.printStackTrace();
                         objectOut.writeObject("ERR");
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.EDIT_MAJOR)) {
                   try   {
@@ -312,12 +312,12 @@ public class ServerThread implements Runnable{
                           if (m.getId().equals(mid))
                               m.setId((String) objectIn.readObject());
                       }
-                      PersistenceManager.merge(d, d.getName());
+                      PersistenceManager.merge(d);
                       objectOut.writeObject("OK");
                   }
                   catch(Exception e)    {
                         e.printStackTrace();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                         objectOut.writeObject("ERR");
                   }
                    
@@ -329,7 +329,7 @@ public class ServerThread implements Runnable{
                         objectOut.writeObject("OK");
                     }catch(Exception e) {
                         e.printStackTrace();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                         objectOut.writeObject("ERR");
                     }
                 } else if (cmd.equals(Commands.GETSCHED)) {
@@ -342,7 +342,7 @@ public class ServerThread implements Runnable{
                         e.printStackTrace();
                         objectOut.writeObject("ERR");
                         objectOut.flush();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.GETCOURSE)) {
                     try{
@@ -354,7 +354,7 @@ public class ServerThread implements Runnable{
                     }catch(Exception e) {
                         objectOut.writeObject("ERR");
                         objectOut.flush();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if (cmd.equals(Commands.ADD_COURSE_RECORD) || cmd.equals(Commands.EDIT_COURSE_RECORD)) {
                     try{
@@ -379,7 +379,7 @@ public class ServerThread implements Runnable{
                         e.printStackTrace();
                         objectOut.writeObject(false);
                         objectOut.flush();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if(cmd.equals(Commands.GET_COURSE_RECORD)){
                     try{
@@ -390,7 +390,7 @@ public class ServerThread implements Runnable{
                         e.printStackTrace();
                         objectOut.writeObject("ERR");
                         objectOut.flush();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 }  else if (cmd.equals(Commands.ALL_MAJORS)) {
                     try{
@@ -402,7 +402,7 @@ public class ServerThread implements Runnable{
                         e.printStackTrace();
                         objectOut.writeObject("ERR");
                         objectOut.flush();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 }  else if(cmd.equals(Commands.GETUSER)) {
                     try{
@@ -413,7 +413,7 @@ public class ServerThread implements Runnable{
                     } catch(Exception e) {
                         objectOut.writeObject("ERR");
                         objectOut.flush();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if(cmd.equals(Commands.CHANGEMAJOR)){
                     try{
@@ -423,7 +423,7 @@ public class ServerThread implements Runnable{
                     }catch(Exception e){
                         objectOut.writeObject("ERR");
                         objectOut.flush();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if(cmd.equals(Commands.GET_MAJ_REQS)){
                     try{
@@ -446,7 +446,7 @@ public class ServerThread implements Runnable{
                     } catch(Exception e){
                         objectOut.writeObject("ERR");
                         objectOut.flush();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else if(cmd.equals(Commands.EXIT))
                 {
@@ -478,7 +478,7 @@ public class ServerThread implements Runnable{
                     } catch(Exception e){
                         objectOut.writeObject(false);
                         objectOut.flush();
-                        UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                        UseLogger.severe(e.getMessage());
                     }
                 } else {
                         //objectOut.writeObject(null);
@@ -490,15 +490,8 @@ public class ServerThread implements Runnable{
                 connected=false;
             } catch (Exception e) {
                 e.printStackTrace();
-                UseLogger.severe(e.getMessage()+"\n"+stackTrace(e));
+                UseLogger.severe(e.getMessage());
             }
         }
-    }
-    private String stackTrace(Exception e) {
-        Writer w=new StringWriter();
-        PrintWriter pw=new PrintWriter(w);
-        e.printStackTrace(pw);
-        return w.toString();
-
     }
 }

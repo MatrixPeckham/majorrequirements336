@@ -414,6 +414,7 @@ public class Client{
         }
         return ret;
     }
+
     ArrayList<Course> getDepartmentCourses(String str) {
         try{
        oos.writeObject(Commands.GETDEPTCOURSES);

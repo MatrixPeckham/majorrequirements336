@@ -8,13 +8,12 @@ import java.io.Serializable;
 import java.util.*;
 import javax.persistence.*;
 import persistence.PersistenceManager;
-import persistence.Updater;
 /**
  *
  * @author Bill
  */
 @Entity
-public class Department implements Serializable, Updater{
+public class Department implements Serializable{
     
     @Id
     private String name;
@@ -33,8 +32,8 @@ public class Department implements Serializable, Updater{
     }
     public void addCourse(Course c) {
         courses.add(c);
-       PersistenceManager.merge(c, c.getId());
-       PersistenceManager.merge(this, this.getName());
+       PersistenceManager.merge(c);
+       PersistenceManager.merge(this);
     }
     public void removeCourse(String name) {
         courses.remove(name);
@@ -42,12 +41,12 @@ public class Department implements Serializable, Updater{
     public void addMajor(Major c) {
         majors.add(c);
         //PersistenceManager.merge(c);
-        PersistenceManager.merge(this, this.getName());
+        PersistenceManager.merge(this);
     }
     public void removeMajor(String name) {
         Major m=findMajor(name);
         majors.remove(m);
-        PersistenceManager.merge(this, this.getName());
+        PersistenceManager.merge(this);
         PersistenceManager.remove(m,m.getId());
     }
     public String getName() {return name;}
@@ -74,17 +73,4 @@ public class Department implements Serializable, Updater{
             }
         }
         return null;}
-    public void setMajors(Collection<Major> m) {
-        majors=new ArrayList(m);
-    }
-    public void setCourses(Collection<Course> m) {
-        courses=new ArrayList<Course>(m);
-    }
-    @Override
-    public void update(Object toUpdate) {
-        Department d=(Department) toUpdate;
-        d.setName(name);
-        d.setCourses(courses);
-        d.setMajors(majors);
-    }
 }

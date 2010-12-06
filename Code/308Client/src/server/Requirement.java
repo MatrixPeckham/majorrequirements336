@@ -19,7 +19,6 @@ import javax.persistence.Persistence;
 import logging.UseLogger;
 import java.util.*;
 import javax.persistence.FetchType;
-import persistence.Updater;
 import structures.RootlessTree;
 
 /** Requirements that need to be fullfiledd for a major for graduation
@@ -27,7 +26,7 @@ import structures.RootlessTree;
  * @author tj
  */
 @Entity
-public class Requirement implements Serializable, Updater {
+public class Requirement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;//(Primary key) name identifier for requirement
@@ -111,31 +110,29 @@ public class Requirement implements Serializable, Updater {
         Vector<CourseGroup> courses=new Vector<CourseGroup>(possibleCourses);
         for(CourseGroup g : possibleCourses) {
             int i=g.numRemainingCourses(records);
-            Iterator<CourseGroup> it=topX.iterator();
+            sizes.add(i);
+        }
+        for(int i=0; i<num;i++) {
+            int largest=-1;
+            int largestIndex=-1;
             int j=0;
-            boolean flag=false;
-            while(j<topX.size()) {
-                CourseGroup tmp=it.next();
-                if(g.numRemainingCourses(records)<tmp.numRemainingCourses(records)){
-                    topX.add(j, g);
-                    j=topX.size();
-                    flag=true;
+            for(Integer i2 : sizes) {
+                if(i2>largest) {
+                    largest=i2;
+                    largestIndex=j;
                 }
                 j++;
             }
-            if(flag) {topX.add(g);}
-            //sizes.add(i);
+            Integer rem=sizes.remove(largestIndex);
+            topX.add(courses.get(rem));
         }
-        topX.setSize(num);
         return topX;
     }
     public RootlessTree<Course> getRemainingCourses(TreeMap<String, CourseRecord> records) {
         RootlessTree<Course> remaining=new RootlessTree<Course>();
         Vector<CourseGroup> toUse=this.topLeastRemaining(records);
         for(CourseGroup g : toUse) {
-            if(g!=null) {
             g.getRemainingCourses(records, remaining);
-            }
             //remaining.removeDuplicates(c);
         }
         return remaining;
@@ -237,17 +234,6 @@ public class Requirement implements Serializable, Updater {
             rc.message+=credits+" of "+minCredits+" requiredCredits";
         }
         return rc;
-    }
-
-    @Override
-    public void update(Object toUpdate) {
-        Requirement r=(Requirement)toUpdate;
-        r.setMinGPA(minGPA);
-        r.setMinResidentCredits(this.minResidentCredits);
-        r.setMinUpperDivCredits(this.minUpperDivCredits);
-        r.setNumberOfCourses(this.numberOfCourses);
-        r.setPossibleCourses(new ArrayList(possibleCourses));
-        r.setYear(version);
     }
 
 }
