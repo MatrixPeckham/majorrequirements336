@@ -96,6 +96,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         editDepartmentPage.setFont(new Font("Times New Roman", 1, 72));
         coursesForDepartment = new JLabel("Courses For Department");
         edit = new JButton("Edit Course");
+        edit.setToolTipText("Go To Edit Course Screen");
         edit.addActionListener(new ActionListener() {
 
             @Override
@@ -107,6 +108,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             }
         });
         remove = new JButton("Remove Course");
+        remove.setToolTipText("Remove Selected Course From Table");
         remove.addActionListener(new ActionListener() {
 
             @Override
@@ -121,6 +123,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             }
         });
         add = new JButton("Add Course");
+        add.setToolTipText("Go To Add Course Page");
         add.addActionListener(new ActionListener() {
 
             @Override
@@ -129,6 +132,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             }
         });
         back = new JButton("Back");
+        back.setToolTipText("Go Back To Registrar Admin Page");
         back.addActionListener(new ActionListener() {
 
             @Override
@@ -138,6 +142,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             }
         });
         registrarAdminPage = new JButton("Department Admin Page");
+        registrarAdminPage.setToolTipText("Go To Department Administrator Page");
         registrarAdminPage.addActionListener(new ActionListener() {
 
             @Override
@@ -342,6 +347,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             numReqS = new JSpinner(new SpinnerNumberModel(0,0,100,1));
 
             ok = new JButton("Add");
+            ok.setToolTipText("Add Course To Department And Go Back To Edit Department Page");
             ok.addActionListener(new ActionListener() {
 
                 @Override
@@ -357,6 +363,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 }
             });
             back = new JButton("Cancel");
+            back.setToolTipText("Go Back To Edit Department Page");
             back.addActionListener(new ActionListener() {
 
                 @Override
@@ -400,6 +407,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             JScrollPane listPane = new JScrollPane(groupList);
 
             toGroup = new JButton("Add courses to Group");
+            toGroup.setToolTipText("Add Selected Courses To Group");
             toGroup.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
@@ -416,6 +424,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 }
             });
             outGroup = new JButton("Remove Group from Prereqs");
+            outGroup.setToolTipText("Remove Group From Prereqs");
             outGroup.addActionListener(new ActionListener() {
 
                 @Override
@@ -443,6 +452,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             semSpi.setModel(new SpinnerNumberModel(2008,2000,2100,1));
 
             addSemesterButton = new JButton("Add Semester");
+            addSemesterButton.setToolTipText("Add Selected Semester");
             addSemesterButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -455,6 +465,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
                 }
             });
             remSemesterButton = new JButton("Remove Selected Semester");
+            remSemesterButton.setToolTipText("Remove Selected Semester");
             remSemesterButton.addActionListener(new ActionListener() {
 
                 @Override
@@ -672,6 +683,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             super(gui);
             addL.setText("Edit Course Screen");
             ok.setText("Save");
+            ok.setToolTipText("Save Changes And Go Back To Edit Department Page");
         }
     }
 
