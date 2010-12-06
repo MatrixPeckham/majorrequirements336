@@ -107,25 +107,22 @@ public class Requirement implements Serializable {
             return new Vector<CourseGroup>(possibleCourses);
         }
         Vector<CourseGroup> topX=new Vector<CourseGroup>();
-        Vector<CourseGroup> courses=new Vector<CourseGroup>(possibleCourses);
         for(CourseGroup g : possibleCourses) {
-            int i=g.numRemainingCourses(records);
-            sizes.add(i);
-        }
-        for(int i=0; i<num;i++) {
-            int largest=-1;
-            int largestIndex=-1;
+            Iterator<CourseGroup> it=topX.iterator();
             int j=0;
-            for(Integer i2 : sizes) {
-                if(i2>largest) {
-                    largest=i2;
-                    largestIndex=j;
+            boolean flag=false;
+            while(it.hasNext() && !flag) {
+                CourseGroup g2=it.next();
+                if(g.numRemainingCourses(records)<g2.numRemainingCourses(records)) {
+                    flag=true;
+                    topX.add(j,g);
                 }
                 j++;
             }
-            Integer rem=sizes.remove(largestIndex);
-            topX.add(courses.get(rem));
+            if(!flag){topX.add(g);}
+          
         }
+        topX.setSize(this.numberOfCourses);
         return topX;
     }
     public RootlessTree<Course> getRemainingCourses(TreeMap<String, CourseRecord> records) {

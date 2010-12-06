@@ -71,7 +71,7 @@ public class Course implements Serializable, Comparable {
         semestersOffered=offered;
         num=level;
     }
-    public boolean canTake(Semester s) {
+    public int canTake(Semester s) {
         return semestersOffered.isOffered(s);
     }
     public void addPreReq(CourseGroup c) {

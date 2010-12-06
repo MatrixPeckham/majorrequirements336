@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.*;
 import java.util.Map.Entry;
 import javax.xml.parsers.*;
+import logging.UseLogger;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
 /**
@@ -172,10 +173,15 @@ public class User implements Scheduler, FileParser, Serializable{
            Vector<Course>courseVec=new Vector<Course>();
        NodeList courses= el.getElementsByTagName("course");
        for(int i=0; i<courses.getLength(); i++) {
+           int number=-1;
+           try{
            Element n=(Element)courses.item(i);
-         
-           String description=((Element)n.getElementsByTagName("description").item(0)).getTextContent();
-           int number=Integer.parseInt(((Element)n.getElementsByTagName("number").item(0)).getTextContent());
+         number=Integer.parseInt(((Element)(n.getElementsByTagName("number").item(0))).getTextContent());
+            NodeList desc=n.getElementsByTagName("description");
+            String description="";
+           if(desc.getLength()>0) {
+            description=((Element)desc.item(0)).getTextContent();
+           }
            byte offered=0;
            boolean spring = false;
            boolean fall = false;
@@ -207,6 +213,10 @@ public class User implements Scheduler, FileParser, Serializable{
            courseVec.add(c);
            //prereqs.put(c, this.parsePrereqs(c,n,dept));
            PersistenceManager.merge(c);
+           }catch(Exception e) {
+               e.printStackTrace();;
+               UseLogger.severe("Error Writing Course Name:"+dept+" "+number);
+           }
        }
 
        PersistenceManager.merge(d);
@@ -220,15 +230,22 @@ public class User implements Scheduler, FileParser, Serializable{
             if(n2.getLength()>0) {
                 c.setMinLevel(Integer.parseInt(n2.item(0).getTextContent().substring(1)));
             }
-            n2=((Element)n.item(i)).getElementsByTagName("or");
-            CourseGroup g=new CourseGroup();
-            for(int j=0; j<n2.getLength(); j++) {
-                String course=n2.item(j).getTextContent();
-                g.addCourse(School.getSchool().getDepartment(course.split(" ")[0]).findCourse(course));
+
+            n2=((Element)n.item(i)).getElementsByTagName("sequence");
+            for(int k=0; k<n2.getLength();k++) {
+                CourseGroup g=new CourseGroup();
+                try{
+                    g.setNumReqiured(Integer.parseInt(((Element)n2.item(k)).getAttribute("required")));
+                }catch(Exception e2){}
+                NodeList n3=((Element)n2.item(k)).getElementsByTagName("pre");
+                for(int j=0; j<n3.getLength(); j++) {
+                    String course=n3.item(j).getTextContent();
+                    g.addCourse(School.getSchool().getDepartment(course.split(" ")[0]).findCourse(course));
+                }
+                PersistenceManager.merge(g);
+               // c.addPreReq(g);
+                v.add(g);
             }
-            PersistenceManager.merge(g);
-           // c.addPreReq(g);
-            v.add(g);
         }
         return v;
     }
