@@ -453,7 +453,7 @@ public class ServerThread implements Runnable{
                     system.removeUser(user.getID());
                     objectOut.writeObject("OK");
                     connected=false;
-                    System.exit(0);
+                    //System.exit(0);
                 }
                 else if(cmd.equals(Commands.ADD_REQ)){
                     try{
