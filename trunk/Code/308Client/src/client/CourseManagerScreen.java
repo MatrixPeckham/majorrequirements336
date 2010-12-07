@@ -72,6 +72,8 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
     private JButton add;
     //back button
     private JButton back;
+    //button to remove all offerings
+    private JButton removeAllB;
     //to registar admin button
     private JButton registrarAdminPage;
 
@@ -152,6 +154,15 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             }
         });
 
+        removeAllB = new JButton("Remove All Offerings");
+        removeAllB.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.removeAllCourseListings();
+            }
+        });
+
         String[] columnNames = {"Courses"};
 
         Object[][] data = {};
@@ -189,7 +200,11 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         addJComponentToContainerUsingGBL(scrollPane, this, 1, 3, 5, 5);
         addJComponentToContainerUsingGBL(add, this, 1, 10, 1, 1);
         addJComponentToContainerUsingGBL(remove, this, 2, 10, 1, 1);
+
+        addJComponentToContainerUsingGBL(removeAllB, this, 4, 10, 1, 1);
+
         addJComponentToContainerUsingGBL(edit, this, 3, 10, 1, 1);
+
         addJComponentToContainerUsingGBL(back, this, 5, 30, 1, 1);
         addJComponentToContainerUsingGBL(registrarAdminPage, this, 6, 30, 1, 1);
     }

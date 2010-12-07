@@ -56,5 +56,6 @@ public final class Commands {
     public static final String ADD_REQ = "ADD_REQ";
 
     public static final String EXIT="EXIT";
+    public static final String REMOVE_ALL_OFFERINGS="REMOVE_ALL_OFFERINGS";
 
 }

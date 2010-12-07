@@ -471,6 +471,26 @@ public class ServerThread implements Runnable{
                         objectOut.flush();
                         UseLogger.severe(e.getMessage());
                     }
+                } else if(cmd.equals(Commands.REMOVE_ALL_OFFERINGS)){
+                    try{
+                        ArrayList<Department> depts = School.getSchool().getDepartments();
+                        for(Department d : depts){
+                            for(Course c : d.getCourses()){
+                                OfferingList ol = c.getSemestersOffered();
+                                while(!ol.getOfferings().isEmpty()){
+                                    ol.getOfferings().remove(0);
+                                }
+
+                            }
+                            PersistenceManager.merge(d);
+                        }
+                        objectOut.writeObject("OK");
+                        objectOut.flush();
+                    } catch(Exception e){
+                        objectOut.writeObject("ERR");
+                        objectOut.flush();
+                        UseLogger.severe(e.getMessage());
+                    }
                 } else if(cmd.equals(Commands.EXIT))
                 {
                     system.removeUser(user.getID());

@@ -811,5 +811,3 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         }
     }
 }
-
-
