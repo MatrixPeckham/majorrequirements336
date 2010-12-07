@@ -431,6 +431,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
         JButton ok;
         //cancel button
         JButton cancel;
+        private boolean isEditPage = false;
+        private String originalName;
         /*
          * default constructor
          * makes GUI
@@ -565,6 +567,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                     if(validateForm()){
                         try{
                         String s = nameF.getText();
+                        if (isEditPage)
+                            frame.removeRequirement(originalName, frame.getCurrentMajor().getId());
                         frame.addRequirement(makeReq(), s);
                         Object o = frame.getCurrentMajor();
                         Major m = (Major)o;
@@ -662,6 +666,8 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
             seqM.removeAllElements();
             if(fillWith instanceof Requirement){
                 Requirement r = (Requirement)fillWith;
+                isEditPage = true;
+                originalName = r.getId();
                 for(CourseGroup cg : r.getPossibleCourses()){
                     seqM.addElement(cg);
                 }
@@ -763,6 +769,10 @@ public class MajorManagerScreen extends Screen implements ManagerScreen {
                     if(validateForm()){
                         String s = (String)table.getModel().getValueAt(table.getSelectedRow(), 0);
                         frame.removeRequirement(s, frame.getCurrentMajor().getId());
+                        Object o = frame.getCurrentMajor();
+                        Major m = (Major)o;
+                        Major maj = frame.getMajor(m.getId());
+                        frame.changeManageScreen(ClientGUI.CURR_EDIT, maj);
                     }
                 }
             });
