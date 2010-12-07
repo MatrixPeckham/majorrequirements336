@@ -302,10 +302,7 @@ public class ServerThread implements Runnable{
                         Department d = School.getSchool().getDepartment((String) objectIn.readObject());
                         Course c=(Course)objectIn.readObject();
                         Course oldCourse = d.findCourse((String)objectIn.readObject());
-                        d.removeCourse(oldCourse.toString());
-                        PersistenceManager.merge(d);
-                        PersistenceManager.remove(oldCourse, oldCourse.toString());
-                        d.addCourse(c);
+                        PersistenceManager.merge(c);
                         objectOut.writeObject("OK");
                     }catch(Exception e) {
                         e.printStackTrace();

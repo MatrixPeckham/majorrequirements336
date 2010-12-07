@@ -183,6 +183,7 @@ public class Requirement implements Serializable {
                         credOp+=c.getCredits();
                         }
                     }
+
                     if(incomplete) {
                         c2.message="Class in progress";
                         c2.complete=false;
@@ -192,13 +193,18 @@ public class Requirement implements Serializable {
                         c2.message="Course not passed with minimum grade.";
                         c2.complete=false;
                         rc.complete=false;
+                    } else if(cr.isUsed()) {
+                        c2.message="Course used for other Requirement, Cnnot be used twice";
+                        c2.complete=false;
+                        rc.complete=false;
                     } else {
                         if(c.isUpperDivision()) {upper+=c.getCredits();}
                         if(!cr.getTransfer()) {local+=c.getCredits();}
                         credits+=c.getCredits();
+                        cr.setUsed(true);
                         c2.complete=true;
                         remCourses++;
-                        c2.message="CourseCompleted";
+                        c2.message="Course Completed";
                     }
                 } else {
                     c2.message="Incomplete";

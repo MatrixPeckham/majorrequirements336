@@ -21,6 +21,9 @@ public class CourseRecord implements Serializable{
     private TreeMap<Semester, Grade> grades;
     //private Vector<Grade> grades;
     private boolean transfer;
+    private boolean used=false;
+    public void setUsed(boolean b){used=b;;}
+    public boolean isUsed(){return used;}
     public CourseRecord(Course course, Grade grade, boolean transfer) {
         //grades=new Vector<Grade>();
         grades=new TreeMap<Semester, Grade>();

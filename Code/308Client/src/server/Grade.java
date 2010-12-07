@@ -17,7 +17,9 @@ public class Grade implements Serializable{
     private double gradePoints;
     
     private String grade;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     public Grade() {
 
     }
@@ -38,9 +40,8 @@ public class Grade implements Serializable{
         return gradePoints==g.getGradePoints() && g.getGrade().equals(grade);
     }
     public double getGradePoints() {return gradePoints;}
-    @Id
     public String getGrade() {return grade;}
-     public void setGradePoints(int g) {gradePoints=g;}
+     public void setGradePoints(double g) {gradePoints=g;}
       public void setGrade(String g) {grade=g;
       gradePoints=convertGradePoints(g);
       }
