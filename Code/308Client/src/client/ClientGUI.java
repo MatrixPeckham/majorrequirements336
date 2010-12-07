@@ -293,4 +293,8 @@ public class ClientGUI extends JFrame implements WindowListener {
     public void windowDeactivated(WindowEvent e) {
         return;
     }
+
+    void removeAllCourseListings() {
+        networking.removeAllCourseListings();
+    }
  }

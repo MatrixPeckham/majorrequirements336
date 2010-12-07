@@ -722,4 +722,15 @@ public User getStudentInfo() {
             return ret;
         }
     }
+
+    void removeAllCourseListings() {
+        try{
+            oos.writeObject(Commands.REMOVE_ALL_OFFERINGS);
+            oos.flush();
+            ois.readObject();
+        } catch(SocketException se){
+            connectionLostGTFO();
+        } catch (Exception e) {
+        }
+    }
 }
