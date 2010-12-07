@@ -84,6 +84,15 @@ public class Schedule implements Serializable{
         }
         return new Schedule(sched);
     }*/
+    private static Vector<Course> removeDuplicates(Vector<Course> c) {
+        Vector<Course> ret=new Vector<Course>();
+        for(Course l : c) {
+            if(!ret.contains(l)) {
+                ret.add(l);
+            }
+        }
+        return ret;
+    }
      public static Schedule generateSchedule(User u) {
 
         Major m=u.getMajor();
@@ -97,6 +106,7 @@ public class Schedule implements Serializable{
             toTake.addAll(t.getDataAtlevel(maxlevel));
             maxlevel--;
         }
+
         Semester s=Semester.freeSemester();
         int maxSemCredits=School.getSchool().getMaxCreds();
         TreeMap<Semester, Vector<Course>> sched=new TreeMap<Semester, Vector<Course>>();
@@ -107,6 +117,7 @@ public class Schedule implements Serializable{
         maxSemCredits-=tmp;
         totalCredits+=tmp;
         boolean flag=false;
+        toTake=removeDuplicates(toTake);
         while(toTake.size()>0) {
             Iterator<Course> it=toTake.iterator();
             boolean found=false;

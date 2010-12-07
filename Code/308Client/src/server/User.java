@@ -181,6 +181,7 @@ public class User implements Scheduler, FileParser, Serializable{
            int number=-1;
            try{
            Element n=(Element)courses.item(i);
+
          number=Integer.parseInt(((Element)(n.getElementsByTagName("number").item(0))).getTextContent());
             NodeList desc=n.getElementsByTagName("description");
             String description="";
@@ -193,6 +194,7 @@ public class User implements Scheduler, FileParser, Serializable{
            double mingrade=Double.parseDouble(((Element)n.getElementsByTagName("minGrade").item(0)).getTextContent());;
            int credits=Integer.parseInt(((Element)n.getElementsByTagName("credits").item(0)).getTextContent());
            Element offer=(Element) n.getElementsByTagName("offered").item(0);
+
            if(Boolean.parseBoolean(((Element)offer.getElementsByTagName("fall").item(0)).getTextContent())) {
                offered|=OfferingList.FALL;
            }
@@ -210,6 +212,8 @@ public class User implements Scheduler, FileParser, Serializable{
            }
            OfferingList ol = new OfferingList();
            ol.setNotListedStratagy(offered);
+           addOfferings(ol, n.getElementsByTagName("offerings"));
+           PersistenceManager.merge(ol);
            Course c=new Course(dept,number,new Grade(mingrade), credits, ol);
            
            //this.parsePrereqs(c, n, dept);
@@ -226,6 +230,18 @@ public class User implements Scheduler, FileParser, Serializable{
 
        PersistenceManager.merge(d);
        return courseVec;
+    }
+    private void addOfferings(OfferingList ol, NodeList n) {
+        if(n.getLength()==0) {return;}
+        n=((Element)n.item(0)).getElementsByTagName("offering");
+        for(int i=0; i<n.getLength(); i++) {
+
+            int season=Integer.parseInt(((Element)n.item(i)).getElementsByTagName("season").item(0).getTextContent());
+            int year=Integer.parseInt(((Element)n.item(i)).getElementsByTagName("year").item(0).getTextContent());
+            boolean b=Boolean.parseBoolean(((Element)n.item(i)).getElementsByTagName("confirmed").item(0).getTextContent());
+            ol.addOffering(new Semester(year,season), b);
+
+        }
     }
     private ArrayList<CourseGroup> parsePrereqs(Course c, Element e, String dept) {
         NodeList n=e.getElementsByTagName("prerequisite");
