@@ -129,10 +129,15 @@ public class ServerThread implements Runnable{
                         String req = (String) objectIn.readObject();
                         Major m = School.getSchool().getDepartment(depo).findMajor(maj);
                         Collection<Requirement> r = m.getRequirements();
+                        Requirement r2 = new Requirement();
                         for(Requirement re : r) {
-                            if (re.getId().equals(req))
+                            if (re.getId().equals(req)) {
+                                r2 = re;
                                 m.removeRequirement(re);
+                                break;
+                            }
                         }
+                        PersistenceManager.merge(r2);
                         objectOut.writeObject("OK");
                     }
                      catch(Exception e) {
