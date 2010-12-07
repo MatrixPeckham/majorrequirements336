@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.Vector;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -36,7 +37,7 @@ public class CourseGroup implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;//a unique number for the course sequence
     private double minGPA;//minGPA to complete the sequence successfully
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     private Collection<Course> courses;//Required courses- maps to courses in course table
     private int required;
      private static EntityManager em;

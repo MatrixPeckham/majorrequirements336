@@ -31,6 +31,7 @@ import javax.persistence.PersistenceUnit;
 import logging.UseLogger;
 //import javax.persistence.criteria.Fetch;
 //import org.eclipse.persistence.internal.oxm.schema.model.All;
+
 import structures.*;
 
 /**
@@ -50,7 +51,7 @@ public class Course implements Serializable, Comparable {
     /*
      * id- the combined name/number to uniquely identify the course (primary key)
      */
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Grade minGrade;//min passing grade for the course
     private String description;//course description
     private String name;//course name, department identifier
@@ -141,4 +142,6 @@ public class Course implements Serializable, Comparable {
     public void takenPrereqs(TreeMap<String, CourseRecord> records) {
 
     }
+
+   
 }

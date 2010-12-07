@@ -96,6 +96,9 @@ public class Major implements Serializable {
     public MajorCompletion requirementsRemaining(TreeMap<String, CourseRecord> r, int year) {
         MajorCompletion mc=new MajorCompletion();
         mc.name=this.getId()+" Major Requirements";
+        for(CourseRecord c : r.values()) {
+            c.setUsed(false);
+        }
         mc.complete = true;
         int count = 0;
         for(Requirement re : reqs) {

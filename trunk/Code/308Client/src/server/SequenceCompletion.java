@@ -20,8 +20,8 @@ public class SequenceCompletion implements Serializable{
         for(CourseCompletion c : courseMessages) {
             s+="<td>";
             s+=c.course.getId()+"</td>";
-            s+="<td>"+c.complete+"</td>";
-            s+="<td>"+c.message+"</td></tr>";
+            s+="<td><font color='"+(c.complete?"green":"red")+"'>"+c.complete+"</font></td>";
+            s+="<td><font color='"+(c.complete?"green":"red")+"'>"+c.message+"</font></td></tr>";
         }
         s+="</table>";
         return s;
