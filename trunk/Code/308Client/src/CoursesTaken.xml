@@ -1,6 +1,6 @@
 <file type="record">
 	<major>CSE</major>
-	<majoryear>2010</majoryear>
+	<year>2010</year>
 	<course>
 		<dept>AMS</dept>
 		<num>210</num>
@@ -163,7 +163,7 @@
 	</course>
 	<course>
 		<dept>CSE</dept>
-		<num>328</num>
+		<num>336</num>
 		<grade>B</grade>
 		<semester>
 			<year>2011</year>
@@ -173,11 +173,11 @@
 	</course>
 	<course>
 		<dept>CSE</dept>
-		<num>336</num>
-		<grade>B</grade>
+		<num>355</num>
+		<grade>A</grade>
 		<semester>
-			<year>2011</year>
-			<season>16</season>
+			<year>2010</year>
+			<season>2</season>
 		</semester>
 		<transfer>false</transfer>
 	</course>
