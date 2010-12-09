@@ -4,7 +4,7 @@
 		<minGPA>2.0</minGPA>
 		<minLocalCreds>0</minLocalCreds>
 		<department>CSE</department>
-		<requirement required="5">
+		<requirement required="6">
 			<name>Introductory Courses</name>
 			<year>2010</year>
 			<sequence required="1">
@@ -87,20 +87,20 @@
 			<name>Extra Math</name>
 			<year>2010</year>
 			<sequence required="1">
+				<course>MAT 211</course>
+			</sequence>
+			<sequence required="1">
 				<course>AMS 210</course>
 			</sequence>
 			<sequence required="1">
 				<course>AMS 326</course>
-			</sequence>
-			<sequence required="1">
-				<course>MAT 211</course>
 			</sequence>
 		</requirement>
 		<minGPA>2.0</minGPA>
 		<minLocalCreds>0</minLocalCreds>
 		<department>CSE</department>
 		<requirement required="2">
-			<name>High Level Math</name>
+			<name>Upper Division Math</name>
 			<year>2010</year>
 			<sequence required="1">
 				<course>AMS 301</course>
@@ -156,27 +156,6 @@
 				<course>PHY 125</course>
 				<course>PHY 126</course>
 				<course>PHY 127</course>
-			</sequence>
-		</requirement>
-		<minGPA>2.0</minGPA>
-		<minLocalCreds>0</minLocalCreds>
-		<department>CSE</department>
-		<requirement required="1">
-			<name>Professional Ethics</name>
-			<year>2010</year>
-			<sequence required="1">
-				<course>CSE 312</course>
-                                <course>CSE 302</course>
-			</sequence>
-		</requirement>
-		<minGPA>2.0</minGPA>
-		<minLocalCreds>0</minLocalCreds>
-		<department>CSE</department>
-		<requirement required="1">
-			<name>Upper Division Writing</name>
-			<year>2010</year>
-			<sequence required="1">
-				<course>CSE 300</course>
 			</sequence>
 		</requirement>
 		<minGPA>2.0</minGPA>
@@ -252,9 +231,6 @@
 				<course>CSE 375</course>
 			</sequence>
 			<sequence required="1">
-				<course>CSE 376</course>
-			</sequence>
-			<sequence required="1">
 				<course>CSE 378</course>
 			</sequence>
 			<sequence required="1">
@@ -280,7 +256,17 @@
 		<minLocalCreds>0</minLocalCreds>
 		<department>CSE</department>
 		<requirement required="1">
-			<name>Extra 4 Natural Science</name>
+			<name>Upper Division Writing</name>
+			<year>2010</year>
+			<sequence required="1">
+				<course>CSE 300</course>
+			</sequence>
+		</requirement>
+		<minGPA>2.0</minGPA>
+		<minLocalCreds>0</minLocalCreds>
+		<department>CSE</department>
+		<requirement required="1">
+			<name>Extra 4 Natural Science Credits</name>
 			<year>2010</year>
 			<sequence required="2">
 				<course>BIO 201</course>
