@@ -1239,6 +1239,43 @@
 			</offered>
 		</course>
 		<course>
+			<number>300</number>
+			<description>Technical Communication for Electrical and Computer Engineers</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>WRT 102</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>ESE 314</pre>
+						<pre>ESE 324</pre>
+						<pre>ESE 380</pre>
+						<pre>ESE 382</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>301</number>
+			<description>Engineering Ethics and Societal Impact</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
 			<number>304</number>
 			<description>Applications of Operational Amplifiers</description>
 			<minGrade>2.0</minGrade>
@@ -1542,128 +1579,6 @@
 			</offered>
 		</course>
 		<course>
-			<number>337</number>
-			<description>Digital Signal Processing: Theory</description>
-			<minGrade>2.0</minGrade>
-			<credits>3</credits>
-				<prerequisite>
-					<sequence required="1">
-						<pre>ESE 305</pre>
-					</sequence>
-				</prerequisite>
-			<offered>
-				<spring>true</spring>
-				<fall>true</fall>
-				<winter>false</winter>
-				<summer1>false</summer1>
-				<summer2>false</summer2>
-			</offered>
-		</course>
-		<course>
-			<number>345</number>
-			<description>Something</description>
-			<minGrade>2.0</minGrade>
-			<credits>3</credits>
-			<offered>
-				<spring>true</spring>
-				<fall>true</fall>
-				<winter>false</winter>
-				<summer1>false</summer1>
-				<summer2>false</summer2>
-			</offered>
-		</course>
-		<course>
-			<number>372</number>
-			<description>Electronics</description>
-			<minGrade>2.0</minGrade>
-			<credits>3</credits>
-				<prerequisite>
-					<sequence required="1">
-						<pre>ESE 271</pre>
-					</sequence>
-				</prerequisite>
-			<offered>
-				<spring>true</spring>
-				<fall>true</fall>
-				<winter>false</winter>
-				<summer1>false</summer1>
-				<summer2>false</summer2>
-			</offered>
-		</course>
-		<course>
-			<number>380</number>
-			<description>Embedded Microprocessor Systems Design I</description>
-			<minGrade>2.0</minGrade>
-			<credits>4</credits>
-				<prerequisite>
-					<sequence required="1">
-						<pre>ESE 218</pre>
-					</sequence>
-				</prerequisite>
-			<offered>
-				<spring>true</spring>
-				<fall>true</fall>
-				<winter>false</winter>
-				<summer1>false</summer1>
-				<summer2>false</summer2>
-			</offered>
-		</course>
-		<course>
-			<number>382</number>
-			<description>Digital Design Using VHDL and PLDs</description>
-			<minGrade>2.0</minGrade>
-			<credits>4</credits>
-				<prerequisite>
-					<sequence required="0">
-						<pre>ESE 218</pre>
-					</sequence>
-				</prerequisite>
-			<offered>
-				<spring>true</spring>
-				<fall>true</fall>
-				<winter>false</winter>
-				<summer1>false</summer1>
-				<summer2>false</summer2>
-			</offered>
-		</course>
-		<course>
-			<number>300</number>
-			<description>Technical Communication for Electrical and Computer Engineers</description>
-			<minGrade>2.0</minGrade>
-			<credits>3</credits>
-				<prerequisite>
-					<sequence required="1">
-						<pre>WRT 102</pre>
-					</sequence>
-					<sequence required="1">
-						<pre>ESE 314</pre>
-						<pre>ESE 324</pre>
-						<pre>ESE 380</pre>
-						<pre>ESE 382</pre>
-					</sequence>
-				</prerequisite>
-			<offered>
-				<spring>true</spring>
-				<fall>true</fall>
-				<winter>false</winter>
-				<summer1>false</summer1>
-				<summer2>false</summer2>
-			</offered>
-		</course>
-		<course>
-			<number>301</number>
-			<description>Engineering Ethics and Societal Impact</description>
-			<minGrade>2.0</minGrade>
-			<credits>3</credits>
-			<offered>
-				<spring>true</spring>
-				<fall>true</fall>
-				<winter>false</winter>
-				<summer1>false</summer1>
-				<summer2>false</summer2>
-			</offered>
-		</course>
-		<course>
 			<number>333</number>
 			<description>Real-Time Operating Systems</description>
 			<minGrade>2.0</minGrade>
@@ -1678,6 +1593,24 @@
 					<sequence required="1">
 						<pre>CSE 220</pre>
 						<pre>ESE 380</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>337</number>
+			<description>Digital Signal Processing: Theory</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 305</pre>
 					</sequence>
 				</prerequisite>
 			<offered>
@@ -1759,6 +1692,19 @@
 						<pre>ESE 224</pre>
 					</sequence>
 				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>345</number>
+			<description>Something</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1927,6 +1873,231 @@
 						<pre>CSE 346</pre>
 						<pre>ESE 310</pre>
 						<pre>ESE 346</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>363</number>
+			<description>Fiber Optic Communications</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 372</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>366</number>
+			<description>Design using Programmable Mixed-Signal Systems-on-Chip</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 380</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>ESE 372</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>CSE 230</pre>
+						<pre>ESE 224</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>372</number>
+			<description>Electronics</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 271</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>373</number>
+			<description>RF Electronics for Wireless Communications</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 372</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>380</number>
+			<description>Embedded Microprocessor Systems Design I</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 218</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>381</number>
+			<description>Embedded Microprocessor Systems Design II</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 380</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>ESE 271</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>382</number>
+			<description>Digital Design Using VHDL and PLDs</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="0">
+						<pre>ESE 218</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>440</number>
+			<description>Engineering Design I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<minstanding>U4</minstanding>
+					<sequence required="1">
+						<pre>ESE 300</pre>
+					</sequence>
+					<minstanding>U4</minstanding>
+					<sequence required="1">
+						<pre>ESE 304</pre>
+						<pre>ESE 310</pre>
+						<pre>ESE 311</pre>
+						<pre>ESE 315</pre>
+						<pre>ESE 321</pre>
+						<pre>ESE 322</pre>
+						<pre>ESE 323</pre>
+						<pre>ESE 325</pre>
+						<pre>ESE 330</pre>
+						<pre>ESE 332</pre>
+						<pre>ESE 333</pre>
+						<pre>ESE 340</pre>
+						<pre>ESE 341</pre>
+						<pre>ESE 342</pre>
+						<pre>ESE 344</pre>
+						<pre>ESE 345</pre>
+						<pre>ESE 346</pre>
+						<pre>ESE 347</pre>
+						<pre>ESE 350</pre>
+						<pre>ESE 352</pre>
+						<pre>ESE 355</pre>
+						<pre>ESE 356</pre>
+						<pre>ESE 357</pre>
+						<pre>ESE 358</pre>
+						<pre>ESE 360</pre>
+						<pre>ESE 363</pre>
+						<pre>ESE 366</pre>
+						<pre>ESE 373</pre>
+						<pre>ESE 381</pre>
+						<pre>ESE 382</pre>
+						<pre>ESE 476</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>441</number>
+			<description>Engineering Design II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 440</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>476</number>
+			<description>Instructional Laboratory Development Practicum</description>
+			<minGrade>3.67</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<minstanding>U4</minstanding>
+					<sequence required="1">
 					</sequence>
 				</prerequisite>
 			<offered>
@@ -2379,9 +2550,9 @@
 			<credits>3</credits>
 				<prerequisite>
 					<sequence required="1">
+						<pre>PHY 125</pre>
 						<pre>PHY 131</pre>
 						<pre>PHY 133</pre>
-						<pre>PHY 125</pre>
 						<pre>PHY 141</pre>
 					</sequence>
 				</prerequisite>
@@ -2480,5 +2651,726 @@
 						<pre>MEC 364</pre>
 					</sequence>
 					<sequence required="1">
+						<pre>CSE 114</pre>
+						<pre>CSE 130</pre>
+						<pre>ESE 124</pre>
 						<pre>MEC 102</pre>
-
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>310</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 114</pre>
+						<pre>CSE 130</pre>
+						<pre>MEC 102</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>MEC 262</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>316</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 214</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>MEC 363</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>AMS 361</pre>
+						<pre>MAT 303</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>317</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 316</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>MEC 364</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>320</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 114</pre>
+						<pre>CSE 130</pre>
+						<pre>MEC 102</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>325</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>363</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 260</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>364</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 262</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>391</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 262</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>MEC 363</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>392</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 391</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>393</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 364</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>398</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="2">
+						<pre>MEC 301</pre>
+						<pre>MEC 364</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>400</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 213</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>402</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="2">
+						<pre>MEC 262</pre>
+						<pre>MEC 363</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>410</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="2">
+						<pre>MEC 310</pre>
+						<pre>MEC 363</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>411</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 262</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>AMS 361</pre>
+						<pre>MAT 303</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>422</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 305</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>440</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="6">
+						<pre>MEC 125</pre>
+						<pre>MEC 300</pre>
+						<pre>MEC 310</pre>
+						<pre>MEC 317</pre>
+						<pre>MEC 320</pre>
+						<pre>MEC 325</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>441</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 440</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>442</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 363</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>450</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="2">
+						<pre>MEC 310</pre>
+						<pre>MEC 316</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>455</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 363</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>460</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 262</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>470</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="2">
+						<pre>MEC 363</pre>
+						<pre>MEC 364</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>475</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>488</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>490</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>491</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>492</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>495</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>499</number>
+			<description></description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>PHY</name>
+		<course>
+			<number>125</number>
+			<description>Physics I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>126</number>
+			<description>Physics II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>127</number>
+			<description>Physics III</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 125</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>131</number>
+			<description>Advanced Physics I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 126</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>132</number>
+			<description>Advanced Physics II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>133</number>
+			<description>Physics Lab I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CHE 131</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>134</number>
+			<description>Physics Lab II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>141</number>
+			<description>Honors I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 133</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>142</number>
+			<description>Honors II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>WRT</name>
+		<course>
+			<number>101</number>
+			<description>Writing I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>102</number>
+			<description>Writing II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+</file>
