@@ -16,9 +16,16 @@
 		</course>
 		<course>
 			<number>161</number>
-			<description>Advanced Calculus II</description>
+			<description>Applied Calculus II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 151</pre>
+						<pre>MAT 131</pre>
+						<pre>MAT 141</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -32,6 +39,13 @@
 			<description>Applied Linear Algebra</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 151</pre>
+						<pre>MAT 131</pre>
+						<pre>MAT 141</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -67,6 +81,14 @@
 			<description>Finite Mathematical Structures</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 361</pre>
+						<pre>AMS 210</pre>
+						<pre>MAT 211</pre>
+						<pre>MAT 303</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -80,6 +102,12 @@
 			<description>Survey of Probability and Statistics</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 210</pre>
+						<pre>MAT 211</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -106,6 +134,11 @@
 			<description>Mathematical Statistics</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 311</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -119,6 +152,12 @@
 			<description>Numerical Analysis</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 210</pre>
+						<pre>MAT 211</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -170,6 +209,17 @@
 			<description>Bio II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CHE 123</pre>
+                                <pre>CHE 129</pre>
+                                <pre>CHE 131</pre>
+                                <pre>CHE 141</pre>
+                            </sequence>
+                            <sequence required="1">
+                                <pre>MAT 125</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -183,6 +233,17 @@
 			<description>Bio III</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>CHE 123</pre>
+                                <pre>CHE 129</pre>
+                                <pre>CHE 131</pre>
+                                <pre>CHE 141</pre>
+                            </sequence>
+                            <sequence required="1">
+                                <pre>MAT 125</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -196,6 +257,19 @@
 			<description>Biological Sciences I</description>
 			<minGrade>2.0</minGrade>
 			<credits>2</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>BIO 201</pre>
+                                <pre>BIO 202</pre>
+                                <pre>BIO 203</pre>
+                            </sequence>
+                            <sequence required="1">
+                                <pre>CHE 123</pre>
+                                <pre>CHE 129</pre>
+                                <pre>CHE 131</pre>
+                                <pre>CHE 141</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -207,8 +281,34 @@
 	</department>
 	<department>
 		<name>CHE</name>
+                <course>
+			<number>123</number>
+			<description>Chemistry I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+                <course>
+			<number>123</number>
+			<description>Chemistry I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
 		<course>
-			<number>131</number>
+			<number>129</number>
 			<description>Chemistry I</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
