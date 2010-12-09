@@ -1367,13 +1367,11 @@
 		<name>MEC</name>
 		<course>
 			<number>101</number>
-			<description>Computer integrated introduction to engineering design and analysis. The mechanical engineering profession, engineering ethics, and engineering impact on society. Engineering equations, graphs, dimensional analysis, curve fitting, optimization in engineering design. Introduction to vectors and engineering statics, failure, and materials selection. Use of spreadsheets and MATLAB.</description>
+                        <description>Engineering Computing and Problem Solving I</description>
 			<minGrade>2.0</minGrade>
 			<credits>2</credits>
 				<prerequisite>
-					<sequence required="0">
-					</sequence>
-					<sequence required="0">
+					<sequence required="1">
 						<pre>AMS 151</pre>
 						<pre>MAT 125</pre>
 						<pre>MAT 131</pre>
@@ -1385,8 +1383,8 @@
 					</sequence>
 				</prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1394,7 +1392,7 @@
 		</course>
 		<course>
 			<number>102</number>
-			<description>Introduction to programming with MATLAB. Control structures, arrays and matrix operations, functions, object-oriented programming, interfacing MATLAB with other languages. Projects includes applications in solid mechanics, fluid mechanics, thermodynamics and heat transfer, control theory, and basic design concepts. Emphasizes the interpretation of previous analysis in terms of generating results, making quantitative comparisons, and assessing changes that optimize or otherwise maximize the usefulness of the result.</description>
+                        <description>Engineering Computing and Problem Solving II</description>
 			<minGrade>2.0</minGrade>
 			<credits>2</credits>
 				<prerequisite>
@@ -1403,8 +1401,8 @@
 					</sequence>
 				</prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1416,8 +1414,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1429,8 +1427,8 @@
 			<minGrade>4.0</minGrade>
 			<credits>3</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1442,8 +1440,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>1</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1455,8 +1453,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>2</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1468,8 +1466,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>1</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1480,9 +1478,14 @@
 			<description>Application of computer graphics and solid modeling to design and representation of 3D objects, their assembly and tolerance analysis. Includes hands-on experience in the use of CAD software packages for solid modeling.</description>
 			<minGrade>2.0</minGrade>
 			<credits>2</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                    <pre>MEC 202</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1494,8 +1497,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1517,8 +1520,8 @@
 					</sequence>
 				</prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1537,8 +1540,8 @@
 					</sequence>
 				</prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1550,18 +1553,16 @@
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
 				<prerequisite>
-					<sequence required="2">
+					<sequence required="1">
 						<pre>PHY 131</pre>
 						<pre>PHY 133</pre>
-					</sequence>
-					<sequence required="1">
 						<pre>PHY 125</pre>
 						<pre>PHY 141</pre>
 					</sequence>
 				</prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1578,8 +1579,8 @@
 					</sequence>
 				</prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1591,8 +1592,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1603,9 +1604,14 @@
 			<description>Aims to ensure proficiency in the types of communication necessary for success in the engineering profession. Provides students with the ability to apply their knowledge of correct written and spoken English to the diverse modes of communication encountered and used by engineers in the professional workplace.</description>
 			<minGrade>2.0</minGrade>
 			<credits>1</credits>
+                         <prerequisite>
+                            <sequence required="1">
+                                    <pre>WRT 102</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1619,11 +1625,20 @@
 				<prerequisite>
 					<sequence required="1">
 						<pre>AMS 261</pre>
+                                                <pre>MAT 203</pre>
 					</sequence>
+                                        <sequence required="1">
+						<pre>PHY 125</pre>
+                                                <pre>PHY 131</pre>
+                                                <pre>PHY 133</pre>
+					</sequence>
+                                        <sequence required="1">
+						<pre>MEC 200</pre>
+                                        </sequence>
 				</prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1635,13 +1650,23 @@
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
 				<prerequisite>
-					<sequence required="1">
+					<sequence required="2">
 						<pre>MEC 301</pre>
+                                                <pre>MEC 364</pre>
+					</sequence>
+                                        <sequence required="1">
+						<pre>MEC 102</pre>
+                                                <pre>MEC 111</pre>
+                                                <pre>MEC 112</pre>
+                                                <pre>ESG 111</pre>
+                                                <pre>ESE 124</pre>
+                                                <pre>CSE 114</pre>
+                                                <pre>CSE 130</pre>
 					</sequence>
 				</prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1654,17 +1679,20 @@
 			<credits>3</credits>
 				<prerequisite>
 					<sequence required="1">
-						<pre>CSE 114</pre>
-						<pre>CSE 130</pre>
 						<pre>MEC 102</pre>
+                                                <pre>MEC 111</pre>
+                                                <pre>MEC 112</pre>
+                                                <pre>CSE 114</pre>
+                                                <pre>CSE 130</pre>
+                                                <pre>ESG 111</pre>
 					</sequence>
 					<sequence required="1">
 						<pre>MEC 262</pre>
 					</sequence>
 				</prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1675,9 +1703,21 @@
 			<description>The spatial and temporal resolution of modern instrumentation and sensors that are particular to mechanical engineering. Concepts of static and dynamic response as well as probability, statistics, and the statistical analysis of data are discussed. Includes basic circuit components. Laboratory safety. Students learn to operate instruments for measuring temperature, pressure, flow velocity, displacement, angle, acceleration, and strain. Design project. Laboratory fee required.</description>
 			<minGrade>2.0</minGrade>
 			<credits>2</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 214</pre>
+                            </sequence>
+                            <sequence required="1">
+                                <pre>MEC 363</pre>
+                            </sequence>
+                            <sequence required="1">
+                                <pre>AMS 361</pre>
+                                <pre>MAT 303</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1688,9 +1728,17 @@
 			<description>Hands-on experience in solid and fluid mechanics and heat transfer. Emphasis is on the understanding of fundamental principles as well as familiarity with modern experimentation. Lectures at the beginning of the course provide background information and theories of experimentation. Student groups perform four experiments each in solid mechanics and in fluid mechanics and heat transfer. Report writing is an integral part of the course, with emphasis on design of experiment, interpretation and presentation of data, error analysis, and conclusions. Laboratory fee required.</description>
 			<minGrade>2.0</minGrade>
 			<credits>2</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 316</pre>
+                            </sequence>
+                            <sequence required="1">
+                                <pre>MEC 364</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1701,9 +1749,19 @@
 			<description>The general process of engineering design as a systematic and disciplined process. Covers materials related to the formulation of design specifications and criteria; conceptual design and evaluation of the design options; design creativity; formulation of analyzable models; simulation and optimization techniques; design for manufacture; design for reliability; engineering economics; and engineering ethics.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 102</pre>
+                                <pre>MEC 111</pre>
+                                <pre>MEC 112</pre>
+                                <pre>CSE 114</pre>
+                                <pre>CSE 130</pre>
+                                <pre>ESG 111</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1714,9 +1772,14 @@
 			<description>The relationship between product design and manufacturing. Materials properties and influence. Introduces traditional and nontraditional manufacturing processes and their capabilities and limitations. Measurement inspection, reliability, and quality engineering. Economic impact of modern process engineering. Hands-on experience in various manufacturing machines and processes.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>ESG 332</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1728,8 +1791,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1740,9 +1803,14 @@
 			<description>Stress and deformation of engineering structures and the influence of the mechanical behavior of materials. Concepts of stress and strain, constitutive relations, analysis of statically indeterminate systems, study of simple bars and beams, and stability conditions. Emphasis on force equilibrium, elastic response of materials, geometric compatibility, Mohr's circle, stresses and deflections in beams, and torsion and buckling of rods. Design for bending, shear, and combined states of stress.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 260</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1753,9 +1821,14 @@
 			<description>Fundamental properties of fluids and their conservation laws with applications to the design and evaluation of flows of engineering interest. Topics include hydrostatics, surface tension, dimensional analysis and dynamic similitude, Euler's equation, rotating coordinate systems, boundary layers, lubrication, drag on immersed bodies, open channel and pipe flows, and turbomachinery.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 262</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1766,9 +1839,17 @@
 			<description>First part of a year-long course. Review of Society of Automotive Engineers (SAE) Collegiate Design competitions of past years and the rules of specific competitions and other competition-related issues. Selected engineering topics and mathematical/software tools are introduced including their application to solving engineering problems and to achieving design objectives. Students who enroll in MEC 391 must complete MEC 392 in the subsequent semester and receive only one grade upon completion of the sequence.</description>
 			<minGrade>2.0</minGrade>
 			<credits>1</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 262</pre>
+                            </sequence>
+                            <sequence required="1">
+                                <pre>MEC 363</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1779,9 +1860,14 @@
 			<description>A continuation of MEC 391. Students who enroll in MEC 391 must complete MEC 392 in the subsequent semester and receive only one grade upon completion of the sequence.</description>
 			<minGrade>2.0</minGrade>
 			<credits>2</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 391</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1792,9 +1878,14 @@
 			<description>The application of the principles of fluid mechanics to important areas of engineering practice such as turbomachinery, hydraulics, and wave propagation. Prepares students for advanced coursework in fluid dynamics. Extends the study of viscous effects, compressibility, and inertia begun in MEC 364.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 364</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1805,9 +1896,15 @@
 			<description>Psychrometrics and psychrometric charts. Thermodynamic considerations for the design and performance of cooling towers, humidifiers, and dehumidifiers. Reacting mixtures, combustion, and chemical equilibrium. Thermodynamics of fluid flow, simple compression, and expansion processes. Analysis and design of gas and vapor power cycles. Cycles with reheat, intercooling, and cogeneration plants. Refrigeration cycles.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="2">
+                                <pre>MEC 301</pre>
+                                <pre>MEC 364</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1818,9 +1915,14 @@
 			<description>This is the capstone course for the minor in Nanotechnology Studies (NTS). Students learn primary aspects of the professional research enterprise through writing a journal-quality manuscript and making professional presentations on their independent research (499) projects in a formal symposium setting. Students will also learn how to construct a grant proposal (a typical NSF graduate fellowship proposal), methods to search for research/fellowship funding, and key factors in being a research mentor.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 213</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1831,9 +1933,15 @@
 			<description>Modeling, analysis and design for mechanical vibrations. Fundamentals of free vibration, harmonically excited vibration and vibration under general forcing conditions are considered for one degree, two degree and multidegree of freedom systems; continuous systems; vibration design strategies including isolation and absorbers.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="2">
+                                <pre>MEC 262</pre>
+                                <pre>MEC 363</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1844,9 +1952,15 @@
 			<description>Application of analytical methods, material science, and mechanics to problems in design and analysis of machine components. Includes the design of mechanical components such as bearings, gears, shafting, springs, fasteners, belts, clutches, and brakes, and takes into consideration factors such as manufacturability and reliability. Design projects with open-ended and interactive problems are assigned to integrate several machine elements in a system.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="2">
+                                <pre>MEC 310</pre>
+                                <pre>MEC 363</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1857,9 +1971,18 @@
 			<description>Analysis and design of feedback control systems. Topics include system modeling; transfer function; block diagram and signal-flow graph; sensors, actuators, and control circuit design; control system characteristics and performance; stability analysis; root locus method; Bode diagram; PID and lead-lag compensator design.</description>
 			<minGrade>2.0</minGrade>
 			<credits>4</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 262</pre>
+                            </sequence>
+                            <sequence required="1">
+                                <pre>AMS 361</pre>
+                                <pre>MAT 303</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1870,9 +1993,14 @@
 			<description>Device design and system design. Quantitative data for system design including operating characteristics of compressors, turbines, heat exchangers, piping systems, internal combustion engines, and other component equipment. Component matching and system simulation. Optimization including thermoeconomic evaluation and energy analysis. Case studies: refrigeration and air conditioning systems, combined cycles, steam-injected gas turbines.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 305</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1883,9 +2011,19 @@
 			<description>Part I of the two-semester capstone design project sequence. Senior students select a project, develop the necessary technical background, and write a proposal, progress reports, and a preliminary design report. Includes an oral presentation on the development and progress of the project. Not counted as a technical elective. Laboratory fee required. The final grade will be assigned at the end of the two course sequence MEC 440-441.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="6">
+                                <pre>MEC 125</pre>
+                                <pre>MEC 300</pre>
+                                <pre>MEC 310</pre>
+                                <pre>MEC 317</pre>
+                                <pre>MEC 320</pre>
+                                <pre>MEC 325</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1896,9 +2034,14 @@
 			<description>Part II of the two-semester capstone design project sequence. Students complete the project design, build and test a prototype, write a mid-term report and a final design report, and give an oral presentation. Not counted as a technical elective. Laboratory fee required.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 440</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1909,9 +2052,14 @@
 			<description>The concepts of three-dimensional stress and strain, their transformation laws, and their mutual relationships are discussed in detail. Results from theory of elasticity as pertinent to experimental stress analysis are also presented. Experimental techniques studied include two-dimensional photoelasticity, resistance strain gauge, moire method, brittle coating, and analog methods. The application of different techniques to the measurement of stress and strain in models as well as actual structures is demonstrated. Students form small groups and each group is assigned different laboratory projects to gain experience in various experimental stress analysis methods. Previously offered as MEC 342.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 363</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1922,9 +2070,15 @@
 			<description>An introduction to the design, modeling, analysis, and control of mechatronic systems (smart systems comprising mechanical, electrical, and software components). Fundamentals of the basic components needed for the design and control of mechatronic systems, including sensors, actuators, data acquisition systems, microprocessors, programmable logic controllers, and I/O systems, are covered. Hands-on experience in designing and building practical mechatronic systems is provided through integrated lab activities.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="2">
+                                <pre>MEC 310</pre>
+                                <pre>MEC 316</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1935,9 +2089,14 @@
 			<description>A study of linear elastic solids with emphasis on internal stress analysis. Simple boundary value problems at plane structures are analyzed with various solution techniques. Major topics are stress and strain tensors, linear elasticity, principle of virtual work, torsion, stress functions, stress concentration, elementary fracture, and plasticity.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 363</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1948,9 +2107,14 @@
 			<description>Robot components and mechatronic aspects of robotics (sensors, actuators, end effectors, system integration). Rotation, translation, rigid-body transform. Robotics foundations in kinematics and inverse kinematics, dynamics, serial and parallel manipulators and their duality. Introduction to mobile robots and LEGO Robotics, control theories, motion planning, trajectory generation, grasping and manipulation, robotic programming language, industrial robotics, manufacturing automation, and societal impacts. Hands-on projects. Not for credit in addition to CSE 378.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="1">
+                                <pre>MEC 262</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1961,9 +2125,15 @@
 			<description>Focus is on the fundamentals of tribology, the science of surfaces in relative motion, with an introduction to friction, lubrication, and wear. The basics of tribology science: engineering surfaces, contact mechanics, lubrication theory, wear processes and modeling, wear properties of materials, and tribology test methods will be covered. Analysis of tribological aspects of machine components and bearings. Industrial case studies will be presented to place the topics in context to industry and society.</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+                        <prerequisite>
+                            <sequence required="2">
+                                <pre>MEC 363</pre>
+                                <pre>MEC 364</pre>
+                            </sequence>
+                        </prerequisite>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1975,8 +2145,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -1988,8 +2158,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -2001,8 +2171,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>4</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -2014,8 +2184,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>4</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -2027,8 +2197,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>4</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -2040,8 +2210,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>1</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
@@ -2053,8 +2223,8 @@
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
 			<offered>
-				<spring>false</spring>
-				<fall>false</fall>
+				<spring>true</spring>
+				<fall>true</fall>
 				<winter>false</winter>
 				<summer1>false</summer1>
 				<summer2>false</summer2>
