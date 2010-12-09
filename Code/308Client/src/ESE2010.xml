@@ -1,0 +1,289 @@
+<file type="majorRequirement">
+    <major>
+        <majorName>ESE</majorName>
+        <minGPA>2.0</minGPA>
+        <minLocalCreds>0</minLocalCreds>
+        <department>ESE</department>
+        <requirement required="1">
+            <name>Applied Calculus I, II</name>
+            <year>2010</year>
+            <sequence required="2">
+                <course>AMS 151</course>
+                <course>AMS 161</course>
+            </sequence>
+            <sequence required="3">
+                <course>MAT 125</course>
+                <course>MAT 126</course>
+                <course>MAT 127</course>
+            </sequence>
+            <sequence required="2">
+                <course>MAT 131</course>
+                <course>MAT 132</course>
+            </sequence>
+            <sequence required="2">
+                <course>MAT 141</course>
+                <course>MAT 142</course>
+            </sequence>
+            <sequence required="1">
+                <course>MAT 171</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+        <minLocalCreds>0</minLocalCreds>
+        <department>ESE</department>
+        <requirement required="3">
+            <name>Mathematics</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>AMS 261</course>
+                <course>MAT 203</course>
+            </sequence>
+            <sequence required="1">
+                <course>AMS 361</course>
+                <course>MAT 303</course>
+            </sequence>
+            <sequence required="1">
+                <course>AMS 210</course>
+                <course>MAT 211</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+        <minLocalCreds>0</minLocalCreds>
+        <department>ESE</department>
+        <requirement required="1">
+            <name>Physics</name>
+            <year>2010</year>
+            <sequence required="4">
+                <course>PHY 131</course>
+                <course>PHY 132</course>
+                <course>PHY 133</course>
+                <course>PHY 134</course>
+            </sequence>
+            <sequence required="3">
+                <course>PHY 125</course>
+                <course>PHY 126</course>
+                <course>PHY 127</course>
+            </sequence>
+            <sequence required="2">
+                <course>PHY 141</course>
+                <course>PHY 142</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+        <minLocalCreds>0</minLocalCreds>
+        <department>ESE</department>
+        <requirement required="1">
+            <name>Chemistry</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>CHE 131</course>
+            </sequence>
+            <sequence required="1">
+                <course>CHE 141</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESG 198</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+        <minLocalCreds>0</minLocalCreds>
+        <department>ESE</department>
+        <requirement required="2">
+            <name>Freshman Introduction to Electrical Engineering</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>ESE 123</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 124</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+        <minLocalCreds>0</minLocalCreds>
+        <department>ESE</department>
+        <requirement required="13">
+            <name>Core Courses</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>ESE 211</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 218</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 224</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 231</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 271</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 305</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 306</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 314</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 319</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 324</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 337</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 372</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 380</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+        <minLocalCreds>0</minLocalCreds>
+        <department>ESE</department>
+        <requirement required="4">
+            <name>Four Electives</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>ESE 304</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 307</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 310</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 311</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 315</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 321</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 322</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 323</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 325</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 330</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 332</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 333</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 340</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 341</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 342</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 344</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 345</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 346</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 347</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 350</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 352</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 355</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 356</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 357</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 358</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 360</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 363</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 366</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 373</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 381</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 382</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 476</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+        <minLocalCreds>0</minLocalCreds>
+        <department>ESE</department>
+        <requirement required="2">
+            <name>Design</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>ESE 400</course>
+            </sequence>
+            <sequence required="1">
+                <course>ESE 441</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+        <minLocalCreds>0</minLocalCreds>
+        <department>ESE</department>
+        <requirement required="1">
+            <name>Writing Requirement</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>ESE 300</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+        <minLocalCreds>0</minLocalCreds>
+        <department>ESE</department>
+        <requirement required="1">
+            <name>Engineering Ethics</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>ESE 301</course>
+            </sequence>
+        </requirement>
+    </major>
+</file>
+
+
+
+
+

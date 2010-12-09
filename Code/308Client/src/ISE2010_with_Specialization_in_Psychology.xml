@@ -1,0 +1,295 @@
+<file type="majorRequirement">
+    <major>
+        <majorName>ISE</majorName>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="4">
+            <name>Information Systems Courses</name>
+            <year>2010</year>
+            <sequence required="1">
+		<course>ISE 102</course>
+            </sequence>
+            <sequence required="1">
+                <course>ISE 108</course>
+            </sequence>
+            <sequence required="1">
+                <course>ISE 208</course>
+            </sequence><sequence required="1">
+                <course>ISE 215</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="5">
+            <name>Legal, Social, and Ethical Issues in Information Systems</name>
+            <year>2010</year>
+            <sequence required="1">
+		<course>ISE 312</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 305</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 108</course>
+                <course>CSE 308</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 311</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 320</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="3">
+            <name>Upper-Division Electives</name>
+            <year>2010</year>
+            <sequence required="1">
+		<course>ISE 301</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 302</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 315</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 323</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 325</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 332</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 334</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 340</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 364</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 377</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 378</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 390</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 487</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 488</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="1">
+            <name>Applied Calculus I</name>
+            <year>2010</year>
+            <sequence required="1">
+		<course>AMS 151</course>
+                <course>MAT 131</course>
+                <course>MAT 141</course>
+            </sequence>
+            <sequence required="2">
+                <course>MAT 125</course>
+                <course>MAT 126</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="2">
+            <name>Mathematics</name>
+            <year>2010</year>
+            <sequence required="1">
+		<course>AMS 201</course>
+                <course>MAT 210</course>
+                <course>MAT 211</course>
+            </sequence>
+            <sequence required="1">
+		<course>AMS 310</course>
+                <course>ECO 320</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="1">
+            <name>Upper-Division Writing Requirement</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>ISE 300</course>
+                <course>EST 304</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="3">
+            <name>Core Courses</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>PSY 103</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 201</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 310</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="1">
+            <name>Survey in Psychology</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>PSY 220</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 230</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 240</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 250</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 260</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="2">
+            <name>Electives</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>PSY 201</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 301</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 325</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 326</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 327</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 329</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 333</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 334</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 335</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 337</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 338</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 339</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 341</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 342</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 344</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 345</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 346</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 347</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 348</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 349</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 355</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 356</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 358</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 359</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 365</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 366</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 367</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 368</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 369</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 375</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 380</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 381</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 382</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 383</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 384</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 491</course>
+            </sequence>
+            <sequence required="1">
+                <course>PSY 492</course>
+            </sequence>
+        </requirement>
+    </major>
+</file>
+
