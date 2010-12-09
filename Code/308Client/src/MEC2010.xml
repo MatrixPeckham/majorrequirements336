@@ -187,7 +187,7 @@
             <year>2010</year>
             <sequence required="2">
                 <course>EST 392</course>
-                <course>EST 108</course>
+                <course>ECO 108</course>
             </sequence>
         </requirement>
         <minGPA>2.0</minGPA>

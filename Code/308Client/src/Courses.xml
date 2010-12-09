@@ -1085,6 +1085,29 @@
 		</course>
 	</department>
 	<department>
+		<name>ECO</name>
+		<course>
+			<number>108</number>
+			<description>Introduction to Economics</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 151</pre>
+						<pre>MAT 122</pre>
+						<pre>MAT 123</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
 		<name>ESE</name>
 		<course>
 			<number>123</number>
@@ -2137,6 +2160,133 @@
 				<summer2>false</summer2>
 			</offered>
 		</course>
+		<course>
+			<number>281</number>
+			<description>Engineering Introduction to the Solid State</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="2">
+						<pre>PHY 126</pre>
+						<pre>PHY 127</pre>
+						<pre>PHY 132</pre>
+						<pre>PHY 134</pre>
+						<pre>PHY 142</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>100</number>
+			<description>Introduction to Engineering Science</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>301</number>
+			<description>Sustainability of the Long Island Pine Barrens</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>BIO 201</pre>
+						<pre>CHE 131</pre>
+						<pre>ECO 108</pre>
+						<pre>ESG 198</pre>
+						<pre>ESG 100</pre>
+						<pre>GEO 102</pre>
+						<pre>GEO 101</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>302</number>
+			<description>Thermodynamics of Materials</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 161</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>ESG 198</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>332</number>
+			<description>Materials Science I: Structure and Properties of Materials</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CHE 131</pre>
+						<pre>CHE 141</pre>
+						<pre>ESG 198</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>ESG 301</pre>
+						<pre>ESG 302</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>EST</name>
+		<course>
+			<number>392</number>
+			<description>Engineering and Managerial Economics</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 151</pre>
+						<pre>ESG 198</pre>
+						<pre>MAT 125</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
 	</department>
 	<department>
 		<name>GEO</name>
@@ -2163,6 +2313,19 @@
 			<description>Introductory Geology Lab</description>
 			<minGrade>2.0</minGrade>
 			<credits>1</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>101</number>
+			<description>Environmental Geology</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -2352,6 +2515,32 @@
 						<pre>AMS 161</pre>
 					</sequence>
 				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>122</number>
+			<description>Overview of Calculus with Applications</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>123</number>
+			<description>Introduction to Calculus</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -3335,6 +3524,97 @@
 			<description>Honors II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>251</number>
+			<description>Modern Physics</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="2">
+						<pre>PHY 126</pre>
+						<pre>PHY 127</pre>
+						<pre>PHY 132</pre>
+						<pre>PHY 134</pre>
+						<pre>PHY 142</pre>
+					</sequence>
+					<sequence required="2">
+						<pre>MAT 203</pre>
+						<pre>AMS 261</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>252</number>
+			<description>Modern Physics Laboratory</description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+				<prerequisite>
+					<sequence required="2">
+						<pre>PHY 251</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>121</number>
+			<description>E: Physics for the Life Sciences I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 151</pre>
+						<pre>MAT 125</pre>
+						<pre>MAT 131</pre>
+						<pre>MAT 141</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>CHE 132</pre>
+						<pre>CHE 142</pre>
+						<pre>MAT 141</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>PHY 123</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>123</number>
+			<description>Physics for Life Sciences Laboratory I</description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 121</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
