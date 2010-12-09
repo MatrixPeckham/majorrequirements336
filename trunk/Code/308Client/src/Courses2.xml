@@ -41,6 +41,28 @@
 			</offered>
 		</course>
 		<course>
+			<number>261</number>
+			<description>Applied Calculus III</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 161</pre>
+						<pre>MAT 127</pre>
+						<pre>MAT 132</pre>
+						<pre>MAT 142</pre>
+						<pre>MAT 171</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
 			<number>301</number>
 			<description>Finite Mathematical Structures</description>
 			<minGrade>2.0</minGrade>
@@ -105,6 +127,28 @@
 				<summer2>false</summer2>
 			</offered>
 		</course>
+		<course>
+			<number>361</number>
+			<description>Applied Calculus IV: Differential Equations</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 161</pre>
+						<pre>MAT 127</pre>
+						<pre>MAT 132</pre>
+						<pre>MAT 142</pre>
+						<pre>MAT 171</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
 	</department>
 	<department>
 		<name>BIO</name>
@@ -147,6 +191,19 @@
 				<summer2>false</summer2>
 			</offered>
 		</course>
+		<course>
+			<number>204</number>
+			<description>Biological Sciences I</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
 	</department>
 	<department>
 		<name>CHE</name>
@@ -168,6 +225,11 @@
 			<description>Chemistry II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CHE 131</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -181,6 +243,11 @@
 			<description>Chemistry III</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CHE 132</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -207,6 +274,11 @@
 			<description>Advanced Chemistry II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CHE 141</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -220,6 +292,11 @@
 			<description>Advanced Chemistry III</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CHE 142</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -284,10 +361,28 @@
 			</offered>
 		</course>
 		<course>
+			<number>130</number>
+			<description>Introduction to C and C++ Programming</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
 			<number>214</number>
 			<description>Computer Science II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 114</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -314,6 +409,11 @@
 			<description>Computer Science III</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 214</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -327,6 +427,11 @@
 			<description>Computer Organization</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 214</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -340,6 +445,11 @@
 			<description>Intermediate Programming in C and C++</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 130</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -353,6 +463,11 @@
 			<description>Writing Computer Science</description>
 			<minGrade>2.0</minGrade>
 			<credits>1</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>WRT 102</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -392,6 +507,11 @@
 			<description>Introduction to Theory of Computation</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 215</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -405,6 +525,11 @@
 			<description>Compiler Design</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -418,6 +543,11 @@
 			<description>Principles of database Systems</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -431,6 +561,11 @@
 			<description>Operating Systems</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -444,6 +579,11 @@
 			<description>Principles of Programming Languages</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -457,6 +597,11 @@
 			<description>Software Engineering</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -470,6 +615,11 @@
 			<description>Data Communication and Networks</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -613,6 +763,11 @@
 			<description>Internet Programming</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -626,6 +781,11 @@
 			<description>Computer Communications</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -691,6 +851,11 @@
 			<description>Wireless and Mobile Networking</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 310</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -717,6 +882,11 @@
 			<description>Analysis of Algorithms</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 214</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -739,23 +909,16 @@
 			</offered>
 		</course>
 		<course>
-			<number>376</number>
-			<description>Advanced Systems Programming in C/C++</description>
-			<minGrade>2.0</minGrade>
-			<credits>3</credits>
-			<offered>
-				<spring>true</spring>
-				<fall>true</fall>
-				<winter>false</winter>
-				<summer1>false</summer1>
-				<summer2>false</summer2>
-			</offered>
-		</course>
-		<course>
 			<number>378</number>
 			<description>Introduction to Robotics</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 230</pre>
+						<pre>CSE 306</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -782,6 +945,12 @@
 			<description>Advanced Game Programming</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 214</pre>
+						<pre>CSE 230</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -795,6 +964,11 @@
 			<description>Special Topics</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 380</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -808,6 +982,11 @@
 			<description>Computer Network Security</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -821,6 +1000,11 @@
 			<description>Computer System Security</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 310</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -834,6 +1018,11 @@
 			<description>Undergraduate Teaching Practicum</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 306</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -894,9 +1083,97 @@
 				<summer2>false</summer2>
 			</offered>
 		</course>
+	</department>
+	<department>
+		<name>ESE</name>
 		<course>
-			<number>101</number>
-			<description>Introduction to Computers and Information Technologies</description>
+			<number>123</number>
+			<description>Introduction to Electrical and Computer Engineering</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 151</pre>
+						<pre>MAT 125</pre>
+						<pre>MAT 131</pre>
+						<pre>MAT 141</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>PHY 125</pre>
+						<pre>PHY 131</pre>
+						<pre>PHY 141</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>124</number>
+			<description>Computer Techniques for Electronic Design I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 151</pre>
+						<pre>MAT 125</pre>
+						<pre>MAT 131</pre>
+						<pre>MAT 141</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>AMS 151</pre>
+						<pre>ESE 123</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>211</number>
+			<description>Electronics Laboratory A</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 271</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>ESE 372</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>218</number>
+			<description>Digital Systems Design</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>224</number>
+			<description>Computer Techniques for Electronic Design II</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
 			<offered>
@@ -907,14 +1184,451 @@
 				<summer2>false</summer2>
 			</offered>
 		</course>
-	</department>
-	<department>
-		<name>ESE</name>
+		<course>
+			<number>231</number>
+			<description>Introduction to Semiconductor Devices</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 361</pre>
+						<pre>ESE 124</pre>
+						<pre>MAT 303</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>PHY 127</pre>
+						<pre>PHY 132</pre>
+						<pre>PHY 134</pre>
+						<pre>PHY 142</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>271</number>
+			<description>Electrical Circuit Analysis I</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 161</pre>
+						<pre>MAT 127</pre>
+						<pre>MAT 132</pre>
+						<pre>MAT 142</pre>
+						<pre>MAT 171</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>PHY 127</pre>
+						<pre>PHY 132</pre>
+						<pre>PHY 134</pre>
+						<pre>PHY 142</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>304</number>
+			<description>Applications of Operational Amplifiers</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 372</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>305</number>
+			<description>Deterministic Signals and Systems</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 271</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>306</number>
+			<description>Random Signals and Systems</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 305</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>307</number>
+			<description>Analog Filter Design</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 305</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>ESE 372</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>310</number>
+			<description>Electrical Circuit Analysis II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 271</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>311</number>
+			<description>Analog Integrated Circuits</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 372</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>314</number>
+			<description>Electronics Laboratory B</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 211</pre>
+						<pre>ESE 372</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>315</number>
+			<description>Control System Design</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 271</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>319</number>
+			<description>Electromagnetics and Transmission Line Theory</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 271</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>321</number>
+			<description>Electromagnetic Waves and Wireless Communication</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 319</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>322</number>
+			<description>Introduction to Auto ID Technologies</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 218</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>ESE 305</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>ESE 372</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>ESE 319</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>323</number>
+			<description>RFID Technology for Automatic Identification</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 319</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>324</number>
+			<description>Electronics Laboratory C</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+				<prerequisite>
+					<minstanding>U3</minstanding>
+					<sequence required="1">
+						<pre>ESE 211</pre>
+						<pre>ESE 372</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>325</number>
+			<description>Modern Sensors</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 372</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>330</number>
+			<description>Integrated Electronics</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 372</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>332</number>
+			<description>Semiconductor Device Characterization</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 372</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>337</number>
+			<description>Digital Signal Processing: Theory</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 305</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
 		<course>
 			<number>345</number>
 			<description>Something</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>372</number>
+			<description>Electronics</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 271</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>380</number>
+			<description>Embedded Microprocessor Systems Design I</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>ESE 218</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>ESG</name>
+		<course>
+			<number>192</number>
+			<description>Fundamentals of Engineering Chemistry</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 126</pre>
+						<pre>PHY 132</pre>
+						<pre>PHY 142</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>AMS 161</pre>
+						<pre>MAT 127</pre>
+						<pre>MAT 132</pre>
+						<pre>MAT 142</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -931,6 +1645,11 @@
 			<description>The Earth</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -986,6 +1705,11 @@
 			<description>Calculus III</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MAT 125</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -999,6 +1723,11 @@
 			<description>Advanced Calculus I</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MAT 126</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1025,6 +1754,11 @@
 			<description>Advanced Calculus I</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MAT 131</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1051,6 +1785,33 @@
 			<description>Honors Calculus</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MAT 141</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>203</number>
+			<description>Calculus III with Applications</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 161</pre>
+						<pre>CHE 142</pre>
+						<pre>MAT 127</pre>
+						<pre>MAT 132</pre>
+						<pre>MAT 142</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1064,6 +1825,33 @@
 			<description>Introduction to Linear Algebra</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>303</number>
+			<description>Calculus IV with Applications</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MAT 127</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>MAT 132</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>MAT 142</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>AMS 161</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1106,6 +1894,11 @@
 			<description>Physics III</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 125</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1119,6 +1912,11 @@
 			<description>Advanced Physics I</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 126</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1145,6 +1943,11 @@
 			<description>Physics Lab I</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CHE 131</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1171,6 +1974,11 @@
 			<description>Honors I</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 133</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
@@ -1200,6 +2008,11 @@
 			<description>Writing I</description>
 			<minGrade>2.0</minGrade>
 			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 141</pre>
+					</sequence>
+				</prerequisite>
 			<offered>
 				<spring>true</spring>
 				<fall>true</fall>
