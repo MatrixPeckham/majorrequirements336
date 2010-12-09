@@ -1,0 +1,2238 @@
+<file type="courses">
+	<department>
+		<name>AMS</name>
+		<course>
+			<number>151</number>
+			<description>Applied Calculus I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>161</number>
+			<description>Advanced Calculus II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>210</number>
+			<description>Applied Linear Algebra</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>301</number>
+			<description>Finite Mathematical Structures</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>310</number>
+			<description>Survey of Probability and Statistics</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>311</number>
+			<description>Probability Theory</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>312</number>
+			<description>Mathematical Statistics</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>326</number>
+			<description>Numerical Analysis</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>151</number>
+			<description>Applied Calculus I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>161</number>
+			<description>Advanced Calculus II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>210</number>
+			<description>Applied Linear Algebra</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>261</number>
+			<description>Applied Calculus III</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>301</number>
+			<description>Finite Mathematical Structures</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>310</number>
+			<description>Survey of Probability and Statistics</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>311</number>
+			<description>Probability Theory</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>312</number>
+			<description>Mathematical Statistics</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>326</number>
+			<description>Numerical Analysis</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>361</number>
+			<description>Applied Calculus IV: Differential Equations</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>BIO</name>
+		<course>
+			<number>201</number>
+			<description>Bio I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>202</number>
+			<description>Bio II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>203</number>
+			<description>Bio III</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>204</number>
+			<description>Biological Sciences I</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>CHE</name>
+		<course>
+			<number>131</number>
+			<description>Chemistry I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>132</number>
+			<description>Chemistry II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CHE 131</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>133</number>
+			<description>Chemistry III</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CHE 132</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>141</number>
+			<description>Advanced Chemistry I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>142</number>
+			<description>Advanced Chemistry II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CHE 141</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>143</number>
+			<description>Advanced Chemistry III</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CHE 142</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>CSE</name>
+		<course>
+			<number>101</number>
+			<description>Introduction to Computers and Information Technologies</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>true</winter>
+				<summer1>true</summer1>
+				<summer2>true</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>102</number>
+			<description>Introduction to Web Design and Programming</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>110</number>
+			<description>Introduction to Computer Science</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>114</number>
+			<description>Computer Science I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>130</number>
+			<description>Introduction to C and C++ Programming</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>214</number>
+			<description>Computer Science II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 114</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>215</number>
+			<description>Foundations of Computer Science</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>219</number>
+			<description>Computer Science III</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 214</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>220</number>
+			<description>Computer Organization</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 214</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>230</number>
+			<description>Intermediate Programming in C and C++</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 130</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>300</number>
+			<description>Writing Computer Science</description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>WRT 102</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>301</number>
+			<description>History of Computing</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>302</number>
+			<description>Professional Ethics for Computer Science</description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>303</number>
+			<description>Introduction to Theory of Computation</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 215</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>304</number>
+			<description>Compiler Design</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>305</number>
+			<description>Principles of database Systems</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>306</number>
+			<description>Operating Systems</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>307</number>
+			<description>Principles of Programming Languages</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>308</number>
+			<description>Software Engineering</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>310</number>
+			<description>Data Communication and Networks</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>311</number>
+			<description>Systems Administration</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>312</number>
+			<description>Legal, Social, and Ethical Issues in Computer Science</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>320</number>
+			<description>Computer Architecture</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>323</number>
+			<description>Human Computer Interaction</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>325</number>
+			<description>Computers and Sculpture</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>327</number>
+			<description>Fundamentals of Computer Vision</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>328</number>
+			<description>Computer Organization</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>332</number>
+			<description>Introduction to Visualization</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>333</number>
+			<description>User Interface Development</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>334</number>
+			<description>Introduction to Multimedia Systems</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>336</number>
+			<description>Internet Programming</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>346</number>
+			<description>Computer Communications</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>352</number>
+			<description>Artificial Intelligence</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>355</number>
+			<description>Computational Geometry</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>364</number>
+			<description>Advanced Multimedia Techniques</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>366</number>
+			<description>Introduction to Virtual Reality</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>370</number>
+			<description>Wireless and Mobile Networking</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 310</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>371</number>
+			<description>Logic</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>373</number>
+			<description>Analysis of Algorithms</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 214</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>375</number>
+			<description>Concurrency</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>378</number>
+			<description>Introduction to Robotics</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 306</pre>
+						<pre>CSE 230</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>380</number>
+			<description>Computer Game Programming</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>381</number>
+			<description>Advanced Game Programming</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 230</pre>
+						<pre>CSE 214</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>390</number>
+			<description>Special Topics</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 380</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>408</number>
+			<description>Computer Network Security</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>409</number>
+			<description>Computer System Security</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 310</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>475</number>
+			<description>Undergraduate Teaching Practicum</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 306</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>487</number>
+			<description>Reasearch in Computer Science</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>488</number>
+			<description>Internship in Computer Science</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>495</number>
+			<description>Senior Honors Research Project I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>496</number>
+			<description>Senior Honors Research Project II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>ESE</name>
+		<course>
+			<number>345</number>
+			<description>Something</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>ESG</name>
+	</department>
+	<department>
+		<name>GEO</name>
+		<course>
+			<number>102</number>
+			<description>The Earth</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 219</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>112</number>
+			<description>Introductory Geology Lab</description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>MAT</name>
+		<course>
+			<number>125</number>
+			<description>Calculus I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>126</number>
+			<description>Calculus II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>127</number>
+			<description>Calculus III</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MAT 125</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>131</number>
+			<description>Advanced Calculus I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MAT 126</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>132</number>
+			<description>Advanced Calculus II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>141</number>
+			<description>Advanced Calculus I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MAT 131</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>142</number>
+			<description>Advanced Calculus II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>171</number>
+			<description>Honors Calculus</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MAT 141</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>211</number>
+			<description>Introduction to Linear Algebra</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>MEC</name>
+		<course>
+			<number>101</number>
+			<description>Computer integrated introduction to engineering design and analysis. The mechanical engineering profession, engineering ethics, and engineering impact on society. Engineering equations, graphs, dimensional analysis, curve fitting, optimization in engineering design. Introduction to vectors and engineering statics, failure, and materials selection. Use of spreadsheets and MATLAB.</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+				<prerequisite>
+					<sequence required="0">
+					</sequence>
+					<sequence required="0">
+						<pre>AMS 151</pre>
+						<pre>MAT 125</pre>
+						<pre>MAT 131</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>PHY 125</pre>
+						<pre>PHY 131</pre>
+						<pre>PHY 141</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>102</number>
+			<description>Introduction to programming with MATLAB. Control structures, arrays and matrix operations, functions, object-oriented programming, interfacing MATLAB with other languages. Projects includes applications in solid mechanics, fluid mechanics, thermodynamics and heat transfer, control theory, and basic design concepts. Emphasizes the interpretation of previous analysis in terms of generating results, making quantitative comparisons, and assessing changes that optimize or otherwise maximize the usefulness of the result.</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 101</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>104</number>
+			<description>A practical introduction to the science and engineering of objects and phenomena in everyday life. The basic principles that underlie the operation common to modern devices such as rollercoasters, balloons, vacuum cleaners, airplanes, bicycles, thermostats, air conditioners, automobiles, and GPS systems are developed by investigating how they work. Issues of design, safety, and environmental impact are also discussed.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>105</number>
+			<description>A practical introduction to the science and engineering of objects and phenomena in everyday life. The basic principles that underlie the operation common to modern devices such as xerographic copiers, tape recorders, computers, microwaves, lasers, CDs, plastics, nuclear weapons, and magnetic resonance imaging (MRI) are developed by investigating how they work. Issues of design, safety, and environmental impact are also discussed.</description>
+			<minGrade>4.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>125</number>
+			<description>Hands-on experience in the fundamentals of machining. Topics include introductions to various metrology tools and devices, as well as metalworking tools and practices including sawing, sheet metal cutting and punching, drilling, reaming, tapping and threading, turning on the lathe, boring, milling, and welding.</description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>200</number>
+			<description>Introduction to technical writing and oral communication with topics chosen from mechanical engineering. Includes technical memo and report writing and an introduction to researching sources of information as well as engineering ethics. Emphasizes the development of oral presentation skills.</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>202</number>
+			<description>Introduces methods used to communicate design ideas through the techniques of freehand technical sketching and computer-aided design software. Includes the principles of engineering drawing and sketching for mechanical design and the application of computer-aided design software in developing engineering drawings and mechanical designs.</description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>203</number>
+			<description>Application of computer graphics and solid modeling to design and representation of 3D objects, their assembly and tolerance analysis. Includes hands-on experience in the use of CAD software packages for solid modeling.</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>213</number>
+			<description>The emerging field of nanotechnology develops solutions to engineering problems by taking advantage of the unique physical and chemical properties of nanoscale materials. This interdisciplinary, co-taught course introduces materials and nano-fabrication methods with applications to electronics, biomedical, mechanical and environmental engineering. Guest speakers and a semester project involve ethics, toxicology, economic and business implications of nanotechnology. Basic concepts in research and design methodology and characterization techniques will be demonstrated. Course is cross-listed as BME 213, MEC 213, and EST 213 and is required for the Minor in Nanotechnology Studies (NTS).</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>214</number>
+			<description>Foundations of probability and statistics as applied to mechanical measurements and experimentation. Basic statistical analysis of data and assessing likelihood of future events based on past history. Concept of random sampling. Uncertainty analysis and error propagation, using both analytical and graphical tools. Assessing dominant sources of error in measurements.
+
+</description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 151</pre>
+						<pre>MAT 126</pre>
+						<pre>MAT 131</pre>
+						<pre>MAT 141</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>220</number>
+			<description>This is a lecture and laboratory 2 credit course that will overview basic electronics from a practical level (versus a theoretical approach) to provide mechanical engineering students with the fundamentals to do basic electronics work needed for laboratories, subsequent courses and their professional careers.</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 127</pre>
+						<pre>PHY 132</pre>
+						<pre>PHY 142</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>260</number>
+			<description>A review of vector algebra. Concept of force. Equilibrium of particles. Moments about points and lines, couples and equivalent force systems. Equilibrium of rigid bodies. Analysis of simple structures such as trusses, frames, and beams. Centroids, centers of gravity, and moments of inertia. Dry friction with applications to wedges, screws, and belts. Method of virtual work, potential energy, and stability.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="2">
+						<pre>PHY 131</pre>
+						<pre>PHY 133</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>PHY 125</pre>
+						<pre>PHY 141</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>262</number>
+			<description>Vectorial kinematics of particles in space, orthogonal coordinate systems. Relative and constrained motions of particles. Dynamics of particles and the systems of particles, equations of motion, energy and momentum methods. Collisions. Two- and three-dimensional kinematics and dynamics of rigid bodies. Moving frames and relative motion. Free, forced, and damped vibrations of particles and rigid bodies.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 260</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>280</number>
+			<description>An examination of major environmental pollution problems such electromagnetic radiation, ozone layer depletion, and global warming, with a specific focus on the resulting effects on human health. Assessment of health risks in relation to the formulation of environmental and workplace regulations is also considered.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>300</number>
+			<description>Aims to ensure proficiency in the types of communication necessary for success in the engineering profession. Provides students with the ability to apply their knowledge of correct written and spoken English to the diverse modes of communication encountered and used by engineers in the professional workplace.</description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>301</number>
+			<description>Variables that describe the thermodynamic state of a system or control volume, including absolute temperature, internal energy, enthalpy, and entropy are introduced, and basic principles governing the transformations of energy, especially heat and work, are developed. Underlying principles are used to analyze and solve problems related to thermodynamic systems and to determine the changes in properties of the systems and surroundings implied by changes in inputs, configuration, or constraints.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>AMS 261</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>305</number>
+			<description>The fundamental laws of momentum, heat and mass transfer, and the corresponding transport coefficients. Principles of steady-state and transient heat conduction in solids are investigated. Laminar and turbulent boundary layer flows are treated, as well as condensation and boiling phenomena, thermal radiation, and radiation heat transfer between surfaces. Applications to heat transfer equipment are covered throughout the course.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>MEC 301</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>310</number>
+			<description>Application of graphical and analytical methods to the analysis and synthesis of mechanism. Covers concepts of degrees of freedom, graphical and analytical linkage synthesis, position, velocity, acceleration, and force analysis of linkage mechanisms. Introduces principles behind the operation of various machine elements such as gears and gear trains, cams, flywheels, roller and journal bearings, couplings, clutches, brakes, belts, and chains and their design, and analysis techniques.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CSE 114</pre>
+						<pre>CSE 130</pre>
+						<pre>MEC 102</pre>
+					</sequence>
+					<sequence required="1">
+						<pre>MEC 262</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>316</number>
+			<description>The spatial and temporal resolution of modern instrumentation and sensors that are particular to mechanical engineering. Concepts of static and dynamic response as well as probability, statistics, and the statistical analysis of data are discussed. Includes basic circuit components. Laboratory safety. Students learn to operate instruments for measuring temperature, pressure, flow velocity, displacement, angle, acceleration, and strain. Design project. Laboratory fee required.</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>317</number>
+			<description>Hands-on experience in solid and fluid mechanics and heat transfer. Emphasis is on the understanding of fundamental principles as well as familiarity with modern experimentation. Lectures at the beginning of the course provide background information and theories of experimentation. Student groups perform four experiments each in solid mechanics and in fluid mechanics and heat transfer. Report writing is an integral part of the course, with emphasis on design of experiment, interpretation and presentation of data, error analysis, and conclusions. Laboratory fee required.</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>320</number>
+			<description>The general process of engineering design as a systematic and disciplined process. Covers materials related to the formulation of design specifications and criteria; conceptual design and evaluation of the design options; design creativity; formulation of analyzable models; simulation and optimization techniques; design for manufacture; design for reliability; engineering economics; and engineering ethics.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>325</number>
+			<description>The relationship between product design and manufacturing. Materials properties and influence. Introduces traditional and nontraditional manufacturing processes and their capabilities and limitations. Measurement inspection, reliability, and quality engineering. Economic impact of modern process engineering. Hands-on experience in various manufacturing machines and processes.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>325</number>
+			<description>The relationship between product design and manufacturing. Materials properties and influence. Introduces traditional and nontraditional manufacturing processes and their capabilities and limitations. Measurement inspection, reliability, and quality engineering. Economic impact of modern process engineering. Hands-on experience in the fundamentals of machining including ,metrology tools, saw, sheet metal working, drilling, reaming, taping, turning, boring, milling, welding, and rapid prototyping. . Spring, 3 credits.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>363</number>
+			<description>Stress and deformation of engineering structures and the influence of the mechanical behavior of materials. Concepts of stress and strain, constitutive relations, analysis of statically indeterminate systems, study of simple bars and beams, and stability conditions. Emphasis on force equilibrium, elastic response of materials, geometric compatibility, Mohr's circle, stresses and deflections in beams, and torsion and buckling of rods. Design for bending, shear, and combined states of stress.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>364</number>
+			<description>Fundamental properties of fluids and their conservation laws with applications to the design and evaluation of flows of engineering interest. Topics include hydrostatics, surface tension, dimensional analysis and dynamic similitude, Euler's equation, rotating coordinate systems, boundary layers, lubrication, drag on immersed bodies, open channel and pipe flows, and turbomachinery.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>391</number>
+			<description>First part of a year-long course. Review of Society of Automotive Engineers (SAE) Collegiate Design competitions of past years and the rules of specific competitions and other competition-related issues. Selected engineering topics and mathematical/software tools are introduced including their application to solving engineering problems and to achieving design objectives. Students who enroll in MEC 391 must complete MEC 392 in the subsequent semester and receive only one grade upon completion of the sequence.</description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>392</number>
+			<description>A continuation of MEC 391. Students who enroll in MEC 391 must complete MEC 392 in the subsequent semester and receive only one grade upon completion of the sequence.</description>
+			<minGrade>2.0</minGrade>
+			<credits>2</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>393</number>
+			<description>The application of the principles of fluid mechanics to important areas of engineering practice such as turbomachinery, hydraulics, and wave propagation. Prepares students for advanced coursework in fluid dynamics. Extends the study of viscous effects, compressibility, and inertia begun in MEC 364.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>398</number>
+			<description>Psychrometrics and psychrometric charts. Thermodynamic considerations for the design and performance of cooling towers, humidifiers, and dehumidifiers. Reacting mixtures, combustion, and chemical equilibrium. Thermodynamics of fluid flow, simple compression, and expansion processes. Analysis and design of gas and vapor power cycles. Cycles with reheat, intercooling, and cogeneration plants. Refrigeration cycles.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>400</number>
+			<description>This is the capstone course for the minor in Nanotechnology Studies (NTS). Students learn primary aspects of the professional research enterprise through writing a journal-quality manuscript and making professional presentations on their independent research (499) projects in a formal symposium setting. Students will also learn how to construct a grant proposal (a typical NSF graduate fellowship proposal), methods to search for research/fellowship funding, and key factors in being a research mentor.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>402</number>
+			<description>Modeling, analysis and design for mechanical vibrations. Fundamentals of free vibration, harmonically excited vibration and vibration under general forcing conditions are considered for one degree, two degree and multidegree of freedom systems; continuous systems; vibration design strategies including isolation and absorbers.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>410</number>
+			<description>Application of analytical methods, material science, and mechanics to problems in design and analysis of machine components. Includes the design of mechanical components such as bearings, gears, shafting, springs, fasteners, belts, clutches, and brakes, and takes into consideration factors such as manufacturability and reliability. Design projects with open-ended and interactive problems are assigned to integrate several machine elements in a system.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>411</number>
+			<description>Analysis and design of feedback control systems. Topics include system modeling; transfer function; block diagram and signal-flow graph; sensors, actuators, and control circuit design; control system characteristics and performance; stability analysis; root locus method; Bode diagram; PID and lead-lag compensator design.</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>422</number>
+			<description>Device design and system design. Quantitative data for system design including operating characteristics of compressors, turbines, heat exchangers, piping systems, internal combustion engines, and other component equipment. Component matching and system simulation. Optimization including thermoeconomic evaluation and energy analysis. Case studies: refrigeration and air conditioning systems, combined cycles, steam-injected gas turbines.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>440</number>
+			<description>Part I of the two-semester capstone design project sequence. Senior students select a project, develop the necessary technical background, and write a proposal, progress reports, and a preliminary design report. Includes an oral presentation on the development and progress of the project. Not counted as a technical elective. Laboratory fee required. The final grade will be assigned at the end of the two course sequence MEC 440-441.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>441</number>
+			<description>Part II of the two-semester capstone design project sequence. Students complete the project design, build and test a prototype, write a mid-term report and a final design report, and give an oral presentation. Not counted as a technical elective. Laboratory fee required.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>442</number>
+			<description>The concepts of three-dimensional stress and strain, their transformation laws, and their mutual relationships are discussed in detail. Results from theory of elasticity as pertinent to experimental stress analysis are also presented. Experimental techniques studied include two-dimensional photoelasticity, resistance strain gauge, moire method, brittle coating, and analog methods. The application of different techniques to the measurement of stress and strain in models as well as actual structures is demonstrated. Students form small groups and each group is assigned different laboratory projects to gain experience in various experimental stress analysis methods. Previously offered as MEC 342.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>450</number>
+			<description>An introduction to the design, modeling, analysis, and control of mechatronic systems (smart systems comprising mechanical, electrical, and software components). Fundamentals of the basic components needed for the design and control of mechatronic systems, including sensors, actuators, data acquisition systems, microprocessors, programmable logic controllers, and I/O systems, are covered. Hands-on experience in designing and building practical mechatronic systems is provided through integrated lab activities.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>455</number>
+			<description>A study of linear elastic solids with emphasis on internal stress analysis. Simple boundary value problems at plane structures are analyzed with various solution techniques. Major topics are stress and strain tensors, linear elasticity, principle of virtual work, torsion, stress functions, stress concentration, elementary fracture, and plasticity.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>460</number>
+			<description>Robot components and mechatronic aspects of robotics (sensors, actuators, end effectors, system integration). Rotation, translation, rigid-body transform. Robotics foundations in kinematics and inverse kinematics, dynamics, serial and parallel manipulators and their duality. Introduction to mobile robots and LEGO Robotics, control theories, motion planning, trajectory generation, grasping and manipulation, robotic programming language, industrial robotics, manufacturing automation, and societal impacts. Hands-on projects. Not for credit in addition to CSE 378.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>470</number>
+			<description>Focus is on the fundamentals of tribology, the science of surfaces in relative motion, with an introduction to friction, lubrication, and wear. The basics of tribology science: engineering surfaces, contact mechanics, lubrication theory, wear processes and modeling, wear properties of materials, and tribology test methods will be covered. Analysis of tribological aspects of machine components and bearings. Industrial case studies will be presented to place the topics in context to industry and society.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>475</number>
+			<description>Students assist the faculty in teaching by conducting recitation or laboratory sections that supplement a lecture course. The student receives regularly scheduled supervision from the faculty instructor. May be used as an open elective only and repeated once.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>488</number>
+			<description>Participation in off-campus engineering practice. Students are required to submit a proposal to the department at the time of registration and two term reports before the end of the semester. May be repeated up to a limit of 12 credits.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>490</number>
+			<description>Treatment of an area of mechanical engineering that expands upon the undergraduate curriculum. Topics may include advanced material in a specialty, development of a specialized experimental technique, or a specific area of design. Topics may vary from semester to semester. Semester supplements to this Bulletin contain specific description when course is offered. May be repeated as the topic changes.</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>491</number>
+			<description>Treatment of an area of mechanical engineering that expands upon the undergraduate curriculum. Topics may include advanced material in a specialty, development of a specialized experimental technique, or a specific area of design. Topics may vary from semester to semester. Semester supplements to this Bulletin contain specific description when course is offered. May be repeated as the topic changes.</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>492</number>
+			<description>Treatment of an area of mechanical engineering that expands upon the undergraduate curriculum. Topics may include advanced material in a specialty, development of a specialized experimental technique, or a specific area of design. Topics may vary from semester to semester. Semester supplements to this Bulletin contain specific description when course is offered. May be repeated as the topic changes.</description>
+			<minGrade>2.0</minGrade>
+			<credits>4</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>495</number>
+			<description>Prepares the student to enter the workplace as a practicing engineer. Topics include professional ethics, professional activities, professional engineering licensing, patents, seeking entry-level employment, and exposure to the engineering work environment. Aids in preparation for the EIT/FE exam. Includes speakers from a variety of disciplines, within the College and from industry.</description>
+			<minGrade>2.0</minGrade>
+			<credits>1</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>499</number>
+			<description>An independent research project under the supervision of a mechanical engineering faculty member. Permission to register requires the agreement of the faculty member to supervise the research and submission of a one-page research proposal. May be repeated but only six credits of research electives may be counted as technical electives.</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>false</spring>
+				<fall>false</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>PHY</name>
+		<course>
+			<number>125</number>
+			<description>Physics I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>126</number>
+			<description>Physics II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>127</number>
+			<description>Physics III</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 125</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>131</number>
+			<description>Advanced Physics I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 126</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>132</number>
+			<description>Advanced Physics II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>133</number>
+			<description>Physics Lab I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>CHE 131</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>134</number>
+			<description>Physics Lab II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>141</number>
+			<description>Honors I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 133</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>142</number>
+			<description>Honors II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+	<department>
+		<name>WRT</name>
+		<course>
+			<number>101</number>
+			<description>Writing I</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+				<prerequisite>
+					<sequence required="1">
+						<pre>PHY 141</pre>
+					</sequence>
+				</prerequisite>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+		<course>
+			<number>102</number>
+			<description>Writing II</description>
+			<minGrade>2.0</minGrade>
+			<credits>3</credits>
+			<offered>
+				<spring>true</spring>
+				<fall>true</fall>
+				<winter>false</winter>
+				<summer1>false</summer1>
+				<summer2>false</summer2>
+			</offered>
+		</course>
+	</department>
+</file>
