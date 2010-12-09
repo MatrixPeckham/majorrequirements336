@@ -311,7 +311,7 @@ public class ClassesManagerScreen extends Screen implements ManagerScreen {
         addJComponentToContainerUsingGBL(editButton, this, 2, 4, 1, 1);
         addJComponentToContainerUsingGBL(removeButton, this, 3, 4, 1, 1);
         addJComponentToContainerUsingGBL(uploadButton, this, 1, 5, 1, 1);
-        addJComponentToContainerUsingGBL(uploadCSV, this, 1, 6, 1, 1);
+        addJComponentToContainerUsingGBL(uploadCSV, this, 2, 5, 1, 1);
         addJComponentToContainerUsingGBL(downloadButton, this, 3, 5, 1, 1);
         addJComponentToContainerUsingGBL(checkButton, this, 4, 4, 1, 1);
         addJComponentToContainerUsingGBL(generateButton, this, 4, 5, 1, 1);
