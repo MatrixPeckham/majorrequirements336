@@ -431,12 +431,26 @@ public class User implements Scheduler, FileParser, Serializable{
 
                     for (Course c : courses)    {
                         OfferingList semesters = c.getSemestersOffered();
+                        Collection<CourseGroup> prereqs = c.getPrereqs();
                         Collection<CourseOffering> offerings = semesters.getOfferings();
                         s+="\t\t<course>\n";
                         s+="\t\t\t<number>" + c.getNum() + "</number>\n";
                         s+="\t\t\t<description>" + c.getDescription() + "</description>\n";
                         s+="\t\t\t<minGrade>" + c.getMinGrade().getGradePoints() + "</minGrade>\n";
                         s+="\t\t\t<credits>" + c.getCredits() + "</credits>\n";
+                        if (prereqs.size() > 0) {
+                            s+="\t\t\t\t<prerequisite>\n";
+                            for (CourseGroup cg : prereqs)  {
+                                if (c.getMinLevel() > 0)
+                                    s+="\t\t\t\t\t<minstanding>U" + c.getMinLevel() + "</minstanding>\n";
+                                s+="\t\t\t\t\t<sequence required=\"" + cg.getNumReqiured() + "\">\n";
+                                for (Course c2 : cg.getCourses())    {
+                                    s+="\t\t\t\t\t\t<pre>" + c2.getId() + "</pre>\n";
+                                }
+                                s+="\t\t\t\t\t</sequence>\n";
+                            }
+                            s+="\t\t\t\t</prerequisite>\n";
+                        }
                         s+="\t\t\t<offered>\n";
                         byte check = semesters.getNotListedStratagy();
 
