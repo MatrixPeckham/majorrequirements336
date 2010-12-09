@@ -65,6 +65,7 @@ public class PersistenceManager {
        em.remove(e);
        t.commit();
     }
+   
     public static void merge(Object o) {
         if(em==null) {
             init();

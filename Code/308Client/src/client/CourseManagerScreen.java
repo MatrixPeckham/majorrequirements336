@@ -267,7 +267,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         //number lable
         private JLabel numL;
         //number text field
-        private JTextField numF;
+        protected JTextField numF;
         //department label
         private JLabel deptL;
         //department text field
@@ -330,6 +330,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
             nameF.setEditable(false);
             numL = new JLabel("Number");
             numF = new JTextField(10);
+            numF.setEnabled(true);
             numF.getDocument().addDocumentListener(new DocumentListener() {
 
                 @Override
@@ -698,6 +699,7 @@ public class CourseManagerScreen extends Screen implements ManagerScreen {
         //sets up GUI
         public EditCouScreen(ClientGUI gui) {
             super(gui);
+            numF.setEnabled(false);
             addL.setText("Edit Course Screen");
             ok.setText("Save");
             ok.setToolTipText("Save Changes And Go Back To Edit Department Page");
