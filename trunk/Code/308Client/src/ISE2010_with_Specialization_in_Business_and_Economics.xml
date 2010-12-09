@@ -1,0 +1,247 @@
+<file type="majorRequirement">
+    <major>
+        <majorName>ISE</majorName>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="4">
+            <name>Information Systems Courses</name>
+            <year>2010</year>
+            <sequence required="1">
+		<course>ISE 102</course>
+            </sequence>
+            <sequence required="1">
+                <course>ISE 108</course>
+            </sequence>
+            <sequence required="1">
+                <course>ISE 208</course>
+            </sequence><sequence required="1">
+                <course>ISE 215</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="5">
+            <name>Legal, Social, and Ethical Issues in Information Systems</name>
+            <year>2010</year>
+            <sequence required="1">
+		<course>ISE 312</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 305</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 108</course>
+                <course>CSE 308</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 311</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 320</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="3">
+            <name>Upper-Division Electives</name>
+            <year>2010</year>
+            <sequence required="1">
+		<course>ISE 301</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 302</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 315</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 323</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 325</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 332</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 334</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 340</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 364</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 377</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 378</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 390</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 487</course>
+            </sequence>
+            <sequence required="1">
+		<course>ISE 488</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="1">
+            <name>Applied Calculus I</name>
+            <year>2010</year>
+            <sequence required="1">
+		<course>AMS 151</course>
+                <course>MAT 131</course>
+                <course>MAT 141</course>
+            </sequence>
+            <sequence required="2">
+                <course>MAT 125</course>
+                <course>MAT 126</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="2">
+            <name>Mathematics</name>
+            <year>2010</year>
+            <sequence required="1">
+		<course>AMS 201</course>
+                <course>MAT 210</course>
+                <course>MAT 211</course>
+            </sequence>
+            <sequence required="1">
+		<course>AMS 310</course>
+                <course>ECO 320</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="1">
+            <name>Upper-Division Writing Requirement</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>ISE 300</course>
+                <course>EST 304</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="3">
+            <name>Core Courses</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>BUS 111</course>
+            </sequence>
+            <sequence required="1">
+                <course>ECO 108</course>
+            </sequence>
+            <sequence required="1">
+                <course>BUS 210</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="1">
+            <name>Business or Economics I</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>BUS 214</course>
+            </sequence>
+            <sequence required="1">
+                <course>BUS 346</course>
+            </sequence>
+            <sequence required="1">
+                <course>BUS 349</course>
+            </sequence>
+            <sequence required="1">
+                <course>BUS 355</course>
+            </sequence>
+            <sequence required="1">
+                <course>BUS 356</course>
+            </sequence>
+            <sequence required="1">
+                <course>ECO 348</course>
+            </sequence>
+            <sequence required="1">
+                <course>ECO 368</course>
+            </sequence>
+            <sequence required="1">
+                <course>ECO 389</course>
+            </sequence>
+            <sequence required="1">
+                <course>ECO 392</course>
+            </sequence>
+            <sequence required="1">
+                <course>ECO 393</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="1">
+            <name>Business or Economics II</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>BUS 347</course>
+            </sequence>
+            <sequence required="1">
+                <course>BUS 348</course>
+            </sequence>
+            <sequence required="1">
+                <course>ECO 326</course>
+            </sequence>
+            <sequence required="1">
+                <course>ECO 343</course>
+            </sequence>
+            <sequence required="1">
+                <course>ECO 345</course>
+            </sequence>
+            <sequence required="1">
+                <course>POL 319</course>
+            </sequence>
+            <sequence required="1">
+                <course>POL 359</course>
+            </sequence>
+            <sequence required="1">
+                <course>POL 364</course>
+            </sequence>
+            <sequence required="1">
+                <course>SOC 381</course>
+            </sequence>
+        </requirement>
+        <minGPA>2.0</minGPA>
+	<minLocalCreds>0</minLocalCreds>
+	<department>ISE</department>
+        <requirement required="1">
+            <name>Technology and Society</name>
+            <year>2010</year>
+            <sequence required="1">
+                <course>EST 302</course>
+            </sequence>
+            <sequence required="1">
+                <course>EST 305</course>
+            </sequence>
+            <sequence required="1">
+                <course>EST 320</course>
+            </sequence>
+            <sequence required="1">
+                <course>EST 325</course>
+            </sequence>
+        </requirement>
+    </major>
+</file>
+
+
+
